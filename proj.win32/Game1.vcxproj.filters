@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{1bf35562-2d3e-49f8-a2ed-cddb6c06c898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Common">
+      <UniqueIdentifier>{68f441f3-8e41-47ba-b14c-5d1d47130ac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\network">
+      <UniqueIdentifier>{1cb22c89-f3db-4f38-8e18-899296c7df07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\netjson">
+      <UniqueIdentifier>{84f33154-4ade-446f-9dd2-dfb8e0a2098d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Logo">
+      <UniqueIdentifier>{2c77f267-7e6f-4533-b833-cf4c9ea3a2e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\cryptopp">
+      <UniqueIdentifier>{3f2b96d2-f6d3-4067-82cc-3dd9be2aa2fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\cc">
+      <UniqueIdentifier>{552d43a8-ed3e-425b-a9b6-41f30e855c76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\http">
+      <UniqueIdentifier>{ccb723e3-4f6d-4517-b566-0363c5aed244}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\Adaptation.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\CursorTextField.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\XXIconv.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\Event.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\EventInfo.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\YSEventDispatcher.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\GameDataSet.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\EffectAnimation.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\XXHttpRequest.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\CDProgressTimer.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netjson\json_reader.cpp">
+      <Filter>Classes\netjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netjson\json_value.cpp">
+      <Filter>Classes\netjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netjson\json_writer.cpp">
+      <Filter>Classes\netjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netjson\YMEvent.cpp">
+      <Filter>Classes\netjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netjson\YMSocketEvent.cpp">
+      <Filter>Classes\netjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\CircleMoveAction.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Logo\LogoLayer.cpp">
+      <Filter>Classes\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Logo\LogoScene.cpp">
+      <Filter>Classes\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\SpecialAction.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\BaseLayer.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\SpriteBlur.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\MD55.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cryptopp\aes_core.cpp">
+      <Filter>Classes\cryptopp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cryptopp\crypto_utils.cpp">
+      <Filter>Classes\cryptopp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cryptopp\crypto_wrapper.cpp">
+      <Filter>Classes\cryptopp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cryptopp\libb64.cpp">
+      <Filter>Classes\cryptopp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cryptopp\md5.cpp">
+      <Filter>Classes\cryptopp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cryptopp\md6.cpp">
+      <Filter>Classes\cryptopp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cryptopp\oslib.cpp">
+      <Filter>Classes\cryptopp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cryptopp\xxfsutility.cpp">
+      <Filter>Classes\cryptopp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cc\DBProto.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\http\HttpInfo.cpp">
+      <Filter>Classes\http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\ClientSocket.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\TcpSocket.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\Common.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppMacros.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\Adaptation.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\CursorTextField.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\XXIconv.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\XXMacros.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\Event.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\EventInfo.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\YSEventDispatcher.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\GameDataSet.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\EffectAnimation.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\XXHttpRequest.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\CDProgressTimer.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\json_batchallocator.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\json_lib.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\json_tool.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMconfig.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMEvent.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMfeatures.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMforwards.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMreader.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMSocketData.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMSocketDataEvent.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMSocketEvent.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMvalue.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netjson\YMwriter.h">
+      <Filter>Classes\netjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\CircleMoveAction.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logo\LogoLayer.h">
+      <Filter>Classes\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logo\LogoScene.h">
+      <Filter>Classes\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\CommonData.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\SpecialAction.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\BaseLayer.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\SpriteBlur.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MD55.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\aes.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\crypto_utils.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\crypto_wrapper.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\fastest_csv_parser.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\libb64.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\mathext.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\md5.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\md6.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\nsconv.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\object_pool.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\oslib.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\politedef.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\super_cast.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\unreal_string.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\xxbswap.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\xxfree.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cryptopp\xxfsutility.h">
+      <Filter>Classes\cryptopp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\DBProto.h">
+      <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\http\HttpInfo.h">
+      <Filter>Classes\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\ClientSocket.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\TcpSocket.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\Common.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Classes\netjson\json_internalarray.inl">
+      <Filter>Classes\netjson</Filter>
+    </None>
+    <None Include="..\Classes\netjson\json_internalmap.inl">
+      <Filter>Classes\netjson</Filter>
+    </None>
+    <None Include="..\Classes\netjson\json_valueiterator.inl">
+      <Filter>Classes\netjson</Filter>
+    </None>
+  </ItemGroup>
+</Project>
