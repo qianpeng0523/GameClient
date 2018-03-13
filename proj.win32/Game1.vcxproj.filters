@@ -23,13 +23,16 @@
       <UniqueIdentifier>{2c77f267-7e6f-4533-b833-cf4c9ea3a2e1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\cryptopp">
-      <UniqueIdentifier>{3f2b96d2-f6d3-4067-82cc-3dd9be2aa2fa}</UniqueIdentifier>
+      <UniqueIdentifier>{67ac20bb-f700-44a5-8257-e8b69d78188a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\cc">
-      <UniqueIdentifier>{552d43a8-ed3e-425b-a9b6-41f30e855c76}</UniqueIdentifier>
+      <UniqueIdentifier>{63a0bb79-1619-4915-8fa5-55de6ecb7b5b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\http">
-      <UniqueIdentifier>{ccb723e3-4f6d-4517-b566-0363c5aed244}</UniqueIdentifier>
+      <UniqueIdentifier>{6347ec7a-f8d7-4cbb-a010-f60bbfb75349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\proto">
+      <UniqueIdentifier>{bffacc30-aa16-4df7-a839-93e0247cefbb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,15 +50,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Common\XXIconv.cpp">
       <Filter>Classes\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\network\Event.cpp">
-      <Filter>Classes\network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\network\EventInfo.cpp">
-      <Filter>Classes\network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\network\YSEventDispatcher.cpp">
-      <Filter>Classes\network</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Common\GameDataSet.cpp">
       <Filter>Classes\Common</Filter>
@@ -129,11 +123,8 @@
     <ClCompile Include="..\Classes\cryptopp\xxfsutility.cpp">
       <Filter>Classes\cryptopp</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\cc\DBProto.cpp">
-      <Filter>Classes\cc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\http\HttpInfo.cpp">
-      <Filter>Classes\http</Filter>
+    <ClCompile Include="..\Classes\Common\Common.cpp">
+      <Filter>Classes\Common</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\network\ClientSocket.cpp">
       <Filter>Classes\network</Filter>
@@ -141,8 +132,23 @@
     <ClCompile Include="..\Classes\network\TcpSocket.cpp">
       <Filter>Classes\network</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Common\Common.cpp">
-      <Filter>Classes\Common</Filter>
+    <ClCompile Include="..\Classes\cc\DBProto.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\http\HttpInfo.cpp">
+      <Filter>Classes\http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\proto\LoginInfo.cpp">
+      <Filter>Classes\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cc\Login.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\ccEvent.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\XXEventDispatcher.cpp">
+      <Filter>Classes\network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,15 +172,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Common\XXMacros.h">
       <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\network\Event.h">
-      <Filter>Classes\network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\network\EventInfo.h">
-      <Filter>Classes\network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\network\YSEventDispatcher.h">
-      <Filter>Classes\network</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Common\GameDataSet.h">
       <Filter>Classes\Common</Filter>
@@ -302,11 +299,8 @@
     <ClInclude Include="..\Classes\cryptopp\xxfsutility.h">
       <Filter>Classes\cryptopp</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\cc\DBProto.h">
-      <Filter>Classes\cc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\http\HttpInfo.h">
-      <Filter>Classes\http</Filter>
+    <ClInclude Include="..\Classes\Common\Common.h">
+      <Filter>Classes\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\network\ClientSocket.h">
       <Filter>Classes\network</Filter>
@@ -314,8 +308,23 @@
     <ClInclude Include="..\Classes\network\TcpSocket.h">
       <Filter>Classes\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Common\Common.h">
-      <Filter>Classes\Common</Filter>
+    <ClInclude Include="..\Classes\cc\DBProto.h">
+      <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\http\HttpInfo.h">
+      <Filter>Classes\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\proto\LoginInfo.h">
+      <Filter>Classes\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\Login.h">
+      <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\ccEvent.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\XXEventDispatcher.h">
+      <Filter>Classes\network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
