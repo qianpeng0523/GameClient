@@ -23,16 +23,16 @@
       <UniqueIdentifier>{2c77f267-7e6f-4533-b833-cf4c9ea3a2e1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\cryptopp">
-      <UniqueIdentifier>{67ac20bb-f700-44a5-8257-e8b69d78188a}</UniqueIdentifier>
+      <UniqueIdentifier>{3f2b96d2-f6d3-4067-82cc-3dd9be2aa2fa}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\cc">
       <UniqueIdentifier>{63a0bb79-1619-4915-8fa5-55de6ecb7b5b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\http">
-      <UniqueIdentifier>{6347ec7a-f8d7-4cbb-a010-f60bbfb75349}</UniqueIdentifier>
+      <UniqueIdentifier>{b8d8a3ca-bffe-4720-afb8-e0386105df39}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\proto">
-      <UniqueIdentifier>{bffacc30-aa16-4df7-a839-93e0247cefbb}</UniqueIdentifier>
+      <UniqueIdentifier>{2d11dbb5-7b58-486c-ae2b-a70206381bbe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -123,23 +123,8 @@
     <ClCompile Include="..\Classes\cryptopp\xxfsutility.cpp">
       <Filter>Classes\cryptopp</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Common\Common.cpp">
-      <Filter>Classes\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\network\ClientSocket.cpp">
-      <Filter>Classes\network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\network\TcpSocket.cpp">
-      <Filter>Classes\network</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\cc\DBProto.cpp">
       <Filter>Classes\cc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\http\HttpInfo.cpp">
-      <Filter>Classes\http</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\proto\LoginInfo.cpp">
-      <Filter>Classes\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\cc\Login.cpp">
       <Filter>Classes\cc</Filter>
@@ -147,8 +132,20 @@
     <ClCompile Include="..\Classes\network\ccEvent.cpp">
       <Filter>Classes\network</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\network\ClientSocket.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\network\TcpSocket.cpp">
+      <Filter>Classes\network</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\network\XXEventDispatcher.cpp">
       <Filter>Classes\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\http\HttpInfo.cpp">
+      <Filter>Classes\http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\proto\LoginInfo.cpp">
+      <Filter>Classes\proto</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,23 +296,8 @@
     <ClInclude Include="..\Classes\cryptopp\xxfsutility.h">
       <Filter>Classes\cryptopp</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Common\Common.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\network\ClientSocket.h">
-      <Filter>Classes\network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\network\TcpSocket.h">
-      <Filter>Classes\network</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\cc\DBProto.h">
       <Filter>Classes\cc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\http\HttpInfo.h">
-      <Filter>Classes\http</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\proto\LoginInfo.h">
-      <Filter>Classes\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\cc\Login.h">
       <Filter>Classes\cc</Filter>
@@ -323,8 +305,20 @@
     <ClInclude Include="..\Classes\network\ccEvent.h">
       <Filter>Classes\network</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\network\ClientSocket.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\network\TcpSocket.h">
+      <Filter>Classes\network</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\network\XXEventDispatcher.h">
       <Filter>Classes\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\http\HttpInfo.h">
+      <Filter>Classes\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\proto\LoginInfo.h">
+      <Filter>Classes\proto</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
