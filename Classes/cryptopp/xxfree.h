@@ -13,28 +13,28 @@ struct _Free
 	typedef void (*type)(_Ty*); 
 };
 
-// c++ single object deleter
+// c++ single Object deleter
 template<typename _Ty>
-void object_free(_Ty* _Ptr)
+void Object_free(_Ty* _Ptr)
 {
 	delete _Ptr;
 }
 
-// c++ objects array free function template
+// c++ Objects array free function template
 template<typename _Ty>
 void array_free(_Ty* _Ptr)
 {
 	delete [] _Ptr;
 }
 
-// pod type object free function template
+// pod type Object free function template
 template<typename _Ty>
 void pod_free(_Ty* _Ptr)
 {
 	free(_Ptr);
 }
 
-// pseudo free, do not influence the object
+// pseudo free, do not influence the Object
 template<typename _Ty>
 void pseudo_free(_Ty*)
 {
@@ -55,9 +55,9 @@ template<class _Ty,
 typedef integral_constant<bool, true> true_type;
 typedef integral_constant<bool, false> false_type;
 
-// object cleaner, do not influence the object
+// Object cleaner, do not influence the Object
 template<typename _Ty>
-struct object_cleaner : true_type
+struct Object_cleaner : true_type
 {
     static void cleanup(_Ty* _Ptr)
     {
@@ -65,7 +65,7 @@ struct object_cleaner : true_type
     }
 };
 
-// array cleaner, do not influence the object
+// array cleaner, do not influence the Object
 template<typename _Ty>
 struct array_cleaner : true_type
 {
@@ -75,7 +75,7 @@ struct array_cleaner : true_type
     }
 };
 
-// pod cleaner, do not influence the object
+// pod cleaner, do not influence the Object
 template<typename _Ty>
 struct pod_cleaner : true_type
 {
@@ -85,7 +85,7 @@ struct pod_cleaner : true_type
     }
 };
 
-// pseudo cleaner, do not influence the object
+// pseudo cleaner, do not influence the Object
 template<typename _Ty>
 struct pseudo_cleaner : false_type
 {

@@ -1,6 +1,6 @@
-// object_pool.h: a simple object pool implementation
-#ifndef _OBJECT_POOL_H_
-#define _OBJECT_POOL_H_
+// Object_pool.h: a simple Object pool implementation
+#ifndef _Object_POOL_H_
+#define _Object_POOL_H_
 #include "politedef.h"
 #if defined(_ENABLE_MULTITHREAD)
 #include "thread_synch.h"
@@ -14,7 +14,7 @@ using namespace asy;
 namespace gc {
 
 template<typename _Ty, size_t _ElemCount = 512>
-class object_pool 
+class Object_pool 
 {
     static const size_t elem_size = sz_align(sizeof(_Ty), sizeof(void*));
 
@@ -29,16 +29,16 @@ class object_pool
         chunk_link_node* next;
     } *chunk_link;
 
-    object_pool(const object_pool&);
-    void operator= (const object_pool&);
+    Object_pool(const Object_pool&);
+    void operator= (const Object_pool&);
 
 public:
-    object_pool(void) : _Myhead(nullptr), _Mychunk(nullptr), _Mycount(0)
+    Object_pool(void) : _Myhead(nullptr), _Mychunk(nullptr), _Mycount(0)
     {
         this->_Enlarge();
     }
 
-    ~object_pool(void)
+    ~Object_pool(void)
     {
 #if defined(_ENABLE_MULTITHREAD)
         scoped_lock<thread_mutex> guard(this->_Mylock);
@@ -94,12 +94,12 @@ public:
     }
 
     template<typename..._Args>
-    _Ty* new_object(_Args...args)
+    _Ty* new_Object(_Args...args)
     {
         return new (get()) _Ty(args...);
     }
 
-	void delete_object(void* _Ptr)
+	void delete_Object(void* _Ptr)
 	{
 		((_Ty*)_Ptr)->~_Ty(); // call the destructor
 		release(_Ptr);
@@ -171,17 +171,17 @@ private:
     size_t           _Mycount; // allocated count 
 };
 
-// TEMPLATE CLASS object_pool_allocator, can't used by std::vector
+// TEMPLATE CLASS Object_pool_allocator, can't used by std::vector
 template<class _Ty, size_t _ElemCount = SZ(8,k) / sizeof(_Ty)>
-class object_pool_allocator
-{	// generic allocator for objects of class _Ty
+class Object_pool_allocator
+{	// generic allocator for Objects of class _Ty
 public:
     typedef _Ty value_type;
 
     typedef value_type* pointer;
-    typedef value_type& reference;
+    typedef value_type& Objecterence;
     typedef const value_type* const_pointer;
-    typedef const value_type& const_reference;
+    typedef const value_type& const_Objecterence;
 
     typedef size_t size_type;
 #ifdef _WIN32
@@ -193,40 +193,40 @@ public:
     template<class _Other>
     struct rebind
     {	// convert this type to _ALLOCATOR<_Other>
-        typedef object_pool_allocator<_Other> other;
+        typedef Object_pool_allocator<_Other> other;
     };
 
-    pointer address(reference _Val) const
+    pointer address(Objecterence _Val) const
     {	// return address of mutable _Val
         return ((pointer) &(char&)_Val);
     }
 
-    const_pointer address(const_reference _Val) const
+    const_pointer address(const_Objecterence _Val) const
     {	// return address of nonmutable _Val
         return ((const_pointer) &(char&)_Val);
     }
 
-    object_pool_allocator() throw()
+    Object_pool_allocator() throw()
     {	// construct default allocator (do nothing)
     }
 
-    object_pool_allocator(const object_pool_allocator<_Ty>&) throw()
+    Object_pool_allocator(const Object_pool_allocator<_Ty>&) throw()
     {	// construct by copying (do nothing)
     }
 
     template<class _Other>
-    object_pool_allocator(const object_pool_allocator<_Other>&) throw()
+    Object_pool_allocator(const Object_pool_allocator<_Other>&) throw()
     {	// construct from a related allocator (do nothing)
     }
 
     template<class _Other>
-    object_pool_allocator<_Ty>& operator=(const object_pool_allocator<_Other>&)
+    Object_pool_allocator<_Ty>& operator=(const Object_pool_allocator<_Other>&)
     {	// assign from a related allocator (do nothing)
         return (*this);
     }
 
     void deallocate(pointer _Ptr, size_type)
-    {	// deallocate object at _Ptr, ignore size
+    {	// deallocate Object at _Ptr, ignore size
         _Mempool.release(_Ptr);
     }
 
@@ -242,24 +242,24 @@ public:
     }
 
     void construct(_Ty *_Ptr)
-    {	// default construct object at _Ptr
+    {	// default construct Object at _Ptr
         ::new ((void *)_Ptr) _Ty();
     }
 
     void construct(pointer _Ptr, const _Ty& _Val)
-    {	// construct object at _Ptr with value _Val
+    {	// construct Object at _Ptr with value _Val
         new (_Ptr) _Ty(_Val);
     }
 
 #ifdef __cxx0x
     void construct(pointer _Ptr, _Ty&& _Val)
-    {	// construct object at _Ptr with value _Val
+    {	// construct Object at _Ptr with value _Val
         new ((void*)_Ptr) _Ty(std:: forward<_Ty>(_Val));
     }
 
     template<class _Other>
     void construct(pointer _Ptr, _Other&& _Val)
-    {	// construct object at _Ptr with value _Val
+    {	// construct Object at _Ptr with value _Val
         new ((void*)_Ptr) _Ty(std:: forward<_Other>(_Val));
     }
 
@@ -273,7 +273,7 @@ public:
 
     template<class _Uty>
     void destroy(_Uty *_Ptr)
-    {	// destroy object at _Ptr, do nothing, because destructor will called in _Mempool.release(_Ptr)
+    {	// destroy Object at _Ptr, do nothing, because destructor will called in _Mempool.release(_Ptr)
         // _Ptr->~_Uty();
     }
 
@@ -284,27 +284,27 @@ public:
     }
 
 // private:
-    static object_pool<_Ty, _ElemCount> _Mempool;
+    static Object_pool<_Ty, _ElemCount> _Mempool;
 };
 
 template<class _Ty,
 class _Other> inline
-    bool operator==(const object_pool_allocator<_Ty>&,
-    const object_pool_allocator<_Other>&) throw()
+    bool operator==(const Object_pool_allocator<_Ty>&,
+    const Object_pool_allocator<_Other>&) throw()
 {	// test for allocator equality
     return (true);
 }
 
 template<class _Ty,
 class _Other> inline
-    bool operator!=(const object_pool_allocator<_Ty>& _Left,
-    const object_pool_allocator<_Other>& _Right) throw()
+    bool operator!=(const Object_pool_allocator<_Ty>& _Left,
+    const Object_pool_allocator<_Other>& _Right) throw()
 {	// test for allocator inequality
     return (!(_Left == _Right));
 }
 
 template<class _Ty, size_t _ElemCount>
-object_pool<_Ty, _ElemCount> object_pool_allocator<_Ty, _ElemCount>::_Mempool;
+Object_pool<_Ty, _ElemCount> Object_pool_allocator<_Ty, _ElemCount>::_Mempool;
 
 }; // namespace: purelib::gc
 }; // namespace: purelib

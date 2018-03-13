@@ -853,7 +853,7 @@ int md6_byte_order = 0;
  
 void md6_detect_byte_order( void )
 /* determine if underlying machine is little-endian or big-endian
-** set global variable md6_byte_order to reflect result
+** set global variable md6_byte_order to Objectlect result
 ** Written to work for any w.
 */
 { md6_word x = 1 | (((md6_word)2)<<(w-8));
@@ -1227,14 +1227,14 @@ int md6_process( md6_state *st,
 int md6_update( md6_state *st, 
         unsigned char *data, 
         uint64_t databitlen )
-/* Process input byte string data, updating state to reflect result
+/* Process input byte string data, updating state to Objectlect result
 ** Input:
 **     st               already initialized state to be updated
 **     data             byte string of length databitlen bits 
 **                      to be processed (aka "M")
 **     databitlen       number of bits in string data (aka "m")
 ** Modifies:
-**     st               updated to reflect input of data
+**     st               updated to Objectlect input of data
 */
 { unsigned int j, portion_size;
   int err;

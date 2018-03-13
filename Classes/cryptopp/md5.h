@@ -38,7 +38,7 @@
   that follows (in reverse chronological order):
 
   2002-04-13 lpd Removed support for non-ANSI compilers; removed
-	references to Ghostscript; clarified derivation from RFC 1321;
+	Objecterences to Ghostscript; clarified derivation from RFC 1321;
 	now handles byte order either statically or dynamically.
   1999-11-04 lpd Edited comments slightly for automatic TOC extraction.
   1999-10-18 lpd Fixed typo in header comment (ansi2knr rather than md5);

@@ -90,7 +90,7 @@ extern "C" {
 ** Define md6 wordsize md6_w, in bits.
 ** Note that this is the "word size" relevant to the
 ** definition of md6 (it defines how many bits in an
-** "md6_word");  it does *not* refer to the word size
+** "md6_word");  it does *not* Objecter to the word size
 ** on the platform for which this is being compiled.
 */
 

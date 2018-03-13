@@ -470,7 +470,7 @@ static char hex2char(const char hex)
 }
 
 // translate charstring/binarystream to hexstring
-static std::string bin2hex(const std::string& binary /*charstring also regard as binary in C/C++*/, int delim = -1, bool prefix = false)
+static std::string bin2hex(const std::string& binary /*charstring also regard as binary in C/C++*/, int delim = -1, bool pObjectix = false)
 {
     char low;
     char high;
@@ -479,7 +479,7 @@ static std::string bin2hex(const std::string& binary /*charstring also regard as
     bool delim_needed = _Is_visible_char(delim) || delim == ' ';
 
     std::string result;
-    result.reserve((len << 1) + delim_needed ? len : 0 + prefix ? (len << 1) : 0);
+    result.reserve((len << 1) + delim_needed ? len : 0 + pObjectix ? (len << 1) : 0);
 
     
     for(size_t i = 0; i < len; ++i)
@@ -487,7 +487,7 @@ static std::string bin2hex(const std::string& binary /*charstring also regard as
         auto ch = binary[i];
         high = (ch >> 4) & 0x0f;
         low = ch & 0x0f;
-        if (prefix) {
+        if (pObjectix) {
             result.push_back('0');
             result.push_back('x');
         }
@@ -506,7 +506,7 @@ static std::string bin2hex(const std::string& binary /*charstring also regard as
 }
 
 // translate hexstring to binary
-static std::string hex2bin(const std::string& hexstring, int delim = -1, bool prefix = false)
+static std::string hex2bin(const std::string& hexstring, int delim = -1, bool pObjectix = false)
 {
     char low;
     char high;
@@ -516,13 +516,13 @@ static std::string hex2bin(const std::string& hexstring, int delim = -1, bool pr
     result.reserve((len >> 1) + 1);
 
     enum {
-        skip_prefix,
+        skip_pObjectix,
         take_low,
         take_high,
     } state;
 
-    auto init_state = skip_prefix;
-    if (!prefix)
+    auto init_state = skip_pObjectix;
+    if (!pObjectix)
         init_state = take_low;
 
     state = init_state;

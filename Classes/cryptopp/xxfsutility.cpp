@@ -622,7 +622,7 @@ void fsutil::search_df(const std::string& root, const TCHAR* dir, std::vector<se
 
     BOOL bRet = TRUE;
     static int nFileSize = 0;
-    bool ignoreFilter = (filter[0] == '\0') || ( (deep == 0) && strstr(filter, "*.*") != nullptr );
+    bool ignoObjectilter = (filter[0] == '\0') || ( (deep == 0) && strstr(filter, "*.*") != nullptr );
 
     //define the format of the basepath
     lstrcpy(tmpPath, dir);
@@ -654,7 +654,7 @@ void fsutil::search_df(const std::string& root, const TCHAR* dir, std::vector<se
                 sfi.subtree = tree;
 
                 // sfi.filename_without_ext = fsutil::get_name(sfi.filename);
-                if (ignoreFilter)
+                if (ignoObjectilter)
                 {
                     filelist.push_back(sfi);
                 }
@@ -675,7 +675,7 @@ void fsutil::search_df(const std::string& root, const TCHAR* dir, std::vector<se
                             lstrcat(subPath, L"\\");
                         }
                         lstrcat(subPath, fd.cFileName);
-                        if (ignoreFilter)
+                        if (ignoObjectilter)
                             search_df(root, subPath, filelist, recursive, "", ++deep);
                         else
                             search_df(root, subPath, filelist, recursive, filter, ++deep);
@@ -692,7 +692,7 @@ void fsutil::search_df(const std::string& root, const TCHAR* dir, std::vector<se
 }
 
 
-void fsutil::search_df(const std::string& root, const TCHAR* dir, std::list<search_file_info, object_pool_allocator<search_file_info, 256>>& filelist, bool recursive, const char* filter)
+void fsutil::search_df(const std::string& root, const TCHAR* dir, std::list<search_file_info, Object_pool_allocator<search_file_info, 256>>& filelist, bool recursive, const char* filter)
 {
     //srcFiles = (char *)malloc(FILEEMAX * sizeof(char));
     WIN32_FIND_DATA fd;
@@ -706,7 +706,7 @@ void fsutil::search_df(const std::string& root, const TCHAR* dir, std::list<sear
 
     BOOL bRet = TRUE;
     static int nFileSize = 0;
-    bool ignoreFilter = (strlen(filter) == 0) || strstr(filter, "*.*");
+    bool ignoObjectilter = (strlen(filter) == 0) || strstr(filter, "*.*");
 
     //define the format of the basepath
     lstrcpy(tmpPath, dir);
@@ -736,7 +736,7 @@ void fsutil::search_df(const std::string& root, const TCHAR* dir, std::list<sear
                 sfi.subtree = tree;
 
                 // sfi.filename_without_ext = fsutil::get_name(sfi.filename);
-                if (ignoreFilter)
+                if (ignoObjectilter)
                 {
                     filelist.push_back(sfi);
                 }

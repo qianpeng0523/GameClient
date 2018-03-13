@@ -72,19 +72,19 @@ MD55::MD55() {
 	reset();
 }
 
-/* Construct a MD55 object with a input buffer. */
+/* Construct a MD55 Object with a input buffer. */
 MD55::MD55(const void* input, size_t length) {
 	reset();
 	update(input, length);
 }
 
-/* Construct a MD55 object with a string. */
+/* Construct a MD55 Object with a string. */
 MD55::MD55(const string& str) {
 	reset();
 	update(str);
 }
 
-/* Construct a MD55 object with a file. */
+/* Construct a MD55 Object with a file. */
 MD55::MD55(ifstream& in) {
 	reset();
 	update(in);

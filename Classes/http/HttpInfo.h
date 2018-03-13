@@ -12,7 +12,7 @@ using namespace ui;
 using namespace std;
 
 
-class HttpInfo:public Ref
+class HttpInfo:public Object
 {
 public:
 	HttpInfo();

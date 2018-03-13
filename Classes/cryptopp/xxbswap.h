@@ -132,8 +132,8 @@ __declspec(naked) uint64_t __cdecl __bswap64(uint64_t)
 
 #define __BSWAP64(from,to)                                           \
 {                                                                    \
-  uint32_t& l_ref = *( (uint32_t*)&to );                             \
-  uint32_t& h_ref = *( (uint32_t*)&to + 1 );                         \
+  uint32_t& l_Object = *( (uint32_t*)&to );                             \
+  uint32_t& h_Object = *( (uint32_t*)&to + 1 );                         \
   __asm__ __volatile__(                                              \
         "movl %3, %%eax\n\t"                                         \
         "movl %%eax, %%ecx\n\t"                                      \
@@ -151,7 +151,7 @@ __declspec(naked) uint64_t __cdecl __bswap64(uint64_t)
         "andl $0x00ff00ff, %%eax\n\t"                                \
         "orl  %%ecx, %%eax\n\t"                                      \
         "movl %%eax, %1\n\t"                                         \
-        : "=r"(l_ref), "=r"(h_ref)                                   \
+        : "=r"(l_Object), "=r"(h_Object)                                   \
         : "r"(*( (uint32_t*)&from )), "r"(*( (uint32_t*)&from + 1 )) \
         : "cc", "memory", "eax", "ecx"                               \
          );                                                          \

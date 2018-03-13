@@ -21,8 +21,8 @@ public:
 public:
 	//    CircleMoveAction();
 	//    ~CircleMoveAction();
-	//    void updateCircleCenter(Ref *pSender);
-	//    void unUpdateCircleCenter(Ref *pSender);
+	//    void updateCircleCenter(Object *pSender);
+	//    void unUpdateCircleCenter(Object *pSender);
 private:
 	//    CC_SYNTHESIZE(bool, onTouch, OnTouch);
 protected:

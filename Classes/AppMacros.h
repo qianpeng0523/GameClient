@@ -2,10 +2,8 @@
 #define __APPMACROS_H__
 
 #include "cocos2d.h"
-#include "string.h"
 #include "DBProto.h"
-#include "YSEventDispatcher.h"
-
+#include "ccEvent.h"
 //design screen size
 static cocos2d::Size designResolutionSize = cocos2d::Size(1136, 640);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(852, 480);
@@ -25,8 +23,9 @@ static cocos2d::Size largeResolutionSize = cocos2d::Size(1136, 640);
 
 #define FONTS1 "fonts/yahei.ttf"
 #define  FONTS2 "fonts/STXingkai.ttf"
-#define sqlhttp "http://192.168.1.103:8080/"
+#define sqlhttp "http://192.168.50.151:8080/"
 
+using namespace cocos2d;
 using namespace std;
 using namespace protocol;
 static string g_version = cocos2d::cocos2dVersion();
@@ -45,4 +44,8 @@ typedef struct _Head
 #define HEADLEN sizeof(_Head)
 #define REPLACESTRR "||||&***#@"
 #define REPLACESTRN "%^&*():"
+
+typedef void (Object::*EventHandler)(ccEvent*);
+#define Event_Handler(_SELECTOR)(EventHandler)(&_SELECTOR)
+
 #endif /* __APPMACROS_H__ */

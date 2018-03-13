@@ -23,7 +23,7 @@
 
 #endif
 
-#include "object_pool.h"
+#include "Object_pool.h"
 
 #include <list>
 
@@ -132,7 +132,7 @@ void search_df(const std::string& root,
 
 void search_df(const std::string& root, 
     const TCHAR* dir, 
-    std::list<search_file_info, object_pool_allocator<search_file_info, 256>>& filelist, 
+    std::list<search_file_info, Object_pool_allocator<search_file_info, 256>>& filelist, 
     bool recursive = false, 
     const char* filter = "*.*");
 

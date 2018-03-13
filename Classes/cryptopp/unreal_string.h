@@ -413,7 +413,7 @@ namespace purelib {
 
         _Myt& assign(const _Myt& _Right)
         {
-            static_assert(!_Cleaner::value, "the managed unreal string can't assign to this managed unreal_string object!");
+            static_assert(!_Cleaner::value, "the managed unreal string can't assign to this managed unreal_string Object!");
 
             _Tidy();
             ::memcpy(this, &_Right, sizeof(*this));
@@ -431,7 +431,7 @@ namespace purelib {
         _Myt& assign(const unreal_string<_OtherElem, _OtherCleaner>& _Right)
         {
             static_assert(std::is_same<_Elem, _OtherElem>::value, "can't assign unreal string assign, type not same!");
-            static_assert(!_Cleaner::value || !_OtherCleaner::value, "the unreal string can't assign to this managed unreal_string object!");
+            static_assert(!_Cleaner::value || !_OtherCleaner::value, "the unreal string can't assign to this managed unreal_string Object!");
 
             _Tidy();
             ::memcpy(this, &_Right, sizeof(*this));
@@ -602,7 +602,7 @@ namespace purelib {
         }
 
         const _Elem*& ldata(void)
-        { // return internal pointer which can be change by exnternal, use careful
+        { // return internal pointer which can be change by exnternal, use caObjectul
             return this->_Bx._Const_Ptr;
         }
 
