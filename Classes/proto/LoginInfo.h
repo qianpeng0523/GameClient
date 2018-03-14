@@ -16,6 +16,9 @@ public:
 public:
 	void SendCLogin(string uid, string pwd);
 	void HandlerSLoginHand(ccEvent *event);
+
+	void SendCRegister(string uid,string pwd,string uname);
+	void HandlerSRegister(ccEvent *event);
 private:
 	static LoginInfo *m_shareLoginInfo;
 	

@@ -70,7 +70,7 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 		std::thread t1(&ClientSocket::threadHandler, this);//创建一个分支线程，回调到myThread函数里
 		t1.detach();
         m_isConnected = true;
-		LoginInfo::getIns()->SendCLogin("100001","123456");
+		LoginInfo::getIns()->SendCRegister("100010","123456","qp00010");
 	}
     return connectFlag;
 }
@@ -134,7 +134,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 
 void ClientSocket::DataIn(char* data, int size,int cmd){
 	//数据不能用string  只能用char*
-	printf("datain size:%d cmd:%d", size, cmd);
+	log("datain size:%d cmd:%d", size, cmd);
 	ccEvent *sEvent = new ccEvent(cmd, data, size);
 	XXEventDispatcher::getIns()->disEventDispatcher(sEvent);
 }

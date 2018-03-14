@@ -14,9 +14,8 @@ void ccEvent::parse(const char* data, int size){
 		msg = create_message(type_name);
 		msg->ParseFromArray(data, size);
 
-		msg->PrintDebugString();
 		string ss = msg->DebugString();
-		printf("ccEvent:%s",ss.c_str());
+		log("ccEvent:%s",ss.c_str());
 	}
 	delete data;
 }
