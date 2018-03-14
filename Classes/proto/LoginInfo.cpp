@@ -60,7 +60,7 @@ void LoginInfo::SendCRegister(string uid, string pwd, string uname){
 	cl.set_uid(uid);
 	MD55 md5;
 	md5.update(pwd);
-	cl.set_pwd(/*md5.toString()*/pwd);
+	cl.set_pwd(md5.toString());
 	cl.set_uname(uname);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(LoginInfo::HandlerSRegister));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
