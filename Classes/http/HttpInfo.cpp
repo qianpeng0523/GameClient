@@ -82,18 +82,25 @@ int HttpInfo::aes_encrypt(char* in, int inlen, char* key, char* out)
 
 }
 
+void HttpInfo::CharPtrToString(string &str, char *buff,int sz){
+	int len = str.length();
+	str.resize(len+sz);
+	for (int i = 0; i < sz;i++){
+		str[len + i] = buff[i];
+	}
+}
 
 void HttpInfo::requestGateIPAndPort(){
 	string url = sqlhttp;
 	YMSocketData sd;
 	sd["cmd"] = 0x0B;
-	char buff[4096];
-	int sz = 0;
-	sd.serializer(buff, &sz);
-	buff[sz] = '\0';
 
-	url += buff;
-	XXHttpRequest::getIns()->getServerDataFromUrl(url, httpresponse_selector(HttpInfo::GateIPAndPortCallBack));
+	MD55 md5;
+	md5.update("123456");
+	string pwd = md5.toString();
+	sd["pwd"] = pwd;
+
+	XXHttpRequest::getIns()->postServerDataFromUrl(url,sd, httpresponse_selector(HttpInfo::GateIPAndPortCallBack));
 }
 
 void HttpInfo::GateIPAndPortCallBack(HttpClient* client, HttpResponse* response){

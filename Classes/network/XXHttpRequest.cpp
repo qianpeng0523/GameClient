@@ -31,7 +31,7 @@ XXHttpRequest* XXHttpRequest::getIns(){
 	return m_ins;
 }
 
-void XXHttpRequest::postServerDataFromUrl(string url, SEL_HttpResponse respond){
+void XXHttpRequest::postServerDataFromUrl(string url, YMSocketData sd, SEL_HttpResponse respond){
 	CCLOG("%s", url.c_str());
 	HttpRequest* request = new HttpRequest();
 	//设置网络请求地址
@@ -39,18 +39,23 @@ void XXHttpRequest::postServerDataFromUrl(string url, SEL_HttpResponse respond){
 	request->setUrl(url.c_str());
 	//设置网络请求方式
 	request->setRequestType(HttpRequest::Type::POST);
-
-
 	request->setResponseCallback(this, respond);
 
 	request->setTag("get test1");
+
+	char buff[4096];
+	int sz = 0;
+	sd.serializer(buff, &sz);
+	buff[sz] = '\0';
+	request->setRequestData(buff, sz);
+
 	//提交请求
 	HttpClient::getInstance()->send(request);
 	//内存释放
 	request->release();
 }
 
-void XXHttpRequest::getServerDataFromUrl(string url, SEL_HttpResponse respond){
+void XXHttpRequest::getServerDataFromUrl(string url, YMSocketData sd, SEL_HttpResponse respond){
 	CCLOG("%s", url.c_str());
 	HttpRequest* request = new HttpRequest();
 	//设置网络请求地址
@@ -59,11 +64,14 @@ void XXHttpRequest::getServerDataFromUrl(string url, SEL_HttpResponse respond){
 	//设置网络请求方式
 	request->setRequestType(HttpRequest::Type::GET);
 
-	
-
 	request->setResponseCallback(this, respond);
 
 	request->setTag("get test1");
+	char buff[4096];
+	int sz = 0;
+	sd.serializer(buff, &sz);
+	buff[sz] = '\0';
+	request->setRequestData(buff, sz);
 	//提交请求
 	HttpClient::getInstance()->send(request);
 	//内存释放

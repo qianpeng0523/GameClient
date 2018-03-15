@@ -30,7 +30,7 @@ public:
 	void openUpdate();
 	void closeUpdate();
 private:
-	
+	void CharPtrToString(string &str, char *buff, int sz);
 	string encryptStringFromString(string in, int sz);
 	string decryptStringFromString(string in, int sz);
 public:

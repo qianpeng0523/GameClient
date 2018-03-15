@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "DBProto.h"
 #include "ccEvent.h"
+#include "MD55.h"
 //design screen size
 static cocos2d::Size designResolutionSize = cocos2d::Size(1136, 640);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(852, 480);
