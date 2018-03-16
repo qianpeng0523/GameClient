@@ -8,7 +8,7 @@
 #include "YMSocketDataEvent.h"
 #include "ClientSocket.h"
 #include "Common.h"
-
+#include "GameControl.h"
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 #include <ws2tcpip.h>
 #else
@@ -120,7 +120,10 @@ void HttpInfo::GateIPAndPortCallBack(HttpClient* client, HttpResponse* response)
 		std::cout << "socket start:" << pHttpInfo->m_ip << pHttpInfo->m_port << std::endl;
 		printf("/************************************************/\n");
 		pHttpInfo->m_ip = sd["serverip"].asString();
-		ClientSocket::getIns()->connect(pHttpInfo->m_ip.c_str(), pHttpInfo->m_port);
+		LogoLayer *p = GameControl::getIns()->getLoginLayer();
+		if (p){
+			p->ShowYKLoginBtn(true);
+		}
 	}
 	else{
 		printf("未获取到数据\n");

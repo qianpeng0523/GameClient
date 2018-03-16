@@ -2,7 +2,7 @@
 #include "ClientSocket.h"
 #include "XXEventDispatcher.h"
 #include "XXIconv.h"
-
+#include "MainScene.h"
 using namespace cocos2d_xx;
 LoginInfo *LoginInfo::m_shareLoginInfo=NULL;
 LoginInfo::LoginInfo()
@@ -49,6 +49,9 @@ void LoginInfo::HandlerSLoginHand(ccEvent *event){
 	int err = cl.err();
 	if (err==0){
 		log("%s",XXIconv::GBK2UTF("登录成功!").c_str());
+		auto director = Director::getInstance();
+		Scene *scene = MainScene::create();
+		director->replaceScene(scene);
 	}
 	else{
 		log("%s", XXIconv::GBK2UTF("账号密码错误").c_str());
@@ -73,6 +76,9 @@ void LoginInfo::HandlerSRegister(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		log("%s", XXIconv::GBK2UTF("注册成功!").c_str());
+		auto director = Director::getInstance();
+		Scene *scene = MainScene::create();
+		director->replaceScene(scene);
 	}
 	else if(err==1){
 		log("%s", XXIconv::GBK2UTF("注册失败!").c_str());

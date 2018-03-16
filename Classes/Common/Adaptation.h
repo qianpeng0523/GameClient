@@ -18,7 +18,6 @@
 #include "cocos/ui/UIText.h"
 #include "SimpleAudioEngine.h"
 
-
 #define LT_LAYOUT "left_top_layout"
 #define RT_LAYOUT "right_top_layout"
 #define LB_LAYOUT "left_bottom_layout"

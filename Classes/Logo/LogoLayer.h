@@ -31,8 +31,9 @@ public:
 	ui::EditBox *AddCursorTextField(Layout *parent,int fontsz=20,bool ispass=false);
 	void TouchEvent(Object *obj, TouchEventType type);
 	
+	void ShowYKLoginBtn(bool isshow);
 private:
-	
+	Button *m_ykloginbtn;
 private:
 	
 };

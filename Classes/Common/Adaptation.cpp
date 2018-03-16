@@ -63,7 +63,7 @@ void Adaptation::ScreenAdaptationInit(){
 	auto glview = director->getOpenGLView();
 	if (!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-		glview = GLViewImpl::createWithRect("sqlserver", Rect(0, 0, 1136, 640));
+		glview = GLViewImpl::createWithRect("sqlserver", Rect(0, 0, 960, 640));
 		//glview = GLViewImpl::createWithRect("gzmj", Rect(0, 0, 1136, 852));
 #else
 		glview = GLViewImpl::create("sqlserver");

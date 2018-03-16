@@ -5,11 +5,12 @@
 #include "DBProto.h"
 #include "ccEvent.h"
 #include "MD55.h"
+
 //design screen size
-static cocos2d::Size designResolutionSize = cocos2d::Size(1136, 640);
+static cocos2d::Size designResolutionSize = cocos2d::Size(960, 640);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(852, 480);
-static cocos2d::Size mediumResolutionSize = cocos2d::Size(1136, 640);
-static cocos2d::Size largeResolutionSize = cocos2d::Size(1136, 640);
+static cocos2d::Size mediumResolutionSize = cocos2d::Size(960, 640);
+static cocos2d::Size largeResolutionSize = cocos2d::Size(960, 640);
 //Screen Size
 #define SCREEN_SIZE cocos2d::CCDirector::sharedDirector()->getVisibleSize();
 
