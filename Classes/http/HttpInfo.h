@@ -23,16 +23,14 @@ public:
 	void requestGateIPAndPort();
 	void GateIPAndPortCallBack(HttpClient* client, HttpResponse* response);
 
-	int aes_encrypt(char* in, int inlen, char* key, char* out);
-	int aes_decrypt(char* in, int inlen, char* key, char* out);
-	
+	void aes_decrypt(char* in, int inlen, char* out);
+	void aes_encrypt(char* in, int inlen, char* out);
+
 	void update(float dt);
 	void openUpdate();
 	void closeUpdate();
 private:
 	void CharPtrToString(string &str, char *buff, int sz);
-	string encryptStringFromString(string in, int sz);
-	string decryptStringFromString(string in, int sz);
 public:
 	static HttpInfo *m_Ins;
 	bool m_isopen;

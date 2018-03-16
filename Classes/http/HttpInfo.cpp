@@ -18,7 +18,7 @@
 USING_NS_CC;
 using namespace cocos2d_xx;
 
-#define DECKEY "FQ6M1w0GswdKkTuZWcFmM1rU3bDB/CTiw+KrONdCPOg"
+
 
 HttpInfo *HttpInfo::m_Ins = NULL;
 
@@ -45,42 +45,43 @@ HttpInfo *HttpInfo::getIns(){
 }
 
 
-int HttpInfo::aes_decrypt(char* in, int inlen, char* key, char* out)
+
+void HttpInfo::aes_decrypt(char* in, int inlen, char* out)
 {
-	if (!in || !key || !out) return 0;
+	if (!in || !out) return;
 	unsigned char *iv = new unsigned char[AES_BLOCK_SIZE];
-	memcpy(iv, key, AES_BLOCK_SIZE);
+	memcpy(iv, DECKEY, AES_BLOCK_SIZE);
 
 	AES_KEY aes;
-	if (AES_set_encrypt_key((unsigned char*)key, 128, &aes) < 0)
+	if (AES_set_encrypt_key((unsigned char*)DECKEY, 128, &aes) < 0)
 	{
-		return 0;
+		return;
 	}
 
-	int num = 0, en_len = 0;
+	int num = 0;
 	AES_cfb128_encrypt((unsigned char*)in, (unsigned char*)out, inlen, &aes, iv, &num, AES_DECRYPT);
-
-	return num;
+	inlen = inlen / AES_BLOCK_SIZE*AES_BLOCK_SIZE;
+	out[inlen + num] = '\0';
 
 }
 
-int HttpInfo::aes_encrypt(char* in, int inlen, char* key, char* out)
+void HttpInfo::aes_encrypt(char* in, int inlen, char* out)
 {
-	if (!in || !key || !out) return 0;
+	if (!in || !out) return;
 	unsigned char *iv = new unsigned char[AES_BLOCK_SIZE];
-	memcpy(iv, key, AES_BLOCK_SIZE);
+	memcpy(iv, DECKEY, AES_BLOCK_SIZE);
 	AES_KEY aes;
-	if (AES_set_encrypt_key((unsigned char*)key, 128, &aes) < 0)
+	if (AES_set_encrypt_key((unsigned char*)DECKEY, 128, &aes) < 0)
 	{
-		return 0;
+		return;
 	}
-
-	int num = 0, en_len = 0;
+	int num = 0;
 	AES_cfb128_encrypt((unsigned char*)in, (unsigned char*)out, inlen, &aes, iv, &num, AES_ENCRYPT);
-
-	return num;
+	inlen = inlen / AES_BLOCK_SIZE*AES_BLOCK_SIZE;
+	out[inlen + num] = '\0';
 
 }
+
 
 void HttpInfo::CharPtrToString(string &str, char *buff,int sz){
 	int len = str.length();
@@ -105,8 +106,12 @@ void HttpInfo::requestGateIPAndPort(){
 
 void HttpInfo::GateIPAndPortCallBack(HttpClient* client, HttpResponse* response){
 	int sz = 0;
-	string str = XXHttpRequest::getIns()->getdata(response, sz);
-	YMSocketData sd = XXHttpRequest::getIns()->getSocketDataByStr(str,sz);
+	char* str = XXHttpRequest::getIns()->getdata(response, sz);
+	char *data = new char[sz + 1];
+	HttpInfo::getIns()->aes_decrypt(str,sz,data);
+	YMSocketData sd = XXHttpRequest::getIns()->getSocketDataByStr(data,sz);
+	delete str;
+	delete data;
 	HttpInfo *pHttpInfo = HttpInfo::getIns();
 	int err = sd["err"].asInt();
 	if (err == 0){
@@ -120,24 +125,4 @@ void HttpInfo::GateIPAndPortCallBack(HttpClient* client, HttpResponse* response)
 	else{
 		printf("未获取到数据\n");
 	}
-}
-
-string HttpInfo::encryptStringFromString(string in, int sz){
-	char *out = new char[4096];
-	int num = aes_encrypt((char *)in.c_str(), sz, DECKEY, out);
-	out[sz + num] = '\0';
-	string ss = out;
-	int len = ss.length();
-	delete out;
-	return ss;
-}
-
-string HttpInfo::decryptStringFromString(string in, int sz){
-	char *out = new char[4096];
-	int nn = aes_decrypt((char *)in.c_str(), sz, DECKEY, out);
-	out[sz + nn] = '\0';
-	string ss = out;
-	int len = ss.length();
-	delete out;
-	return ss;
 }
