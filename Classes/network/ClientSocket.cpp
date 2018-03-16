@@ -1,7 +1,7 @@
 ﻿#include "ClientSocket.h"
 #include "LoginInfo.h"
 #include "XXEventDispatcher.h"
-
+#include "HttpInfo.h"
 /**********消息头********
 0		服务器序列号
 1		stamp
@@ -70,7 +70,7 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 		std::thread t1(&ClientSocket::threadHandler, this);//创建一个分支线程，回调到myThread函数里
 		t1.detach();
         m_isConnected = true;
-		LoginInfo::getIns()->SendCRegister("100010","123456","qp00010");
+		LoginInfo::getIns()->SendCLogin("100010","123456");
 	}
     return connectFlag;
 }
@@ -117,13 +117,15 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 		buffer[6 + i] = *(ccmd + i);
 	}
 
-	string sm;
-	msg->SerializePartialToString(&sm);
-
+	char* sm=new char[len];
+	msg->SerializePartialToArray(sm,len);
+	char *data = new char[len+1];
+	HttpInfo::getIns()->aes_encrypt(sm, len, data);
 	for (int i = HEADLEN; i < HEADLEN + len; i++){
-		buffer[i] = sm[i - HEADLEN];
+		buffer[i] = data[i - HEADLEN];
 	}
-	
+	delete sm;
+	delete data;
 	printf("sendmsg:body:%s",msg->DebugString().c_str());
 	if (m_tcpSocket){
 		m_tcpSocket->Send(buffer, HEADLEN + len);
@@ -154,10 +156,15 @@ void *ClientSocket::threadHandler(void *arg) {
 			
 			char *temp = new char[len];
 			p->Recv(temp, len, 0);
+			
 			if (stamp == p->m_stamp){
-				p->DataIn(temp, len, cmd);
+				char* out = new char[len + 1];
+				HttpInfo::getIns()->aes_decrypt(temp, len, out);
+				p->DataIn(out, len, cmd);
+				delete temp;
 			}
 			else{
+				delete temp;
 				printf("数据不合法\n");
 			}
 
