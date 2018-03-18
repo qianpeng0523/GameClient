@@ -18,6 +18,7 @@ GameControl::GameControl(){
 	m_pTaskLayer = NULL;
 	m_pMailLayer = NULL;
 	m_pActiveLayer = NULL;
+	m_pFirstChargeLayer = NULL;
 }
 
 GameControl::~GameControl(){

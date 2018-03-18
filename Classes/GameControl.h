@@ -16,7 +16,7 @@
 #include "TaskLayer.h"
 #include "MailLayer.h"
 #include "ActiveLayer.h"
-
+#include "FirstChargeLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
@@ -123,6 +123,13 @@ public:
 		return m_pActiveLayer;
 	}
 
+	void setFirstChargeLayer(FirstChargeLayer *p){
+		m_pFirstChargeLayer = p;
+	}
+	FirstChargeLayer *getFirstChargeLayer(){
+		return m_pFirstChargeLayer;
+	}
+
 	void replaceScene(Scene *scene);
 private:
 	static GameControl *m_ins;
@@ -139,6 +146,7 @@ private:
 	TaskLayer *m_pTaskLayer;
 	MailLayer *m_pMailLayer;
 	ActiveLayer *m_pActiveLayer;
+	FirstChargeLayer *m_pFirstChargeLayer;
 };
 
 #endif // __GameControl_SCENE_H__

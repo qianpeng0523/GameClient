@@ -199,6 +199,13 @@ void MainLayer::TouchEvent(CCObject *obj, TouchEventType type){
 				this->addChild(p);
 			}
 		}
+		else if (name.compare("shouchong_btn") == 0){
+			FirstChargeLayer *p = GameControl::getIns()->getFirstChargeLayer();
+			if (!p){
+				p = FirstChargeLayer::create();
+				this->addChild(p);
+			}
+		}
 	}
 }
 
