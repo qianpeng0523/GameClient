@@ -32,8 +32,10 @@ public:
 	
 	void registerProto(int cmd,string tname);
 	string getProtoName(int cmd);
+	void update(float dt);
 private:
 	void EventPathch(std::vector<ccEvent *> &ep);
+	
 private:
 	static XXEventDispatcher* m_ins;
 	std::map<int, CallList_Vec> m_eventLists;

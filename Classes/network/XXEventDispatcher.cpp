@@ -3,11 +3,11 @@
 XXEventDispatcher* XXEventDispatcher::m_ins = NULL;
 
 XXEventDispatcher::XXEventDispatcher(){
-	
+	Director::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 
 XXEventDispatcher::~XXEventDispatcher(){
-	
+	Director::sharedDirector()->getScheduler()->unscheduleUpdate(this);
 }
 
 bool XXEventDispatcher::init()
@@ -77,10 +77,11 @@ void XXEventDispatcher::removeAllKistener(){
 void XXEventDispatcher::disEventDispatcher(ccEvent *event){
 	if (event&&event->cmd > 0){
 		m_Events.push_back(event);
-		while (!m_Events.empty()){
-			EventPathch(m_Events);
-		}
 	}
+}
+
+void XXEventDispatcher::update(float dt){
+	EventPathch(m_Events);
 }
 
 void XXEventDispatcher::EventPathch(std::vector<ccEvent *> &ep){

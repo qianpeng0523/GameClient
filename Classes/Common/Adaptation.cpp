@@ -2,7 +2,6 @@
 #include "SimpleAudioEngine.h"
 #include "AppMacros.h"
 
-
 Adaptation* Adaptation::m_pShareAdaptation=NULL;
 
 Adaptation::Adaptation()
@@ -63,10 +62,10 @@ void Adaptation::ScreenAdaptationInit(){
 	auto glview = director->getOpenGLView();
 	if (!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-		glview = GLViewImpl::createWithRect("sqlserver", Rect(0, 0, 960, 640));
+		glview = GLViewImpl::createWithRect(XXIconv::GBK2UTF("ÓÀÀÖÂé½«"), Rect(0, 0, 1280*0.8, 720*0.8));
 		//glview = GLViewImpl::createWithRect("gzmj", Rect(0, 0, 1136, 852));
 #else
-		glview = GLViewImpl::create("sqlserver");
+		glview = GLViewImpl::create(XXIconv::GBK2UTF("ÓÀÀÖÂé½«"));
 #endif
 		director->setOpenGLView(glview);
 	}

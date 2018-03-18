@@ -2,12 +2,15 @@
 
 
 
-
 GameControl *GameControl::m_ins=NULL;
 
 GameControl::GameControl(){
 	m_pLoginLayer = NULL;
 	m_pMainLayer = NULL;
+	m_pUserInfoLayer = NULL;
+	m_pSetLayer = NULL;
+	m_pShopLayer = NULL;
+	m_pSignLayer = NULL;
 }
 
 GameControl::~GameControl(){
@@ -26,4 +29,10 @@ GameControl* GameControl::getIns(){
 		m_ins->init();
 	}
 	return m_ins;
+}
+
+void GameControl::replaceScene(Scene *scene){
+	Director *p = Director::sharedDirector();
+	CCTransitionFade *reScene = CCTransitionFade::create(0.3, scene);
+	p->replaceScene(reScene);
 }

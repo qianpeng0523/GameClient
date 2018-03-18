@@ -16,10 +16,13 @@ public:
     virtual bool init();
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
+	void AddFriends(int type);
 private:
-	
+	void SelectItem(int index);
 private:
-	
+	Button *m_friendbtns[2];
+	ui::ScrollView *m_ScrollView;
+	Layout *m_sbg;
 };
 
 #endif 

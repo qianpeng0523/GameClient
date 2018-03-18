@@ -1,6 +1,10 @@
 #include "AppDelegate.h"
 #include "Adaptation.h"
 #include "LogoScene.h"
+#include "YMSocketData.h"
+#include "XXHttpRequest.h"
+#include "Common.h"
+
 USING_NS_CC;
 
 
@@ -38,6 +42,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Adaptation::shareAdaptation();
 	register_all_packages();
 	
+
 	auto director = Director::getInstance();
 	Scene *scene = LogoScene::create();
 	//Scene *scene = PageTurn::createScene();

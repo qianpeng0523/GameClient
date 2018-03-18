@@ -20,11 +20,12 @@ ClientSocket *ClientSocket::getIns() {
 
 ClientSocket::ClientSocket(){
 	m_stamp = 0;
+	m_tcpSocket = new TcpSocket();
 	createTcp();
 }
 
 void ClientSocket::createTcp(){
-	m_tcpSocket = new TcpSocket();
+	
 	m_isConnected = false;
 	TcpSocket::Init();
 	int ret = m_tcpSocket->Create(AF_INET, SOCK_STREAM, IPPROTO_IP);
@@ -65,12 +66,13 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 	m_stamp = 0;
 	m_ip = ip;
 	m_port = port;
+	
 	int connectFlag = m_tcpSocket->Connect(ip, port);
     if (connectFlag != SOCKET_ERROR) {
 		std::thread t1(&ClientSocket::threadHandler, this);//创建一个分支线程，回调到myThread函数里
 		t1.detach();
         m_isConnected = true;
-		LoginInfo::getIns()->SendCLogin("100010","123456");
+		LoginInfo::getIns()->SendCLogin("100001","123456");
 	}
     return connectFlag;
 }
@@ -84,6 +86,7 @@ int ClientSocket::close() {
 		state = m_tcpSocket->Close();
 		m_stamp = 0;
 	}
+	createTcp();
 	return state;
 }
 

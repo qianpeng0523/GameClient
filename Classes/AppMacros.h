@@ -5,12 +5,13 @@
 #include "DBProto.h"
 #include "ccEvent.h"
 #include "MD55.h"
-
+#include "XXIconv.h"
+#include "Hall.h"
 //design screen size
-static cocos2d::Size designResolutionSize = cocos2d::Size(960, 640);
+static cocos2d::Size designResolutionSize = cocos2d::Size(1280, 720);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(852, 480);
-static cocos2d::Size mediumResolutionSize = cocos2d::Size(960, 640);
-static cocos2d::Size largeResolutionSize = cocos2d::Size(960, 640);
+static cocos2d::Size mediumResolutionSize = cocos2d::Size(1280, 720);
+static cocos2d::Size largeResolutionSize = cocos2d::Size(1280, 720);
 //Screen Size
 #define SCREEN_SIZE cocos2d::CCDirector::sharedDirector()->getVisibleSize();
 
@@ -25,12 +26,13 @@ static cocos2d::Size largeResolutionSize = cocos2d::Size(960, 640);
 
 #define FONTS1 "fonts/yahei.ttf"
 #define  FONTS2 "fonts/STXingkai.ttf"
-#define sqlhttp "http://192.168.50.151:8080/"
+#define sqlhttp "http://192.168.1.101:8080/"
 #define DECKEY "FQ6M1w0GswdKkTuZWcFmM1rU3bDB/CTiw+KrONdCPOg"
 
 using namespace cocos2d;
 using namespace std;
 using namespace protocol;
+using namespace cocos2d_xx;
 static string g_version = cocos2d::cocos2dVersion();
 
 /************************************************************************/
