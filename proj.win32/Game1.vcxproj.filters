@@ -180,6 +180,30 @@
     <ClCompile Include="..\Classes\Main\SignLayer.cpp">
       <Filter>Classes\Main</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Main\FriendLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\FankuiLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\FreeLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\ExchangeLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\TaskLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\MailLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\ActiveLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\FirstChargeLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -381,6 +405,30 @@
       <Filter>Classes\cc</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Main\SignLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\FriendLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\FankuiLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\FreeLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\ExchangeLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\TaskLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\MailLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\ActiveLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\FirstChargeLayer.h">
       <Filter>Classes\Main</Filter>
     </ClInclude>
   </ItemGroup>
