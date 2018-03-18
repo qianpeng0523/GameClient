@@ -1,0 +1,16 @@
+info face="newuser_guide_title" size=32 bold=0 italic=0 charset="" unicode=0 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=2,2
+common lineHeight=68 base=26 scaleW=256 scaleH=256 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="newuser_guide_title.png"
+chars count=10
+char id=34917 x=58 y=130 width=56 height=62 xoffset=0 yoffset=7 xadvance=58 page=0 chnl=0 letter="补"
+char id=33457 x=0 y=130 width=56 height=64 xoffset=0 yoffset=6 xadvance=58 page=0 chnl=0 letter="花"
+char id=29260 x=0 y=60 width=58 height=68 xoffset=0 yoffset=4 xadvance=60 page=0 chnl=0 letter="牌"
+char id=21507 x=116 y=124 width=55 height=61 xoffset=0 yoffset=7 xadvance=57 page=0 chnl=0 letter="吃"
+char id=30896 x=0 y=0 width=59 height=58 xoffset=0 yoffset=8 xadvance=61 page=0 chnl=0 letter="碰"
+char id=26464 x=116 y=187 width=54 height=61 xoffset=0 yoffset=7 xadvance=56 page=0 chnl=0 letter="杠"
+char id=21548 x=60 y=60 width=55 height=62 xoffset=0 yoffset=7 xadvance=57 page=0 chnl=0 letter="听"
+char id=32993 x=117 y=0 width=52 height=61 xoffset=0 yoffset=7 xadvance=54 page=0 chnl=0 letter="胡"
+char id=32 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=2 page=0 chnl=0 letter=" "
+char id=9 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=16 page=0 chnl=0 letter="	"
+
+kernings count=0

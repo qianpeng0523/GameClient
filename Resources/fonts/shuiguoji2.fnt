@@ -1,0 +1,22 @@
+info face="shuiguoji2" size=32 bold=0 italic=0 charset="" unicode=0 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=65 base=26 scaleW=256 scaleH=256 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="shuiguoji2.png"
+chars count=16
+char id=48 x=0 y=163 width=43 height=60 xoffset=0 yoffset=5 xadvance=44 page=0 chnl=0 letter="0"
+char id=49 x=133 y=0 width=25 height=59 xoffset=0 yoffset=6 xadvance=26 page=0 chnl=0 letter="1"
+char id=50 x=92 y=0 width=40 height=59 xoffset=0 yoffset=6 xadvance=41 page=0 chnl=0 letter="2"
+char id=51 x=128 y=175 width=40 height=60 xoffset=0 yoffset=5 xadvance=41 page=0 chnl=0 letter="3"
+char id=52 x=0 y=103 width=44 height=59 xoffset=0 yoffset=6 xadvance=45 page=0 chnl=0 letter="4"
+char id=53 x=129 y=60 width=39 height=60 xoffset=0 yoffset=5 xadvance=40 page=0 chnl=0 letter="5"
+char id=54 x=50 y=53 width=41 height=60 xoffset=0 yoffset=5 xadvance=42 page=0 chnl=0 letter="6"
+char id=55 x=44 y=163 width=42 height=59 xoffset=0 yoffset=6 xadvance=43 page=0 chnl=0 letter="7"
+char id=56 x=87 y=175 width=40 height=60 xoffset=0 yoffset=5 xadvance=41 page=0 chnl=0 letter="8"
+char id=57 x=87 y=114 width=41 height=60 xoffset=0 yoffset=5 xadvance=42 page=0 chnl=0 letter="9"
+char id=46 x=19 y=236 width=16 height=19 xoffset=0 yoffset=46 xadvance=17 page=0 chnl=0 letter="."
+char id=44 x=0 y=224 width=18 height=28 xoffset=0 yoffset=37 xadvance=19 page=0 chnl=0 letter=","
+char id=19975 x=0 y=53 width=49 height=49 xoffset=0 yoffset=16 xadvance=50 page=0 chnl=0 letter="万"
+char id=20159 x=0 y=0 width=50 height=52 xoffset=0 yoffset=13 xadvance=51 page=0 chnl=0 letter="亿"
+char id=32 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=30 page=0 chnl=0 letter=" "
+char id=9 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=240 page=0 chnl=0 letter="	"
+
+kernings count=0

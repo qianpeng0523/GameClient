@@ -1,0 +1,15 @@
+info face="fnt_room_level" size=32 bold=0 italic=0 charset="" unicode=0 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=50 base=26 scaleW=128 scaleH=256 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="fnt_room_level.png"
+chars count=9
+char id=21021 x=46 y=98 width=45 height=47 xoffset=0 yoffset=2 xadvance=46 page=0 chnl=0 letter="初"
+char id=20013 x=46 y=146 width=43 height=48 xoffset=0 yoffset=2 xadvance=44 page=0 chnl=0 letter="中"
+char id=39640 x=0 y=195 width=45 height=48 xoffset=0 yoffset=2 xadvance=46 page=0 chnl=0 letter="高"
+char id=22823 x=0 y=0 width=47 height=48 xoffset=0 yoffset=2 xadvance=48 page=0 chnl=0 letter="大"
+char id=24072 x=0 y=98 width=45 height=48 xoffset=0 yoffset=2 xadvance=46 page=0 chnl=0 letter="师"
+char id=32423 x=0 y=49 width=47 height=48 xoffset=0 yoffset=1 xadvance=48 page=0 chnl=0 letter="级"
+char id=22330 x=0 y=147 width=45 height=47 xoffset=0 yoffset=3 xadvance=46 page=0 chnl=0 letter="场"
+char id=32 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=0 page=0 chnl=0 letter=" "
+char id=9 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=0 page=0 chnl=0 letter="	"
+
+kernings count=0

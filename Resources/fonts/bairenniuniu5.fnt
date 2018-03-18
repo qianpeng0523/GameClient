@@ -1,0 +1,24 @@
+info face="bairenniuniu5" size=32 bold=0 italic=0 charset="" unicode=0 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=40 base=26 scaleW=256 scaleH=256 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="bairenniuniu5.png"
+chars count=18
+char id=29275 x=91 y=101 width=43 height=49 xoffset=0 yoffset=-9 xadvance=44 page=0 chnl=0 letter="牛"
+char id=19968 x=47 y=0 width=43 height=24 xoffset=0 yoffset=4 xadvance=44 page=0 chnl=0 letter="一"
+char id=20108 x=91 y=0 width=43 height=47 xoffset=0 yoffset=-8 xadvance=44 page=0 chnl=0 letter="二"
+char id=19977 x=91 y=151 width=43 height=48 xoffset=0 yoffset=-8 xadvance=44 page=0 chnl=0 letter="三"
+char id=22235 x=0 y=148 width=45 height=48 xoffset=0 yoffset=-8 xadvance=46 page=0 chnl=0 letter="四"
+char id=20116 x=46 y=201 width=44 height=49 xoffset=0 yoffset=-9 xadvance=45 page=0 chnl=0 letter="五"
+char id=20845 x=46 y=52 width=45 height=48 xoffset=0 yoffset=-8 xadvance=46 page=0 chnl=0 letter="六"
+char id=19971 x=46 y=152 width=44 height=48 xoffset=0 yoffset=-8 xadvance=45 page=0 chnl=0 letter="七"
+char id=20843 x=0 y=52 width=45 height=45 xoffset=0 yoffset=-7 xadvance=46 page=0 chnl=0 letter="八"
+char id=20061 x=0 y=197 width=45 height=50 xoffset=0 yoffset=-9 xadvance=46 page=0 chnl=0 letter="九"
+char id=34013 x=133 y=48 width=39 height=44 xoffset=0 yoffset=-6 xadvance=40 page=0 chnl=0 letter="蓝"
+char id=28856 x=0 y=0 width=46 height=51 xoffset=0 yoffset=-10 xadvance=47 page=0 chnl=0 letter="炸"
+char id=33457 x=46 y=101 width=44 height=50 xoffset=0 yoffset=-9 xadvance=45 page=0 chnl=0 letter="花"
+char id=23567 x=0 y=98 width=45 height=49 xoffset=0 yoffset=-9 xadvance=46 page=0 chnl=0 letter="小"
+char id=27809 x=91 y=200 width=41 height=45 xoffset=0 yoffset=-7 xadvance=42 page=0 chnl=0 letter="没"
+char id=32043 x=92 y=48 width=40 height=44 xoffset=0 yoffset=-6 xadvance=41 page=0 chnl=0 letter="紫"
+char id=32 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=30 page=0 chnl=0 letter=" "
+char id=9 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=240 page=0 chnl=0 letter="	"
+
+kernings count=0

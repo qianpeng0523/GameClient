@@ -1,0 +1,12 @@
+info face="fnt_bucjb_shuzi" size=32 bold=0 italic=0 charset="" unicode=0 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=0,0
+common lineHeight=50 base=26 scaleW=256 scaleH=64 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="fnt_bucjb_shuzi.png"
+chars count=6
+char id=34917 x=52 y=0 width=48 height=54 xoffset=0 yoffset=-6 xadvance=50 page=0 chnl=0 letter="补"
+char id=20805 x=100 y=0 width=47 height=57 xoffset=0 yoffset=-7 xadvance=49 page=0 chnl=0 letter="充"
+char id=37329 x=0 y=0 width=52 height=51 xoffset=0 yoffset=-4 xadvance=54 page=0 chnl=0 letter="金"
+char id=24065 x=147 y=0 width=36 height=58 xoffset=0 yoffset=-8 xadvance=38 page=0 chnl=0 letter="币"
+char id=32 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=0 page=0 chnl=0 letter=" "
+char id=9 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=0 page=0 chnl=0 letter="	"
+
+kernings count=0

@@ -1,0 +1,32 @@
+info face="roomlabel" size=32 bold=0 italic=0 charset="" unicode=0 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=52 base=26 scaleW=256 scaleH=256 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="roomlabel.png"
+chars count=26
+char id=48 x=104 y=204 width=37 height=49 xoffset=0 yoffset=3 xadvance=41 page=0 chnl=0 letter="0"
+char id=49 x=214 y=150 width=22 height=49 xoffset=0 yoffset=3 xadvance=26 page=0 chnl=0 letter="1"
+char id=50 x=207 y=100 width=34 height=49 xoffset=0 yoffset=3 xadvance=38 page=0 chnl=0 letter="2"
+char id=51 x=193 y=50 width=34 height=49 xoffset=0 yoffset=3 xadvance=38 page=0 chnl=0 letter="3"
+char id=52 x=106 y=106 width=37 height=49 xoffset=0 yoffset=3 xadvance=41 page=0 chnl=0 letter="4"
+char id=53 x=194 y=0 width=34 height=49 xoffset=0 yoffset=3 xadvance=38 page=0 chnl=0 letter="5"
+char id=54 x=157 y=53 width=35 height=49 xoffset=0 yoffset=3 xadvance=39 page=0 chnl=0 letter="6"
+char id=55 x=178 y=159 width=35 height=49 xoffset=0 yoffset=3 xadvance=39 page=0 chnl=0 letter="7"
+char id=56 x=158 y=0 width=35 height=49 xoffset=0 yoffset=3 xadvance=39 page=0 chnl=0 letter="8"
+char id=57 x=142 y=204 width=35 height=49 xoffset=0 yoffset=3 xadvance=39 page=0 chnl=0 letter="9"
+char id=24213 x=42 y=211 width=40 height=41 xoffset=0 yoffset=11 xadvance=44 page=0 chnl=0 letter="底"
+char id=20998 x=0 y=211 width=41 height=41 xoffset=0 yoffset=11 xadvance=45 page=0 chnl=0 letter="分"
+char id=30334 x=104 y=156 width=51 height=47 xoffset=0 yoffset=6 xadvance=55 page=0 chnl=0 letter="百"
+char id=20154 x=106 y=53 width=50 height=52 xoffset=0 yoffset=2 xadvance=54 page=0 chnl=0 letter="人"
+char id=22823 x=106 y=0 width=51 height=52 xoffset=0 yoffset=3 xadvance=55 page=0 chnl=0 letter="大"
+char id=25112 x=156 y=106 width=50 height=52 xoffset=0 yoffset=2 xadvance=54 page=0 chnl=0 letter="战"
+char id=36175 x=54 y=102 width=51 height=53 xoffset=0 yoffset=2 xadvance=55 page=0 chnl=0 letter="赏"
+char id=37329 x=54 y=51 width=51 height=50 xoffset=0 yoffset=2 xadvance=55 page=0 chnl=0 letter="金"
+char id=29275 x=0 y=105 width=53 height=52 xoffset=0 yoffset=3 xadvance=57 page=0 chnl=0 letter="牛"
+char id=20180 x=52 y=158 width=51 height=51 xoffset=0 yoffset=2 xadvance=55 page=0 chnl=0 letter="仔"
+char id=27700 x=0 y=158 width=51 height=52 xoffset=0 yoffset=3 xadvance=55 page=0 chnl=0 letter="水"
+char id=26524 x=54 y=0 width=51 height=50 xoffset=0 yoffset=4 xadvance=55 page=0 chnl=0 letter="果"
+char id=29378 x=0 y=53 width=53 height=51 xoffset=0 yoffset=3 xadvance=57 page=0 chnl=0 letter="狂"
+char id=27426 x=0 y=0 width=53 height=52 xoffset=0 yoffset=2 xadvance=57 page=0 chnl=0 letter="欢"
+char id=32 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=3 page=0 chnl=0 letter=" "
+char id=9 x=0 y=0 width=0 height=0 xoffset=0 yoffset=0 xadvance=24 page=0 chnl=0 letter="	"
+
+kernings count=0
