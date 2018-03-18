@@ -34,6 +34,9 @@
     <Filter Include="Classes\proto">
       <UniqueIdentifier>{2d11dbb5-7b58-486c-ae2b-a70206381bbe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Main">
+      <UniqueIdentifier>{fb928aa4-1062-47e6-b912-924b3ab72760}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -146,6 +149,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\proto\LoginInfo.cpp">
       <Filter>Classes\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\Common.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameControl.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\MainLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\MainScene.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\UserInfoLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\SetLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\ShopLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\RankItemLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cc\Hall.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\SignLayer.cpp">
+      <Filter>Classes\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +352,36 @@
     </ClInclude>
     <ClInclude Include="..\Classes\proto\LoginInfo.h">
       <Filter>Classes\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\Common.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameControl.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\MainLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\MainScene.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\UserInfoLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\SetLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\ShopLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\RankItemLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\Hall.h">
+      <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\SignLayer.h">
+      <Filter>Classes\Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
