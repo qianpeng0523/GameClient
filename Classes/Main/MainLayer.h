@@ -23,6 +23,8 @@ private:
 	Button *m_friendbtns[2];
 	ui::ScrollView *m_ScrollView;
 	Layout *m_sbg;
+	ui::ScrollView *m_ScrollView1;
+	Layout *m_sbg1;
 };
 
 #endif 

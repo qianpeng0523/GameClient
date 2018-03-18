@@ -30,6 +30,9 @@ bool SetLayer::init()
 	
 	GameDataSet::getButton(m_RootLayer, "close_btn", selector, this);
 	GameDataSet::getButton(m_RootLayer, "exchange", selector, this);
+	GameDataSet::getButton(m_RootLayer, "help", selector, this);
+	GameDataSet::getButton(m_RootLayer, "fankui", selector, this);
+	GameDataSet::getButton(m_RootLayer, "guanyu", selector, this);
 	
 	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
 	string uname = user.username();
@@ -73,6 +76,19 @@ void SetLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			if (err == 0){
 				GameControl::getIns()->replaceScene(LogoScene::create());
 			}
+		}
+		else if (name.compare("help") == 0){
+			
+		}
+		else if (name.compare("fankui") == 0){
+			FankuiLayer *p = GameControl::getIns()->getFankuiLayer();
+			if (!p){
+				p = FankuiLayer::create();
+				Director::sharedDirector()->getRunningScene()->addChild(p);
+			}
+		}
+		else if (name.compare("guanyu") == 0){
+
 		}
 		else if (name.compare("CheckBox_1") == 0){
 			bool isopen = ((CheckBox *)btn)->getSelectedState();

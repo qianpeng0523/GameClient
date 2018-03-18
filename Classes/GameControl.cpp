@@ -11,6 +11,13 @@ GameControl::GameControl(){
 	m_pSetLayer = NULL;
 	m_pShopLayer = NULL;
 	m_pSignLayer = NULL;
+	m_pFriendLayer = NULL;
+	m_pFankuiLayer = NULL;
+	m_pFreeLayer = NULL;
+	m_pExchangeLayer = NULL;
+	m_pTaskLayer = NULL;
+	m_pMailLayer = NULL;
+	m_pActiveLayer = NULL;
 }
 
 GameControl::~GameControl(){

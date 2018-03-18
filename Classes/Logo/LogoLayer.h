@@ -28,7 +28,7 @@ public:
 	~LogoLayer();
 	CREATE_FUNC(LogoLayer);
     virtual bool init();
-	ui::EditBox *AddCursorTextField(Layout *parent,int fontsz=20,bool ispass=false);
+	static ui::EditBox *AddCursorTextField(Layout *parent,int fontsz=20,bool ispass=false);
 	void TouchEvent(Object *obj, TouchEventType type);
 	
 	void ShowYKLoginBtn(bool isshow);

@@ -5,6 +5,73 @@
 #include "LogoScene.h"
 #include "LoginInfo.h"
 
+
+
+ShopItemLayer::ShopItemLayer(){
+
+}
+
+ShopItemLayer::~ShopItemLayer(){
+
+}
+
+ShopItemLayer *ShopItemLayer::create(Rank hall){
+	ShopItemLayer *p = new ShopItemLayer();
+	if (p&&p->init(hall)){
+		p->autorelease();
+	}
+	else{
+		CC_SAFE_DELETE(p);
+	}
+	return p;
+}
+
+bool ShopItemLayer::init(Rank hall)
+{
+	if (!Layer::init())
+	{
+		return false;
+	}
+	m_hall = hall;
+	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("shopitem.json");
+	this->addChild(m_RootLayer);
+
+	this->setContentSize(m_RootLayer->getSize());
+
+	
+
+	return true;
+}
+
+void ShopItemLayer::TouchEvent(){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ShopLayer::ShopLayer(){
 	GameControl::getIns()->setShopLayer(this);
 }
@@ -43,7 +110,17 @@ bool ShopLayer::init()
 	
 	GameDataSet::setTextBMFont(m_RootLayer, "cardnum", GameDataSet::getCNStringByInteger(card));
 	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold));
+
+
+	m_ScrollView = (ui::ScrollView *)GameDataSet::getButton(m_RootLayer, "ScrollView", selector, this);
+	m_sbg = GameDataSet::getLayout(m_RootLayer, "sbg");
+
+	m_ScrollView1 = (ui::ScrollView *)GameDataSet::getButton(m_RootLayer, "ScrollView_1", selector, this);
+	m_sbg1 = GameDataSet::getLayout(m_RootLayer, "sbg_1");
+
+
 	SelectItem(0);
+	
     return true;
 }
 
@@ -62,6 +139,7 @@ void ShopLayer::SelectItem(int index){
 	if (m_btntext[index]){
 		m_btntext[index]->setFntFile("fonts/xiaodan10.fnt");
 	}
+	addShopItem(index);
 }
 
 void ShopLayer::TouchEvent(CCObject *obj, TouchEventType type){
@@ -76,6 +154,31 @@ void ShopLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		}
 		else if (name.compare("gold") == 0){
 			SelectItem(1);
+		}
+	}
+}
+
+void ShopLayer::addShopItem(int index){
+	Layout *sbg;
+	ui::ScrollView *scroll;
+	if (index == 0){
+		sbg = m_sbg;
+		scroll = m_ScrollView;
+		m_ScrollView->setVisible(true);
+		m_ScrollView1->setVisible(false);
+	}
+	else{
+		sbg = m_sbg1;
+		scroll = m_ScrollView1;
+		m_ScrollView->setVisible(false);
+		m_ScrollView1->setVisible(true);
+	}
+	if (sbg->getChildrenCount() == 0){
+		for (int i = 0; i < 10; i++){
+			Rank rk;
+			rk.set_lv(i + 1);
+			ShopItemLayer *p = ShopItemLayer::create(rk);
+			GameDataSet::PushScrollItem(sbg, 2, 0, p, i, scroll);
 		}
 	}
 }
