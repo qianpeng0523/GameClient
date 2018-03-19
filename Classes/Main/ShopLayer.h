@@ -17,7 +17,7 @@ public:
 	static ShopItemLayer *create(ShopItem item);
 	virtual bool init(ShopItem item);
 
-	void TouchEvent();
+	void TouchEvent(CCObject *obj, TouchEventType type);
 private:
 	ShopItem m_item;
 private:

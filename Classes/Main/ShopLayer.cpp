@@ -67,11 +67,19 @@ bool ShopItemLayer::init(ShopItem item)
 		GameDataSet::setImageView(m_RootLayer, "icon", "card1.png");
 	}
 
+	SEL_TouchEvent selector = toucheventselector(ShopItemLayer::TouchEvent);
+	GameDataSet::getButton(m_RootLayer, "btn", selector, this);
 	return true;
 }
 
-void ShopItemLayer::TouchEvent(){
+void ShopItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
+	Button *btn = (Button *)obj;
+	string name = btn->getName();
+	if (type == TOUCH_EVENT_ENDED){
+		if (name.compare("btn") == 0){
 
+		}
+	}
 }
 
 
