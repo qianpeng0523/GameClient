@@ -78,7 +78,11 @@ void SetLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			}
 		}
 		else if (name.compare("help") == 0){
-			
+			HelpLayer *p = GameControl::getIns()->getHelpLayer();
+			if (!p){
+				p = HelpLayer::create();
+				Director::sharedDirector()->getRunningScene()->addChild(p);
+			}
 		}
 		else if (name.compare("fankui") == 0){
 			FankuiLayer *p = GameControl::getIns()->getFankuiLayer();
@@ -88,7 +92,11 @@ void SetLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			}
 		}
 		else if (name.compare("guanyu") == 0){
-
+			AboutLayer *p = GameControl::getIns()->getAboutLayer();
+			if (!p){
+				p = AboutLayer::create();
+				Director::sharedDirector()->getRunningScene()->addChild(p);
+			}
 		}
 		else if (name.compare("CheckBox_1") == 0){
 			bool isopen = ((CheckBox *)btn)->getSelectedState();

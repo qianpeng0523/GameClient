@@ -129,7 +129,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 	}
 	delete sm;
 	delete data;
-	printf("sendmsg:body:%s",msg->DebugString().c_str());
+	log("sendmsg:body:%s",msg->DebugString().c_str());
 	if (m_tcpSocket){
 		m_tcpSocket->Send(buffer, HEADLEN + len);
 	}

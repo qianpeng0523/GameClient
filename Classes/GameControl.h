@@ -17,6 +17,8 @@
 #include "MailLayer.h"
 #include "ActiveLayer.h"
 #include "FirstChargeLayer.h"
+#include "AboutLayer.h"
+#include "HelpLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
@@ -130,6 +132,20 @@ public:
 		return m_pFirstChargeLayer;
 	}
 
+	void setAboutLayer(AboutLayer *p){
+		m_pAboutLayer = p;
+	}
+	AboutLayer *getAboutLayer(){
+		return m_pAboutLayer;
+	}
+
+	void setHelpLayer(HelpLayer *p){
+		m_pHelpLayer = p;
+	}
+	HelpLayer *getHelpLayer(){
+		return m_pHelpLayer;
+	}
+
 	void replaceScene(Scene *scene);
 private:
 	static GameControl *m_ins;
@@ -147,6 +163,8 @@ private:
 	MailLayer *m_pMailLayer;
 	ActiveLayer *m_pActiveLayer;
 	FirstChargeLayer *m_pFirstChargeLayer;
+	AboutLayer *m_pAboutLayer;
+	HelpLayer *m_pHelpLayer;
 };
 
 #endif // __GameControl_SCENE_H__
