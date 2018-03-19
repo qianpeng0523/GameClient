@@ -155,6 +155,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\cc\DBProto.cpp" />
     <ClCompile Include="..\Classes\cc\Hall.cpp" />
     <ClCompile Include="..\Classes\cc\Login.cpp" />
+    <ClCompile Include="..\Classes\cc\Vo.cpp" />
     <ClCompile Include="..\Classes\Common\Adaptation.cpp" />
     <ClCompile Include="..\Classes\Common\BaseLayer.cpp" />
     <ClCompile Include="..\Classes\Common\CDProgressTimer.cpp" />
@@ -179,12 +180,14 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\http\HttpInfo.cpp" />
     <ClCompile Include="..\Classes\Logo\LogoLayer.cpp" />
     <ClCompile Include="..\Classes\Logo\LogoScene.cpp" />
+    <ClCompile Include="..\Classes\Main\AboutLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ActiveLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ExchangeLayer.cpp" />
     <ClCompile Include="..\Classes\Main\FankuiLayer.cpp" />
     <ClCompile Include="..\Classes\Main\FirstChargeLayer.cpp" />
     <ClCompile Include="..\Classes\Main\FreeLayer.cpp" />
     <ClCompile Include="..\Classes\Main\FriendLayer.cpp" />
+    <ClCompile Include="..\Classes\Main\HelpLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MailLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MainLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MainScene.cpp" />
@@ -204,6 +207,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\network\TcpSocket.cpp" />
     <ClCompile Include="..\Classes\network\XXEventDispatcher.cpp" />
     <ClCompile Include="..\Classes\network\XXHttpRequest.cpp" />
+    <ClCompile Include="..\Classes\proto\HallInfo.cpp" />
     <ClCompile Include="..\Classes\proto\LoginInfo.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -213,6 +217,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\cc\DBProto.h" />
     <ClInclude Include="..\Classes\cc\Hall.h" />
     <ClInclude Include="..\Classes\cc\Login.h" />
+    <ClInclude Include="..\Classes\cc\Vo.h" />
     <ClInclude Include="..\Classes\Common\Adaptation.h" />
     <ClInclude Include="..\Classes\Common\BaseLayer.h" />
     <ClInclude Include="..\Classes\Common\CDProgressTimer.h" />
@@ -248,12 +253,14 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\http\HttpInfo.h" />
     <ClInclude Include="..\Classes\Logo\LogoLayer.h" />
     <ClInclude Include="..\Classes\Logo\LogoScene.h" />
+    <ClInclude Include="..\Classes\Main\AboutLayer.h" />
     <ClInclude Include="..\Classes\Main\ActiveLayer.h" />
     <ClInclude Include="..\Classes\Main\ExchangeLayer.h" />
     <ClInclude Include="..\Classes\Main\FankuiLayer.h" />
     <ClInclude Include="..\Classes\Main\FirstChargeLayer.h" />
     <ClInclude Include="..\Classes\Main\FreeLayer.h" />
     <ClInclude Include="..\Classes\Main\FriendLayer.h" />
+    <ClInclude Include="..\Classes\Main\HelpLayer.h" />
     <ClInclude Include="..\Classes\Main\MailLayer.h" />
     <ClInclude Include="..\Classes\Main\MainLayer.h" />
     <ClInclude Include="..\Classes\Main\MainScene.h" />
@@ -281,6 +288,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\network\TcpSocket.h" />
     <ClInclude Include="..\Classes\network\XXEventDispatcher.h" />
     <ClInclude Include="..\Classes\network\XXHttpRequest.h" />
+    <ClInclude Include="..\Classes\proto\HallInfo.h" />
     <ClInclude Include="..\Classes\proto\LoginInfo.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

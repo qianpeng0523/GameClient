@@ -204,6 +204,18 @@
     <ClCompile Include="..\Classes\Main\FirstChargeLayer.cpp">
       <Filter>Classes\Main</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Main\AboutLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\HelpLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cc\Vo.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\proto\HallInfo.cpp">
+      <Filter>Classes\proto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -430,6 +442,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Main\FirstChargeLayer.h">
       <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\AboutLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\HelpLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\Vo.h">
+      <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\proto\HallInfo.h">
+      <Filter>Classes\proto</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
