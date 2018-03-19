@@ -15,9 +15,9 @@ ShopItemLayer::~ShopItemLayer(){
 
 }
 
-ShopItemLayer *ShopItemLayer::create(Rank hall){
+ShopItemLayer *ShopItemLayer::create(ShopItem item){
 	ShopItemLayer *p = new ShopItemLayer();
-	if (p&&p->init(hall)){
+	if (p&&p->init(item)){
 		p->autorelease();
 	}
 	else{
@@ -26,19 +26,46 @@ ShopItemLayer *ShopItemLayer::create(Rank hall){
 	return p;
 }
 
-bool ShopItemLayer::init(Rank hall)
+bool ShopItemLayer::init(ShopItem item)
 {
 	if (!Layer::init())
 	{
 		return false;
 	}
-	m_hall = hall;
+	m_item = item;
 	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("shopitem.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
 
-	
+	int buynumber = item.number();
+	bool hot = item.hot();
+	int type = item.type();
+	Prop prop = item.prop();
+	int id = prop.id();
+	string name = prop.name();
+	int number = prop.number();
+
+	Layout *hotly = GameDataSet::getLayout(m_RootLayer,"hot");
+	hotly->setVisible(hot);
+	char buff[30];
+	sprintf(buff, XXIconv::GBK2UTF("%d元").c_str(), buynumber);
+	GameDataSet::setTextBMFont(m_RootLayer,"BitmapLabel",buff);
+
+	sprintf(buff, "%s%s", GameDataSet::getCNStringByInteger(number).c_str(),name.c_str());
+	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_name", buff);
+
+	int znumber = item.givenum();
+	sprintf(buff, XXIconv::GBK2UTF("增%s").c_str(), GameDataSet::getCNStringByInteger(znumber).c_str());
+	GameDataSet::setText(m_RootLayer,"zeng",buff);
+
+	string icon;
+	if (id == 2){
+
+	}
+	else if (id == 1){
+		GameDataSet::setImageView(m_RootLayer, "icon", "card.png");
+	}
 
 	return true;
 }
@@ -175,8 +202,12 @@ void ShopLayer::addShopItem(int index){
 	}
 	if (sbg->getChildrenCount() == 0){
 		for (int i = 0; i < 10; i++){
-			Rank rk;
-			rk.set_lv(i + 1);
+			ShopItem rk;
+			rk.set_type(index+1);
+			Prop ppp;
+			Prop *pp = (Prop *)ccEvent::create_message(ppp.GetTypeName());
+			pp->set_id(index + 1);
+			rk.set_allocated_prop(pp);
 			ShopItemLayer *p = ShopItemLayer::create(rk);
 			GameDataSet::PushScrollItem(sbg, 2, 0, p, i, scroll);
 		}

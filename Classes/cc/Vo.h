@@ -392,17 +392,12 @@ class ShopItem : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 number() const;
   inline void set_number(::google::protobuf::uint32 value);
 
-  // repeated .protocol.Prop givenum = 5;
-  inline int givenum_size() const;
+  // optional uint32 givenum = 5;
+  inline bool has_givenum() const;
   inline void clear_givenum();
   static const int kGivenumFieldNumber = 5;
-  inline const ::protocol::Prop& givenum(int index) const;
-  inline ::protocol::Prop* mutable_givenum(int index);
-  inline ::protocol::Prop* add_givenum();
-  inline const ::google::protobuf::RepeatedPtrField< ::protocol::Prop >&
-      givenum() const;
-  inline ::google::protobuf::RepeatedPtrField< ::protocol::Prop >*
-      mutable_givenum();
+  inline ::google::protobuf::uint32 givenum() const;
+  inline void set_givenum(::google::protobuf::uint32 value);
 
   // optional bool hot = 6;
   inline bool has_hot() const;
@@ -421,6 +416,8 @@ class ShopItem : public ::google::protobuf::Message {
   inline void clear_has_type();
   inline void set_has_number();
   inline void clear_has_number();
+  inline void set_has_givenum();
+  inline void clear_has_givenum();
   inline void set_has_hot();
   inline void clear_has_hot();
 
@@ -429,8 +426,8 @@ class ShopItem : public ::google::protobuf::Message {
   ::protocol::Prop* prop_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 type_;
-  ::google::protobuf::RepeatedPtrField< ::protocol::Prop > givenum_;
   ::google::protobuf::uint32 number_;
+  ::google::protobuf::uint32 givenum_;
   bool hot_;
 
   mutable int _cached_size_;
@@ -1511,29 +1508,26 @@ inline void ShopItem::set_number(::google::protobuf::uint32 value) {
   number_ = value;
 }
 
-// repeated .protocol.Prop givenum = 5;
-inline int ShopItem::givenum_size() const {
-  return givenum_.size();
+// optional uint32 givenum = 5;
+inline bool ShopItem::has_givenum() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ShopItem::set_has_givenum() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ShopItem::clear_has_givenum() {
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void ShopItem::clear_givenum() {
-  givenum_.Clear();
+  givenum_ = 0u;
+  clear_has_givenum();
 }
-inline const ::protocol::Prop& ShopItem::givenum(int index) const {
-  return givenum_.Get(index);
-}
-inline ::protocol::Prop* ShopItem::mutable_givenum(int index) {
-  return givenum_.Mutable(index);
-}
-inline ::protocol::Prop* ShopItem::add_givenum() {
-  return givenum_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::protocol::Prop >&
-ShopItem::givenum() const {
+inline ::google::protobuf::uint32 ShopItem::givenum() const {
   return givenum_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::protocol::Prop >*
-ShopItem::mutable_givenum() {
-  return &givenum_;
+inline void ShopItem::set_givenum(::google::protobuf::uint32 value) {
+  set_has_givenum();
+  givenum_ = value;
 }
 
 // optional bool hot = 6;

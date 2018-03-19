@@ -44,9 +44,12 @@ public:
 
 	map<int, Rank> getSRank(int type);
 	void eraseRank(int type,int lv);
+
+	SShop getSShop(int type);
 private:
 	static HallInfo *m_shareHallInfo;
 	map<int, map<int,Rank>> m_pSRanks;
+	map<int, SShop>m_pSShops;
 };
 
 #endif 

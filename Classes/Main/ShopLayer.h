@@ -14,12 +14,12 @@ class ShopItemLayer : public BaseLayer
 public:
 	ShopItemLayer();
 	~ShopItemLayer();
-	static ShopItemLayer *create(Rank hall);
-	virtual bool init(Rank hall);
+	static ShopItemLayer *create(ShopItem item);
+	virtual bool init(ShopItem item);
 
 	void TouchEvent();
 private:
-	Rank m_hall;
+	ShopItem m_item;
 private:
 
 };

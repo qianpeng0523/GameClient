@@ -245,20 +245,20 @@ void protobuf_AddDesc_Vo_2eproto() {
     "ank\022\n\n\002lv\030\001 \001(\r\022\013\n\003uid\030\002 \001(\t\022\r\n\005uname\030\003 "
     "\001(\t\022\016\n\006number\030\004 \001(\r\022\014\n\004type\030\005 \001(\r\022\016\n\006pic"
     "url\030\006 \001(\t\022\r\n\005picid\030\007 \001(\r\"0\n\004Prop\022\n\n\002id\030\001"
-    " \002(\r\022\014\n\004name\030\002 \001(\t\022\016\n\006number\030\003 \001(\r\"\200\001\n\010S"
-    "hopItem\022\n\n\002id\030\001 \002(\r\022\034\n\004prop\030\002 \001(\0132\016.prot"
-    "ocol.Prop\022\014\n\004type\030\003 \001(\r\022\016\n\006number\030\004 \001(\r\022"
-    "\037\n\007givenum\030\005 \003(\0132\016.protocol.Prop\022\013\n\003hot\030"
-    "\006 \001(\010\"N\n\004Mail\022\n\n\002id\030\001 \002(\r\022\014\n\004type\030\002 \001(\r\022"
-    "\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\014\n\004time\030"
-    "\005 \001(\t\"o\n\006Friend\022&\n\010userinfo\030\001 \001(\0132\024.prot"
-    "ocol.DBUserInfo\022\016\n\006online\030\002 \001(\010\022\016\n\006frien"
-    "d\030\003 \001(\010\022\017\n\007acttype\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\">"
-    "\n\006Active\022\n\n\002id\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022\r\n\005ti"
-    "tle\030\003 \001(\t\022\013\n\003url\030\004 \001(\t\"\204\001\n\004Task\022\016\n\006taski"
-    "d\030\001 \001(\r\022\r\n\005title\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\022"
-    "\r\n\005count\030\004 \001(\r\022\016\n\006fcount\030\005 \001(\r\022\016\n\006finish"
-    "\030\006 \001(\r\022\035\n\005award\030\007 \001(\0132\016.protocol.Prop", 717);
+    " \002(\r\022\014\n\004name\030\002 \001(\t\022\016\n\006number\030\003 \001(\r\"p\n\010Sh"
+    "opItem\022\n\n\002id\030\001 \002(\r\022\034\n\004prop\030\002 \001(\0132\016.proto"
+    "col.Prop\022\014\n\004type\030\003 \001(\r\022\016\n\006number\030\004 \001(\r\022\017"
+    "\n\007givenum\030\005 \001(\r\022\013\n\003hot\030\006 \001(\010\"N\n\004Mail\022\n\n\002"
+    "id\030\001 \002(\r\022\014\n\004type\030\002 \001(\r\022\r\n\005title\030\003 \001(\t\022\017\n"
+    "\007content\030\004 \001(\t\022\014\n\004time\030\005 \001(\t\"o\n\006Friend\022&"
+    "\n\010userinfo\030\001 \001(\0132\024.protocol.DBUserInfo\022\016"
+    "\n\006online\030\002 \001(\010\022\016\n\006friend\030\003 \001(\010\022\017\n\007acttyp"
+    "e\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\">\n\006Active\022\n\n\002id\030\001 "
+    "\001(\r\022\014\n\004type\030\002 \001(\r\022\r\n\005title\030\003 \001(\t\022\013\n\003url\030"
+    "\004 \001(\t\"\204\001\n\004Task\022\016\n\006taskid\030\001 \001(\r\022\r\n\005title\030"
+    "\002 \001(\t\022\017\n\007content\030\003 \001(\t\022\r\n\005count\030\004 \001(\r\022\016\n"
+    "\006fcount\030\005 \001(\r\022\016\n\006finish\030\006 \001(\r\022\035\n\005award\030\007"
+    " \001(\0132\016.protocol.Prop", 700);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Vo.proto", &protobuf_RegisterTypes);
   Rank::default_instance_ = new Rank();
@@ -1122,6 +1122,7 @@ void ShopItem::SharedCtor() {
   prop_ = NULL;
   type_ = 0u;
   number_ = 0u;
+  givenum_ = 0u;
   hot_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -1165,9 +1166,9 @@ void ShopItem::Clear() {
     }
     type_ = 0u;
     number_ = 0u;
+    givenum_ = 0u;
     hot_ = false;
   }
-  givenum_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1235,21 +1236,22 @@ bool ShopItem::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_givenum;
+        if (input->ExpectTag(40)) goto parse_givenum;
         break;
       }
 
-      // repeated .protocol.Prop givenum = 5;
+      // optional uint32 givenum = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_givenum:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_givenum()));
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &givenum_)));
+          set_has_givenum();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_givenum;
         if (input->ExpectTag(48)) goto parse_hot;
         break;
       }
@@ -1309,10 +1311,9 @@ void ShopItem::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->number(), output);
   }
 
-  // repeated .protocol.Prop givenum = 5;
-  for (int i = 0; i < this->givenum_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->givenum(i), output);
+  // optional uint32 givenum = 5;
+  if (has_givenum()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->givenum(), output);
   }
 
   // optional bool hot = 6;
@@ -1350,11 +1351,9 @@ void ShopItem::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->number(), target);
   }
 
-  // repeated .protocol.Prop givenum = 5;
-  for (int i = 0; i < this->givenum_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        5, this->givenum(i), target);
+  // optional uint32 givenum = 5;
+  if (has_givenum()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->givenum(), target);
   }
 
   // optional bool hot = 6;
@@ -1401,20 +1400,19 @@ int ShopItem::ByteSize() const {
           this->number());
     }
 
+    // optional uint32 givenum = 5;
+    if (has_givenum()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->givenum());
+    }
+
     // optional bool hot = 6;
     if (has_hot()) {
       total_size += 1 + 1;
     }
 
   }
-  // repeated .protocol.Prop givenum = 5;
-  total_size += 1 * this->givenum_size();
-  for (int i = 0; i < this->givenum_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->givenum(i));
-  }
-
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1440,7 +1438,6 @@ void ShopItem::MergeFrom(const ::google::protobuf::Message& from) {
 
 void ShopItem::MergeFrom(const ShopItem& from) {
   GOOGLE_CHECK_NE(&from, this);
-  givenum_.MergeFrom(from.givenum_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_id()) {
       set_id(from.id());
@@ -1453,6 +1450,9 @@ void ShopItem::MergeFrom(const ShopItem& from) {
     }
     if (from.has_number()) {
       set_number(from.number());
+    }
+    if (from.has_givenum()) {
+      set_givenum(from.givenum());
     }
     if (from.has_hot()) {
       set_hot(from.hot());
@@ -1479,9 +1479,6 @@ bool ShopItem::IsInitialized() const {
   if (has_prop()) {
     if (!this->prop().IsInitialized()) return false;
   }
-  for (int i = 0; i < givenum_size(); i++) {
-    if (!this->givenum(i).IsInitialized()) return false;
-  }
   return true;
 }
 
@@ -1491,7 +1488,7 @@ void ShopItem::Swap(ShopItem* other) {
     std::swap(prop_, other->prop_);
     std::swap(type_, other->type_);
     std::swap(number_, other->number_);
-    givenum_.Swap(&other->givenum_);
+    std::swap(givenum_, other->givenum_);
     std::swap(hot_, other->hot_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

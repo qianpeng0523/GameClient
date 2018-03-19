@@ -134,11 +134,41 @@ void HallInfo::eraseRank(int type, int lv){
 }
 
 void HallInfo::SendCShop(int type){
-
+	CShop cl;
+	cl.set_type(type);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSShop));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSShop(ccEvent *event){
+	SShop cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSShop));
+	int err = cl.err();
+	if (err == 0){
+		int type = cl.type();
+		if (m_pSShops.find(type) != m_pSShops.end()){
+			m_pSShops.at(type) = cl;
+		}
+		else{
+			m_pSShops.insert(make_pair(type,cl));
+		}
+		ShopLayer *p = GameControl::getIns()->getShopLayer();
+		if (p){
+			p->addShopItem(type);
+		}
+	}
+	else{
+		log("%s",XXIconv::GBK2UTF("获取商城列表失败"));
+	}
+}
 
+SShop HallInfo::getSShop(int type){
+	if (m_pSShops.find(type) != m_pSShops.end()){
+		return m_pSShops.at(type);
+	}
+	SShop ss;
+	return ss;
 }
 
 void HallInfo::SendCMail(){
