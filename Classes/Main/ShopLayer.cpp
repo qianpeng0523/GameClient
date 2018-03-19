@@ -64,7 +64,7 @@ bool ShopItemLayer::init(ShopItem item)
 
 	}
 	else if (id == 1){
-		GameDataSet::setImageView(m_RootLayer, "icon", "card.png");
+		GameDataSet::setImageView(m_RootLayer, "icon", "card1.png");
 	}
 
 	return true;
