@@ -14,12 +14,12 @@ class TaskItemLayer : public BaseLayer
 public:
 	TaskItemLayer();
 	~TaskItemLayer();
-	static TaskItemLayer *create(Rank hall);
-	virtual bool init(Rank hall);
+	static TaskItemLayer *create(Task task);
+	virtual bool init(Task task);
 
-	void TouchEvent();
+	void TouchEvent(CCObject *obj, TouchEventType type);
 private:
-	Rank m_hall;
+	Task m_task;
 private:
 
 };

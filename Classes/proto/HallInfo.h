@@ -23,7 +23,7 @@ public:
 	void SendCMail();
 	void HandlerSMail(ccEvent *event);
 
-	void SendSFriend();
+	void SendCFriend();
 	void HandlerSFriend(ccEvent *event);
 
 	void SendCFindFriend(string uid,int type);
@@ -46,10 +46,24 @@ public:
 	void eraseRank(int type,int lv);
 
 	SShop getSShop(int type);
+	SMail getSMail(){
+		return m_pSMail;
+	}
+	SFindFriend getSFindFriend(){
+		return m_pSFindFriend;
+	}
+	SFriend getSFriend(){
+		return m_pSFriend;
+	}
 private:
 	static HallInfo *m_shareHallInfo;
 	map<int, map<int,Rank>> m_pSRanks;
 	map<int, SShop>m_pSShops;
+	SActive m_pSActive;
+	SMail m_pSMail;
+	SFindFriend m_pSFindFriend;
+	SFriend m_pSFriend;
+	
 };
 
 #endif 

@@ -4,6 +4,7 @@
 #include "XXIconv.h"
 #include "MainScene.h"
 #include "GameControl.h"
+#include "GameDataSet.h"
 
 using namespace cocos2d_xx;
 HallInfo *HallInfo::m_shareHallInfo=NULL;
@@ -172,28 +173,94 @@ SShop HallInfo::getSShop(int type){
 }
 
 void HallInfo::SendCMail(){
+	CMail cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMail));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
+	//test
+	char buff[100];
+	SMail sl;
+	for (int i = 0; i < 8; i++){
+		Mail *ml= sl.add_list();
+		ml->set_id(i + 1);
+		sprintf(buff, XXIconv::GBK2UTF("邮件内容测试%d").c_str(),i+1);
+		ml->set_content(buff);
+		sprintf(buff, XXIconv::GBK2UTF("邮件标题%d").c_str(), i + 1);
+		ml->set_title(buff);
+		ml->set_time(GameDataSet::getLocalTime().c_str());
+		ml->set_type(1);
+	}
+	int sz = sl.ByteSize();
+	char *buffer = new char[sz];
+	sl.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(sl.cmd(),buffer,sz);
+	HandlerSMail(ev);
 }
 
 void HallInfo::HandlerSMail(ccEvent *event){
-
+	SMail cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMail));
+	int err = cl.err();
+	if (err == 0){
+		m_pSMail = cl;
+		MailLayer *p = GameControl::getIns()->getMailLayer();
+		if (p){
+			p->AddMailItems();
+		}
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("获取邮箱列表失败"));
+	}
 }
 
-void HallInfo::SendSFriend(){
-
+void HallInfo::SendCFriend(){
+	CFriend cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFriend));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSFriend(ccEvent *event){
-
+	SFriend cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFriend));
+	int err = cl.err();
+	if (err == 0){
+		m_pSFriend = cl;
+		FriendLayer *p = GameControl::getIns()->getFriendLayer();
+		if (p){
+			p->ShowFriendEvent(1);
+		}
+	}
+	else{
+		log("%s",XXIconv::GBK2UTF("获取朋友列表失败").c_str());
+	}
 }
 
 
 void HallInfo::SendCFindFriend(string uid, int type){
-
+	CFindFriend cl;
+	cl.set_uid(uid);
+	cl.set_type(type);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFindFriend));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSFindFriend(ccEvent *event){
-
+	SFindFriend cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFindFriend));
+	int err = cl.err();
+	if (err == 0){
+		m_pSFindFriend = cl;
+		FriendLayer *p = GameControl::getIns()->getFriendLayer();
+		if (p){
+			p->ShowFriendEvent(0);
+		}
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("查找朋友失败").c_str());
+	}
 }
 
 
@@ -225,9 +292,25 @@ void HallInfo::HandlerSAddFriendList(ccEvent *event){
 
 
 void HallInfo::SendCActive(int type){
-
+	CActive cl;
+	cl.set_type(type);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSActive));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSActive(ccEvent *event){
-
+	SActive cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSActive));
+	int err = cl.err();
+	if (err == 0){
+		m_pSActive = cl;
+		ActiveLayer *p = GameControl::getIns()->getActiveLayer();
+		if (p){
+			p->ShowItem(1, 0);
+		}
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("获取活动列表失败"));
+	}
 }

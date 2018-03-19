@@ -14,12 +14,12 @@ class MailItemLayer : public BaseLayer
 public:
 	MailItemLayer();
 	~MailItemLayer();
-	static MailItemLayer *create(Rank hall);
-	virtual bool init(Rank hall);
+	static MailItemLayer *create(Mail mail);
+	virtual bool init(Mail mail);
 
 	void TouchEvent();
 private:
-	Rank m_hall;
+	Mail m_mail;
 private:
 
 };

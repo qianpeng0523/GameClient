@@ -4,7 +4,7 @@
 #include "ClientSocket.h"
 #include "LogoScene.h"
 #include "LoginInfo.h"
-
+#include "HallInfo.h"
 
 
 
@@ -16,7 +16,7 @@ FriendChatItemLayer::~FriendChatItemLayer(){
 
 }
 
-FriendChatItemLayer *FriendChatItemLayer::create(Rank hall){
+FriendChatItemLayer *FriendChatItemLayer::create(Friend hall){
 	FriendChatItemLayer *p = new FriendChatItemLayer();
 	if (p&&p->init(hall)){
 		p->autorelease();
@@ -27,7 +27,7 @@ FriendChatItemLayer *FriendChatItemLayer::create(Rank hall){
 	return p;
 }
 
-bool FriendChatItemLayer::init(Rank hall)
+bool FriendChatItemLayer::init(Friend hall)
 {
 	if (!Layer::init())
 	{
@@ -39,13 +39,44 @@ bool FriendChatItemLayer::init(Rank hall)
 
 	this->setContentSize(m_RootLayer->getSize());
 
-	
+	SEL_TouchEvent selector = toucheventselector(FriendChatItemLayer::TouchEvent);
+	GameDataSet::getButton(m_RootLayer, "chat", selector, this);
+	GameDataSet::getButton(m_RootLayer, "zeng", selector, this);
 
+	bool online = hall.online();
+	string username = hall.userinfo().username();
+	long time = hall.time();
+	char buff[100];
+	sprintf(buff,"[%s]%s",online?XXIconv::GBK2UTF("在线").c_str():XXIconv::GBK2UTF("离线").c_str(),username.c_str());
+	GameDataSet::setText(m_RootLayer, "name", buff);
+	if (time < 60){
+		sprintf(buff,XXIconv::GBK2UTF("上次在线%d秒前").c_str(),time);
+	}
+	else if (time < 60 * 60){
+		sprintf(buff, XXIconv::GBK2UTF("上次在线%d分前").c_str(), time / 60);
+	}
+	else if (time<60*60*24){
+		sprintf(buff, XXIconv::GBK2UTF("上次在线%d小时前").c_str(), time / (60 * 60));
+	}
+	else{
+		sprintf(buff, XXIconv::GBK2UTF("上次在线%d天前").c_str(), time / (60 * 60*24));
+	}
+	GameDataSet::setText(m_RootLayer, "time", buff);
+	
 	return true;
 }
 
-void FriendChatItemLayer::TouchEvent(){
-
+void FriendChatItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
+	Button *btn = (Button *)obj;
+	string name = btn->getName();
+	if (type == TOUCH_EVENT_ENDED){
+		if (name.compare("chat") == 0){
+			log("chat");
+		}
+		else if (name.compare("zeng") == 0){
+			log("zeng");
+		}
+	}
 }
 
 
@@ -113,6 +144,7 @@ void FriendNoticeLayer::TouchEvent(){
 
 
 FriendLayer::FriendLayer(){
+	memset(m_sbg,NULL,sizeof(Layout *));
 	GameControl::getIns()->setFriendLayer(this);
 }
 
@@ -173,11 +205,18 @@ bool FriendLayer::init()
 		sprintf(buff, "sbg%d", i + 1);
 		m_sbg[i] = GameDataSet::getLayout(m_RootLayer, buff);
 	}
+	for (int i = 0; i < 4; i++){
+		sprintf(buff, "smallbg%d", i + 1);
+		Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
+		GameDataSet::getButton(ly, "btn", selector, this);
+	}
+
 	Layout *in = GameDataSet::getLayout(m_RootLayer,"in");
 	m_input = LogoLayer::AddCursorTextField(in,20);
 	m_input->setPlaceHolder(XXIconv::GBK2UTF("请输入对方id号").c_str());
 	m_input->setFontColor(ccc3(0x38,0x4E,0x9C));
 	m_input->setInputMode(ui::EditBox::InputMode::PHONE_NUMBER);
+	HallInfo::getIns()->SendCFindFriend("",2);
     return true;
 }
 
@@ -200,14 +239,30 @@ void FriendLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("search") == 0){
 			string id = m_input->getText();
 			if (!id.empty()){
-
+				HallInfo::getIns()->SendCFindFriend(id, 0);
 			}
 			else{
 				log("%s",XXIconv::GBK2UTF("您输入的id空").c_str());
 			}
 		}
 		else if (name.compare("huan") == 0){
-			
+			HallInfo::getIns()->SendCFindFriend("", 2);
+		}
+		else if (name.compare("btn")==0){
+			string pname = btn->getParent()->getName();
+			log("%s", pname.c_str());
+			if (pname.compare("smallbg1") == 0){
+				
+			}
+			else if (pname.compare("smallbg2") == 0){
+
+			}
+			else if (pname.compare("smallbg3") == 0){
+
+			}
+			else if (pname.compare("smallbg4") == 0){
+
+			}
 		}
 	}
 }
@@ -230,7 +285,20 @@ void FriendLayer::SelectItem(int index){
 		m_btntext[index]->setFntFile("fonts/xiaodan10.fnt");
 	}
 	m_bg[index]->setVisible(true);
-	ShowFriendEvent(index);
+	int count = 0;
+	if (m_sbg[index]){
+		count=m_sbg[index]->getChildrenCount();
+	}
+	if (index==1&&count == 0){
+		HallInfo::getIns()->SendCFriend();
+	}
+	else if (index == 2 && count == 0){
+		HallInfo::getIns()->SendCAddFriendList();
+	}
+	else{
+		ShowFriendEvent(index);
+	}
+	//ShowFriendEvent(index);
 }
 
 void FriendLayer::ShowFriendEvent(int index){
@@ -240,7 +308,7 @@ void FriendLayer::ShowFriendEvent(int index){
 		if (sbg->getChildrenCount() == 0){
 			if (index == 1){
 				for (int i = 0; i < 10; i++){
-					Rank hall;
+					Friend hall;
 					FriendChatItemLayer *p = FriendChatItemLayer::create(hall);
 					GameDataSet::PushScrollItem(sbg, 2, 0, p, i, scroll);
 				}
@@ -256,12 +324,23 @@ void FriendLayer::ShowFriendEvent(int index){
 	}
 	else{
 		char buff[100];
+		SFindFriend fris = HallInfo::getIns()->getSFindFriend();
 		int sz = 3;
 		for (int i = 0; i < 4;i++){
 			sprintf(buff,"smallbg%d",i+1);
 			Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
 			if (i < sz){
-
+				Friend fri;
+				fri.set_acttype(i%3+1);
+				DBUserInfo user = fri.userinfo();
+				sprintf(buff,"10000%d",i);
+				user.set_username(buff);
+				string name = user.username();
+				bool online = fri.online();
+				int act = fri.acttype();
+				GameDataSet::setText(ly, "name", name);
+				sprintf(buff,"friend/HY_LY%d.png",act);
+				GameDataSet::setImageView(ly, "tt", buff, cocos2d::ui::Widget::TextureResType::PLIST);
 			}
 			else{
 				ly->setVisible(false);

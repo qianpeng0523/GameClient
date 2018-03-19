@@ -14,12 +14,12 @@ class FriendChatItemLayer : public BaseLayer
 public:
 	FriendChatItemLayer();
 	~FriendChatItemLayer();
-	static FriendChatItemLayer *create(Rank hall);
-	virtual bool init(Rank hall);
+	static FriendChatItemLayer *create(Friend hall);
+	virtual bool init(Friend hall);
 
-	void TouchEvent();
+	void TouchEvent(CCObject *obj, TouchEventType type);
 private:
-	Rank m_hall;
+	Friend m_hall;
 private:
 
 };

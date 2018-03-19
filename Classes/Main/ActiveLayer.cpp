@@ -4,14 +4,14 @@
 #include "ClientSocket.h"
 #include "LogoScene.h"
 #include "LoginInfo.h"
-
+#include "WebViewCommom.h"
 
 
 
 
 
 ActiveLayer::ActiveLayer(){
-	m_type = 0;
+	m_type = 1;
 	GameControl::getIns()->setActiveLayer(this);
 }
 
@@ -44,7 +44,7 @@ bool ActiveLayer::init()
 	m_btntext[0] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_zhoumo");
 	m_btntext[1] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_denglu");
 	m_btntext[2] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_gongzhong");
-	ShowItem(0,0);
+	ShowItem(m_type,0);
     return true;
 }
 
@@ -66,11 +66,11 @@ void ActiveLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			ShowItem(m_type, 2);
 		}
 		else if (name.compare("btn1") == 0){
-			m_type = 0;
+			m_type = 1;
 			ShowItem(m_type, 0);
 		}
 		else if (name.compare("btn2") == 0){
-			m_type = 1;
+			m_type = 2;
 			ShowItem(m_type, 0);
 		}
 	}
@@ -79,12 +79,12 @@ void ActiveLayer::TouchEvent(CCObject *obj, TouchEventType type){
 void ActiveLayer::ShowItem(int type, int index){
 	char buff[30];
 	for (int i = 0; i < 2; i++){
-		m_titlebtns[i]->setBright(type==i?false:true);
+		m_titlebtns[i]->setBright(type-1==i?false:true);
 		sprintf(buff,"bg%d",i+1);
 		Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
-		ly->setVisible(type==i?true:false);
+		ly->setVisible(type-1==i?true:false);
 	}
-	if (type == 0){
+	if (type == 1){
 		for (int i = 0; i < 3; i++){
 			if (m_btns[i]){
 				m_btns[i]->setBright(true);
@@ -107,4 +107,11 @@ void ActiveLayer::ShowItem(int type, int index){
 		TextBMFont *text = (TextBMFont *)GameDataSet::getLayout(m_RootLayer,"BitmapLabel_gonggao1");
 		text->setFntFile("fonts/xiaodan10.fnt");
 	}
+	
+	sprintf(buff,"sbg%d",type-1);
+	Layout *sbg=GameDataSet::getLayout(m_RootLayer,buff);
+#if(CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+	WebViewCommom *p = WebViewCommom::create("https://baidu.com");
+	sbg->addChild(p);
+#endif
 }
