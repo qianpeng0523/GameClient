@@ -167,6 +167,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Common\MD55.cpp" />
     <ClCompile Include="..\Classes\Common\SpecialAction.cpp" />
     <ClCompile Include="..\Classes\Common\SpriteBlur.cpp" />
+    <ClCompile Include="..\Classes\Common\WebViewCommom.cpp" />
     <ClCompile Include="..\Classes\Common\XXIconv.cpp" />
     <ClCompile Include="..\Classes\cryptopp\aes_core.cpp" />
     <ClCompile Include="..\Classes\cryptopp\crypto_utils.cpp" />
@@ -230,6 +231,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Common\MD55.h" />
     <ClInclude Include="..\Classes\Common\SpecialAction.h" />
     <ClInclude Include="..\Classes\Common\SpriteBlur.h" />
+    <ClInclude Include="..\Classes\Common\WebViewCommom.h" />
     <ClInclude Include="..\Classes\Common\XXIconv.h" />
     <ClInclude Include="..\Classes\Common\XXMacros.h" />
     <ClInclude Include="..\Classes\cryptopp\aes.h" />

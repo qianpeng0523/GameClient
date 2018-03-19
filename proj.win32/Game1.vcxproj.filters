@@ -216,6 +216,9 @@
     <ClCompile Include="..\Classes\proto\HallInfo.cpp">
       <Filter>Classes\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Common\WebViewCommom.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -454,6 +457,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\proto\HallInfo.h">
       <Filter>Classes\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\WebViewCommom.h">
+      <Filter>Classes\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
