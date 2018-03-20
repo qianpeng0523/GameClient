@@ -31,12 +31,12 @@ class FriendNoticeLayer : public BaseLayer
 public:
 	FriendNoticeLayer();
 	~FriendNoticeLayer();
-	static FriendNoticeLayer *create(Rank hall);
-	virtual bool init(Rank hall);
+	static FriendNoticeLayer *create(FriendNotice hall);
+	virtual bool init(FriendNotice hall);
 
-	void TouchEvent();
+	void TouchEvent(CCObject *obj, TouchEventType type);
 private:
-	Rank m_hall;
+	FriendNotice m_hall;
 private:
 
 };

@@ -75,6 +75,7 @@ void FriendChatItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		}
 		else if (name.compare("zeng") == 0){
 			log("zeng");
+			HallInfo::getIns()->SendCGiveFriend(m_hall.userinfo().username());
 		}
 	}
 }
@@ -93,7 +94,7 @@ FriendNoticeLayer::~FriendNoticeLayer(){
 
 }
 
-FriendNoticeLayer *FriendNoticeLayer::create(Rank hall){
+FriendNoticeLayer *FriendNoticeLayer::create(FriendNotice hall){
 	FriendNoticeLayer *p = new FriendNoticeLayer();
 	if (p&&p->init(hall)){
 		p->autorelease();
@@ -104,7 +105,7 @@ FriendNoticeLayer *FriendNoticeLayer::create(Rank hall){
 	return p;
 }
 
-bool FriendNoticeLayer::init(Rank hall)
+bool FriendNoticeLayer::init(FriendNotice hall)
 {
 	if (!Layer::init())
 	{
@@ -116,13 +117,34 @@ bool FriendNoticeLayer::init(Rank hall)
 
 	this->setContentSize(m_RootLayer->getSize());
 
+	SEL_TouchEvent selector = toucheventselector(FriendNoticeLayer::TouchEvent);
+	GameDataSet::getButton(m_RootLayer, "btn1", selector, this);
+	GameDataSet::getButton(m_RootLayer, "btn2", selector, this);
 
+	string content = hall.notice().content();
+	string time = hall.notice().time();
+	GameDataSet::setText(m_RootLayer, "content", content);
+	GameDataSet::setText(m_RootLayer, "time", time);
+
+	bool isadd = hall.add();
+	Layout *bg = GameDataSet::getLayout(m_RootLayer,"btnbg");
+	if (bg){
+		bg->setVisible(isadd);
+	}
 
 	return true;
 }
 
-void FriendNoticeLayer::TouchEvent(){
-
+void FriendNoticeLayer::TouchEvent(CCObject *obj, TouchEventType type){
+	Button *btn = (Button *)obj;
+	string name = btn->getName();
+	if (type == TOUCH_EVENT_ENDED){
+		if (name.compare("btn1") == 0){
+			log("%s",XXIconv::GBK2UTF("拒绝").c_str());
+		}else if (name.compare("btn2") == 0){
+			log("%s", XXIconv::GBK2UTF("同意").c_str());
+		}
+	}
 }
 
 
@@ -192,7 +214,7 @@ bool FriendLayer::init()
 	m_bg[0] = GameDataSet::getLayout(m_RootLayer,"findbg");
 	m_bg[1] = GameDataSet::getLayout(m_RootLayer, "friendbg");
 	m_bg[2] = GameDataSet::getLayout(m_RootLayer, "tongzhibg");
-	SelectItem(0);
+	
 
 	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
 	string uid = user.userid();
@@ -210,7 +232,7 @@ bool FriendLayer::init()
 		Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
 		GameDataSet::getButton(ly, "btn", selector, this);
 	}
-
+	SelectItem(0);
 	Layout *in = GameDataSet::getLayout(m_RootLayer,"in");
 	m_input = LogoLayer::AddCursorTextField(in,20);
 	m_input->setPlaceHolder(XXIconv::GBK2UTF("请输入对方id号").c_str());
@@ -286,8 +308,8 @@ void FriendLayer::SelectItem(int index){
 	}
 	m_bg[index]->setVisible(true);
 	int count = 0;
-	if (m_sbg[index]){
-		count=m_sbg[index]->getChildrenCount();
+	if (index>0&& m_sbg[index-1]){
+		count=m_sbg[index-1]->getChildrenCount();
 	}
 	if (index==1&&count == 0){
 		HallInfo::getIns()->SendCFriend();
@@ -298,6 +320,9 @@ void FriendLayer::SelectItem(int index){
 	else{
 		ShowFriendEvent(index);
 	}
+	if (m_sbg[index - 1]){
+		log("sbgname:%s",m_sbg[index-1]->getName().c_str());
+	}
 	//ShowFriendEvent(index);
 }
 
@@ -307,15 +332,19 @@ void FriendLayer::ShowFriendEvent(int index){
 		Layout *sbg = m_sbg[index-1];
 		if (sbg->getChildrenCount() == 0){
 			if (index == 1){
-				for (int i = 0; i < 10; i++){
-					Friend hall;
+				SFriend sf = HallInfo::getIns()->getSFriend();
+				int sz = sf.list_size();
+				for (int i = 0; i < sz; i++){
+					Friend hall=sf.list(i);
 					FriendChatItemLayer *p = FriendChatItemLayer::create(hall);
-					GameDataSet::PushScrollItem(sbg, 2, 0, p, i, scroll);
+					GameDataSet::PushScrollItem(sbg, 1, 0, p, i, scroll);
 				}
 			}
 			else{
-				for (int i = 0; i < 10; i++){
-					Rank hall;
+				SAddFriendList sff = HallInfo::getIns()->getSAddFriendList();
+				int sz = sff.list_size();
+				for (int i = 0; i < sz; i++){
+					FriendNotice hall=sff.list(i);
 					FriendNoticeLayer *p = FriendNoticeLayer::create(hall);
 					GameDataSet::PushScrollItem(sbg, 0, 0, p, i, scroll);
 				}
@@ -325,22 +354,20 @@ void FriendLayer::ShowFriendEvent(int index){
 	else{
 		char buff[100];
 		SFindFriend fris = HallInfo::getIns()->getSFindFriend();
-		int sz = 3;
+		int sz = fris.list_size();
 		for (int i = 0; i < 4;i++){
 			sprintf(buff,"smallbg%d",i+1);
 			Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
 			if (i < sz){
-				Friend fri;
-				fri.set_acttype(i%3+1);
+				Friend fri=fris.list(i);
 				DBUserInfo user = fri.userinfo();
-				sprintf(buff,"10000%d",i);
-				user.set_username(buff);
 				string name = user.username();
 				bool online = fri.online();
 				int act = fri.acttype();
 				GameDataSet::setText(ly, "name", name);
 				sprintf(buff,"friend/HY_LY%d.png",act);
 				GameDataSet::setImageView(ly, "tt", buff, cocos2d::ui::Widget::TextureResType::PLIST);
+				ly->setVisible(true);
 			}
 			else{
 				ly->setVisible(false);

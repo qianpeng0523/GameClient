@@ -4,7 +4,7 @@
 #include "ClientSocket.h"
 #include "LogoScene.h"
 #include "LoginInfo.h"
-
+#include "HallInfo.h"
 
 
 
@@ -48,7 +48,7 @@ bool TaskItemLayer::init(Task task)
 	int fcount = task.fcount();
 	int taskid = task.taskid();
 	int finish = task.finish();
-	Prop prop = task.award();
+	Prop prop = task.award(0);
 	int id = prop.id();
 	string name = prop.name();
 	int number = prop.number();
@@ -66,16 +66,19 @@ bool TaskItemLayer::init(Task task)
 
 	Layout *biao = GameDataSet::getLayout(m_RootLayer,"qd");
 	if (finish == 2){
-		btn->setBright(false);
-		biao->setVisible(false);
+		btn->setVisible(false);
+		biao->setVisible(true);
 	}
 	else if (finish == 0){
 		btn->setBright(false);
 		biao->setVisible(false);
 	}
 	else{
-		biao->setVisible(true);
+		biao->setVisible(false);
 	}
+
+	
+
 	return true;
 }
 
@@ -83,9 +86,11 @@ void TaskItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	Button *btn = (Button *)obj;
 	string name = btn->getName();
 	if (type == TOUCH_EVENT_ENDED){
-		UserDefault *p = UserDefault::sharedUserDefault();
 		if (name.compare("btn") == 0){
-
+			int type = m_task.type();
+			int id = m_task.taskid();
+			log("task:type:%d,id:%d",type,id);
+			HallInfo::getIns()->SendCReward(type,id);
 		}
 	}
 }
@@ -150,8 +155,8 @@ bool TaskLayer::init()
 	m_btntext[1] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_jinri");
 	m_btntext[2] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_benzhou");
 	m_btntext[3] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_dingshi");
-
-	AddTaskItems(0);
+	HallInfo::getIns()->SendCTask();
+	
     return true;
 }
 
@@ -202,10 +207,17 @@ void TaskLayer::AddTaskItems(int index){
 		m_btntext[index]->setFntFile("fonts/xiaodan10.fnt");
 	}
 	if (m_sbg[index]->getChildrenCount() == 0){
-		for (int i = 0; i < 10; i++){
-			Task rk;
-			TaskItemLayer *p = TaskItemLayer::create(rk);
-			GameDataSet::PushScrollItem(m_sbg[index], 0, 0, p, i, m_ScrollView[index]);
+		char buff[100];
+		STask st = HallInfo::getIns()->getSTask();
+		int sz = st.list_size();
+		int count = 0;
+		for (int i = 0; i < sz; i++){
+			Task rk=st.list(i);
+			if (rk.type() == index + 1){
+				TaskItemLayer *p = TaskItemLayer::create(rk);
+				GameDataSet::PushScrollItem(m_sbg[index], 0, 0, p, count, m_ScrollView[index]);
+				count++;
+			}
 		}
 	}
 }

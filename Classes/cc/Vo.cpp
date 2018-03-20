@@ -32,6 +32,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* Mail_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Mail_reflection_ = NULL;
+const ::google::protobuf::Descriptor* FriendNotice_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  FriendNotice_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Friend_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Friend_reflection_ = NULL;
@@ -128,7 +131,23 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Mail));
-  Friend_descriptor_ = file->message_type(4);
+  FriendNotice_descriptor_ = file->message_type(4);
+  static const int FriendNotice_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FriendNotice, notice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FriendNotice, add_),
+  };
+  FriendNotice_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      FriendNotice_descriptor_,
+      FriendNotice::default_instance_,
+      FriendNotice_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FriendNotice, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FriendNotice, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(FriendNotice));
+  Friend_descriptor_ = file->message_type(5);
   static const int Friend_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Friend, userinfo_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Friend, online_),
@@ -147,7 +166,7 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Friend));
-  Active_descriptor_ = file->message_type(5);
+  Active_descriptor_ = file->message_type(6);
   static const int Active_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Active, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Active, type_),
@@ -165,8 +184,8 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Active));
-  Task_descriptor_ = file->message_type(6);
-  static const int Task_offsets_[7] = {
+  Task_descriptor_ = file->message_type(7);
+  static const int Task_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Task, taskid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Task, title_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Task, content_),
@@ -174,6 +193,7 @@ void protobuf_AssignDesc_Vo_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Task, fcount_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Task, finish_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Task, award_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Task, type_),
   };
   Task_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -207,6 +227,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Mail_descriptor_, &Mail::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    FriendNotice_descriptor_, &FriendNotice::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Friend_descriptor_, &Friend::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Active_descriptor_, &Active::default_instance());
@@ -225,6 +247,8 @@ void protobuf_ShutdownFile_Vo_2eproto() {
   delete ShopItem_reflection_;
   delete Mail::default_instance_;
   delete Mail_reflection_;
+  delete FriendNotice::default_instance_;
+  delete FriendNotice_reflection_;
   delete Friend::default_instance_;
   delete Friend_reflection_;
   delete Active::default_instance_;
@@ -250,21 +274,24 @@ void protobuf_AddDesc_Vo_2eproto() {
     "col.Prop\022\014\n\004type\030\003 \001(\r\022\016\n\006number\030\004 \001(\r\022\017"
     "\n\007givenum\030\005 \001(\r\022\013\n\003hot\030\006 \001(\010\"N\n\004Mail\022\n\n\002"
     "id\030\001 \002(\r\022\014\n\004type\030\002 \001(\r\022\r\n\005title\030\003 \001(\t\022\017\n"
-    "\007content\030\004 \001(\t\022\014\n\004time\030\005 \001(\t\"o\n\006Friend\022&"
-    "\n\010userinfo\030\001 \001(\0132\024.protocol.DBUserInfo\022\016"
-    "\n\006online\030\002 \001(\010\022\016\n\006friend\030\003 \001(\010\022\017\n\007acttyp"
-    "e\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\">\n\006Active\022\n\n\002id\030\001 "
-    "\001(\r\022\014\n\004type\030\002 \001(\r\022\r\n\005title\030\003 \001(\t\022\013\n\003url\030"
-    "\004 \001(\t\"\204\001\n\004Task\022\016\n\006taskid\030\001 \001(\r\022\r\n\005title\030"
-    "\002 \001(\t\022\017\n\007content\030\003 \001(\t\022\r\n\005count\030\004 \001(\r\022\016\n"
-    "\006fcount\030\005 \001(\r\022\016\n\006finish\030\006 \001(\r\022\035\n\005award\030\007"
-    " \001(\0132\016.protocol.Prop", 700);
+    "\007content\030\004 \001(\t\022\014\n\004time\030\005 \001(\t\";\n\014FriendNo"
+    "tice\022\036\n\006notice\030\001 \002(\0132\016.protocol.Mail\022\013\n\003"
+    "add\030\002 \001(\010\"o\n\006Friend\022&\n\010userinfo\030\001 \001(\0132\024."
+    "protocol.DBUserInfo\022\016\n\006online\030\002 \001(\010\022\016\n\006f"
+    "riend\030\003 \001(\010\022\017\n\007acttype\030\004 \001(\r\022\014\n\004time\030\005 \001"
+    "(\r\">\n\006Active\022\n\n\002id\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022\r"
+    "\n\005title\030\003 \001(\t\022\013\n\003url\030\004 \001(\t\"\222\001\n\004Task\022\016\n\006t"
+    "askid\030\001 \001(\r\022\r\n\005title\030\002 \001(\t\022\017\n\007content\030\003 "
+    "\001(\t\022\r\n\005count\030\004 \001(\r\022\016\n\006fcount\030\005 \001(\r\022\016\n\006fi"
+    "nish\030\006 \001(\r\022\035\n\005award\030\007 \003(\0132\016.protocol.Pro"
+    "p\022\014\n\004type\030\010 \001(\r", 775);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Vo.proto", &protobuf_RegisterTypes);
   Rank::default_instance_ = new Rank();
   Prop::default_instance_ = new Prop();
   ShopItem::default_instance_ = new ShopItem();
   Mail::default_instance_ = new Mail();
+  FriendNotice::default_instance_ = new FriendNotice();
   Friend::default_instance_ = new Friend();
   Active::default_instance_ = new Active();
   Task::default_instance_ = new Task();
@@ -272,6 +299,7 @@ void protobuf_AddDesc_Vo_2eproto() {
   Prop::default_instance_->InitAsDefaultInstance();
   ShopItem::default_instance_->InitAsDefaultInstance();
   Mail::default_instance_->InitAsDefaultInstance();
+  FriendNotice::default_instance_->InitAsDefaultInstance();
   Friend::default_instance_->InitAsDefaultInstance();
   Active::default_instance_->InitAsDefaultInstance();
   Task::default_instance_->InitAsDefaultInstance();
@@ -1928,6 +1956,261 @@ void Mail::Swap(Mail* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int FriendNotice::kNoticeFieldNumber;
+const int FriendNotice::kAddFieldNumber;
+#endif  // !_MSC_VER
+
+FriendNotice::FriendNotice()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void FriendNotice::InitAsDefaultInstance() {
+  notice_ = const_cast< ::protocol::Mail*>(&::protocol::Mail::default_instance());
+}
+
+FriendNotice::FriendNotice(const FriendNotice& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void FriendNotice::SharedCtor() {
+  _cached_size_ = 0;
+  notice_ = NULL;
+  add_ = false;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+FriendNotice::~FriendNotice() {
+  SharedDtor();
+}
+
+void FriendNotice::SharedDtor() {
+  if (this != default_instance_) {
+    delete notice_;
+  }
+}
+
+void FriendNotice::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* FriendNotice::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return FriendNotice_descriptor_;
+}
+
+const FriendNotice& FriendNotice::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Vo_2eproto();
+  return *default_instance_;
+}
+
+FriendNotice* FriendNotice::default_instance_ = NULL;
+
+FriendNotice* FriendNotice::New() const {
+  return new FriendNotice;
+}
+
+void FriendNotice::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_notice()) {
+      if (notice_ != NULL) notice_->::protocol::Mail::Clear();
+    }
+    add_ = false;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool FriendNotice::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .protocol.Mail notice = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_notice()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_add;
+        break;
+      }
+
+      // optional bool add = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_add:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &add_)));
+          set_has_add();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void FriendNotice::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required .protocol.Mail notice = 1;
+  if (has_notice()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->notice(), output);
+  }
+
+  // optional bool add = 2;
+  if (has_add()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->add(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* FriendNotice::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required .protocol.Mail notice = 1;
+  if (has_notice()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->notice(), target);
+  }
+
+  // optional bool add = 2;
+  if (has_add()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->add(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int FriendNotice::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required .protocol.Mail notice = 1;
+    if (has_notice()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->notice());
+    }
+
+    // optional bool add = 2;
+    if (has_add()) {
+      total_size += 1 + 1;
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void FriendNotice::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const FriendNotice* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const FriendNotice*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void FriendNotice::MergeFrom(const FriendNotice& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_notice()) {
+      mutable_notice()->::protocol::Mail::MergeFrom(from.notice());
+    }
+    if (from.has_add()) {
+      set_add(from.add());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void FriendNotice::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void FriendNotice::CopyFrom(const FriendNotice& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool FriendNotice::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (has_notice()) {
+    if (!this->notice().IsInitialized()) return false;
+  }
+  return true;
+}
+
+void FriendNotice::Swap(FriendNotice* other) {
+  if (other != this) {
+    std::swap(notice_, other->notice_);
+    std::swap(add_, other->add_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata FriendNotice::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = FriendNotice_descriptor_;
+  metadata.reflection = FriendNotice_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int Friend::kUserinfoFieldNumber;
 const int Friend::kOnlineFieldNumber;
 const int Friend::kFriendFieldNumber;
@@ -2669,6 +2952,7 @@ const int Task::kCountFieldNumber;
 const int Task::kFcountFieldNumber;
 const int Task::kFinishFieldNumber;
 const int Task::kAwardFieldNumber;
+const int Task::kTypeFieldNumber;
 #endif  // !_MSC_VER
 
 Task::Task()
@@ -2677,7 +2961,6 @@ Task::Task()
 }
 
 void Task::InitAsDefaultInstance() {
-  award_ = const_cast< ::protocol::Prop*>(&::protocol::Prop::default_instance());
 }
 
 Task::Task(const Task& from)
@@ -2694,7 +2977,7 @@ void Task::SharedCtor() {
   count_ = 0u;
   fcount_ = 0u;
   finish_ = 0u;
-  award_ = NULL;
+  type_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2710,7 +2993,6 @@ void Task::SharedDtor() {
     delete content_;
   }
   if (this != default_instance_) {
-    delete award_;
   }
 }
 
@@ -2751,10 +3033,9 @@ void Task::Clear() {
     count_ = 0u;
     fcount_ = 0u;
     finish_ = 0u;
-    if (has_award()) {
-      if (award_ != NULL) award_->::protocol::Prop::Clear();
-    }
+    type_ = 0u;
   }
+  award_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -2862,13 +3143,30 @@ bool Task::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .protocol.Prop award = 7;
+      // repeated .protocol.Prop award = 7;
       case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_award:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_award()));
+                input, add_award()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(58)) goto parse_award;
+        if (input->ExpectTag(64)) goto parse_type;
+        break;
+      }
+
+      // optional uint32 type = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_type:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &type_)));
+          set_has_type();
         } else {
           goto handle_uninterpreted;
         }
@@ -2932,10 +3230,15 @@ void Task::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->finish(), output);
   }
 
-  // optional .protocol.Prop award = 7;
-  if (has_award()) {
+  // repeated .protocol.Prop award = 7;
+  for (int i = 0; i < this->award_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->award(), output);
+      7, this->award(i), output);
+  }
+
+  // optional uint32 type = 8;
+  if (has_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->type(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2986,11 +3289,16 @@ void Task::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->finish(), target);
   }
 
-  // optional .protocol.Prop award = 7;
-  if (has_award()) {
+  // repeated .protocol.Prop award = 7;
+  for (int i = 0; i < this->award_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        7, this->award(), target);
+        7, this->award(i), target);
+  }
+
+  // optional uint32 type = 8;
+  if (has_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->type(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3046,14 +3354,22 @@ int Task::ByteSize() const {
           this->finish());
     }
 
-    // optional .protocol.Prop award = 7;
-    if (has_award()) {
+    // optional uint32 type = 8;
+    if (has_type()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->award());
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->type());
     }
 
   }
+  // repeated .protocol.Prop award = 7;
+  total_size += 1 * this->award_size();
+  for (int i = 0; i < this->award_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->award(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -3079,6 +3395,7 @@ void Task::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Task::MergeFrom(const Task& from) {
   GOOGLE_CHECK_NE(&from, this);
+  award_.MergeFrom(from.award_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_taskid()) {
       set_taskid(from.taskid());
@@ -3098,8 +3415,8 @@ void Task::MergeFrom(const Task& from) {
     if (from.has_finish()) {
       set_finish(from.finish());
     }
-    if (from.has_award()) {
-      mutable_award()->::protocol::Prop::MergeFrom(from.award());
+    if (from.has_type()) {
+      set_type(from.type());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -3119,8 +3436,8 @@ void Task::CopyFrom(const Task& from) {
 
 bool Task::IsInitialized() const {
 
-  if (has_award()) {
-    if (!this->award().IsInitialized()) return false;
+  for (int i = 0; i < award_size(); i++) {
+    if (!this->award(i).IsInitialized()) return false;
   }
   return true;
 }
@@ -3133,7 +3450,8 @@ void Task::Swap(Task* other) {
     std::swap(count_, other->count_);
     std::swap(fcount_, other->fcount_);
     std::swap(finish_, other->finish_);
-    std::swap(award_, other->award_);
+    award_.Swap(&other->award_);
+    std::swap(type_, other->type_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

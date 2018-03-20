@@ -29,6 +29,10 @@ HallInfo::HallInfo()
 	pe->registerProto(sr8.cmd(), sr8.GetTypeName());
 	SActive sl9;
 	pe->registerProto(sl9.cmd(), sl9.GetTypeName());
+	STask sl10;
+	pe->registerProto(sl10.cmd(), sl10.GetTypeName());
+	SReward sl11;
+	pe->registerProto(sl11.cmd(), sl11.GetTypeName());
 	
 }
 
@@ -218,6 +222,25 @@ void HallInfo::SendCFriend(){
 	CFriend cl;
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+
+	//test
+	SFriend sf;
+	for (int i = 0; i < 7;i++){
+		Friend *fri=sf.add_list();
+		fri->set_acttype(i%3+1);
+		fri->set_time(GameDataSet::getTime());
+		char buff[100];
+		DBUserInfo us;
+		DBUserInfo *user = (DBUserInfo *)ccEvent::create_message(us.GetTypeName());
+		sprintf(buff, "10000%d", i);
+		user->set_username(buff);
+		fri->set_allocated_userinfo(user);
+	}
+	int sz = sf.ByteSize();
+	char *buffer = new char[sz];
+	sf.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(sf.cmd(),buffer,sz);
+	HandlerSFriend(ev);
 }
 
 void HallInfo::HandlerSFriend(ccEvent *event){
@@ -244,6 +267,27 @@ void HallInfo::SendCFindFriend(string uid, int type){
 	cl.set_type(type);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFindFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+
+	//test
+	char buff[100];
+	SFindFriend fris;
+	for (int i = 0; i < 2; i++){
+		Friend *fri = fris.add_list();
+		fri->set_acttype(i % 3 + 1);
+		fri->set_online(i % 2);
+		fri->set_time(GameDataSet::getTime());
+		DBUserInfo us;
+		DBUserInfo *user= (DBUserInfo *)ccEvent::create_message(us.GetTypeName());
+		sprintf(buff, "10000%d", i);
+		user->set_username(buff);
+		fri->set_allocated_userinfo(user);
+
+	}
+	int sz = fris.ByteSize();
+	char *buffer = new char[sz];
+	fris.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(fris.cmd(), buffer, sz);
+	HandlerSFindFriend(ev);
 }
 
 void HallInfo::HandlerSFindFriend(ccEvent *event){
@@ -265,16 +309,28 @@ void HallInfo::HandlerSFindFriend(ccEvent *event){
 
 
 void HallInfo::SendCGiveFriend(string uid){
-
+	CGiveFriend cl;
+	cl.set_uid(uid);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSGiveFriend));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSGiveFriend(ccEvent *event){
-
+	SFindFriend cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSGiveFriend));
+	int err = cl.err();
+	if (err == 0){
+		log("%s", XXIconv::GBK2UTF("赠送好友金币成功").c_str());
+	}
+	else{
+		log("%s",XXIconv::GBK2UTF("赠送好友金币失败").c_str());
+	}
 }
 
 
 void HallInfo::SendCAddFriend(string uid){
-
+	
 }
 
 void HallInfo::HandlerSAddFriend(ccEvent *event){
@@ -283,11 +339,50 @@ void HallInfo::HandlerSAddFriend(ccEvent *event){
 
 
 void HallInfo::SendCAddFriendList(){
+	CAddFriendList cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriendList));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
+	//test
+	char buff[100];
+	SAddFriendList fris;
+	for (int i = 0; i < 5; i++){
+		FriendNotice *fri = fris.add_list();
+		fri->set_add(i%2);
+		Mail ml1;
+		Mail *ml = (Mail *)ccEvent::create_message(ml1.GetTypeName());
+		ml->set_id(i + 1);
+		sprintf(buff, XXIconv::GBK2UTF("好友通知内容测试%d").c_str(), i + 1);
+		ml->set_content(buff);
+		sprintf(buff, XXIconv::GBK2UTF("邮件标题%d").c_str(), i + 1);
+		ml->set_title(buff);
+		ml->set_time(GameDataSet::getLocalTime().c_str());
+		ml->set_type(1);
+		fri->set_allocated_notice(ml);
+	}
+	int sz = fris.ByteSize();
+	char *buffer = new char[sz];
+	fris.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(fris.cmd(), buffer, sz);
+	HandlerSAddFriendList(ev);
 }
 
 void HallInfo::HandlerSAddFriendList(ccEvent *event){
-
+	SAddFriendList cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriendList));
+	int err = cl.err();
+	if (err == 0){
+		m_pSAddFriendList = cl;
+		FriendLayer *p = GameControl::getIns()->getFriendLayer();
+		if (p){
+			p->ShowFriendEvent(2);
+		}
+		log("%s", XXIconv::GBK2UTF("获取列表成功").c_str());
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("获取列表失败").c_str());
+	}
 }
 
 
@@ -313,4 +408,66 @@ void HallInfo::HandlerSActive(ccEvent *event){
 	else{
 		log("%s", XXIconv::GBK2UTF("获取活动列表失败"));
 	}
+}
+
+void HallInfo::SendCTask(){
+	CTask cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSTask));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+
+	//test
+	char buff[50];
+	STask st;
+	for (int i = 0; i < 20;i++){
+		Task *ts = st.add_list();
+		sprintf(buff,XXIconv::GBK2UTF("登录奖励%d").c_str(),i%4+1);
+		ts->set_title(buff);
+		ts->set_content(XXIconv::GBK2UTF("完成任务可获得大量金币"));
+		ts->set_taskid(i + 1);
+		int count = 3 * (i % 4) + 1;
+		ts->set_count(count);
+		int fcount = 2 * (i % 3) + 1;
+		ts->set_fcount(fcount);
+		if (count <= fcount){
+			ts->set_finish(i%2+1);
+		}
+		else{
+			ts->set_finish(0);
+		}
+		ts->set_type(i / 4 + 1);
+		Prop *prop = ts->add_award();
+		prop->set_id(1);
+		prop->set_name(XXIconv::GBK2UTF("金币"));
+		prop->set_number(i*(i / 4) * 1500);
+	}
+	int sz = st.ByteSize();
+	char *buffer = new char[sz];
+	st.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(st.cmd(), buffer, sz);
+	HandlerSTask(ev);
+}
+
+void HallInfo::HandlerSTask(ccEvent *event){
+	STask cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSTask));
+	int err = cl.err();
+	if (err == 0){
+		m_pSTask = cl;
+		TaskLayer *p = GameControl::getIns()->getTaskLayer();
+		if (p){
+			p->AddTaskItems(0);
+		}
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("获取活动列表失败"));
+	}
+}
+
+void HallInfo::SendCReward(int type, int id){
+
+}
+
+void HallInfo::HandlerSReward(ccEvent *event){
+
 }

@@ -41,6 +41,11 @@ public:
 	void SendCActive(int type);
 	void HandlerSActive(ccEvent *event);
 
+	void SendCTask();
+	void HandlerSTask(ccEvent *event);
+
+	void SendCReward(int type,int id);
+	void HandlerSReward(ccEvent *event);
 
 	map<int, Rank> getSRank(int type);
 	void eraseRank(int type,int lv);
@@ -55,6 +60,12 @@ public:
 	SFriend getSFriend(){
 		return m_pSFriend;
 	}
+	SAddFriendList getSAddFriendList(){
+		return m_pSAddFriendList;
+	}
+	STask getSTask(){
+		return m_pSTask;
+	}
 private:
 	static HallInfo *m_shareHallInfo;
 	map<int, map<int,Rank>> m_pSRanks;
@@ -63,7 +74,8 @@ private:
 	SMail m_pSMail;
 	SFindFriend m_pSFindFriend;
 	SFriend m_pSFriend;
-	
+	SAddFriendList m_pSAddFriendList;
+	STask m_pSTask;
 };
 
 #endif 

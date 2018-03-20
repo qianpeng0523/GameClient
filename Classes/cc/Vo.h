@@ -38,6 +38,7 @@ class Rank;
 class Prop;
 class ShopItem;
 class Mail;
+class FriendNotice;
 class Friend;
 class Active;
 class Task;
@@ -579,6 +580,100 @@ class Mail : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class FriendNotice : public ::google::protobuf::Message {
+ public:
+  FriendNotice();
+  virtual ~FriendNotice();
+
+  FriendNotice(const FriendNotice& from);
+
+  inline FriendNotice& operator=(const FriendNotice& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FriendNotice& default_instance();
+
+  void Swap(FriendNotice* other);
+
+  // implements Message ----------------------------------------------
+
+  FriendNotice* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FriendNotice& from);
+  void MergeFrom(const FriendNotice& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .protocol.Mail notice = 1;
+  inline bool has_notice() const;
+  inline void clear_notice();
+  static const int kNoticeFieldNumber = 1;
+  inline const ::protocol::Mail& notice() const;
+  inline ::protocol::Mail* mutable_notice();
+  inline ::protocol::Mail* release_notice();
+  inline void set_allocated_notice(::protocol::Mail* notice);
+
+  // optional bool add = 2;
+  inline bool has_add() const;
+  inline void clear_add();
+  static const int kAddFieldNumber = 2;
+  inline bool add() const;
+  inline void set_add(bool value);
+
+  // @@protoc_insertion_point(class_scope:protocol.FriendNotice)
+ private:
+  inline void set_has_notice();
+  inline void clear_has_notice();
+  inline void set_has_add();
+  inline void clear_has_add();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::protocol::Mail* notice_;
+  bool add_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Vo_2eproto();
+  friend void protobuf_AssignDesc_Vo_2eproto();
+  friend void protobuf_ShutdownFile_Vo_2eproto();
+
+  void InitAsDefaultInstance();
+  static FriendNotice* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class Friend : public ::google::protobuf::Message {
  public:
   Friend();
@@ -931,14 +1026,24 @@ class Task : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 finish() const;
   inline void set_finish(::google::protobuf::uint32 value);
 
-  // optional .protocol.Prop award = 7;
-  inline bool has_award() const;
+  // repeated .protocol.Prop award = 7;
+  inline int award_size() const;
   inline void clear_award();
   static const int kAwardFieldNumber = 7;
-  inline const ::protocol::Prop& award() const;
-  inline ::protocol::Prop* mutable_award();
-  inline ::protocol::Prop* release_award();
-  inline void set_allocated_award(::protocol::Prop* award);
+  inline const ::protocol::Prop& award(int index) const;
+  inline ::protocol::Prop* mutable_award(int index);
+  inline ::protocol::Prop* add_award();
+  inline const ::google::protobuf::RepeatedPtrField< ::protocol::Prop >&
+      award() const;
+  inline ::google::protobuf::RepeatedPtrField< ::protocol::Prop >*
+      mutable_award();
+
+  // optional uint32 type = 8;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 8;
+  inline ::google::protobuf::uint32 type() const;
+  inline void set_type(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:protocol.Task)
  private:
@@ -954,8 +1059,8 @@ class Task : public ::google::protobuf::Message {
   inline void clear_has_fcount();
   inline void set_has_finish();
   inline void clear_has_finish();
-  inline void set_has_award();
-  inline void clear_has_award();
+  inline void set_has_type();
+  inline void clear_has_type();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -965,10 +1070,11 @@ class Task : public ::google::protobuf::Message {
   ::std::string* content_;
   ::google::protobuf::uint32 fcount_;
   ::google::protobuf::uint32 finish_;
-  ::protocol::Prop* award_;
+  ::google::protobuf::RepeatedPtrField< ::protocol::Prop > award_;
+  ::google::protobuf::uint32 type_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_Vo_2eproto();
   friend void protobuf_AssignDesc_Vo_2eproto();
@@ -1812,6 +1918,70 @@ inline void Mail::set_allocated_time(::std::string* time) {
 
 // -------------------------------------------------------------------
 
+// FriendNotice
+
+// required .protocol.Mail notice = 1;
+inline bool FriendNotice::has_notice() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FriendNotice::set_has_notice() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FriendNotice::clear_has_notice() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FriendNotice::clear_notice() {
+  if (notice_ != NULL) notice_->::protocol::Mail::Clear();
+  clear_has_notice();
+}
+inline const ::protocol::Mail& FriendNotice::notice() const {
+  return notice_ != NULL ? *notice_ : *default_instance_->notice_;
+}
+inline ::protocol::Mail* FriendNotice::mutable_notice() {
+  set_has_notice();
+  if (notice_ == NULL) notice_ = new ::protocol::Mail;
+  return notice_;
+}
+inline ::protocol::Mail* FriendNotice::release_notice() {
+  clear_has_notice();
+  ::protocol::Mail* temp = notice_;
+  notice_ = NULL;
+  return temp;
+}
+inline void FriendNotice::set_allocated_notice(::protocol::Mail* notice) {
+  delete notice_;
+  notice_ = notice;
+  if (notice) {
+    set_has_notice();
+  } else {
+    clear_has_notice();
+  }
+}
+
+// optional bool add = 2;
+inline bool FriendNotice::has_add() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FriendNotice::set_has_add() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FriendNotice::clear_has_add() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FriendNotice::clear_add() {
+  add_ = false;
+  clear_has_add();
+}
+inline bool FriendNotice::add() const {
+  return add_;
+}
+inline void FriendNotice::set_add(bool value) {
+  set_has_add();
+  add_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // Friend
 
 // optional .protocol.DBUserInfo userinfo = 1;
@@ -2360,42 +2530,51 @@ inline void Task::set_finish(::google::protobuf::uint32 value) {
   finish_ = value;
 }
 
-// optional .protocol.Prop award = 7;
-inline bool Task::has_award() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void Task::set_has_award() {
-  _has_bits_[0] |= 0x00000040u;
-}
-inline void Task::clear_has_award() {
-  _has_bits_[0] &= ~0x00000040u;
+// repeated .protocol.Prop award = 7;
+inline int Task::award_size() const {
+  return award_.size();
 }
 inline void Task::clear_award() {
-  if (award_ != NULL) award_->::protocol::Prop::Clear();
-  clear_has_award();
+  award_.Clear();
 }
-inline const ::protocol::Prop& Task::award() const {
-  return award_ != NULL ? *award_ : *default_instance_->award_;
+inline const ::protocol::Prop& Task::award(int index) const {
+  return award_.Get(index);
 }
-inline ::protocol::Prop* Task::mutable_award() {
-  set_has_award();
-  if (award_ == NULL) award_ = new ::protocol::Prop;
+inline ::protocol::Prop* Task::mutable_award(int index) {
+  return award_.Mutable(index);
+}
+inline ::protocol::Prop* Task::add_award() {
+  return award_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::protocol::Prop >&
+Task::award() const {
   return award_;
 }
-inline ::protocol::Prop* Task::release_award() {
-  clear_has_award();
-  ::protocol::Prop* temp = award_;
-  award_ = NULL;
-  return temp;
+inline ::google::protobuf::RepeatedPtrField< ::protocol::Prop >*
+Task::mutable_award() {
+  return &award_;
 }
-inline void Task::set_allocated_award(::protocol::Prop* award) {
-  delete award_;
-  award_ = award;
-  if (award) {
-    set_has_award();
-  } else {
-    clear_has_award();
-  }
+
+// optional uint32 type = 8;
+inline bool Task::has_type() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void Task::set_has_type() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void Task::clear_has_type() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void Task::clear_type() {
+  type_ = 0u;
+  clear_has_type();
+}
+inline ::google::protobuf::uint32 Task::type() const {
+  return type_;
+}
+inline void Task::set_type(::google::protobuf::uint32 value) {
+  set_has_type();
+  type_ = value;
 }
 
 
