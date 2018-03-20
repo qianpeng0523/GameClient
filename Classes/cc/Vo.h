@@ -42,6 +42,8 @@ class FriendNotice;
 class Friend;
 class Active;
 class Task;
+class ExAward;
+class ExRecord;
 
 // ===================================================================
 
@@ -650,20 +652,35 @@ class FriendNotice : public ::google::protobuf::Message {
   inline bool add() const;
   inline void set_add(bool value);
 
+  // optional string uid = 3;
+  inline bool has_uid() const;
+  inline void clear_uid();
+  static const int kUidFieldNumber = 3;
+  inline const ::std::string& uid() const;
+  inline void set_uid(const ::std::string& value);
+  inline void set_uid(const char* value);
+  inline void set_uid(const char* value, size_t size);
+  inline ::std::string* mutable_uid();
+  inline ::std::string* release_uid();
+  inline void set_allocated_uid(::std::string* uid);
+
   // @@protoc_insertion_point(class_scope:protocol.FriendNotice)
  private:
   inline void set_has_notice();
   inline void clear_has_notice();
   inline void set_has_add();
   inline void clear_has_add();
+  inline void set_has_uid();
+  inline void clear_has_uid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::protocol::Mail* notice_;
+  ::std::string* uid_;
   bool add_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_Vo_2eproto();
   friend void protobuf_AssignDesc_Vo_2eproto();
@@ -1082,6 +1099,272 @@ class Task : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static Task* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ExAward : public ::google::protobuf::Message {
+ public:
+  ExAward();
+  virtual ~ExAward();
+
+  ExAward(const ExAward& from);
+
+  inline ExAward& operator=(const ExAward& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ExAward& default_instance();
+
+  void Swap(ExAward* other);
+
+  // implements Message ----------------------------------------------
+
+  ExAward* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ExAward& from);
+  void MergeFrom(const ExAward& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 eid = 1;
+  inline bool has_eid() const;
+  inline void clear_eid();
+  static const int kEidFieldNumber = 1;
+  inline ::google::protobuf::uint32 eid() const;
+  inline void set_eid(::google::protobuf::uint32 value);
+
+  // optional string title = 2;
+  inline bool has_title() const;
+  inline void clear_title();
+  static const int kTitleFieldNumber = 2;
+  inline const ::std::string& title() const;
+  inline void set_title(const ::std::string& value);
+  inline void set_title(const char* value);
+  inline void set_title(const char* value, size_t size);
+  inline ::std::string* mutable_title();
+  inline ::std::string* release_title();
+  inline void set_allocated_title(::std::string* title);
+
+  // optional .protocol.Prop award = 3;
+  inline bool has_award() const;
+  inline void clear_award();
+  static const int kAwardFieldNumber = 3;
+  inline const ::protocol::Prop& award() const;
+  inline ::protocol::Prop* mutable_award();
+  inline ::protocol::Prop* release_award();
+  inline void set_allocated_award(::protocol::Prop* award);
+
+  // optional bool can = 4;
+  inline bool has_can() const;
+  inline void clear_can();
+  static const int kCanFieldNumber = 4;
+  inline bool can() const;
+  inline void set_can(bool value);
+
+  // optional uint32 pid = 5;
+  inline bool has_pid() const;
+  inline void clear_pid();
+  static const int kPidFieldNumber = 5;
+  inline ::google::protobuf::uint32 pid() const;
+  inline void set_pid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.ExAward)
+ private:
+  inline void set_has_eid();
+  inline void clear_has_eid();
+  inline void set_has_title();
+  inline void clear_has_title();
+  inline void set_has_award();
+  inline void clear_has_award();
+  inline void set_has_can();
+  inline void clear_has_can();
+  inline void set_has_pid();
+  inline void clear_has_pid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* title_;
+  ::google::protobuf::uint32 eid_;
+  bool can_;
+  ::protocol::Prop* award_;
+  ::google::protobuf::uint32 pid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Vo_2eproto();
+  friend void protobuf_AssignDesc_Vo_2eproto();
+  friend void protobuf_ShutdownFile_Vo_2eproto();
+
+  void InitAsDefaultInstance();
+  static ExAward* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ExRecord : public ::google::protobuf::Message {
+ public:
+  ExRecord();
+  virtual ~ExRecord();
+
+  ExRecord(const ExRecord& from);
+
+  inline ExRecord& operator=(const ExRecord& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ExRecord& default_instance();
+
+  void Swap(ExRecord* other);
+
+  // implements Message ----------------------------------------------
+
+  ExRecord* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ExRecord& from);
+  void MergeFrom(const ExRecord& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::uint32 id() const;
+  inline void set_id(::google::protobuf::uint32 value);
+
+  // optional string title = 2;
+  inline bool has_title() const;
+  inline void clear_title();
+  static const int kTitleFieldNumber = 2;
+  inline const ::std::string& title() const;
+  inline void set_title(const ::std::string& value);
+  inline void set_title(const char* value);
+  inline void set_title(const char* value, size_t size);
+  inline ::std::string* mutable_title();
+  inline ::std::string* release_title();
+  inline void set_allocated_title(::std::string* title);
+
+  // optional string orderid = 3;
+  inline bool has_orderid() const;
+  inline void clear_orderid();
+  static const int kOrderidFieldNumber = 3;
+  inline const ::std::string& orderid() const;
+  inline void set_orderid(const ::std::string& value);
+  inline void set_orderid(const char* value);
+  inline void set_orderid(const char* value, size_t size);
+  inline ::std::string* mutable_orderid();
+  inline ::std::string* release_orderid();
+  inline void set_allocated_orderid(::std::string* orderid);
+
+  // optional string time = 4;
+  inline bool has_time() const;
+  inline void clear_time();
+  static const int kTimeFieldNumber = 4;
+  inline const ::std::string& time() const;
+  inline void set_time(const ::std::string& value);
+  inline void set_time(const char* value);
+  inline void set_time(const char* value, size_t size);
+  inline ::std::string* mutable_time();
+  inline ::std::string* release_time();
+  inline void set_allocated_time(::std::string* time);
+
+  // optional uint32 status = 5;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 5;
+  inline ::google::protobuf::uint32 status() const;
+  inline void set_status(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.ExRecord)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_title();
+  inline void clear_has_title();
+  inline void set_has_orderid();
+  inline void clear_has_orderid();
+  inline void set_has_time();
+  inline void clear_has_time();
+  inline void set_has_status();
+  inline void clear_has_status();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* title_;
+  ::std::string* orderid_;
+  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 status_;
+  ::std::string* time_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Vo_2eproto();
+  friend void protobuf_AssignDesc_Vo_2eproto();
+  friend void protobuf_ShutdownFile_Vo_2eproto();
+
+  void InitAsDefaultInstance();
+  static ExRecord* default_instance_;
 };
 // ===================================================================
 
@@ -1980,6 +2263,76 @@ inline void FriendNotice::set_add(bool value) {
   add_ = value;
 }
 
+// optional string uid = 3;
+inline bool FriendNotice::has_uid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void FriendNotice::set_has_uid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void FriendNotice::clear_has_uid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void FriendNotice::clear_uid() {
+  if (uid_ != &::google::protobuf::internal::kEmptyString) {
+    uid_->clear();
+  }
+  clear_has_uid();
+}
+inline const ::std::string& FriendNotice::uid() const {
+  return *uid_;
+}
+inline void FriendNotice::set_uid(const ::std::string& value) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    uid_ = new ::std::string;
+  }
+  uid_->assign(value);
+}
+inline void FriendNotice::set_uid(const char* value) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    uid_ = new ::std::string;
+  }
+  uid_->assign(value);
+}
+inline void FriendNotice::set_uid(const char* value, size_t size) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    uid_ = new ::std::string;
+  }
+  uid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* FriendNotice::mutable_uid() {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    uid_ = new ::std::string;
+  }
+  return uid_;
+}
+inline ::std::string* FriendNotice::release_uid() {
+  clear_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = uid_;
+    uid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void FriendNotice::set_allocated_uid(::std::string* uid) {
+  if (uid_ != &::google::protobuf::internal::kEmptyString) {
+    delete uid_;
+  }
+  if (uid) {
+    set_has_uid();
+    uid_ = uid;
+  } else {
+    clear_has_uid();
+    uid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
 // Friend
@@ -2575,6 +2928,442 @@ inline ::google::protobuf::uint32 Task::type() const {
 inline void Task::set_type(::google::protobuf::uint32 value) {
   set_has_type();
   type_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ExAward
+
+// optional uint32 eid = 1;
+inline bool ExAward::has_eid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ExAward::set_has_eid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ExAward::clear_has_eid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ExAward::clear_eid() {
+  eid_ = 0u;
+  clear_has_eid();
+}
+inline ::google::protobuf::uint32 ExAward::eid() const {
+  return eid_;
+}
+inline void ExAward::set_eid(::google::protobuf::uint32 value) {
+  set_has_eid();
+  eid_ = value;
+}
+
+// optional string title = 2;
+inline bool ExAward::has_title() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ExAward::set_has_title() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ExAward::clear_has_title() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ExAward::clear_title() {
+  if (title_ != &::google::protobuf::internal::kEmptyString) {
+    title_->clear();
+  }
+  clear_has_title();
+}
+inline const ::std::string& ExAward::title() const {
+  return *title_;
+}
+inline void ExAward::set_title(const ::std::string& value) {
+  set_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    title_ = new ::std::string;
+  }
+  title_->assign(value);
+}
+inline void ExAward::set_title(const char* value) {
+  set_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    title_ = new ::std::string;
+  }
+  title_->assign(value);
+}
+inline void ExAward::set_title(const char* value, size_t size) {
+  set_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    title_ = new ::std::string;
+  }
+  title_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ExAward::mutable_title() {
+  set_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    title_ = new ::std::string;
+  }
+  return title_;
+}
+inline ::std::string* ExAward::release_title() {
+  clear_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = title_;
+    title_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ExAward::set_allocated_title(::std::string* title) {
+  if (title_ != &::google::protobuf::internal::kEmptyString) {
+    delete title_;
+  }
+  if (title) {
+    set_has_title();
+    title_ = title;
+  } else {
+    clear_has_title();
+    title_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional .protocol.Prop award = 3;
+inline bool ExAward::has_award() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ExAward::set_has_award() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ExAward::clear_has_award() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ExAward::clear_award() {
+  if (award_ != NULL) award_->::protocol::Prop::Clear();
+  clear_has_award();
+}
+inline const ::protocol::Prop& ExAward::award() const {
+  return award_ != NULL ? *award_ : *default_instance_->award_;
+}
+inline ::protocol::Prop* ExAward::mutable_award() {
+  set_has_award();
+  if (award_ == NULL) award_ = new ::protocol::Prop;
+  return award_;
+}
+inline ::protocol::Prop* ExAward::release_award() {
+  clear_has_award();
+  ::protocol::Prop* temp = award_;
+  award_ = NULL;
+  return temp;
+}
+inline void ExAward::set_allocated_award(::protocol::Prop* award) {
+  delete award_;
+  award_ = award;
+  if (award) {
+    set_has_award();
+  } else {
+    clear_has_award();
+  }
+}
+
+// optional bool can = 4;
+inline bool ExAward::has_can() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ExAward::set_has_can() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ExAward::clear_has_can() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ExAward::clear_can() {
+  can_ = false;
+  clear_has_can();
+}
+inline bool ExAward::can() const {
+  return can_;
+}
+inline void ExAward::set_can(bool value) {
+  set_has_can();
+  can_ = value;
+}
+
+// optional uint32 pid = 5;
+inline bool ExAward::has_pid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ExAward::set_has_pid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ExAward::clear_has_pid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ExAward::clear_pid() {
+  pid_ = 0u;
+  clear_has_pid();
+}
+inline ::google::protobuf::uint32 ExAward::pid() const {
+  return pid_;
+}
+inline void ExAward::set_pid(::google::protobuf::uint32 value) {
+  set_has_pid();
+  pid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ExRecord
+
+// optional uint32 id = 1;
+inline bool ExRecord::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ExRecord::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ExRecord::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ExRecord::clear_id() {
+  id_ = 0u;
+  clear_has_id();
+}
+inline ::google::protobuf::uint32 ExRecord::id() const {
+  return id_;
+}
+inline void ExRecord::set_id(::google::protobuf::uint32 value) {
+  set_has_id();
+  id_ = value;
+}
+
+// optional string title = 2;
+inline bool ExRecord::has_title() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ExRecord::set_has_title() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ExRecord::clear_has_title() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ExRecord::clear_title() {
+  if (title_ != &::google::protobuf::internal::kEmptyString) {
+    title_->clear();
+  }
+  clear_has_title();
+}
+inline const ::std::string& ExRecord::title() const {
+  return *title_;
+}
+inline void ExRecord::set_title(const ::std::string& value) {
+  set_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    title_ = new ::std::string;
+  }
+  title_->assign(value);
+}
+inline void ExRecord::set_title(const char* value) {
+  set_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    title_ = new ::std::string;
+  }
+  title_->assign(value);
+}
+inline void ExRecord::set_title(const char* value, size_t size) {
+  set_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    title_ = new ::std::string;
+  }
+  title_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ExRecord::mutable_title() {
+  set_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    title_ = new ::std::string;
+  }
+  return title_;
+}
+inline ::std::string* ExRecord::release_title() {
+  clear_has_title();
+  if (title_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = title_;
+    title_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ExRecord::set_allocated_title(::std::string* title) {
+  if (title_ != &::google::protobuf::internal::kEmptyString) {
+    delete title_;
+  }
+  if (title) {
+    set_has_title();
+    title_ = title;
+  } else {
+    clear_has_title();
+    title_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string orderid = 3;
+inline bool ExRecord::has_orderid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ExRecord::set_has_orderid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ExRecord::clear_has_orderid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ExRecord::clear_orderid() {
+  if (orderid_ != &::google::protobuf::internal::kEmptyString) {
+    orderid_->clear();
+  }
+  clear_has_orderid();
+}
+inline const ::std::string& ExRecord::orderid() const {
+  return *orderid_;
+}
+inline void ExRecord::set_orderid(const ::std::string& value) {
+  set_has_orderid();
+  if (orderid_ == &::google::protobuf::internal::kEmptyString) {
+    orderid_ = new ::std::string;
+  }
+  orderid_->assign(value);
+}
+inline void ExRecord::set_orderid(const char* value) {
+  set_has_orderid();
+  if (orderid_ == &::google::protobuf::internal::kEmptyString) {
+    orderid_ = new ::std::string;
+  }
+  orderid_->assign(value);
+}
+inline void ExRecord::set_orderid(const char* value, size_t size) {
+  set_has_orderid();
+  if (orderid_ == &::google::protobuf::internal::kEmptyString) {
+    orderid_ = new ::std::string;
+  }
+  orderid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ExRecord::mutable_orderid() {
+  set_has_orderid();
+  if (orderid_ == &::google::protobuf::internal::kEmptyString) {
+    orderid_ = new ::std::string;
+  }
+  return orderid_;
+}
+inline ::std::string* ExRecord::release_orderid() {
+  clear_has_orderid();
+  if (orderid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = orderid_;
+    orderid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ExRecord::set_allocated_orderid(::std::string* orderid) {
+  if (orderid_ != &::google::protobuf::internal::kEmptyString) {
+    delete orderid_;
+  }
+  if (orderid) {
+    set_has_orderid();
+    orderid_ = orderid;
+  } else {
+    clear_has_orderid();
+    orderid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string time = 4;
+inline bool ExRecord::has_time() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ExRecord::set_has_time() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ExRecord::clear_has_time() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ExRecord::clear_time() {
+  if (time_ != &::google::protobuf::internal::kEmptyString) {
+    time_->clear();
+  }
+  clear_has_time();
+}
+inline const ::std::string& ExRecord::time() const {
+  return *time_;
+}
+inline void ExRecord::set_time(const ::std::string& value) {
+  set_has_time();
+  if (time_ == &::google::protobuf::internal::kEmptyString) {
+    time_ = new ::std::string;
+  }
+  time_->assign(value);
+}
+inline void ExRecord::set_time(const char* value) {
+  set_has_time();
+  if (time_ == &::google::protobuf::internal::kEmptyString) {
+    time_ = new ::std::string;
+  }
+  time_->assign(value);
+}
+inline void ExRecord::set_time(const char* value, size_t size) {
+  set_has_time();
+  if (time_ == &::google::protobuf::internal::kEmptyString) {
+    time_ = new ::std::string;
+  }
+  time_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ExRecord::mutable_time() {
+  set_has_time();
+  if (time_ == &::google::protobuf::internal::kEmptyString) {
+    time_ = new ::std::string;
+  }
+  return time_;
+}
+inline ::std::string* ExRecord::release_time() {
+  clear_has_time();
+  if (time_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = time_;
+    time_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ExRecord::set_allocated_time(::std::string* time) {
+  if (time_ != &::google::protobuf::internal::kEmptyString) {
+    delete time_;
+  }
+  if (time) {
+    set_has_time();
+    time_ = time;
+  } else {
+    clear_has_time();
+    time_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional uint32 status = 5;
+inline bool ExRecord::has_status() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ExRecord::set_has_status() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ExRecord::clear_has_status() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ExRecord::clear_status() {
+  status_ = 0u;
+  clear_has_status();
+}
+inline ::google::protobuf::uint32 ExRecord::status() const {
+  return status_;
+}
+inline void ExRecord::set_status(::google::protobuf::uint32 value) {
+  set_has_status();
+  status_ = value;
 }
 
 

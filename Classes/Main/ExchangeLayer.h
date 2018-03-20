@@ -14,12 +14,12 @@ class ExchangeItemLayer : public BaseLayer
 public:
 	ExchangeItemLayer();
 	~ExchangeItemLayer();
-	static ExchangeItemLayer *create(Rank hall);
-	virtual bool init(Rank hall);
+	static ExchangeItemLayer *create(ExAward hall);
+	virtual bool init(ExAward hall);
 
-	void TouchEvent();
+	void TouchEvent(CCObject *obj, TouchEventType type);
 private:
-	Rank m_hall;
+	ExAward m_hall;
 private:
 
 };
@@ -30,12 +30,12 @@ class ExchangeRecordItemLayer : public BaseLayer
 public:
 	ExchangeRecordItemLayer();
 	~ExchangeRecordItemLayer();
-	static ExchangeRecordItemLayer *create(Rank hall);
-	virtual bool init(Rank hall);
+	static ExchangeRecordItemLayer *create(ExRecord hall);
+	virtual bool init(ExRecord hall);
 
 	void TouchEvent();
 private:
-	Rank m_hall;
+	ExRecord m_hall;
 private:
 
 };

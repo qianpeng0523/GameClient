@@ -5,6 +5,7 @@
 #include "MainScene.h"
 #include "GameControl.h"
 #include "GameDataSet.h"
+#include "LoginInfo.h"
 
 using namespace cocos2d_xx;
 HallInfo *HallInfo::m_shareHallInfo=NULL;
@@ -33,6 +34,14 @@ HallInfo::HallInfo()
 	pe->registerProto(sl10.cmd(), sl10.GetTypeName());
 	SReward sl11;
 	pe->registerProto(sl11.cmd(), sl11.GetTypeName());
+	SAgreeFriend sl12;
+	pe->registerProto(sl12.cmd(), sl12.GetTypeName());
+	SExchangeReward sl13;
+	pe->registerProto(sl13.cmd(), sl13.GetTypeName());
+	SExchangeCode sl14;
+	pe->registerProto(sl14.cmd(), sl14.GetTypeName());
+	SExchangeRecord sl15;
+	pe->registerProto(sl15.cmd(), sl15.GetTypeName());
 	
 }
 
@@ -280,6 +289,7 @@ void HallInfo::SendCFindFriend(string uid, int type){
 		DBUserInfo *user= (DBUserInfo *)ccEvent::create_message(us.GetTypeName());
 		sprintf(buff, "10000%d", i);
 		user->set_username(buff);
+		user->set_userid(buff);
 		fri->set_allocated_userinfo(user);
 
 	}
@@ -330,11 +340,23 @@ void HallInfo::HandlerSGiveFriend(ccEvent *event){
 
 
 void HallInfo::SendCAddFriend(string uid){
-	
+	CAddFriend cl;
+	cl.set_uid(uid);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriend));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSAddFriend(ccEvent *event){
-
+	SAddFriend cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriend));
+	int err = cl.err();
+	if (err == 0){
+		log("%s", XXIconv::GBK2UTF("发送好友请求成功").c_str());
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("发送好友请求失败").c_str());
+	}
 }
 
 
@@ -349,10 +371,12 @@ void HallInfo::SendCAddFriendList(){
 	for (int i = 0; i < 5; i++){
 		FriendNotice *fri = fris.add_list();
 		fri->set_add(i%2);
+		sprintf(buff, "1000%02d", i);
+		fri->set_uid(buff);
 		Mail ml1;
 		Mail *ml = (Mail *)ccEvent::create_message(ml1.GetTypeName());
 		ml->set_id(i + 1);
-		sprintf(buff, XXIconv::GBK2UTF("好友通知内容测试%d").c_str(), i + 1);
+		sprintf(buff, XXIconv::GBK2UTF("%s添加您为好友").c_str(), buff);
 		ml->set_content(buff);
 		sprintf(buff, XXIconv::GBK2UTF("邮件标题%d").c_str(), i + 1);
 		ml->set_title(buff);
@@ -465,9 +489,132 @@ void HallInfo::HandlerSTask(ccEvent *event){
 }
 
 void HallInfo::SendCReward(int type, int id){
-
+	CReward cl;
+	cl.set_type(type);
+	cl.set_id(id);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSReward));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSReward(ccEvent *event){
+	SReward cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSReward));
+	int err = cl.err();
+	if (err == 0){
+		log("%s", XXIconv::GBK2UTF("领取奖励成功"));
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("领取奖励失败"));
+	}
+}
 
+void HallInfo::SendCAgreeFriend(string uid, bool agree){
+	CAgreeFriend cl;
+	cl.set_userid(uid);
+	cl.set_agree(agree);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAgreeFriend));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSAgreeFriend(ccEvent *event){
+	SAgreeFriend cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAgreeFriend));
+	int err = cl.err();
+	if (err == 0){
+		log("%s", XXIconv::GBK2UTF("同意拒绝成功"));
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("同意拒绝失败"));
+	}
+}
+
+void HallInfo::SendCExchangeReward(){
+	CExchangeReward cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeReward));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+
+	//test
+	char buff[100];
+	int gold = LoginInfo::getIns()->getMyDBUserInfo().gold();
+	SExchangeReward se;
+	for (int i = 0; i < 8; i++){
+		ExAward *ea = se.add_list();
+		ea->set_eid(i+1);
+		ea->set_pid(1);
+		int number = 28000*i;
+		sprintf(buff,XXIconv::GBK2UTF("%d元红包").c_str(),i*5+5);
+		ea->set_title(buff);
+		ea->set_can(gold>=number);
+		Prop prop;
+		prop.set_id(1);
+		prop.set_name(XXIconv::GBK2UTF("金币"));
+		prop.set_number(number);
+		Prop *prop1=(Prop *)ccEvent::create_message(prop.GetTypeName());
+		prop1->CopyFrom(prop);
+
+		ea->set_allocated_award(prop1);
+	}
+	int sz = se.ByteSize();
+	char *buffer = new char[sz];
+	se.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(se.cmd(), buffer, sz);
+	HandlerSExchangeReward(ev);
+}
+
+void HallInfo::HandlerSExchangeReward(ccEvent *event){
+	SExchangeReward cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeReward));
+	int err = cl.err();
+	if (err == 0){
+		m_pSExchangeReward = cl;
+		log("%s", XXIconv::GBK2UTF("获取兑换奖品成功"));
+		ExchangeLayer *p = GameControl::getIns()->getExchangeLayer();
+		if (p){
+			p->SelectItem(0);
+		}
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("获取兑换奖品失败"));
+	}
+}
+
+void HallInfo::SendCExchangeCode(string excode, string yzcode){
+	CExchangeCode cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeCode));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSExchangeCode(ccEvent *event){
+	SExchangeCode cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeCode));
+	int err = cl.err();
+	if (err == 0){
+		log("%s", XXIconv::GBK2UTF("兑换码兑换成功"));
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("兑换码兑换失败"));
+	}
+}
+
+void HallInfo::SendCExchangeRecord(){
+	CExchangeRecord cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSExchangeRecord(ccEvent *event){
+	SExchangeRecord cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
+	int err = cl.err();
+	if (err == 0){
+		log("%s", XXIconv::GBK2UTF("获取兑换记录成功"));
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("获取兑换记录失败"));
+	}
 }

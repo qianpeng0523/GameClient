@@ -47,6 +47,18 @@ public:
 	void SendCReward(int type,int id);
 	void HandlerSReward(ccEvent *event);
 
+	void SendCAgreeFriend(string uid,bool agree);
+	void HandlerSAgreeFriend(ccEvent *event);
+
+	void SendCExchangeReward();
+	void HandlerSExchangeReward(ccEvent *event);
+
+	void SendCExchangeCode(string excode,string yzcode);
+	void HandlerSExchangeCode(ccEvent *event);
+
+	void SendCExchangeRecord();
+	void HandlerSExchangeRecord(ccEvent *event);
+
 	map<int, Rank> getSRank(int type);
 	void eraseRank(int type,int lv);
 
@@ -66,6 +78,9 @@ public:
 	STask getSTask(){
 		return m_pSTask;
 	}
+	SExchangeReward getSExchangeReward(){
+		return m_pSExchangeReward;
+	}
 private:
 	static HallInfo *m_shareHallInfo;
 	map<int, map<int,Rank>> m_pSRanks;
@@ -76,6 +91,7 @@ private:
 	SFriend m_pSFriend;
 	SAddFriendList m_pSAddFriendList;
 	STask m_pSTask;
+	SExchangeReward m_pSExchangeReward;
 };
 
 #endif 

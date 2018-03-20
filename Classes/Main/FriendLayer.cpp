@@ -139,10 +139,13 @@ void FriendNoticeLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	Button *btn = (Button *)obj;
 	string name = btn->getName();
 	if (type == TOUCH_EVENT_ENDED){
+		string uid = m_hall.uid();
 		if (name.compare("btn1") == 0){
 			log("%s",XXIconv::GBK2UTF("拒绝").c_str());
+			HallInfo::getIns()->SendCAgreeFriend(uid,false);
 		}else if (name.compare("btn2") == 0){
 			log("%s", XXIconv::GBK2UTF("同意").c_str());
+			HallInfo::getIns()->SendCAgreeFriend(uid, true);
 		}
 	}
 }
@@ -272,18 +275,26 @@ void FriendLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		}
 		else if (name.compare("btn")==0){
 			string pname = btn->getParent()->getName();
-			log("%s", pname.c_str());
+			
+			int index = 0;
 			if (pname.compare("smallbg1") == 0){
-				
+				index = 0;
 			}
 			else if (pname.compare("smallbg2") == 0){
-
+				index = 1;
 			}
 			else if (pname.compare("smallbg3") == 0){
-
+				index = 2;
 			}
 			else if (pname.compare("smallbg4") == 0){
-
+				index = 3;
+			}
+			SFindFriend fris = HallInfo::getIns()->getSFindFriend();
+			int sz = fris.list_size();
+			if (index < sz){
+				Friend fri = fris.list(index);
+				log("userid:%s", fri.userinfo().userid().c_str());
+				HallInfo::getIns()->SendCAddFriend(fri.userinfo().userid());
 			}
 		}
 	}

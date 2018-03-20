@@ -3,8 +3,8 @@
 #include "GameDataSet.h"
 #include "ClientSocket.h"
 #include "LogoScene.h"
+#include "HallInfo.h"
 #include "LoginInfo.h"
-
 
 
 
@@ -16,7 +16,7 @@ ExchangeItemLayer::~ExchangeItemLayer(){
 
 }
 
-ExchangeItemLayer *ExchangeItemLayer::create(Rank hall){
+ExchangeItemLayer *ExchangeItemLayer::create(ExAward hall){
 	ExchangeItemLayer *p = new ExchangeItemLayer();
 	if (p&&p->init(hall)){
 		p->autorelease();
@@ -27,7 +27,7 @@ ExchangeItemLayer *ExchangeItemLayer::create(Rank hall){
 	return p;
 }
 
-bool ExchangeItemLayer::init(Rank hall)
+bool ExchangeItemLayer::init(ExAward hall)
 {
 	if (!Layer::init())
 	{
@@ -39,13 +39,34 @@ bool ExchangeItemLayer::init(Rank hall)
 
 	this->setContentSize(m_RootLayer->getSize());
 
+	bool can = hall.can();
+	string title = hall.title();
+	int pid = hall.pid();
+	int gold = LoginInfo::getIns()->getMyDBUserInfo().gold();
+	Prop prop = hall.award();
+	int number = prop.number();
+	char buff[50];
+	sprintf(buff, "%d/%d", gold, number);
+	GameDataSet::setText(m_RootLayer, "pro", buff);
+	Layout *ly = GameDataSet::getLayout(m_RootLayer, "hot");
+	ly->setVisible(can);
 
+	GameDataSet::setTextBMFont(m_RootLayer, "title", title);
 
+	LoadingBar *bar = (LoadingBar *)GameDataSet::getLayout(m_RootLayer, "ProgressBar");
+	bar->setPercent(gold*1.0/number * 100);
+	
 	return true;
 }
 
-void ExchangeItemLayer::TouchEvent(){
+void ExchangeItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
+	Button *btn = (Button *)obj;
+	string name = btn->getName();
+	if (type == TOUCH_EVENT_ENDED){
+		if (name.compare("btn") == 0){
 
+		}
+	}
 }
 
 
@@ -65,7 +86,7 @@ ExchangeRecordItemLayer::~ExchangeRecordItemLayer(){
 
 }
 
-ExchangeRecordItemLayer *ExchangeRecordItemLayer::create(Rank hall){
+ExchangeRecordItemLayer *ExchangeRecordItemLayer::create(ExRecord hall){
 	ExchangeRecordItemLayer *p = new ExchangeRecordItemLayer();
 	if (p&&p->init(hall)){
 		p->autorelease();
@@ -76,7 +97,7 @@ ExchangeRecordItemLayer *ExchangeRecordItemLayer::create(Rank hall){
 	return p;
 }
 
-bool ExchangeRecordItemLayer::init(Rank hall)
+bool ExchangeRecordItemLayer::init(ExRecord hall)
 {
 	if (!Layer::init())
 	{
@@ -94,7 +115,7 @@ bool ExchangeRecordItemLayer::init(Rank hall)
 }
 
 void ExchangeRecordItemLayer::TouchEvent(){
-
+	
 }
 
 
@@ -152,7 +173,8 @@ bool ExchangeLayer::init()
 	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
 	int gold = user.gold();
 	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold));
-	SelectItem(0);
+	HallInfo::getIns()->SendCExchangeReward();
+	//SelectItem(0);
     return true;
 }
 
@@ -160,15 +182,11 @@ void ExchangeLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	Button *btn = (Button *)obj;
 	string name = btn->getName();
 	if (type == TOUCH_EVENT_ENDED){
-		UserDefault *p = UserDefault::sharedUserDefault();
 		if (name.compare("close_btn") == 0){
 			this->removeFromParentAndCleanup(true);
 		}
 		else if (name.compare("ScrollView_0") == 0){
-			ExchangeItemLayer *p = (ExchangeItemLayer *)GameDataSet::isTouchInChild(m_ScrollView1, 10, NULL);
-			if (p){
-				p->TouchEvent();
-			}
+			
 		}
 		else if (name.compare("jiang") == 0){
 			SelectItem(0);
@@ -179,13 +197,24 @@ void ExchangeLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("records") == 0){
 			SelectItem(2);
 		}
+		else if (name.compare("btn") == 0){
+			string code = m_input->getText();
+			if (!code.empty()){
+				HallInfo::getIns()->SendCExchangeCode(code, "");
+			}
+			else{
+				log("%s",XXIconv::GBK2UTF("兑换码不能为空").c_str());
+			}
+		}
 	}
 }
 
 void ExchangeLayer::AddExchangeItems(){
 	if (m_sbg1->getChildrenCount() == 0){
-		for (int i = 0; i < 10; i++){
-			Rank rk;
+		SExchangeReward ser = HallInfo::getIns()->getSExchangeReward();
+		int sz = ser.list_size();
+		for (int i = 0; i < sz; i++){
+			ExAward rk=ser.list(i);
 			ExchangeItemLayer *p = ExchangeItemLayer::create(rk);
 			GameDataSet::PushScrollItem(m_sbg1, 3, 0, p, i, m_ScrollView1);
 		}
@@ -195,7 +224,7 @@ void ExchangeLayer::AddExchangeItems(){
 void ExchangeLayer::AddRecords(){
 	if (m_sbg3->getChildrenCount() == 0){
 		for (int i = 0; i < 10; i++){
-			Rank rk;
+			ExRecord rk;
 			ExchangeRecordItemLayer *p = ExchangeRecordItemLayer::create(rk);
 			GameDataSet::PushScrollItem(m_sbg3, 0, 0, p, i, m_ScrollView3);
 		}

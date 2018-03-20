@@ -56,6 +56,14 @@ class CTask;
 class STask;
 class CReward;
 class SReward;
+class CAgreeFriend;
+class SAgreeFriend;
+class CExchangeReward;
+class SExchangeReward;
+class CExchangeCode;
+class SExchangeCode;
+class CExchangeRecord;
+class SExchangeRecord;
 
 // ===================================================================
 
@@ -2273,6 +2281,818 @@ class SReward : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static SReward* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class CAgreeFriend : public ::google::protobuf::Message {
+ public:
+  CAgreeFriend();
+  virtual ~CAgreeFriend();
+
+  CAgreeFriend(const CAgreeFriend& from);
+
+  inline CAgreeFriend& operator=(const CAgreeFriend& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CAgreeFriend& default_instance();
+
+  void Swap(CAgreeFriend* other);
+
+  // implements Message ----------------------------------------------
+
+  CAgreeFriend* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CAgreeFriend& from);
+  void MergeFrom(const CAgreeFriend& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 cmd = 1 [default = 20491];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // optional bool agree = 2;
+  inline bool has_agree() const;
+  inline void clear_agree();
+  static const int kAgreeFieldNumber = 2;
+  inline bool agree() const;
+  inline void set_agree(bool value);
+
+  // optional string userid = 3;
+  inline bool has_userid() const;
+  inline void clear_userid();
+  static const int kUseridFieldNumber = 3;
+  inline const ::std::string& userid() const;
+  inline void set_userid(const ::std::string& value);
+  inline void set_userid(const char* value);
+  inline void set_userid(const char* value, size_t size);
+  inline ::std::string* mutable_userid();
+  inline ::std::string* release_userid();
+  inline void set_allocated_userid(::std::string* userid);
+
+  // @@protoc_insertion_point(class_scope:protocol.CAgreeFriend)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+  inline void set_has_agree();
+  inline void clear_has_agree();
+  inline void set_has_userid();
+  inline void clear_has_userid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 cmd_;
+  bool agree_;
+  ::std::string* userid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Hall_2eproto();
+  friend void protobuf_AssignDesc_Hall_2eproto();
+  friend void protobuf_ShutdownFile_Hall_2eproto();
+
+  void InitAsDefaultInstance();
+  static CAgreeFriend* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SAgreeFriend : public ::google::protobuf::Message {
+ public:
+  SAgreeFriend();
+  virtual ~SAgreeFriend();
+
+  SAgreeFriend(const SAgreeFriend& from);
+
+  inline SAgreeFriend& operator=(const SAgreeFriend& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SAgreeFriend& default_instance();
+
+  void Swap(SAgreeFriend* other);
+
+  // implements Message ----------------------------------------------
+
+  SAgreeFriend* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SAgreeFriend& from);
+  void MergeFrom(const SAgreeFriend& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 cmd = 1 [default = 20491];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // optional bool agree = 2;
+  inline bool has_agree() const;
+  inline void clear_agree();
+  static const int kAgreeFieldNumber = 2;
+  inline bool agree() const;
+  inline void set_agree(bool value);
+
+  // optional string userid = 3;
+  inline bool has_userid() const;
+  inline void clear_userid();
+  static const int kUseridFieldNumber = 3;
+  inline const ::std::string& userid() const;
+  inline void set_userid(const ::std::string& value);
+  inline void set_userid(const char* value);
+  inline void set_userid(const char* value, size_t size);
+  inline ::std::string* mutable_userid();
+  inline ::std::string* release_userid();
+  inline void set_allocated_userid(::std::string* userid);
+
+  // optional uint32 err = 4;
+  inline bool has_err() const;
+  inline void clear_err();
+  static const int kErrFieldNumber = 4;
+  inline ::google::protobuf::uint32 err() const;
+  inline void set_err(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.SAgreeFriend)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+  inline void set_has_agree();
+  inline void clear_has_agree();
+  inline void set_has_userid();
+  inline void clear_has_userid();
+  inline void set_has_err();
+  inline void clear_has_err();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 cmd_;
+  bool agree_;
+  ::std::string* userid_;
+  ::google::protobuf::uint32 err_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Hall_2eproto();
+  friend void protobuf_AssignDesc_Hall_2eproto();
+  friend void protobuf_ShutdownFile_Hall_2eproto();
+
+  void InitAsDefaultInstance();
+  static SAgreeFriend* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CExchangeReward : public ::google::protobuf::Message {
+ public:
+  CExchangeReward();
+  virtual ~CExchangeReward();
+
+  CExchangeReward(const CExchangeReward& from);
+
+  inline CExchangeReward& operator=(const CExchangeReward& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CExchangeReward& default_instance();
+
+  void Swap(CExchangeReward* other);
+
+  // implements Message ----------------------------------------------
+
+  CExchangeReward* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CExchangeReward& from);
+  void MergeFrom(const CExchangeReward& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 cmd = 1 [default = 20492];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.CExchangeReward)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 cmd_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Hall_2eproto();
+  friend void protobuf_AssignDesc_Hall_2eproto();
+  friend void protobuf_ShutdownFile_Hall_2eproto();
+
+  void InitAsDefaultInstance();
+  static CExchangeReward* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SExchangeReward : public ::google::protobuf::Message {
+ public:
+  SExchangeReward();
+  virtual ~SExchangeReward();
+
+  SExchangeReward(const SExchangeReward& from);
+
+  inline SExchangeReward& operator=(const SExchangeReward& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SExchangeReward& default_instance();
+
+  void Swap(SExchangeReward* other);
+
+  // implements Message ----------------------------------------------
+
+  SExchangeReward* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SExchangeReward& from);
+  void MergeFrom(const SExchangeReward& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 cmd = 1 [default = 20492];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // repeated .protocol.ExAward list = 2;
+  inline int list_size() const;
+  inline void clear_list();
+  static const int kListFieldNumber = 2;
+  inline const ::protocol::ExAward& list(int index) const;
+  inline ::protocol::ExAward* mutable_list(int index);
+  inline ::protocol::ExAward* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::protocol::ExAward >&
+      list() const;
+  inline ::google::protobuf::RepeatedPtrField< ::protocol::ExAward >*
+      mutable_list();
+
+  // optional uint32 err = 3;
+  inline bool has_err() const;
+  inline void clear_err();
+  static const int kErrFieldNumber = 3;
+  inline ::google::protobuf::uint32 err() const;
+  inline void set_err(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.SExchangeReward)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+  inline void set_has_err();
+  inline void clear_has_err();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::protocol::ExAward > list_;
+  ::google::protobuf::uint32 cmd_;
+  ::google::protobuf::uint32 err_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Hall_2eproto();
+  friend void protobuf_AssignDesc_Hall_2eproto();
+  friend void protobuf_ShutdownFile_Hall_2eproto();
+
+  void InitAsDefaultInstance();
+  static SExchangeReward* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CExchangeCode : public ::google::protobuf::Message {
+ public:
+  CExchangeCode();
+  virtual ~CExchangeCode();
+
+  CExchangeCode(const CExchangeCode& from);
+
+  inline CExchangeCode& operator=(const CExchangeCode& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CExchangeCode& default_instance();
+
+  void Swap(CExchangeCode* other);
+
+  // implements Message ----------------------------------------------
+
+  CExchangeCode* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CExchangeCode& from);
+  void MergeFrom(const CExchangeCode& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 cmd = 1 [default = 20493];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // optional string excode = 2;
+  inline bool has_excode() const;
+  inline void clear_excode();
+  static const int kExcodeFieldNumber = 2;
+  inline const ::std::string& excode() const;
+  inline void set_excode(const ::std::string& value);
+  inline void set_excode(const char* value);
+  inline void set_excode(const char* value, size_t size);
+  inline ::std::string* mutable_excode();
+  inline ::std::string* release_excode();
+  inline void set_allocated_excode(::std::string* excode);
+
+  // optional string yzcode = 3;
+  inline bool has_yzcode() const;
+  inline void clear_yzcode();
+  static const int kYzcodeFieldNumber = 3;
+  inline const ::std::string& yzcode() const;
+  inline void set_yzcode(const ::std::string& value);
+  inline void set_yzcode(const char* value);
+  inline void set_yzcode(const char* value, size_t size);
+  inline ::std::string* mutable_yzcode();
+  inline ::std::string* release_yzcode();
+  inline void set_allocated_yzcode(::std::string* yzcode);
+
+  // @@protoc_insertion_point(class_scope:protocol.CExchangeCode)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+  inline void set_has_excode();
+  inline void clear_has_excode();
+  inline void set_has_yzcode();
+  inline void clear_has_yzcode();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* excode_;
+  ::std::string* yzcode_;
+  ::google::protobuf::uint32 cmd_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Hall_2eproto();
+  friend void protobuf_AssignDesc_Hall_2eproto();
+  friend void protobuf_ShutdownFile_Hall_2eproto();
+
+  void InitAsDefaultInstance();
+  static CExchangeCode* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SExchangeCode : public ::google::protobuf::Message {
+ public:
+  SExchangeCode();
+  virtual ~SExchangeCode();
+
+  SExchangeCode(const SExchangeCode& from);
+
+  inline SExchangeCode& operator=(const SExchangeCode& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SExchangeCode& default_instance();
+
+  void Swap(SExchangeCode* other);
+
+  // implements Message ----------------------------------------------
+
+  SExchangeCode* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SExchangeCode& from);
+  void MergeFrom(const SExchangeCode& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 cmd = 1 [default = 20493];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // optional bool success = 2;
+  inline bool has_success() const;
+  inline void clear_success();
+  static const int kSuccessFieldNumber = 2;
+  inline bool success() const;
+  inline void set_success(bool value);
+
+  // optional uint32 err = 3;
+  inline bool has_err() const;
+  inline void clear_err();
+  static const int kErrFieldNumber = 3;
+  inline ::google::protobuf::uint32 err() const;
+  inline void set_err(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.SExchangeCode)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+  inline void set_has_success();
+  inline void clear_has_success();
+  inline void set_has_err();
+  inline void clear_has_err();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 cmd_;
+  bool success_;
+  ::google::protobuf::uint32 err_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Hall_2eproto();
+  friend void protobuf_AssignDesc_Hall_2eproto();
+  friend void protobuf_ShutdownFile_Hall_2eproto();
+
+  void InitAsDefaultInstance();
+  static SExchangeCode* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CExchangeRecord : public ::google::protobuf::Message {
+ public:
+  CExchangeRecord();
+  virtual ~CExchangeRecord();
+
+  CExchangeRecord(const CExchangeRecord& from);
+
+  inline CExchangeRecord& operator=(const CExchangeRecord& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CExchangeRecord& default_instance();
+
+  void Swap(CExchangeRecord* other);
+
+  // implements Message ----------------------------------------------
+
+  CExchangeRecord* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CExchangeRecord& from);
+  void MergeFrom(const CExchangeRecord& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 cmd = 1 [default = 20493];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.CExchangeRecord)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 cmd_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Hall_2eproto();
+  friend void protobuf_AssignDesc_Hall_2eproto();
+  friend void protobuf_ShutdownFile_Hall_2eproto();
+
+  void InitAsDefaultInstance();
+  static CExchangeRecord* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SExchangeRecord : public ::google::protobuf::Message {
+ public:
+  SExchangeRecord();
+  virtual ~SExchangeRecord();
+
+  SExchangeRecord(const SExchangeRecord& from);
+
+  inline SExchangeRecord& operator=(const SExchangeRecord& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SExchangeRecord& default_instance();
+
+  void Swap(SExchangeRecord* other);
+
+  // implements Message ----------------------------------------------
+
+  SExchangeRecord* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SExchangeRecord& from);
+  void MergeFrom(const SExchangeRecord& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 cmd = 1 [default = 20493];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // repeated .protocol.ExRecord list = 2;
+  inline int list_size() const;
+  inline void clear_list();
+  static const int kListFieldNumber = 2;
+  inline const ::protocol::ExRecord& list(int index) const;
+  inline ::protocol::ExRecord* mutable_list(int index);
+  inline ::protocol::ExRecord* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::protocol::ExRecord >&
+      list() const;
+  inline ::google::protobuf::RepeatedPtrField< ::protocol::ExRecord >*
+      mutable_list();
+
+  // optional uint32 err = 3;
+  inline bool has_err() const;
+  inline void clear_err();
+  static const int kErrFieldNumber = 3;
+  inline ::google::protobuf::uint32 err() const;
+  inline void set_err(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.SExchangeRecord)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+  inline void set_has_err();
+  inline void clear_has_err();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::protocol::ExRecord > list_;
+  ::google::protobuf::uint32 cmd_;
+  ::google::protobuf::uint32 err_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Hall_2eproto();
+  friend void protobuf_AssignDesc_Hall_2eproto();
+  friend void protobuf_ShutdownFile_Hall_2eproto();
+
+  void InitAsDefaultInstance();
+  static SExchangeRecord* default_instance_;
+};
 // ===================================================================
 
 
@@ -3903,6 +4723,698 @@ inline ::google::protobuf::uint32 SReward::err() const {
   return err_;
 }
 inline void SReward::set_err(::google::protobuf::uint32 value) {
+  set_has_err();
+  err_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// CAgreeFriend
+
+// required uint32 cmd = 1 [default = 20491];
+inline bool CAgreeFriend::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CAgreeFriend::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CAgreeFriend::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CAgreeFriend::clear_cmd() {
+  cmd_ = 20491u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 CAgreeFriend::cmd() const {
+  return cmd_;
+}
+inline void CAgreeFriend::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// optional bool agree = 2;
+inline bool CAgreeFriend::has_agree() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CAgreeFriend::set_has_agree() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CAgreeFriend::clear_has_agree() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CAgreeFriend::clear_agree() {
+  agree_ = false;
+  clear_has_agree();
+}
+inline bool CAgreeFriend::agree() const {
+  return agree_;
+}
+inline void CAgreeFriend::set_agree(bool value) {
+  set_has_agree();
+  agree_ = value;
+}
+
+// optional string userid = 3;
+inline bool CAgreeFriend::has_userid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CAgreeFriend::set_has_userid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CAgreeFriend::clear_has_userid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CAgreeFriend::clear_userid() {
+  if (userid_ != &::google::protobuf::internal::kEmptyString) {
+    userid_->clear();
+  }
+  clear_has_userid();
+}
+inline const ::std::string& CAgreeFriend::userid() const {
+  return *userid_;
+}
+inline void CAgreeFriend::set_userid(const ::std::string& value) {
+  set_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    userid_ = new ::std::string;
+  }
+  userid_->assign(value);
+}
+inline void CAgreeFriend::set_userid(const char* value) {
+  set_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    userid_ = new ::std::string;
+  }
+  userid_->assign(value);
+}
+inline void CAgreeFriend::set_userid(const char* value, size_t size) {
+  set_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    userid_ = new ::std::string;
+  }
+  userid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* CAgreeFriend::mutable_userid() {
+  set_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    userid_ = new ::std::string;
+  }
+  return userid_;
+}
+inline ::std::string* CAgreeFriend::release_userid() {
+  clear_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = userid_;
+    userid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void CAgreeFriend::set_allocated_userid(::std::string* userid) {
+  if (userid_ != &::google::protobuf::internal::kEmptyString) {
+    delete userid_;
+  }
+  if (userid) {
+    set_has_userid();
+    userid_ = userid;
+  } else {
+    clear_has_userid();
+    userid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// SAgreeFriend
+
+// required uint32 cmd = 1 [default = 20491];
+inline bool SAgreeFriend::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SAgreeFriend::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SAgreeFriend::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SAgreeFriend::clear_cmd() {
+  cmd_ = 20491u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 SAgreeFriend::cmd() const {
+  return cmd_;
+}
+inline void SAgreeFriend::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// optional bool agree = 2;
+inline bool SAgreeFriend::has_agree() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SAgreeFriend::set_has_agree() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SAgreeFriend::clear_has_agree() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SAgreeFriend::clear_agree() {
+  agree_ = false;
+  clear_has_agree();
+}
+inline bool SAgreeFriend::agree() const {
+  return agree_;
+}
+inline void SAgreeFriend::set_agree(bool value) {
+  set_has_agree();
+  agree_ = value;
+}
+
+// optional string userid = 3;
+inline bool SAgreeFriend::has_userid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SAgreeFriend::set_has_userid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SAgreeFriend::clear_has_userid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SAgreeFriend::clear_userid() {
+  if (userid_ != &::google::protobuf::internal::kEmptyString) {
+    userid_->clear();
+  }
+  clear_has_userid();
+}
+inline const ::std::string& SAgreeFriend::userid() const {
+  return *userid_;
+}
+inline void SAgreeFriend::set_userid(const ::std::string& value) {
+  set_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    userid_ = new ::std::string;
+  }
+  userid_->assign(value);
+}
+inline void SAgreeFriend::set_userid(const char* value) {
+  set_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    userid_ = new ::std::string;
+  }
+  userid_->assign(value);
+}
+inline void SAgreeFriend::set_userid(const char* value, size_t size) {
+  set_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    userid_ = new ::std::string;
+  }
+  userid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SAgreeFriend::mutable_userid() {
+  set_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    userid_ = new ::std::string;
+  }
+  return userid_;
+}
+inline ::std::string* SAgreeFriend::release_userid() {
+  clear_has_userid();
+  if (userid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = userid_;
+    userid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SAgreeFriend::set_allocated_userid(::std::string* userid) {
+  if (userid_ != &::google::protobuf::internal::kEmptyString) {
+    delete userid_;
+  }
+  if (userid) {
+    set_has_userid();
+    userid_ = userid;
+  } else {
+    clear_has_userid();
+    userid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional uint32 err = 4;
+inline bool SAgreeFriend::has_err() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void SAgreeFriend::set_has_err() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void SAgreeFriend::clear_has_err() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void SAgreeFriend::clear_err() {
+  err_ = 0u;
+  clear_has_err();
+}
+inline ::google::protobuf::uint32 SAgreeFriend::err() const {
+  return err_;
+}
+inline void SAgreeFriend::set_err(::google::protobuf::uint32 value) {
+  set_has_err();
+  err_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// CExchangeReward
+
+// required uint32 cmd = 1 [default = 20492];
+inline bool CExchangeReward::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CExchangeReward::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CExchangeReward::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CExchangeReward::clear_cmd() {
+  cmd_ = 20492u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 CExchangeReward::cmd() const {
+  return cmd_;
+}
+inline void CExchangeReward::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SExchangeReward
+
+// required uint32 cmd = 1 [default = 20492];
+inline bool SExchangeReward::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SExchangeReward::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SExchangeReward::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SExchangeReward::clear_cmd() {
+  cmd_ = 20492u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 SExchangeReward::cmd() const {
+  return cmd_;
+}
+inline void SExchangeReward::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// repeated .protocol.ExAward list = 2;
+inline int SExchangeReward::list_size() const {
+  return list_.size();
+}
+inline void SExchangeReward::clear_list() {
+  list_.Clear();
+}
+inline const ::protocol::ExAward& SExchangeReward::list(int index) const {
+  return list_.Get(index);
+}
+inline ::protocol::ExAward* SExchangeReward::mutable_list(int index) {
+  return list_.Mutable(index);
+}
+inline ::protocol::ExAward* SExchangeReward::add_list() {
+  return list_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::protocol::ExAward >&
+SExchangeReward::list() const {
+  return list_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::protocol::ExAward >*
+SExchangeReward::mutable_list() {
+  return &list_;
+}
+
+// optional uint32 err = 3;
+inline bool SExchangeReward::has_err() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SExchangeReward::set_has_err() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SExchangeReward::clear_has_err() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SExchangeReward::clear_err() {
+  err_ = 0u;
+  clear_has_err();
+}
+inline ::google::protobuf::uint32 SExchangeReward::err() const {
+  return err_;
+}
+inline void SExchangeReward::set_err(::google::protobuf::uint32 value) {
+  set_has_err();
+  err_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// CExchangeCode
+
+// required uint32 cmd = 1 [default = 20493];
+inline bool CExchangeCode::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CExchangeCode::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CExchangeCode::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CExchangeCode::clear_cmd() {
+  cmd_ = 20493u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 CExchangeCode::cmd() const {
+  return cmd_;
+}
+inline void CExchangeCode::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// optional string excode = 2;
+inline bool CExchangeCode::has_excode() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CExchangeCode::set_has_excode() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CExchangeCode::clear_has_excode() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CExchangeCode::clear_excode() {
+  if (excode_ != &::google::protobuf::internal::kEmptyString) {
+    excode_->clear();
+  }
+  clear_has_excode();
+}
+inline const ::std::string& CExchangeCode::excode() const {
+  return *excode_;
+}
+inline void CExchangeCode::set_excode(const ::std::string& value) {
+  set_has_excode();
+  if (excode_ == &::google::protobuf::internal::kEmptyString) {
+    excode_ = new ::std::string;
+  }
+  excode_->assign(value);
+}
+inline void CExchangeCode::set_excode(const char* value) {
+  set_has_excode();
+  if (excode_ == &::google::protobuf::internal::kEmptyString) {
+    excode_ = new ::std::string;
+  }
+  excode_->assign(value);
+}
+inline void CExchangeCode::set_excode(const char* value, size_t size) {
+  set_has_excode();
+  if (excode_ == &::google::protobuf::internal::kEmptyString) {
+    excode_ = new ::std::string;
+  }
+  excode_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* CExchangeCode::mutable_excode() {
+  set_has_excode();
+  if (excode_ == &::google::protobuf::internal::kEmptyString) {
+    excode_ = new ::std::string;
+  }
+  return excode_;
+}
+inline ::std::string* CExchangeCode::release_excode() {
+  clear_has_excode();
+  if (excode_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = excode_;
+    excode_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void CExchangeCode::set_allocated_excode(::std::string* excode) {
+  if (excode_ != &::google::protobuf::internal::kEmptyString) {
+    delete excode_;
+  }
+  if (excode) {
+    set_has_excode();
+    excode_ = excode;
+  } else {
+    clear_has_excode();
+    excode_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string yzcode = 3;
+inline bool CExchangeCode::has_yzcode() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CExchangeCode::set_has_yzcode() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CExchangeCode::clear_has_yzcode() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CExchangeCode::clear_yzcode() {
+  if (yzcode_ != &::google::protobuf::internal::kEmptyString) {
+    yzcode_->clear();
+  }
+  clear_has_yzcode();
+}
+inline const ::std::string& CExchangeCode::yzcode() const {
+  return *yzcode_;
+}
+inline void CExchangeCode::set_yzcode(const ::std::string& value) {
+  set_has_yzcode();
+  if (yzcode_ == &::google::protobuf::internal::kEmptyString) {
+    yzcode_ = new ::std::string;
+  }
+  yzcode_->assign(value);
+}
+inline void CExchangeCode::set_yzcode(const char* value) {
+  set_has_yzcode();
+  if (yzcode_ == &::google::protobuf::internal::kEmptyString) {
+    yzcode_ = new ::std::string;
+  }
+  yzcode_->assign(value);
+}
+inline void CExchangeCode::set_yzcode(const char* value, size_t size) {
+  set_has_yzcode();
+  if (yzcode_ == &::google::protobuf::internal::kEmptyString) {
+    yzcode_ = new ::std::string;
+  }
+  yzcode_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* CExchangeCode::mutable_yzcode() {
+  set_has_yzcode();
+  if (yzcode_ == &::google::protobuf::internal::kEmptyString) {
+    yzcode_ = new ::std::string;
+  }
+  return yzcode_;
+}
+inline ::std::string* CExchangeCode::release_yzcode() {
+  clear_has_yzcode();
+  if (yzcode_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = yzcode_;
+    yzcode_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void CExchangeCode::set_allocated_yzcode(::std::string* yzcode) {
+  if (yzcode_ != &::google::protobuf::internal::kEmptyString) {
+    delete yzcode_;
+  }
+  if (yzcode) {
+    set_has_yzcode();
+    yzcode_ = yzcode;
+  } else {
+    clear_has_yzcode();
+    yzcode_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// SExchangeCode
+
+// required uint32 cmd = 1 [default = 20493];
+inline bool SExchangeCode::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SExchangeCode::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SExchangeCode::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SExchangeCode::clear_cmd() {
+  cmd_ = 20493u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 SExchangeCode::cmd() const {
+  return cmd_;
+}
+inline void SExchangeCode::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// optional bool success = 2;
+inline bool SExchangeCode::has_success() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SExchangeCode::set_has_success() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SExchangeCode::clear_has_success() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SExchangeCode::clear_success() {
+  success_ = false;
+  clear_has_success();
+}
+inline bool SExchangeCode::success() const {
+  return success_;
+}
+inline void SExchangeCode::set_success(bool value) {
+  set_has_success();
+  success_ = value;
+}
+
+// optional uint32 err = 3;
+inline bool SExchangeCode::has_err() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SExchangeCode::set_has_err() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SExchangeCode::clear_has_err() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SExchangeCode::clear_err() {
+  err_ = 0u;
+  clear_has_err();
+}
+inline ::google::protobuf::uint32 SExchangeCode::err() const {
+  return err_;
+}
+inline void SExchangeCode::set_err(::google::protobuf::uint32 value) {
+  set_has_err();
+  err_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// CExchangeRecord
+
+// required uint32 cmd = 1 [default = 20493];
+inline bool CExchangeRecord::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CExchangeRecord::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CExchangeRecord::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CExchangeRecord::clear_cmd() {
+  cmd_ = 20493u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 CExchangeRecord::cmd() const {
+  return cmd_;
+}
+inline void CExchangeRecord::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SExchangeRecord
+
+// required uint32 cmd = 1 [default = 20493];
+inline bool SExchangeRecord::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SExchangeRecord::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SExchangeRecord::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SExchangeRecord::clear_cmd() {
+  cmd_ = 20493u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 SExchangeRecord::cmd() const {
+  return cmd_;
+}
+inline void SExchangeRecord::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// repeated .protocol.ExRecord list = 2;
+inline int SExchangeRecord::list_size() const {
+  return list_.size();
+}
+inline void SExchangeRecord::clear_list() {
+  list_.Clear();
+}
+inline const ::protocol::ExRecord& SExchangeRecord::list(int index) const {
+  return list_.Get(index);
+}
+inline ::protocol::ExRecord* SExchangeRecord::mutable_list(int index) {
+  return list_.Mutable(index);
+}
+inline ::protocol::ExRecord* SExchangeRecord::add_list() {
+  return list_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::protocol::ExRecord >&
+SExchangeRecord::list() const {
+  return list_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::protocol::ExRecord >*
+SExchangeRecord::mutable_list() {
+  return &list_;
+}
+
+// optional uint32 err = 3;
+inline bool SExchangeRecord::has_err() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SExchangeRecord::set_has_err() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SExchangeRecord::clear_has_err() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SExchangeRecord::clear_err() {
+  err_ = 0u;
+  clear_has_err();
+}
+inline ::google::protobuf::uint32 SExchangeRecord::err() const {
+  return err_;
+}
+inline void SExchangeRecord::set_err(::google::protobuf::uint32 value) {
   set_has_err();
   err_ = value;
 }
