@@ -183,6 +183,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Logo\LogoScene.cpp" />
     <ClCompile Include="..\Classes\Main\AboutLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ActiveLayer.cpp" />
+    <ClCompile Include="..\Classes\Main\ChatLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ExchangeLayer.cpp" />
     <ClCompile Include="..\Classes\Main\FankuiLayer.cpp" />
     <ClCompile Include="..\Classes\Main\FirstChargeLayer.cpp" />
@@ -257,6 +258,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Logo\LogoScene.h" />
     <ClInclude Include="..\Classes\Main\AboutLayer.h" />
     <ClInclude Include="..\Classes\Main\ActiveLayer.h" />
+    <ClInclude Include="..\Classes\Main\ChatLayer.h" />
     <ClInclude Include="..\Classes\Main\ExchangeLayer.h" />
     <ClInclude Include="..\Classes\Main\FankuiLayer.h" />
     <ClInclude Include="..\Classes\Main\FirstChargeLayer.h" />

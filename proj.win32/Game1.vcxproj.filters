@@ -219,6 +219,9 @@
     <ClCompile Include="..\Classes\Common\WebViewCommom.cpp">
       <Filter>Classes\Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Main\ChatLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -460,6 +463,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Common\WebViewCommom.h">
       <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\ChatLayer.h">
+      <Filter>Classes\Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
