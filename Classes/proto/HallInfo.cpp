@@ -604,6 +604,26 @@ void HallInfo::SendCExchangeRecord(){
 	CExchangeRecord cl;
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+
+	//test
+	char buff[100];
+	int gold = LoginInfo::getIns()->getMyDBUserInfo().gold();
+	SExchangeRecord se;
+	for (int i = 0; i < 8; i++){
+		ExRecord *ea = se.add_list();
+		sprintf(buff, XXIconv::GBK2UTF("%d元红包").c_str(), i * 5 + 5);
+		ea->set_title(buff);
+		ea->set_id(i+1);
+		sprintf(buff,"201803201%04d",i);
+		ea->set_orderid(buff);
+		ea->set_status(i%2);
+		ea->set_time(GameDataSet::getLocalTime());
+	}
+	int sz = se.ByteSize();
+	char *buffer = new char[sz];
+	se.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(se.cmd(), buffer, sz);
+	HandlerSExchangeRecord(ev);
 }
 
 void HallInfo::HandlerSExchangeRecord(ccEvent *event){
@@ -612,6 +632,7 @@ void HallInfo::HandlerSExchangeRecord(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
 	int err = cl.err();
 	if (err == 0){
+		m_pSExchangeRecord = cl;
 		log("%s", XXIconv::GBK2UTF("获取兑换记录成功"));
 	}
 	else{

@@ -81,6 +81,9 @@ public:
 	SExchangeReward getSExchangeReward(){
 		return m_pSExchangeReward;
 	}
+	SExchangeRecord getSExchangeRecord(){
+		return m_pSExchangeRecord;
+	}
 private:
 	static HallInfo *m_shareHallInfo;
 	map<int, map<int,Rank>> m_pSRanks;
@@ -92,6 +95,7 @@ private:
 	SAddFriendList m_pSAddFriendList;
 	STask m_pSTask;
 	SExchangeReward m_pSExchangeReward;
+	SExchangeRecord m_pSExchangeRecord;
 };
 
 #endif 
