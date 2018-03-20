@@ -19,6 +19,7 @@
 #include "FirstChargeLayer.h"
 #include "AboutLayer.h"
 #include "HelpLayer.h"
+#include "ChatLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
@@ -146,6 +147,13 @@ public:
 		return m_pHelpLayer;
 	}
 
+	void setChatLayer(ChatLayer *p){
+		m_pChatLayer = p;
+	}
+	ChatLayer *getChatLayer(){
+		return m_pChatLayer;
+	}
+
 	void replaceScene(Scene *scene);
 private:
 	static GameControl *m_ins;
@@ -165,6 +173,7 @@ private:
 	FirstChargeLayer *m_pFirstChargeLayer;
 	AboutLayer *m_pAboutLayer;
 	HelpLayer *m_pHelpLayer;
+	ChatLayer *m_pChatLayer;
 };
 
 #endif // __GameControl_SCENE_H__

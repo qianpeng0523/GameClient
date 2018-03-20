@@ -2962,7 +2962,7 @@ class CExchangeRecord : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required uint32 cmd = 1 [default = 20493];
+  // required uint32 cmd = 1 [default = 20494];
   inline bool has_cmd() const;
   inline void clear_cmd();
   static const int kCmdFieldNumber = 1;
@@ -3044,7 +3044,7 @@ class SExchangeRecord : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required uint32 cmd = 1 [default = 20493];
+  // required uint32 cmd = 1 [default = 20494];
   inline bool has_cmd() const;
   inline void clear_cmd();
   static const int kCmdFieldNumber = 1;
@@ -5324,7 +5324,7 @@ inline void SExchangeCode::set_err(::google::protobuf::uint32 value) {
 
 // CExchangeRecord
 
-// required uint32 cmd = 1 [default = 20493];
+// required uint32 cmd = 1 [default = 20494];
 inline bool CExchangeRecord::has_cmd() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -5335,7 +5335,7 @@ inline void CExchangeRecord::clear_has_cmd() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void CExchangeRecord::clear_cmd() {
-  cmd_ = 20493u;
+  cmd_ = 20494u;
   clear_has_cmd();
 }
 inline ::google::protobuf::uint32 CExchangeRecord::cmd() const {
@@ -5350,7 +5350,7 @@ inline void CExchangeRecord::set_cmd(::google::protobuf::uint32 value) {
 
 // SExchangeRecord
 
-// required uint32 cmd = 1 [default = 20493];
+// required uint32 cmd = 1 [default = 20494];
 inline bool SExchangeRecord::has_cmd() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -5361,7 +5361,7 @@ inline void SExchangeRecord::clear_has_cmd() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void SExchangeRecord::clear_cmd() {
-  cmd_ = 20493u;
+  cmd_ = 20494u;
   clear_has_cmd();
 }
 inline ::google::protobuf::uint32 SExchangeRecord::cmd() const {

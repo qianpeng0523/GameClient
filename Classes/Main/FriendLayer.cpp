@@ -72,6 +72,11 @@ void FriendChatItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	if (type == TOUCH_EVENT_ENDED){
 		if (name.compare("chat") == 0){
 			log("chat");
+			ChatLayer *p = GameControl::getIns()->getChatLayer();
+			if (!p){
+				p = ChatLayer::create(m_hall.userinfo().userid(),m_hall.userinfo().username());
+				Director::sharedDirector()->getRunningScene()->addChild(p);
+			}
 		}
 		else if (name.compare("zeng") == 0){
 			log("zeng");

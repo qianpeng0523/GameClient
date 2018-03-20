@@ -109,8 +109,29 @@ bool ExchangeRecordItemLayer::init(ExRecord hall)
 
 	this->setContentSize(m_RootLayer->getSize());
 
-
-
+	string title = hall.title();
+	string orderid = hall.orderid();
+	string time = hall.time();
+	int status = hall.status();
+	GameDataSet::setText(m_RootLayer,"name",title);
+	GameDataSet::setText(m_RootLayer, "orderid", orderid);
+	GameDataSet::setText(m_RootLayer, "time", time);
+	string str;
+	Color3B c3;
+	if (status == 0){
+		str = "正在处理";
+		c3 = ccc3(255,0,0);
+	}
+	else if (status == 1){
+		str = "已兑换";
+		c3 = ccc3(0, 255, 0);
+	}
+	else{
+		str = "兑换失败";
+		c3 = ccc3(120, 120, 120);
+	}
+	Text *tt= GameDataSet::setText(m_RootLayer, "statu", XXIconv::GBK2UTF(str.c_str()));
+	tt->setColor(c3);
 	return true;
 }
 
@@ -163,17 +184,19 @@ bool ExchangeLayer::init()
 	m_btntext[0] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_jiang");
 	m_btntext[1] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_duihuan");
 	m_btntext[2] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_records");
+	GameDataSet::getButton(m_RootLayer, "btn", selector, this);
 	m_top = GameDataSet::getLayout(m_RootLayer,"top");
 
 	Layout *in = GameDataSet::getLayout(m_RootLayer, "in");
 	m_input = LogoLayer::AddCursorTextField(in, 20);
 	m_input->setPlaceHolder(XXIconv::GBK2UTF("请输入兑换码").c_str());
-	m_input->setFontColor(ccc3(0x38, 0x4E, 0x9C));
+	m_input->setFontColor(ccc3(0x98, 0x4E, 0x9C));
 	
 	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
 	int gold = user.gold();
 	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold));
 	HallInfo::getIns()->SendCExchangeReward();
+	HallInfo::getIns()->SendCExchangeRecord();
 	//SelectItem(0);
     return true;
 }
@@ -223,8 +246,10 @@ void ExchangeLayer::AddExchangeItems(){
 
 void ExchangeLayer::AddRecords(){
 	if (m_sbg3->getChildrenCount() == 0){
-		for (int i = 0; i < 10; i++){
-			ExRecord rk;
+		SExchangeRecord ser = HallInfo::getIns()->getSExchangeRecord();
+		int sz = ser.list_size();
+		for (int i = 0; i < sz; i++){
+			ExRecord rk=ser.list(i);
 			ExchangeRecordItemLayer *p = ExchangeRecordItemLayer::create(rk);
 			GameDataSet::PushScrollItem(m_sbg3, 0, 0, p, i, m_ScrollView3);
 		}

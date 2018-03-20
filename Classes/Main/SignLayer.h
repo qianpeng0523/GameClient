@@ -17,6 +17,10 @@ public:
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
 	void OpenRun(bool isopen);
+
+	void Run();//点击抽奖转
+	void RunCall(Node *node);
+	void RunEnd();
 private:
 	void RunLight(float dt);
 	void ShowLight(bool isshow);
@@ -26,6 +30,8 @@ private:
 	bool m_isopen;
 	Layout *m_light;
 	Layout *m_point;
+	int m_index;
+	int m_curindex;
 };
 
 #endif 

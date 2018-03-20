@@ -59,6 +59,9 @@ public:
 	void SendCExchangeRecord();
 	void HandlerSExchangeRecord(ccEvent *event);
 
+	void SendCExchange(int id);
+	void HandlerSExchange(ccEvent *event);
+
 	map<int, Rank> getSRank(int type);
 	void eraseRank(int type,int lv);
 

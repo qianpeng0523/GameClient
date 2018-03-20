@@ -616,7 +616,7 @@ void HallInfo::SendCExchangeRecord(){
 		ea->set_id(i+1);
 		sprintf(buff,"201803201%04d",i);
 		ea->set_orderid(buff);
-		ea->set_status(i%2);
+		ea->set_status(i%3);
 		ea->set_time(GameDataSet::getLocalTime());
 	}
 	int sz = se.ByteSize();
@@ -638,4 +638,12 @@ void HallInfo::HandlerSExchangeRecord(ccEvent *event){
 	else{
 		log("%s", XXIconv::GBK2UTF("获取兑换记录失败"));
 	}
+}
+
+void HallInfo::SendCExchange(int id){
+
+}
+
+void HallInfo::HandlerSExchange(ccEvent *event){
+
 }

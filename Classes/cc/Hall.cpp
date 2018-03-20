@@ -811,8 +811,8 @@ void protobuf_AddDesc_Hall_2eproto() {
     " \002(\r:\00520493\022\016\n\006excode\030\002 \001(\t\022\016\n\006yzcode\030\003 "
     "\001(\t\"A\n\rSExchangeCode\022\022\n\003cmd\030\001 \002(\r:\00520493"
     "\022\017\n\007success\030\002 \001(\010\022\013\n\003err\030\003 \001(\r\"%\n\017CExcha"
-    "ngeRecord\022\022\n\003cmd\030\001 \002(\r:\00520493\"T\n\017SExchan"
-    "geRecord\022\022\n\003cmd\030\001 \002(\r:\00520493\022 \n\004list\030\002 \003"
+    "ngeRecord\022\022\n\003cmd\030\001 \002(\r:\00520494\"T\n\017SExchan"
+    "geRecord\022\022\n\003cmd\030\001 \002(\r:\00520494\022 \n\004list\030\002 \003"
     "(\0132\022.protocol.ExRecord\022\013\n\003err\030\003 \001(\r", 1915);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Hall.proto", &protobuf_RegisterTypes);
@@ -8811,7 +8811,7 @@ CExchangeRecord::CExchangeRecord(const CExchangeRecord& from)
 
 void CExchangeRecord::SharedCtor() {
   _cached_size_ = 0;
-  cmd_ = 20493u;
+  cmd_ = 20494u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -8847,7 +8847,7 @@ CExchangeRecord* CExchangeRecord::New() const {
 
 void CExchangeRecord::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    cmd_ = 20493u;
+    cmd_ = 20494u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -8859,7 +8859,7 @@ bool CExchangeRecord::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint32 cmd = 1 [default = 20493];
+      // required uint32 cmd = 1 [default = 20494];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -8892,7 +8892,7 @@ bool CExchangeRecord::MergePartialFromCodedStream(
 
 void CExchangeRecord::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required uint32 cmd = 1 [default = 20493];
+  // required uint32 cmd = 1 [default = 20494];
   if (has_cmd()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->cmd(), output);
   }
@@ -8905,7 +8905,7 @@ void CExchangeRecord::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* CExchangeRecord::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required uint32 cmd = 1 [default = 20493];
+  // required uint32 cmd = 1 [default = 20494];
   if (has_cmd()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->cmd(), target);
   }
@@ -8921,7 +8921,7 @@ int CExchangeRecord::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint32 cmd = 1 [default = 20493];
+    // required uint32 cmd = 1 [default = 20494];
     if (has_cmd()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -9022,7 +9022,7 @@ SExchangeRecord::SExchangeRecord(const SExchangeRecord& from)
 
 void SExchangeRecord::SharedCtor() {
   _cached_size_ = 0;
-  cmd_ = 20493u;
+  cmd_ = 20494u;
   err_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -9059,7 +9059,7 @@ SExchangeRecord* SExchangeRecord::New() const {
 
 void SExchangeRecord::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    cmd_ = 20493u;
+    cmd_ = 20494u;
     err_ = 0u;
   }
   list_.Clear();
@@ -9073,7 +9073,7 @@ bool SExchangeRecord::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint32 cmd = 1 [default = 20493];
+      // required uint32 cmd = 1 [default = 20494];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -9137,7 +9137,7 @@ bool SExchangeRecord::MergePartialFromCodedStream(
 
 void SExchangeRecord::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required uint32 cmd = 1 [default = 20493];
+  // required uint32 cmd = 1 [default = 20494];
   if (has_cmd()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->cmd(), output);
   }
@@ -9161,7 +9161,7 @@ void SExchangeRecord::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SExchangeRecord::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required uint32 cmd = 1 [default = 20493];
+  // required uint32 cmd = 1 [default = 20494];
   if (has_cmd()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->cmd(), target);
   }
@@ -9189,7 +9189,7 @@ int SExchangeRecord::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint32 cmd = 1 [default = 20493];
+    // required uint32 cmd = 1 [default = 20494];
     if (has_cmd()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

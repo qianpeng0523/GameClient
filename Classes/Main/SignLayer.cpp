@@ -7,6 +7,8 @@
 
 SignLayer::SignLayer(){
 	m_isopen = false;
+	m_index = 0;
+	m_curindex = 1;
 	GameControl::getIns()->setSignLayer(this);
 }
 
@@ -38,11 +40,24 @@ bool SignLayer::init()
 
 	SEL_TouchEvent selector = toucheventselector(SignLayer::TouchEvent);
 	GameDataSet::getButton(m_RootLayer, "close_btn", selector, this);
+	GameDataSet::getButton(m_RootLayer, "touchbtn", selector, this);
 	GameDataSet::setText(m_RootLayer, "tip1","");
 	m_light = GameDataSet::getLayout(m_RootLayer, "deng");
 	m_point = GameDataSet::getLayout(m_RootLayer, "touchbtn");
 	OpenRun(true);
 	RunPoint(true);
+	char buff[50];
+	for (int i = 0; i < 12;i++){
+		sprintf(buff,"p%d",i+1);
+		Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
+		ly->setOpacity(0);
+		if (i < 2){
+			sprintf(buff, "s%d", i + 1);
+			Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
+			ly->setOpacity(0);
+			ly->setScale(0.1);
+		}
+	}
     return true;
 }
 
@@ -52,6 +67,9 @@ void SignLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	if (type == TOUCH_EVENT_ENDED){
 		if (name.compare("close_btn") == 0){
 			this->removeFromParentAndCleanup(true);
+		}
+		else if (name.compare("touchbtn") == 0){
+			Run();
 		}
 	}
 }
@@ -126,4 +144,28 @@ void SignLayer::CallFun(){
 			);
 	}
 	
+}
+
+void SignLayer::Run(){
+	Layout *point = GameDataSet::getLayout(m_RootLayer,"pointbg");
+	if (point){
+		OpenRun(false);
+		point->runAction(Sequence::create(RotateBy::create(0.05, 30), CCCallFuncN::create(this, callfuncN_selector(SignLayer::RunCall)), NULL));
+	}
+}
+
+void SignLayer::RunCall(Node *node){
+	char buff[50];
+	sprintf(buff,"p%d",m_curindex%12+1);
+	Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
+	ly->runAction(Sequence::create(FadeIn::create(0.5),FadeOut::create(0.5),NULL));
+	m_curindex++;
+	node->runAction(Sequence::create(RotateBy::create(0.05, 30), CCCallFuncN::create(this, callfuncN_selector(SignLayer::RunCall)), NULL));
+	if (m_curindex>24&&m_curindex % 12 == m_index){
+		RunEnd();
+	}
+}
+
+void SignLayer::RunEnd(){
+
 }

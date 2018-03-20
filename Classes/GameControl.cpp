@@ -21,6 +21,7 @@ GameControl::GameControl(){
 	m_pFirstChargeLayer = NULL;
 	m_pAboutLayer = NULL;
 	m_pHelpLayer = NULL;
+	m_pChatLayer = NULL;
 }
 
 GameControl::~GameControl(){
