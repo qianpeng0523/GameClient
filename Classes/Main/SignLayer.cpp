@@ -185,6 +185,14 @@ void SignLayer::RunEnd(){
 	OpenRun(false);
 	point->stopAllActions();
 	point->setRotation(m_curindex*30);
+
+	char buff[50];
+	int index1 = (m_index-1+12)%12;
+	int index2 = (m_index + 1) % 12;
+	int index3 = ;
+	sprintf(buff, "p%d", m_curindex % 12 + 1);
+	Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
+	ly->runAction(Sequence::create(FadeIn::create(0.2), FadeOut::create(0.5), NULL));
 }
 
 void SignLayer::PointBg(float dt){
