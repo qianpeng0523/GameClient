@@ -8,7 +8,8 @@
 SignLayer::SignLayer(){
 	m_isopen = false;
 	m_index = 0;
-	m_curindex = 1;
+	m_curindex = 0;
+	m_isupdate = false;
 	GameControl::getIns()->setSignLayer(this);
 }
 
@@ -71,6 +72,18 @@ void SignLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("touchbtn") == 0){
 			Run();
 		}
+	}
+}
+
+void SignLayer::openUpdate(bool isopen){
+	SEL_SCHEDULE selector = schedule_selector(SignLayer::PointBg);
+	if (!m_isupdate&&isopen){
+		m_isupdate = true;
+		Director::sharedDirector()->getScheduler()->scheduleSelector(selector,this,0.1,false);
+	}
+	else if (m_isupdate&&!isopen){
+		m_isupdate = false;
+		Director::sharedDirector()->getScheduler()->unscheduleSelector(selector, this);
 	}
 }
 
@@ -150,22 +163,30 @@ void SignLayer::Run(){
 	Layout *point = GameDataSet::getLayout(m_RootLayer,"pointbg");
 	if (point){
 		OpenRun(false);
-		point->runAction(Sequence::create(RotateBy::create(0.05, 30), CCCallFuncN::create(this, callfuncN_selector(SignLayer::RunCall)), NULL));
+		openUpdate(true);
+		RunCall(point);
 	}
 }
 
 void SignLayer::RunCall(Node *node){
 	char buff[50];
-	sprintf(buff,"p%d",m_curindex%12+1);
-	Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
-	ly->runAction(Sequence::create(FadeIn::create(0.5),FadeOut::create(0.5),NULL));
+	sprintf(buff, "p%d", m_curindex % 12 + 1);
+	Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
+	ly->runAction(Sequence::create(FadeIn::create(0.2), FadeOut::create(0.5), NULL));
 	m_curindex++;
-	node->runAction(Sequence::create(RotateBy::create(0.05, 30), CCCallFuncN::create(this, callfuncN_selector(SignLayer::RunCall)), NULL));
-	if (m_curindex>24&&m_curindex % 12 == m_index){
+	node->runAction(Sequence::create(RotateBy::create(0.06, 30), CCCallFuncN::create(this, callfuncN_selector(SignLayer::RunCall)), NULL));
+	if (m_curindex>48&&m_curindex % 12 == m_index){
 		RunEnd();
 	}
 }
 
 void SignLayer::RunEnd(){
+	Layout *point = GameDataSet::getLayout(m_RootLayer, "pointbg");
+	OpenRun(false);
+	point->stopAllActions();
+	point->setRotation(m_curindex*30);
+}
 
+void SignLayer::PointBg(float dt){
+	
 }

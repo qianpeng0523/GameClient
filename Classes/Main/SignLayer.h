@@ -21,13 +21,17 @@ public:
 	void Run();//点击抽奖转
 	void RunCall(Node *node);
 	void RunEnd();
+
+	void openUpdate(bool isopen);
 private:
 	void RunLight(float dt);
 	void ShowLight(bool isshow);
 	void RunPoint(bool isrun);
 	void CallFun();
+	void PointBg(float dt);
 private:
 	bool m_isopen;
+	bool m_isupdate;
 	Layout *m_light;
 	Layout *m_point;
 	int m_index;
