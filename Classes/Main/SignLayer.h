@@ -22,13 +22,12 @@ public:
 	void RunCall(Node *node);
 	void RunEnd();
 
-	void openUpdate(bool isopen);
 private:
 	void RunLight(float dt);
 	void ShowLight(bool isshow);
 	void RunPoint(bool isrun);
 	void CallFun();
-	void PointBg(float dt);
+	void RunEndCall();
 private:
 	bool m_isopen;
 	bool m_isupdate;
