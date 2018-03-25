@@ -20,10 +20,20 @@
 #include "AboutLayer.h"
 #include "HelpLayer.h"
 #include "ChatLayer.h"
+#include "MailTipLayer.h"
+#include "RewardTipLayer.h"
+#include "RootRegister.h"
+#include "LoadingLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
+
+struct LaBaItem
+{
+	string _content;
+	int _times;
+};
 
 class GameControl : public CCObject
 {
@@ -154,7 +164,31 @@ public:
 		return m_pChatLayer;
 	}
 
+	void setMailTipLayer(MailTipLayer *p){
+		m_pMailTipLayer = p;
+	}
+	MailTipLayer *getMailTipLayer(){
+		return m_pMailTipLayer;
+	}
+
+	void setRewardTipLayer(RewardTipLayer *p){
+		m_pRewardTipLayer = p;
+	}
+	RewardTipLayer *getRewardTipLayer(){
+		return m_pRewardTipLayer;
+	}
+
+	void setLoadingLayer(LoadingLayer *p){
+		m_pLoadingLayer = p;
+	}
+	LoadingLayer *getLoadingLayer(){
+		return m_pLoadingLayer;
+	}
+
 	void replaceScene(Scene *scene);
+
+	void PushLaBa(string content,int times);
+	void update(float dt);
 private:
 	static GameControl *m_ins;
 	LogoLayer *m_pLoginLayer;
@@ -174,6 +208,10 @@ private:
 	AboutLayer *m_pAboutLayer;
 	HelpLayer *m_pHelpLayer;
 	ChatLayer *m_pChatLayer;
+	MailTipLayer *m_pMailTipLayer;
+	RewardTipLayer *m_pRewardTipLayer;
+	LoadingLayer *m_pLoadingLayer;
+	vector<LaBaItem *> m_contents;
 };
 
 #endif // __GameControl_SCENE_H__

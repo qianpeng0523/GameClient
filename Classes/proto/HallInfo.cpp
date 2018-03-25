@@ -6,6 +6,8 @@
 #include "GameControl.h"
 #include "GameDataSet.h"
 #include "LoginInfo.h"
+#include "YMSocketData.h"
+#include "XXHttpRequest.h"
 
 using namespace cocos2d_xx;
 HallInfo *HallInfo::m_shareHallInfo=NULL;
@@ -42,7 +44,22 @@ HallInfo::HallInfo()
 	pe->registerProto(sl14.cmd(), sl14.GetTypeName());
 	SExchangeRecord sl15;
 	pe->registerProto(sl15.cmd(), sl15.GetTypeName());
+	SApplePay sl17;
+	pe->registerProto(sl17.cmd(), sl17.GetTypeName());
+	SWxpayOrder sl18;
+	pe->registerProto(sl18.cmd(), sl18.GetTypeName());
+	SWxpayQuery sl19;
+	pe->registerProto(sl19.cmd(), sl19.GetTypeName());
+	SFirstBuy sl20;
+	pe->registerProto(sl20.cmd(), sl20.GetTypeName());
+	SFeedBack sl21;
+	pe->registerProto(sl21.cmd(), sl21.GetTypeName());
+	SSign sl22;
+	pe->registerProto(sl22.cmd(), sl22.GetTypeName());
+	SSignList sl23;
+	pe->registerProto(sl23.cmd(), sl23.GetTypeName());
 	
+	pe->addListener(sl19.cmd(), this, Event_Handler(HallInfo::HandlerSWxpayQuery));
 }
 
 HallInfo::~HallInfo(){
@@ -224,6 +241,32 @@ void HallInfo::HandlerSMail(ccEvent *event){
 	}
 	else{
 		log("%s", XXIconv::GBK2UTF("获取邮箱列表失败"));
+	}
+}
+
+
+void HallInfo::SendCMailAward(int eid){
+	CMailAward cl;
+	cl.set_id(eid);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMailAward));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSMailAward(ccEvent *event){
+	SMailAward cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMailAward));
+	int err = cl.err();
+	if (err == 0){
+		int id = cl.id();
+		for (int i = 0; i < m_pSMail.list_size();i++){
+			Mail p = m_pSMail.list(i);
+			if (p.id() == id){
+				//查找到了  然后提示奖励界面
+
+				break;
+			}
+		}
 	}
 }
 
@@ -462,7 +505,7 @@ void HallInfo::SendCTask(){
 		Prop *prop = ts->add_award();
 		prop->set_id(1);
 		prop->set_name(XXIconv::GBK2UTF("金币"));
-		prop->set_number(i*(i / 4) * 1500);
+		prop->set_number((i+1)*(i / 4+1) * 1500);
 	}
 	int sz = st.ByteSize();
 	char *buffer = new char[sz];
@@ -641,9 +684,204 @@ void HallInfo::HandlerSExchangeRecord(ccEvent *event){
 }
 
 void HallInfo::SendCExchange(int id){
-
+	CExchange cl;
+	cl.set_id(id);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchange));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSExchange(ccEvent *event){
+	SExchange cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchange));
+	int err = cl.err();
+	if (err == 0){
+		
+	}
+}
 
+void HallInfo::SendCApplePay(int id, string receipt){
+	CApplePay cl;
+	cl.set_id(id);
+	cl.set_receipt(receipt);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSApplePay));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSApplePay(ccEvent *event){
+	SApplePay cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSApplePay));
+	int err = cl.err();
+	if (err == 0){
+
+	}
+}
+
+
+void HallInfo::SendCWxpayOrder(int id, string body){
+	CWxpayOrder cl;
+	cl.set_id(id);
+	cl.set_body(body);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSWxpayOrder));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSWxpayOrder(ccEvent *event){
+	SWxpayOrder cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSWxpayOrder));
+	int err = cl.err();
+	if (err == 0){
+		string orderid = cl.orderid();
+		string payreq = cl.payreq();
+		YMSocketData sd = XXHttpRequest::getIns()->getSocketDataByStr((char *)payreq.c_str(),payreq.length());
+
+	}
+}
+
+
+void HallInfo::SendCWxpayQuery(string transid){
+	CWxpayQuery cl;
+	cl.set_transid(transid);
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSWxpayQuery(ccEvent *event){
+	SWxpayQuery cl;
+	cl.CopyFrom(*event->msg);
+	int err = cl.err();
+	if (err == 0){
+		string transid = cl.transid();
+	}
+}
+
+
+void HallInfo::SendCFirstBuy(int type){
+	CFirstBuy cl;
+	cl.set_type(type);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFirstBuy));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSFirstBuy(ccEvent *event){
+	SFirstBuy cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFirstBuy));
+	int err = cl.err();
+	if (err == 0){
+		int id = cl.id();
+		string transid = cl.transid();
+		
+	}
+}
+
+
+//反馈
+void HallInfo::SendCFeedBack(string uid, string uname, string content){
+	CFeedBack cl;
+	cl.set_uid(uid);
+	cl.set_uname(uname);
+	cl.set_content(content);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFeedBack));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+
+	//test
+	SFeedBack ss;
+	int sz = ss.ByteSize();
+	char *buffer = new char[sz];
+	ss.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(ss.cmd(), buffer, sz);
+	HandlerSFeedBack(ev);
+}
+
+void HallInfo::HandlerSFeedBack(ccEvent *event){
+	SFeedBack cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFeedBack));
+	int err = cl.err();
+	if (err == 0){
+		FankuiLayer *p = GameControl::getIns()->getFankuiLayer();
+		if (p){
+			p->FeedBackFinish();
+		}
+
+	}
+}
+
+
+//签到
+void HallInfo::SendCSign(){
+	CSign cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSSign));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+
+	//test
+	SSign ss;
+	ss.set_index(rand()%12);
+	ss.set_count(4);
+	int sz = ss.ByteSize();
+	char *buffer = new char[sz];
+	ss.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(ss.cmd(), buffer, sz);
+	HandlerSSign(ev);
+}
+
+void HallInfo::HandlerSSign(ccEvent *event){
+	SSign cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSSign));
+	int err = cl.err();
+	if (err == 0){
+		m_pSSign = cl;
+		SignLayer *p = GameControl::getIns()->getSignLayer();
+		if (p){
+			p->Run();
+		}
+		m_pSSignList.set_count(cl.count());
+		m_pSSignList.set_sign(1);
+	}
+}
+
+
+void HallInfo::SendCSignList(){
+	CSignList cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSSignList));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+
+	//test
+	SSignList sl;
+	sl.set_count(3);
+	sl.set_sign(0);
+	int dd[8] = { 3, 5, 7, 10, 14, 18, 22, 30 };
+	for (int i = 0; i < 8;i++){
+		SignAward *sa = sl.add_reward();
+		sa->set_id(i+1);
+		sa->set_day(dd[i]);
+		Prop p1;
+		Prop *p = (Prop *)ccEvent::create_message(p1.GetTypeName());
+		int pid = i % 2 + 1;
+		p->set_id(pid);
+		p->set_number(pid==1?500*dd[i]:i/2);
+		sa->set_allocated_reward(p);
+	}
+	int sz = sl.ByteSize();
+	char *buffer = new char[sz];
+	sl.SerializePartialToArray(buffer, sz);
+	ccEvent *ev = new ccEvent(sl.cmd(), buffer, sz);
+	HandlerSSignList(ev);
+}
+
+void HallInfo::HandlerSSignList(ccEvent *event){
+	SSignList cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSSignList));
+	int err = cl.err();
+	if (err == 0){
+		m_pSSignList = cl;
+		SignLayer *p = GameControl::getIns()->getSignLayer();
+		if (p){
+			p->setSignData();
+		}
+	}
 }

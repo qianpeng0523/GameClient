@@ -12,14 +12,15 @@
 #include "HallInfo.h"
 
 MainLayer::MainLayer(){
+	m_finish = true;
 	GameControl::getIns()->setMainLayer(this);
 	memset(m_index,0,sizeof(int)*2);
 }
 
 MainLayer::~MainLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getMainLayer()){
 		GameControl::getIns()->setMainLayer(NULL);
-
 	}
 }
 
@@ -30,7 +31,7 @@ bool MainLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("mainlayer.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("mainlayer.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(MainLayer::TouchEvent);
@@ -44,7 +45,14 @@ bool MainLayer::init()
 
 	GameDataSet::getButton(m_RootLayer, "head_btn", selector, this);
 	GameDataSet::getButton(m_RootLayer, "set_btn", selector, this);
-	GameDataSet::getButton(m_RootLayer, "shop_btn", selector, this);
+	Button *shopbtn= GameDataSet::getButton(m_RootLayer, "shop_btn", selector, this);
+	for (int i = 0; i < 1; i++){
+		ImageView *simg = ImageView::create("plaza_shangcheng.png", Widget::TextureResType::PLIST);
+		shopbtn->addChild(simg);
+		simg->setPosition(shopbtn->getSize() / 2.0);
+		simg->setOpacity(0);
+		simg->runAction(RepeatForever::create(Sequence::create(FadeIn::create(1.0), DelayTime::create(0.2), FadeOut::create(1.0), DelayTime::create(0.2), NULL)));
+	}
 	GameDataSet::getButton(m_RootLayer, "cardadd", selector, this);
 	GameDataSet::getButton(m_RootLayer, "goldadd", selector, this);
 	GameDataSet::getButton(m_RootLayer, "sign_btn", selector, this);
@@ -71,9 +79,31 @@ bool MainLayer::init()
 	GameDataSet::setTextBMFont(m_RootLayer, "card", card);
 	GameDataSet::setTextBMFont(m_RootLayer, "gold", GameDataSet::getCNStringByInteger(gold));
 
-	SelectItem(0);
+	m_laba = (Text *)GameDataSet::getLayout(m_RootLayer,"Label_laba");
 	
+	SelectItem(0);
+	m_laba->setPositionX(-m_laba->getSize().width*1.01);
+	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试"),-1);
+	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试11111111"), 3);
+	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试222222222"), 2);
     return true;
+}
+
+void MainLayer::ShowLaBa(string content){
+	if (m_laba&&m_laba->getPositionX()<=-m_laba->getSize().width*1.01){
+		m_finish = false;
+		m_laba->stopAllActions();
+		Layout *ly = GameDataSet::getLayout(m_RootLayer,"laba");
+		m_laba->setPositionX(ly->getSize().width*1.01);
+		m_laba->setText(content);
+		m_laba->runAction(Sequence::create(MoveTo::create(10.0, ccp(-m_laba->getSize().width*1.02,m_laba->getPositionY())),
+			CCCallFunc::create(this, callfunc_selector(MainLayer::LaBaCall))
+			,NULL));
+	}
+}
+
+void MainLayer::LaBaCall(){
+	m_finish = true;
 }
 
 void MainLayer::ScrollViewEvent(Ref* obj, ScrollviewEventType type){

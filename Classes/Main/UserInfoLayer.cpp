@@ -10,6 +10,7 @@ UserInfoLayer::UserInfoLayer(){
 }
 
 UserInfoLayer::~UserInfoLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getUserInfoLayer()){
 		GameControl::getIns()->setUserInfoLayer(NULL);
 
@@ -23,7 +24,7 @@ bool UserInfoLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("userinfo.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("userinfo.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(UserInfoLayer::TouchEvent);

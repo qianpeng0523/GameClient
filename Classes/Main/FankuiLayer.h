@@ -16,8 +16,11 @@ public:
     virtual bool init();
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
+
+	void FeedBackFinish();
 private:
 	ui::EditBox *m_input;
+	Button *m_btn;
 private:
 	
 };

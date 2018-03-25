@@ -14,6 +14,7 @@ LogoLayer::LogoLayer(){
 }
 
 LogoLayer::~LogoLayer(){
+	RootRegister::getIns()->resetWidget("login.json");
 	if (this==GameControl::getIns()->getLoginLayer()){
 		GameControl::getIns()->setLoginLayer(NULL);
 	}
@@ -26,7 +27,7 @@ bool LogoLayer::init()
         return false;
     }
 
- 	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("login.json");
+ 	m_RootLayer =RootRegister::getIns()->getWidget("login.json");
  	this->addChild(m_RootLayer);
 	SEL_TouchEvent selector = toucheventselector(LogoLayer::TouchEvent);
 	m_ykloginbtn = GameDataSet::getButton(m_RootLayer, "yklogin_btn", selector, this);

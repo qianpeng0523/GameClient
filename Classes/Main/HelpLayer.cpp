@@ -15,6 +15,7 @@ HelpLayer::HelpLayer(){
 }
 
 HelpLayer::~HelpLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getHelpLayer()){
 		GameControl::getIns()->setHelpLayer(NULL);
 
@@ -28,7 +29,7 @@ bool HelpLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("help.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("help.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(HelpLayer::TouchEvent);

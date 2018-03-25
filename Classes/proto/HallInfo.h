@@ -14,15 +14,22 @@ public:
 	static HallInfo* getIns();
 	bool init();
 public:
+	//排行榜
 	void SendCRank(int type,int index);
 	void HandlerSRankHand(ccEvent *event);
 
+	//商城
 	void SendCShop(int type);
 	void HandlerSShop(ccEvent *event);
 
+	//邮件
 	void SendCMail();
 	void HandlerSMail(ccEvent *event);
 
+	void SendCMailAward(int eid);
+	void HandlerSMailAward(ccEvent *event);
+
+	//好友
 	void SendCFriend();
 	void HandlerSFriend(ccEvent *event);
 
@@ -38,17 +45,20 @@ public:
 	void SendCAddFriendList();
 	void HandlerSAddFriendList(ccEvent *event);
 
+	void SendCAgreeFriend(string uid, bool agree);
+	void HandlerSAgreeFriend(ccEvent *event);
+
+	//活动
 	void SendCActive(int type);
 	void HandlerSActive(ccEvent *event);
 
+	//任务
 	void SendCTask();
 	void HandlerSTask(ccEvent *event);
 
+	///////////兑换
 	void SendCReward(int type,int id);
 	void HandlerSReward(ccEvent *event);
-
-	void SendCAgreeFriend(string uid,bool agree);
-	void HandlerSAgreeFriend(ccEvent *event);
 
 	void SendCExchangeReward();
 	void HandlerSExchangeReward(ccEvent *event);
@@ -61,6 +71,30 @@ public:
 
 	void SendCExchange(int id);
 	void HandlerSExchange(ccEvent *event);
+
+	//////////支付
+	void SendCApplePay(int id, string receipt);
+	void HandlerSApplePay(ccEvent *event);
+
+	void SendCWxpayOrder(int id,string body);
+	void HandlerSWxpayOrder(ccEvent *event);
+
+	void SendCWxpayQuery(string transid);
+	void HandlerSWxpayQuery(ccEvent *event);
+
+	void SendCFirstBuy(int type);
+	void HandlerSFirstBuy(ccEvent *event);
+
+	//反馈
+	void SendCFeedBack(string uid,string uname,string content);
+	void HandlerSFeedBack(ccEvent *event);
+
+	//签到
+	void SendCSign();
+	void HandlerSSign(ccEvent *event);
+
+	void SendCSignList();
+	void HandlerSSignList(ccEvent *event);
 
 	map<int, Rank> getSRank(int type);
 	void eraseRank(int type,int lv);
@@ -87,6 +121,12 @@ public:
 	SExchangeRecord getSExchangeRecord(){
 		return m_pSExchangeRecord;
 	}
+	SSignList getSSignList(){
+		return m_pSSignList;
+	}
+	SSign getSSign(){
+		return m_pSSign;
+	}
 private:
 	static HallInfo *m_shareHallInfo;
 	map<int, map<int,Rank>> m_pSRanks;
@@ -99,6 +139,8 @@ private:
 	STask m_pSTask;
 	SExchangeReward m_pSExchangeReward;
 	SExchangeRecord m_pSExchangeRecord;
+	SSignList m_pSSignList;
+	SSign m_pSSign;
 };
 
 #endif 

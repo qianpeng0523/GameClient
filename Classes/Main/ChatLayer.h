@@ -22,6 +22,7 @@ public:
 	
 private:
 	string m_uid;
+	string m_json;
 private:
 
 };

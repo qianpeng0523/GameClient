@@ -10,7 +10,7 @@ RankItemLayer::RankItemLayer(){
 }
 
 RankItemLayer::~RankItemLayer(){
-	
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 RankItemLayer *RankItemLayer::create(Rank hall){
@@ -31,7 +31,7 @@ bool RankItemLayer::init(Rank hall)
         return false;
     }
 	m_hall = hall;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("frienditem.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("frienditem.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());

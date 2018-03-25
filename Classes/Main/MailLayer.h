@@ -17,7 +17,7 @@ public:
 	static MailItemLayer *create(Mail mail);
 	virtual bool init(Mail mail);
 
-	void TouchEvent();
+	void TouchEvent(CCObject *obj, TouchEventType type);
 private:
 	Mail m_mail;
 private:

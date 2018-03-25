@@ -4,7 +4,7 @@
 #include "ClientSocket.h"
 #include "LogoScene.h"
 #include "LoginInfo.h"
-
+#include "HallInfo.h"
 
 
 ShopItemLayer::ShopItemLayer(){
@@ -12,7 +12,7 @@ ShopItemLayer::ShopItemLayer(){
 }
 
 ShopItemLayer::~ShopItemLayer(){
-
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 ShopItemLayer *ShopItemLayer::create(ShopItem item){
@@ -33,7 +33,7 @@ bool ShopItemLayer::init(ShopItem item)
 		return false;
 	}
 	m_item = item;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("shopitem.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("shopitem.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
@@ -77,7 +77,8 @@ void ShopItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	string name = btn->getName();
 	if (type == TOUCH_EVENT_ENDED){
 		if (name.compare("btn") == 0){
-
+			int id = m_item.id();
+			
 		}
 	}
 }
@@ -112,6 +113,7 @@ ShopLayer::ShopLayer(){
 }
 
 ShopLayer::~ShopLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getShopLayer()){
 		GameControl::getIns()->setShopLayer(NULL);
 
@@ -125,7 +127,7 @@ bool ShopLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("shop.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("shop.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(ShopLayer::TouchEvent);

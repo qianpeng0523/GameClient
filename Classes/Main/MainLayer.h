@@ -18,6 +18,12 @@ public:
 	void TouchEvent(CCObject *obj, TouchEventType type);
 	void AddFriends(int type);
 	void ShowFriends(int type);
+
+	void ShowLaBa(string content);
+	void LaBaCall();
+	bool isFinished(){
+		return m_finish;
+	}
 private:
 	void SelectItem(int index);
 	void ScrollViewEvent(Ref* obj, ScrollviewEventType type);
@@ -29,6 +35,8 @@ private:
 	ui::ScrollView *m_ScrollView1;
 	Layout *m_sbg1;
 	int m_index[2];
+	Text *m_laba;
+	bool m_finish;
 };
 
 #endif 

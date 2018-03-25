@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<root>
+  <item json="about.json" count="1" type="2"/>
+  <item json="activity.json" count="1" type="2"/>
+  <item json="chat.json" count="1" type="2"/>
+  <item json="chatitem1.json" count="10" type="2"/>
+  <item json="chatitem2.json" count="10" type="2"/>
+  <item json="exchange.json" count="1" type="2"/>
+  <item json="exchangeitem.json" count="10" type="2"/>
+  <item json="exchangerecorditem.json" count="10" type="2"/>
+  <item json="fankui.json" count="1" type="2"/>
+  <item json="firstcharge.json" count="1" type="2"/>
+  <item json="free.json" count="1" type="2"/>
+  <item json="freeitem.json" count="10" type="2"/>
+  <item json="friend.json" count="1" type="2"/>
+  <item json="friendchatitem.json" count="10" type="2"/>
+  <item json="frienditem.json" count="50" type="2"/>
+  <item json="friendtongzhi.json" count="10" type="2"/>
+  <item json="help.json" count="1" type="2"/> 
+  <item json="login.json" count="1" type="1"/>
+  <item json="mail.json" count="1" type="2"/>
+  <item json="mailitem.json" count="10" type="2"/>
+  <item json="mailtip.json" count="1" type="2"/>
+  <item json="mainlayer.json" count="1" type="2"/>
+  <item json="rewardtip.json" count="1" type="2"/>
+  <item json="set.json" count="1" type="2"/>
+  <item json="shop.json" count="1" type="2"/>
+  <item json="shopitem.json" count="20" type="2"/>
+  <item json="task.json" count="1" type="2"/>
+  <item json="taskitem.json" count="30" type="2"/>
+  <item json="userinfo.json" count="1" type="2"/>
+  <item json="webview.json" count="1" type="2"/>
+  <item json="yaoqianshu.json" count="1" type="2"/>
+  <item json="loading.json" count="1" type="0"/>
+</root>

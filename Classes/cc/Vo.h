@@ -44,6 +44,7 @@ class Active;
 class Task;
 class ExAward;
 class ExRecord;
+class SignAward;
 
 // ===================================================================
 
@@ -549,6 +550,25 @@ class Mail : public ::google::protobuf::Message {
   inline ::std::string* release_time();
   inline void set_allocated_time(::std::string* time);
 
+  // repeated .protocol.Prop prop = 6;
+  inline int prop_size() const;
+  inline void clear_prop();
+  static const int kPropFieldNumber = 6;
+  inline const ::protocol::Prop& prop(int index) const;
+  inline ::protocol::Prop* mutable_prop(int index);
+  inline ::protocol::Prop* add_prop();
+  inline const ::google::protobuf::RepeatedPtrField< ::protocol::Prop >&
+      prop() const;
+  inline ::google::protobuf::RepeatedPtrField< ::protocol::Prop >*
+      mutable_prop();
+
+  // optional uint32 get = 7;
+  inline bool has_get() const;
+  inline void clear_get();
+  static const int kGetFieldNumber = 7;
+  inline ::google::protobuf::uint32 get() const;
+  inline void set_get(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:protocol.Mail)
  private:
   inline void set_has_id();
@@ -561,6 +581,8 @@ class Mail : public ::google::protobuf::Message {
   inline void clear_has_content();
   inline void set_has_time();
   inline void clear_has_time();
+  inline void set_has_get();
+  inline void clear_has_get();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -569,9 +591,11 @@ class Mail : public ::google::protobuf::Message {
   ::std::string* title_;
   ::std::string* content_;
   ::std::string* time_;
+  ::google::protobuf::RepeatedPtrField< ::protocol::Prop > prop_;
+  ::google::protobuf::uint32 get_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
 
   friend void  protobuf_AddDesc_Vo_2eproto();
   friend void protobuf_AssignDesc_Vo_2eproto();
@@ -1365,6 +1389,110 @@ class ExRecord : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ExRecord* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SignAward : public ::google::protobuf::Message {
+ public:
+  SignAward();
+  virtual ~SignAward();
+
+  SignAward(const SignAward& from);
+
+  inline SignAward& operator=(const SignAward& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SignAward& default_instance();
+
+  void Swap(SignAward* other);
+
+  // implements Message ----------------------------------------------
+
+  SignAward* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SignAward& from);
+  void MergeFrom(const SignAward& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::uint32 id() const;
+  inline void set_id(::google::protobuf::uint32 value);
+
+  // optional uint32 day = 2;
+  inline bool has_day() const;
+  inline void clear_day();
+  static const int kDayFieldNumber = 2;
+  inline ::google::protobuf::uint32 day() const;
+  inline void set_day(::google::protobuf::uint32 value);
+
+  // optional .protocol.Prop reward = 3;
+  inline bool has_reward() const;
+  inline void clear_reward();
+  static const int kRewardFieldNumber = 3;
+  inline const ::protocol::Prop& reward() const;
+  inline ::protocol::Prop* mutable_reward();
+  inline ::protocol::Prop* release_reward();
+  inline void set_allocated_reward(::protocol::Prop* reward);
+
+  // @@protoc_insertion_point(class_scope:protocol.SignAward)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_day();
+  inline void clear_has_day();
+  inline void set_has_reward();
+  inline void clear_has_reward();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 day_;
+  ::protocol::Prop* reward_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Vo_2eproto();
+  friend void protobuf_AssignDesc_Vo_2eproto();
+  friend void protobuf_ShutdownFile_Vo_2eproto();
+
+  void InitAsDefaultInstance();
+  static SignAward* default_instance_;
 };
 // ===================================================================
 
@@ -2197,6 +2325,53 @@ inline void Mail::set_allocated_time(::std::string* time) {
     clear_has_time();
     time_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
+}
+
+// repeated .protocol.Prop prop = 6;
+inline int Mail::prop_size() const {
+  return prop_.size();
+}
+inline void Mail::clear_prop() {
+  prop_.Clear();
+}
+inline const ::protocol::Prop& Mail::prop(int index) const {
+  return prop_.Get(index);
+}
+inline ::protocol::Prop* Mail::mutable_prop(int index) {
+  return prop_.Mutable(index);
+}
+inline ::protocol::Prop* Mail::add_prop() {
+  return prop_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::protocol::Prop >&
+Mail::prop() const {
+  return prop_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::protocol::Prop >*
+Mail::mutable_prop() {
+  return &prop_;
+}
+
+// optional uint32 get = 7;
+inline bool Mail::has_get() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void Mail::set_has_get() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void Mail::clear_has_get() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void Mail::clear_get() {
+  get_ = 0u;
+  clear_has_get();
+}
+inline ::google::protobuf::uint32 Mail::get() const {
+  return get_;
+}
+inline void Mail::set_get(::google::protobuf::uint32 value) {
+  set_has_get();
+  get_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -3364,6 +3539,92 @@ inline ::google::protobuf::uint32 ExRecord::status() const {
 inline void ExRecord::set_status(::google::protobuf::uint32 value) {
   set_has_status();
   status_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SignAward
+
+// optional uint32 id = 1;
+inline bool SignAward::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SignAward::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SignAward::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SignAward::clear_id() {
+  id_ = 0u;
+  clear_has_id();
+}
+inline ::google::protobuf::uint32 SignAward::id() const {
+  return id_;
+}
+inline void SignAward::set_id(::google::protobuf::uint32 value) {
+  set_has_id();
+  id_ = value;
+}
+
+// optional uint32 day = 2;
+inline bool SignAward::has_day() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SignAward::set_has_day() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SignAward::clear_has_day() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SignAward::clear_day() {
+  day_ = 0u;
+  clear_has_day();
+}
+inline ::google::protobuf::uint32 SignAward::day() const {
+  return day_;
+}
+inline void SignAward::set_day(::google::protobuf::uint32 value) {
+  set_has_day();
+  day_ = value;
+}
+
+// optional .protocol.Prop reward = 3;
+inline bool SignAward::has_reward() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SignAward::set_has_reward() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SignAward::clear_has_reward() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SignAward::clear_reward() {
+  if (reward_ != NULL) reward_->::protocol::Prop::Clear();
+  clear_has_reward();
+}
+inline const ::protocol::Prop& SignAward::reward() const {
+  return reward_ != NULL ? *reward_ : *default_instance_->reward_;
+}
+inline ::protocol::Prop* SignAward::mutable_reward() {
+  set_has_reward();
+  if (reward_ == NULL) reward_ = new ::protocol::Prop;
+  return reward_;
+}
+inline ::protocol::Prop* SignAward::release_reward() {
+  clear_has_reward();
+  ::protocol::Prop* temp = reward_;
+  reward_ = NULL;
+  return temp;
+}
+inline void SignAward::set_allocated_reward(::protocol::Prop* reward) {
+  delete reward_;
+  reward_ = reward;
+  if (reward) {
+    set_has_reward();
+  } else {
+    clear_has_reward();
+  }
 }
 
 

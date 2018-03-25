@@ -45,7 +45,7 @@ bool WebViewCommom::init(string url)
        
         return false;
     }
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("webview.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("webview.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(WebViewCommom::TouchEvent);

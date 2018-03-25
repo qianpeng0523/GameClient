@@ -13,7 +13,7 @@ FriendChatItemLayer::FriendChatItemLayer(){
 }
 
 FriendChatItemLayer::~FriendChatItemLayer(){
-
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 FriendChatItemLayer *FriendChatItemLayer::create(Friend hall){
@@ -34,7 +34,7 @@ bool FriendChatItemLayer::init(Friend hall)
 		return false;
 	}
 	m_hall = hall;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("friendchatitem.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("friendchatitem.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
@@ -96,7 +96,7 @@ FriendNoticeLayer::FriendNoticeLayer(){
 }
 
 FriendNoticeLayer::~FriendNoticeLayer(){
-
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 FriendNoticeLayer *FriendNoticeLayer::create(FriendNotice hall){
@@ -117,7 +117,7 @@ bool FriendNoticeLayer::init(FriendNotice hall)
 		return false;
 	}
 	m_hall = hall;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("friendtongzhi.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("friendtongzhi.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
@@ -179,6 +179,7 @@ FriendLayer::FriendLayer(){
 }
 
 FriendLayer::~FriendLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getFriendLayer()){
 		GameControl::getIns()->setFriendLayer(NULL);
 	}
@@ -202,7 +203,7 @@ bool FriendLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("friend.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("friend.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());

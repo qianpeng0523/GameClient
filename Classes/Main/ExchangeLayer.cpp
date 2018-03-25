@@ -13,7 +13,7 @@ ExchangeItemLayer::ExchangeItemLayer(){
 }
 
 ExchangeItemLayer::~ExchangeItemLayer(){
-
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 ExchangeItemLayer *ExchangeItemLayer::create(ExAward hall){
@@ -34,7 +34,7 @@ bool ExchangeItemLayer::init(ExAward hall)
 		return false;
 	}
 	m_hall = hall;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("exchangeitem.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("exchangeitem.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
@@ -56,6 +56,9 @@ bool ExchangeItemLayer::init(ExAward hall)
 	LoadingBar *bar = (LoadingBar *)GameDataSet::getLayout(m_RootLayer, "ProgressBar");
 	bar->setPercent(gold*1.0/number * 100);
 	
+	SEL_TouchEvent selector = toucheventselector(ExchangeItemLayer::TouchEvent);
+	GameDataSet::getButton(m_RootLayer, "btn", selector, this);
+
 	return true;
 }
 
@@ -64,7 +67,8 @@ void ExchangeItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	string name = btn->getName();
 	if (type == TOUCH_EVENT_ENDED){
 		if (name.compare("btn") == 0){
-
+			int id = m_hall.eid();
+			HallInfo::getIns()->SendCExchange(id);
 		}
 	}
 }
@@ -83,7 +87,7 @@ ExchangeRecordItemLayer::ExchangeRecordItemLayer(){
 }
 
 ExchangeRecordItemLayer::~ExchangeRecordItemLayer(){
-
+	RootRegister::getIns()->resetWidget("exchangerecorditem.json");
 }
 
 ExchangeRecordItemLayer *ExchangeRecordItemLayer::create(ExRecord hall){
@@ -104,7 +108,7 @@ bool ExchangeRecordItemLayer::init(ExRecord hall)
 		return false;
 	}
 	m_hall = hall;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("exchangerecorditem.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("exchangerecorditem.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
@@ -153,6 +157,7 @@ ExchangeLayer::ExchangeLayer(){
 }
 
 ExchangeLayer::~ExchangeLayer(){
+	RootRegister::getIns()->resetWidget("exchange.json");
 	if (this == GameControl::getIns()->getExchangeLayer()){
 		GameControl::getIns()->setExchangeLayer(NULL);
 
@@ -166,7 +171,7 @@ bool ExchangeLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("exchange.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("exchange.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(ExchangeLayer::TouchEvent);

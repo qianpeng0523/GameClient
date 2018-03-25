@@ -10,6 +10,7 @@ SetLayer::SetLayer(){
 }
 
 SetLayer::~SetLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getSetLayer()){
 		GameControl::getIns()->setSetLayer(NULL);
 
@@ -23,7 +24,7 @@ bool SetLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("set.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("set.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(SetLayer::TouchEvent);

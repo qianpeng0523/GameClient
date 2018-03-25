@@ -4,6 +4,7 @@
 #include "ClientSocket.h"
 #include "LogoScene.h"
 #include "LoginInfo.h"
+#include "HallInfo.h"
 
 SignLayer::SignLayer(){
 	m_isopen = false;
@@ -14,6 +15,7 @@ SignLayer::SignLayer(){
 }
 
 SignLayer::~SignLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getSignLayer()){
 		GameControl::getIns()->setSignLayer(NULL);
 	}
@@ -36,12 +38,12 @@ bool SignLayer::init()
     {
         return false;
     }
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("yaoqianshu.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("yaoqianshu.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(SignLayer::TouchEvent);
 	GameDataSet::getButton(m_RootLayer, "close_btn", selector, this);
-	GameDataSet::getButton(m_RootLayer, "touchbtn", selector, this);
+	m_btn=GameDataSet::getButton(m_RootLayer, "touchbtn", selector, this);
 	GameDataSet::setText(m_RootLayer, "tip1","");
 	m_light = GameDataSet::getLayout(m_RootLayer, "deng");
 	m_point = GameDataSet::getLayout(m_RootLayer, "touchbtn");
@@ -59,6 +61,7 @@ bool SignLayer::init()
 			ly->setScale(0.1);
 		}
 	}
+	HallInfo::getIns()->SendCSignList();
     return true;
 }
 
@@ -71,9 +74,54 @@ void SignLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		}
 		else if (name.compare("touchbtn") == 0){
 			m_curindex = m_index;
-			m_index = rand()%12;
-			Run();
+			SSignList ssl = HallInfo::getIns()->getSSignList();
+			int sign = ssl.sign();
+			if (sign == 0){
+				m_btn->setTouchEnabled(false);
+				HallInfo::getIns()->SendCSign();
+			}
+			else{
+				log("%s",XXIconv::GBK2UTF("签到次数已经用完").c_str());
+			}
 		}
+	}
+}
+
+void SignLayer::setSignData(){
+	SSignList sl = HallInfo::getIns()->getSSignList();
+	int sign = sl.sign();
+	int count = sl.count();
+	if (sign > 0){
+		if (m_btn){
+			m_btn->setTouchEnabled(false);
+		}
+	}
+	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_sign", count);
+	int sz = sl.reward_size();
+	char buff[50];
+	for (int i = 0; i < 8;i++){
+		sprintf(buff,"w%d",i+1);
+		Layout *img = (Layout *)GameDataSet::getLayout(m_RootLayer, buff);
+		if (i < sz){
+			SignAward awrad = sl.reward(i);
+			Prop prop = awrad.reward();
+			int id = prop.id();
+			int number = prop.number();
+			int day = awrad.day();
+			sprintf(buff,XXIconv::GBK2UTF("%d天").c_str(),day);
+			GameDataSet::setTextBMFont(img, "BitmapLabel_w1", buff);
+			sprintf(buff, "x%d", number);
+			GameDataSet::setTextBMFont(img, "BitmapLabel_w1_num", buff);
+			if (id == 2){
+				GameDataSet::setImageView(img, "icon1", "card1.png");
+			}
+		}
+		else{
+			img->setVisible(false);
+		}
+	}
+	if (sign){
+		GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_shengyu",0);
 	}
 }
 
@@ -150,6 +198,8 @@ void SignLayer::CallFun(){
 }
 
 void SignLayer::Run(){
+	SSign ss = HallInfo::getIns()->getSSign();
+	m_index = ss.index();
 	Layout *point = GameDataSet::getLayout(m_RootLayer,"pointbg");
 	if (point){
 		OpenRun(false);
@@ -226,4 +276,27 @@ void SignLayer::RunEnd(){
 void SignLayer::RunEndCall(){
 	RunPoint(true);
 	OpenRun(true);
+	
+	SSign ss = HallInfo::getIns()->getSSign();
+	int count = ss.count();
+	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_sign", count);
+	m_btn->setTouchEnabled(true);
+
+	SSignList ssl = HallInfo::getIns()->getSSignList();
+	if (ssl.sign()){
+		GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_shengyu", 0);
+	}
+
+	RewardTipLayer *p = GameControl::getIns()->getRewardTipLayer();
+	if (!p){
+		vector<Prop>vecs;
+		for (int i = 0; i < 2; i++){
+			Prop pp;
+			pp.set_id(i + 1);
+			pp.set_number(i == 0 ? 2000 : 2);
+			vecs.push_back(pp);
+		}
+		p = RewardTipLayer::create(vecs);
+		this->addChild(p);
+	}
 }

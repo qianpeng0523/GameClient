@@ -16,6 +16,7 @@ ActiveLayer::ActiveLayer(){
 }
 
 ActiveLayer::~ActiveLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getActiveLayer()){
 		GameControl::getIns()->setActiveLayer(NULL);
 
@@ -29,7 +30,7 @@ bool ActiveLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("activity.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("activity.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(ActiveLayer::TouchEvent);

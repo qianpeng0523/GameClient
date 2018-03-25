@@ -13,7 +13,7 @@ FreeItemLayer::FreeItemLayer(){
 }
 
 FreeItemLayer::~FreeItemLayer(){
-
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 FreeItemLayer *FreeItemLayer::create(Rank hall){
@@ -34,7 +34,7 @@ bool FreeItemLayer::init(Rank hall)
 		return false;
 	}
 	m_hall = hall;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("freeitem.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("freeitem.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
@@ -73,6 +73,7 @@ FreeLayer::FreeLayer(){
 }
 
 FreeLayer::~FreeLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getFreeLayer()){
 		GameControl::getIns()->setFreeLayer(NULL);
 
@@ -86,7 +87,7 @@ bool FreeLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("free.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("free.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(FreeLayer::TouchEvent);

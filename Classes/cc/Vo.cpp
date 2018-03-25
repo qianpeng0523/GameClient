@@ -50,6 +50,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ExRecord_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ExRecord_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SignAward_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SignAward_reflection_ = NULL;
 
 }  // namespace
 
@@ -119,12 +122,14 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ShopItem));
   Mail_descriptor_ = file->message_type(3);
-  static const int Mail_offsets_[5] = {
+  static const int Mail_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mail, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mail, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mail, title_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mail, content_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mail, time_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mail, prop_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mail, get_),
   };
   Mail_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -251,6 +256,23 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExRecord));
+  SignAward_descriptor_ = file->message_type(10);
+  static const int SignAward_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignAward, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignAward, day_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignAward, reward_),
+  };
+  SignAward_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SignAward_descriptor_,
+      SignAward::default_instance_,
+      SignAward_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignAward, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignAward, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SignAward));
 }
 
 namespace {
@@ -283,6 +305,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     ExAward_descriptor_, &ExAward::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ExRecord_descriptor_, &ExRecord::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SignAward_descriptor_, &SignAward::default_instance());
 }
 
 }  // namespace
@@ -308,6 +332,8 @@ void protobuf_ShutdownFile_Vo_2eproto() {
   delete ExAward_reflection_;
   delete ExRecord::default_instance_;
   delete ExRecord_reflection_;
+  delete SignAward::default_instance_;
+  delete SignAward_reflection_;
 }
 
 void protobuf_AddDesc_Vo_2eproto() {
@@ -325,24 +351,27 @@ void protobuf_AddDesc_Vo_2eproto() {
     " \002(\r\022\014\n\004name\030\002 \001(\t\022\016\n\006number\030\003 \001(\r\"p\n\010Sh"
     "opItem\022\n\n\002id\030\001 \002(\r\022\034\n\004prop\030\002 \001(\0132\016.proto"
     "col.Prop\022\014\n\004type\030\003 \001(\r\022\016\n\006number\030\004 \001(\r\022\017"
-    "\n\007givenum\030\005 \001(\r\022\013\n\003hot\030\006 \001(\010\"N\n\004Mail\022\n\n\002"
+    "\n\007givenum\030\005 \001(\r\022\013\n\003hot\030\006 \001(\010\"y\n\004Mail\022\n\n\002"
     "id\030\001 \002(\r\022\014\n\004type\030\002 \001(\r\022\r\n\005title\030\003 \001(\t\022\017\n"
-    "\007content\030\004 \001(\t\022\014\n\004time\030\005 \001(\t\"H\n\014FriendNo"
-    "tice\022\036\n\006notice\030\001 \002(\0132\016.protocol.Mail\022\013\n\003"
-    "add\030\002 \001(\010\022\013\n\003uid\030\003 \001(\t\"o\n\006Friend\022&\n\010user"
-    "info\030\001 \001(\0132\024.protocol.DBUserInfo\022\016\n\006onli"
-    "ne\030\002 \001(\010\022\016\n\006friend\030\003 \001(\010\022\017\n\007acttype\030\004 \001("
-    "\r\022\014\n\004time\030\005 \001(\r\">\n\006Active\022\n\n\002id\030\001 \001(\r\022\014\n"
-    "\004type\030\002 \001(\r\022\r\n\005title\030\003 \001(\t\022\013\n\003url\030\004 \001(\t\""
-    "\222\001\n\004Task\022\016\n\006taskid\030\001 \001(\r\022\r\n\005title\030\002 \001(\t\022"
-    "\017\n\007content\030\003 \001(\t\022\r\n\005count\030\004 \001(\r\022\016\n\006fcoun"
-    "t\030\005 \001(\r\022\016\n\006finish\030\006 \001(\r\022\035\n\005award\030\007 \003(\0132\016"
-    ".protocol.Prop\022\014\n\004type\030\010 \001(\r\"^\n\007ExAward\022"
-    "\013\n\003eid\030\001 \001(\r\022\r\n\005title\030\002 \001(\t\022\035\n\005award\030\003 \001"
-    "(\0132\016.protocol.Prop\022\013\n\003can\030\004 \001(\010\022\013\n\003pid\030\005"
-    " \001(\r\"T\n\010ExRecord\022\n\n\002id\030\001 \001(\r\022\r\n\005title\030\002 "
-    "\001(\t\022\017\n\007orderid\030\003 \001(\t\022\014\n\004time\030\004 \001(\t\022\016\n\006st"
-    "atus\030\005 \001(\r", 970);
+    "\007content\030\004 \001(\t\022\014\n\004time\030\005 \001(\t\022\034\n\004prop\030\006 \003"
+    "(\0132\016.protocol.Prop\022\013\n\003get\030\007 \001(\r\"H\n\014Frien"
+    "dNotice\022\036\n\006notice\030\001 \002(\0132\016.protocol.Mail\022"
+    "\013\n\003add\030\002 \001(\010\022\013\n\003uid\030\003 \001(\t\"o\n\006Friend\022&\n\010u"
+    "serinfo\030\001 \001(\0132\024.protocol.DBUserInfo\022\016\n\006o"
+    "nline\030\002 \001(\010\022\016\n\006friend\030\003 \001(\010\022\017\n\007acttype\030\004"
+    " \001(\r\022\014\n\004time\030\005 \001(\r\">\n\006Active\022\n\n\002id\030\001 \001(\r"
+    "\022\014\n\004type\030\002 \001(\r\022\r\n\005title\030\003 \001(\t\022\013\n\003url\030\004 \001"
+    "(\t\"\222\001\n\004Task\022\016\n\006taskid\030\001 \001(\r\022\r\n\005title\030\002 \001"
+    "(\t\022\017\n\007content\030\003 \001(\t\022\r\n\005count\030\004 \001(\r\022\016\n\006fc"
+    "ount\030\005 \001(\r\022\016\n\006finish\030\006 \001(\r\022\035\n\005award\030\007 \003("
+    "\0132\016.protocol.Prop\022\014\n\004type\030\010 \001(\r\"^\n\007ExAwa"
+    "rd\022\013\n\003eid\030\001 \001(\r\022\r\n\005title\030\002 \001(\t\022\035\n\005award\030"
+    "\003 \001(\0132\016.protocol.Prop\022\013\n\003can\030\004 \001(\010\022\013\n\003pi"
+    "d\030\005 \001(\r\"T\n\010ExRecord\022\n\n\002id\030\001 \001(\r\022\r\n\005title"
+    "\030\002 \001(\t\022\017\n\007orderid\030\003 \001(\t\022\014\n\004time\030\004 \001(\t\022\016\n"
+    "\006status\030\005 \001(\r\"D\n\tSignAward\022\n\n\002id\030\001 \001(\r\022\013"
+    "\n\003day\030\002 \001(\r\022\036\n\006reward\030\003 \001(\0132\016.protocol.P"
+    "rop", 1083);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Vo.proto", &protobuf_RegisterTypes);
   Rank::default_instance_ = new Rank();
@@ -355,6 +384,7 @@ void protobuf_AddDesc_Vo_2eproto() {
   Task::default_instance_ = new Task();
   ExAward::default_instance_ = new ExAward();
   ExRecord::default_instance_ = new ExRecord();
+  SignAward::default_instance_ = new SignAward();
   Rank::default_instance_->InitAsDefaultInstance();
   Prop::default_instance_->InitAsDefaultInstance();
   ShopItem::default_instance_->InitAsDefaultInstance();
@@ -365,6 +395,7 @@ void protobuf_AddDesc_Vo_2eproto() {
   Task::default_instance_->InitAsDefaultInstance();
   ExAward::default_instance_->InitAsDefaultInstance();
   ExRecord::default_instance_->InitAsDefaultInstance();
+  SignAward::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Vo_2eproto);
 }
 
@@ -1603,6 +1634,8 @@ const int Mail::kTypeFieldNumber;
 const int Mail::kTitleFieldNumber;
 const int Mail::kContentFieldNumber;
 const int Mail::kTimeFieldNumber;
+const int Mail::kPropFieldNumber;
+const int Mail::kGetFieldNumber;
 #endif  // !_MSC_VER
 
 Mail::Mail()
@@ -1626,6 +1659,7 @@ void Mail::SharedCtor() {
   title_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   content_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   time_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  get_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1687,7 +1721,9 @@ void Mail::Clear() {
         time_->clear();
       }
     }
+    get_ = 0u;
   }
+  prop_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1776,6 +1812,37 @@ bool Mail::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(50)) goto parse_prop;
+        break;
+      }
+
+      // repeated .protocol.Prop prop = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_prop:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_prop()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(50)) goto parse_prop;
+        if (input->ExpectTag(56)) goto parse_get;
+        break;
+      }
+
+      // optional uint32 get = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_get:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &get_)));
+          set_has_get();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1835,6 +1902,17 @@ void Mail::SerializeWithCachedSizes(
       5, this->time(), output);
   }
 
+  // repeated .protocol.Prop prop = 6;
+  for (int i = 0; i < this->prop_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->prop(i), output);
+  }
+
+  // optional uint32 get = 7;
+  if (has_get()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->get(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1883,6 +1961,18 @@ void Mail::SerializeWithCachedSizes(
         5, this->time(), target);
   }
 
+  // repeated .protocol.Prop prop = 6;
+  for (int i = 0; i < this->prop_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->prop(i), target);
+  }
+
+  // optional uint32 get = 7;
+  if (has_get()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->get(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1929,7 +2019,22 @@ int Mail::ByteSize() const {
           this->time());
     }
 
+    // optional uint32 get = 7;
+    if (has_get()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->get());
+    }
+
   }
+  // repeated .protocol.Prop prop = 6;
+  total_size += 1 * this->prop_size();
+  for (int i = 0; i < this->prop_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->prop(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1955,6 +2060,7 @@ void Mail::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Mail::MergeFrom(const Mail& from) {
   GOOGLE_CHECK_NE(&from, this);
+  prop_.MergeFrom(from.prop_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_id()) {
       set_id(from.id());
@@ -1970,6 +2076,9 @@ void Mail::MergeFrom(const Mail& from) {
     }
     if (from.has_time()) {
       set_time(from.time());
+    }
+    if (from.has_get()) {
+      set_get(from.get());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1990,6 +2099,9 @@ void Mail::CopyFrom(const Mail& from) {
 bool Mail::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
+  for (int i = 0; i < prop_size(); i++) {
+    if (!this->prop(i).IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -2000,6 +2112,8 @@ void Mail::Swap(Mail* other) {
     std::swap(title_, other->title_);
     std::swap(content_, other->content_);
     std::swap(time_, other->time_);
+    prop_.Swap(&other->prop_);
+    std::swap(get_, other->get_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -4392,6 +4506,302 @@ void ExRecord::Swap(ExRecord* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = ExRecord_descriptor_;
   metadata.reflection = ExRecord_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SignAward::kIdFieldNumber;
+const int SignAward::kDayFieldNumber;
+const int SignAward::kRewardFieldNumber;
+#endif  // !_MSC_VER
+
+SignAward::SignAward()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SignAward::InitAsDefaultInstance() {
+  reward_ = const_cast< ::protocol::Prop*>(&::protocol::Prop::default_instance());
+}
+
+SignAward::SignAward(const SignAward& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SignAward::SharedCtor() {
+  _cached_size_ = 0;
+  id_ = 0u;
+  day_ = 0u;
+  reward_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SignAward::~SignAward() {
+  SharedDtor();
+}
+
+void SignAward::SharedDtor() {
+  if (this != default_instance_) {
+    delete reward_;
+  }
+}
+
+void SignAward::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SignAward::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SignAward_descriptor_;
+}
+
+const SignAward& SignAward::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Vo_2eproto();
+  return *default_instance_;
+}
+
+SignAward* SignAward::default_instance_ = NULL;
+
+SignAward* SignAward::New() const {
+  return new SignAward;
+}
+
+void SignAward::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    id_ = 0u;
+    day_ = 0u;
+    if (has_reward()) {
+      if (reward_ != NULL) reward_->::protocol::Prop::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SignAward::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 id = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &id_)));
+          set_has_id();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_day;
+        break;
+      }
+
+      // optional uint32 day = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_day:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &day_)));
+          set_has_day();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_reward;
+        break;
+      }
+
+      // optional .protocol.Prop reward = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_reward:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_reward()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SignAward::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint32 id = 1;
+  if (has_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  }
+
+  // optional uint32 day = 2;
+  if (has_day()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->day(), output);
+  }
+
+  // optional .protocol.Prop reward = 3;
+  if (has_reward()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->reward(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SignAward::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint32 id = 1;
+  if (has_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  }
+
+  // optional uint32 day = 2;
+  if (has_day()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->day(), target);
+  }
+
+  // optional .protocol.Prop reward = 3;
+  if (has_reward()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->reward(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SignAward::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint32 id = 1;
+    if (has_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->id());
+    }
+
+    // optional uint32 day = 2;
+    if (has_day()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->day());
+    }
+
+    // optional .protocol.Prop reward = 3;
+    if (has_reward()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->reward());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SignAward::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SignAward* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SignAward*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SignAward::MergeFrom(const SignAward& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_id()) {
+      set_id(from.id());
+    }
+    if (from.has_day()) {
+      set_day(from.day());
+    }
+    if (from.has_reward()) {
+      mutable_reward()->::protocol::Prop::MergeFrom(from.reward());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SignAward::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SignAward::CopyFrom(const SignAward& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SignAward::IsInitialized() const {
+
+  if (has_reward()) {
+    if (!this->reward().IsInitialized()) return false;
+  }
+  return true;
+}
+
+void SignAward::Swap(SignAward* other) {
+  if (other != this) {
+    std::swap(id_, other->id_);
+    std::swap(day_, other->day_);
+    std::swap(reward_, other->reward_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SignAward::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SignAward_descriptor_;
+  metadata.reflection = SignAward_reflection_;
   return metadata;
 }
 

@@ -22,6 +22,7 @@ public:
 	void RunCall(Node *node);
 	void RunEnd();
 
+	void setSignData();
 private:
 	void RunLight(float dt);
 	void ShowLight(bool isshow);
@@ -33,6 +34,7 @@ private:
 	bool m_isupdate;
 	Layout *m_light;
 	Layout *m_point;
+	Button *m_btn;
 	int m_index;
 	int m_curindex;
 };

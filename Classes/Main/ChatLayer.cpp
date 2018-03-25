@@ -12,7 +12,7 @@ ChatItemLayer::ChatItemLayer(){
 }
 
 ChatItemLayer::~ChatItemLayer(){
-	
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 ChatItemLayer *ChatItemLayer::create(string uid, string uname, string content){
@@ -34,11 +34,11 @@ bool ChatItemLayer::init(string uid, string uname,string content)
 	}
 	m_uid = uid;
 	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
-	string json = "chatitem1.json";
+	m_json = "chatitem1.json";
 	if (uid.compare(user.userid()) == 0){
-		json = "chatitem2.json";
+		m_json = "chatitem2.json";
 	}
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile(json.c_str());
+	m_RootLayer = RootRegister::getIns()->getWidget(m_json.c_str());
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
@@ -92,6 +92,7 @@ ChatLayer::ChatLayer(){
 }
 
 ChatLayer::~ChatLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getChatLayer()){
 		GameControl::getIns()->setChatLayer(NULL);
 
@@ -117,7 +118,7 @@ bool ChatLayer::init(string uid, string uname)
     }
 	m_uid = uid;
 	m_uname = uname;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("chat.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("chat.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(ChatLayer::TouchEvent);

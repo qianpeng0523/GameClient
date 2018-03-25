@@ -4,7 +4,8 @@
 #include "YMSocketData.h"
 #include "XXHttpRequest.h"
 #include "Common.h"
-
+#include "RootRegister.h"
+#include "LoadingLayer.h"
 USING_NS_CC;
 
 
@@ -42,9 +43,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Adaptation::shareAdaptation();
 	register_all_packages();
 	
-
+	RootRegister::getIns()->loadJson(0);
 	auto director = Director::getInstance();
-	Scene *scene = LogoScene::create();
+	Scene *scene = LoadingLayer::createScene(1);
 	//Scene *scene = PageTurn::createScene();
 	director->runWithScene(scene);
 	//scene->Test();

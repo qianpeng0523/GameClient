@@ -10,10 +10,12 @@
   "designHeight": 720,
   "designWidth": 1280,
   "textures": [
-    "share/newcommon.plist"
+    "share/newcommon.plist",
+    "panel/news/news.plist"
   ],
   "texturesPng": [
-    "share/newcommon.plist"
+    "share/newcommon.plist",
+    "panel/news/news.plist"
   ],
   "version": "1.6.0.0",
   "widgetTree": {
@@ -130,7 +132,7 @@
                   "rotation": 0,
                   "scaleX": 1,
                   "scaleY": 1,
-                  "sizePercentX": 0.1970339,
+                  "sizePercentX": 0.218220338,
                   "sizePercentY": 0.4047619,
                   "sizeType": 0,
                   "tag": 30959,
@@ -385,6 +387,60 @@
               "scale9Enable": true,
               "scale9Height": 458,
               "scale9Width": 1032
+            }
+          },
+          {
+            "classname": "ImageView",
+            "name": null,
+            "children": [],
+            "options": {
+              "__type": "ImageViewSurrogate:#EditorCommon.JsonModel.Component.GUI",
+              "classname": "ImageView",
+              "name": "tip",
+              "ZOrder": 0,
+              "actiontag": 61175557,
+              "anchorPointX": 0.5,
+              "anchorPointY": 0.5,
+              "classType": "CocoStudio.EngineAdapterWrap.CSImageView",
+              "colorB": 255,
+              "colorG": 255,
+              "colorR": 255,
+              "customProperty": "",
+              "flipX": false,
+              "flipY": false,
+              "height": 226,
+              "ignoreSize": true,
+              "layoutParameter": null,
+              "opacity": 255,
+              "positionPercentX": 0,
+              "positionPercentY": 0,
+              "positionType": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1,
+              "sizePercentX": 0.0714285746,
+              "sizePercentY": 0.131147534,
+              "sizeType": 0,
+              "tag": 32507,
+              "touchAble": false,
+              "useMergedTexture": false,
+              "visible": true,
+              "width": 488,
+              "x": 0,
+              "y": 0,
+              "capInsetsHeight": 1,
+              "capInsetsWidth": 1,
+              "capInsetsX": 0,
+              "capInsetsY": 0,
+              "fileName": null,
+              "fileNameData": {
+                "path": "news/XXJM_meiyouxiaoxi_wenbenxinxi.png",
+                "plistFile": "panel/news/news.plist",
+                "resourceType": 1
+              },
+              "scale9Enable": false,
+              "scale9Height": 226,
+              "scale9Width": 488
             }
           }
         ],

@@ -4,7 +4,7 @@
 #include "XXIconv.h"
 #include "MainScene.h"
 #include "GameControl.h"
-
+#include "LoadingLayer.h"
 using namespace cocos2d_xx;
 LoginInfo *LoginInfo::m_shareLoginInfo=NULL;
 LoginInfo::LoginInfo()
@@ -52,7 +52,7 @@ void LoginInfo::HandlerSLoginHand(ccEvent *event){
 	if (err==0){
 		m_myinfo = cl.info();
 		log("%s",XXIconv::GBK2UTF("登录成功!").c_str());
-		Scene *scene = MainScene::create();
+		Scene *scene = LoadingLayer::createScene(2);
 		GameControl::getIns()->replaceScene(scene);
 	}
 	else{
@@ -80,7 +80,7 @@ void LoginInfo::HandlerSRegister(ccEvent *event){
 	if (err == 0){
 		m_myinfo = cl.info();
 		log("%s", XXIconv::GBK2UTF("注册成功!").c_str());
-		Scene *scene = MainScene::create();
+		Scene *scene = LoadingLayer::createScene(2);
 		GameControl::getIns()->replaceScene(scene);
 	}
 	else if(err==1){

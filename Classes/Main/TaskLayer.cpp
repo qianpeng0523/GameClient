@@ -13,7 +13,7 @@ TaskItemLayer::TaskItemLayer(){
 }
 
 TaskItemLayer::~TaskItemLayer(){
-
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 TaskItemLayer *TaskItemLayer::create(Task task){
@@ -34,7 +34,7 @@ bool TaskItemLayer::init(Task task)
 		return false;
 	}
 	m_task = task;
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("taskitem.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("taskitem.json");
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
@@ -75,6 +75,7 @@ bool TaskItemLayer::init(Task task)
 	}
 	else{
 		biao->setVisible(false);
+		btn->setVisible(true);
 	}
 
 	
@@ -120,6 +121,7 @@ TaskLayer::TaskLayer(){
 }
 
 TaskLayer::~TaskLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getTaskLayer()){
 		GameControl::getIns()->setTaskLayer(NULL);
 
@@ -133,7 +135,7 @@ bool TaskLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("task.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("task.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(TaskLayer::TouchEvent);

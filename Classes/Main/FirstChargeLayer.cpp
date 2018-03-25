@@ -10,6 +10,7 @@ FirstChargeLayer::FirstChargeLayer(){
 }
 
 FirstChargeLayer::~FirstChargeLayer(){
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getFirstChargeLayer()){
 		GameControl::getIns()->setFirstChargeLayer(NULL);
 
@@ -23,7 +24,7 @@ bool FirstChargeLayer::init()
         return false;
     }
 	
-	m_RootLayer = (Layout *)GUIReader::shareReader()->widgetFromJsonFile("firstcharge.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("firstcharge.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(FirstChargeLayer::TouchEvent);
