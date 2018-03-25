@@ -37,6 +37,12 @@
     <Filter Include="Classes\Main">
       <UniqueIdentifier>{fb928aa4-1062-47e6-b912-924b3ab72760}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\config">
+      <UniqueIdentifier>{2dca1329-6822-43d3-8892-8a79a8030657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\loading">
+      <UniqueIdentifier>{2f15e93b-26f0-4e7d-bf70-4e21fabaedbb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -221,6 +227,21 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Main\ChatLayer.cpp">
       <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\MailTipLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Main\RewardTipLayer.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\RootRegister.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\config\JsonRegisterConfig.cpp">
+      <Filter>Classes\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\loading\LoadingLayer.cpp">
+      <Filter>Classes\loading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +487,21 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Main\ChatLayer.h">
       <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\MailTipLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\RewardTipLayer.h">
+      <Filter>Classes\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\RootRegister.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\config\JsonRegisterConfig.h">
+      <Filter>Classes\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\loading\LoadingLayer.h">
+      <Filter>Classes\loading</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

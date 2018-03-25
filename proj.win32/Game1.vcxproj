@@ -72,7 +72,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);$(EngineRoot)external\protobuf\src;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\network;$(EngineRoot);..\Classes\cc;..\Classes\http;..\Classes\proto;..\Classes\Loading;..\Classes\Login;..\Classes\Logo;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)\cocos\ui;$(EngineRoot)cocos\editor-support\cocostudio;..\Classes\Common;..\Classes\Jni;..\Classes\network;..\Classes\network\cc;..\Classes\Game\Game;..\Classes\protobuf\src;..\Classes\qrsprite;..\Classes\qrsprite\libqrencode;..\Classes\SocketInfo;..\Classes\NetTip;..\Classes\Main\Shop;$(EngineRoot)external\curl\include\win32;..\Classes\Main;$(EngineRoot)cocos\platform;..\Classes\netjson;$(EngineRoot)external\libMessagePack\src;..\Classes\Game\niuniu\BullHall;..\Classes\Game\Hand;..\Classes\Game\niuniu\Map;..\Classes\Game\niuniu\BullHall\BFSelect;..\Classes\Game\niuniu\Record;..\Classes\Server;..\Classes\Set;..\Classes\PersonInfo;..\Classes\Majiang;..\Classes\Dissolved;..\Classes\Chat;..\Classes\Game\niuniu\GameOver;..\Classes\Main\Zanji;..\Classes\Game\niuniu;..\Classes\Game\niuniu100;..\Classes\Main\Fuli;..\Classes\Main\Line;..\Classes\include;..\Classes\Voice;..\Classes\Game\niuniugold\BFSelect;..\Classes\Game\niuniugold;..\Classes\Game\daer;..\Classes\Game\daer\Table;..\Classes\Game\bars28;..\Classes\Main\Match;..\Classes\Main\GuaJiang;..\Classes\cryptopp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);$(EngineRoot)external\protobuf\src;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\network;$(EngineRoot);..\Classes\cc;..\Classes\http;..\Classes\proto;..\Classes\Loading;..\Classes\Login;..\Classes\Logo;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)\cocos\ui;$(EngineRoot)cocos\editor-support\cocostudio;..\Classes\Common;..\Classes\Jni;..\Classes\network;..\Classes\network\cc;..\Classes\Game\Game;..\Classes\protobuf\src;..\Classes\qrsprite;..\Classes\qrsprite\libqrencode;..\Classes\SocketInfo;..\Classes\NetTip;..\Classes\Main\Shop;$(EngineRoot)external\curl\include\win32;..\Classes\Main;$(EngineRoot)cocos\platform;..\Classes\netjson;$(EngineRoot)external\libMessagePack\src;..\Classes\Game\niuniu\BullHall;..\Classes\Game\Hand;..\Classes\Game\niuniu\Map;..\Classes\Game\niuniu\BullHall\BFSelect;..\Classes\Game\niuniu\Record;..\Classes\Server;..\Classes\Set;..\Classes\PersonInfo;..\Classes\Majiang;..\Classes\Dissolved;..\Classes\Chat;..\Classes\Game\niuniu\GameOver;..\Classes\Main\Zanji;..\Classes\Game\niuniu;..\Classes\Game\niuniu100;..\Classes\Main\Fuli;..\Classes\Main\Line;..\Classes\include;..\Classes\Voice;..\Classes\Game\niuniugold\BFSelect;..\Classes\Game\niuniugold;..\Classes\Game\daer;..\Classes\Game\daer\Table;..\Classes\Game\bars28;..\Classes\Main\Match;..\Classes\Main\GuaJiang;..\Classes\cryptopp;..\Classes\config</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;BUILDING_LIBCURL;HTTP_ONLY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -165,10 +165,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Common\EffectAnimation.cpp" />
     <ClCompile Include="..\Classes\Common\GameDataSet.cpp" />
     <ClCompile Include="..\Classes\Common\MD55.cpp" />
+    <ClCompile Include="..\Classes\Common\RootRegister.cpp" />
     <ClCompile Include="..\Classes\Common\SpecialAction.cpp" />
     <ClCompile Include="..\Classes\Common\SpriteBlur.cpp" />
     <ClCompile Include="..\Classes\Common\WebViewCommom.cpp" />
     <ClCompile Include="..\Classes\Common\XXIconv.cpp" />
+    <ClCompile Include="..\Classes\config\JsonRegisterConfig.cpp" />
     <ClCompile Include="..\Classes\cryptopp\aes_core.cpp" />
     <ClCompile Include="..\Classes\cryptopp\crypto_utils.cpp" />
     <ClCompile Include="..\Classes\cryptopp\crypto_wrapper.cpp" />
@@ -179,6 +181,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\cryptopp\xxfsutility.cpp" />
     <ClCompile Include="..\Classes\GameControl.cpp" />
     <ClCompile Include="..\Classes\http\HttpInfo.cpp" />
+    <ClCompile Include="..\Classes\loading\LoadingLayer.cpp" />
     <ClCompile Include="..\Classes\Logo\LogoLayer.cpp" />
     <ClCompile Include="..\Classes\Logo\LogoScene.cpp" />
     <ClCompile Include="..\Classes\Main\AboutLayer.cpp" />
@@ -191,9 +194,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Main\FriendLayer.cpp" />
     <ClCompile Include="..\Classes\Main\HelpLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MailLayer.cpp" />
+    <ClCompile Include="..\Classes\Main\MailTipLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MainLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MainScene.cpp" />
     <ClCompile Include="..\Classes\Main\RankItemLayer.cpp" />
+    <ClCompile Include="..\Classes\Main\RewardTipLayer.cpp" />
     <ClCompile Include="..\Classes\Main\SetLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ShopLayer.cpp" />
     <ClCompile Include="..\Classes\Main\SignLayer.cpp" />
@@ -230,11 +235,13 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Common\EffectAnimation.h" />
     <ClInclude Include="..\Classes\Common\GameDataSet.h" />
     <ClInclude Include="..\Classes\Common\MD55.h" />
+    <ClInclude Include="..\Classes\Common\RootRegister.h" />
     <ClInclude Include="..\Classes\Common\SpecialAction.h" />
     <ClInclude Include="..\Classes\Common\SpriteBlur.h" />
     <ClInclude Include="..\Classes\Common\WebViewCommom.h" />
     <ClInclude Include="..\Classes\Common\XXIconv.h" />
     <ClInclude Include="..\Classes\Common\XXMacros.h" />
+    <ClInclude Include="..\Classes\config\JsonRegisterConfig.h" />
     <ClInclude Include="..\Classes\cryptopp\aes.h" />
     <ClInclude Include="..\Classes\cryptopp\crypto_utils.h" />
     <ClInclude Include="..\Classes\cryptopp\crypto_wrapper.h" />
@@ -254,6 +261,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\cryptopp\xxfsutility.h" />
     <ClInclude Include="..\Classes\GameControl.h" />
     <ClInclude Include="..\Classes\http\HttpInfo.h" />
+    <ClInclude Include="..\Classes\loading\LoadingLayer.h" />
     <ClInclude Include="..\Classes\Logo\LogoLayer.h" />
     <ClInclude Include="..\Classes\Logo\LogoScene.h" />
     <ClInclude Include="..\Classes\Main\AboutLayer.h" />
@@ -266,9 +274,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Main\FriendLayer.h" />
     <ClInclude Include="..\Classes\Main\HelpLayer.h" />
     <ClInclude Include="..\Classes\Main\MailLayer.h" />
+    <ClInclude Include="..\Classes\Main\MailTipLayer.h" />
     <ClInclude Include="..\Classes\Main\MainLayer.h" />
     <ClInclude Include="..\Classes\Main\MainScene.h" />
     <ClInclude Include="..\Classes\Main\RankItemLayer.h" />
+    <ClInclude Include="..\Classes\Main\RewardTipLayer.h" />
     <ClInclude Include="..\Classes\Main\SetLayer.h" />
     <ClInclude Include="..\Classes\Main\ShopLayer.h" />
     <ClInclude Include="..\Classes\Main\SignLayer.h" />
