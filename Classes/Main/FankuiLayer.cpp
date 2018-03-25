@@ -11,6 +11,7 @@ FankuiLayer::FankuiLayer(){
 }
 
 FankuiLayer::~FankuiLayer(){
+	m_input->setText("");
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getFankuiLayer()){
 		GameControl::getIns()->setFankuiLayer(NULL);

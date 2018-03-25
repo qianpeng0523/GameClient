@@ -18,6 +18,10 @@ MainLayer::MainLayer(){
 }
 
 MainLayer::~MainLayer(){
+	for (int i = 0; i < 6; i++){
+		m_pParticleSystem[i]->removeFromParentAndCleanup(true);
+		m_pParticleSystem[i] = NULL;
+	}
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getMainLayer()){
 		GameControl::getIns()->setMainLayer(NULL);
@@ -86,6 +90,14 @@ bool MainLayer::init()
 	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试"),-1);
 	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试11111111"), 3);
 	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试222222222"), 2);
+
+	for (int i = 0; i < 6; i++){
+		m_pParticleSystem[i] = CCParticleSystemQuad::create("particle/guangxiao3.plist");
+		m_pParticleSystem[i]->setAutoRemoveOnFinish(true);
+		ImageView *bg = (ImageView *)GameDataSet::getLayout(m_RootLayer, "bg");
+		bg->addChild(m_pParticleSystem[i], 0);
+		m_pParticleSystem[i]->setPosition(ccp(320 * i, 640));
+	}
     return true;
 }
 

@@ -179,6 +179,7 @@ FriendLayer::FriendLayer(){
 }
 
 FriendLayer::~FriendLayer(){
+	m_input->setText("");
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getFriendLayer()){
 		GameControl::getIns()->setFriendLayer(NULL);

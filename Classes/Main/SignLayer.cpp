@@ -61,6 +61,10 @@ bool SignLayer::init()
 			ly->setScale(0.1);
 		}
 	}
+	Layout *point = GameDataSet::getLayout(m_RootLayer, "pointbg");
+	if (point){
+		point->setRotation(0);
+	}
 	HallInfo::getIns()->SendCSignList();
     return true;
 }

@@ -37,6 +37,7 @@ private:
 	int m_index[2];
 	Text *m_laba;
 	bool m_finish;
+	CCParticleSystemQuad *m_pParticleSystem[6];
 };
 
 #endif 
