@@ -89,28 +89,28 @@ void HallInfo::SendCRank(int type, int index){
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
 	//test
-	SRank cl1;
-	cl1.set_type(type);
-	if (index < 5){
-		char buff1[30];
-		for (int i = 0; i < 10; i++){
-			Rank rk;
-			rk.set_lv(index * 10 + (i + 1));
-			rk.set_number(10000 * type + 1000 * i);
-			sprintf(buff1, "1%d%d0%02d", type, index, i);
-			rk.set_uid(buff1);
-			sprintf(buff1, "qp1%d%d0%02d", type, index, i);
-			rk.set_uname(buff1);
-			rk.set_type(type);
-			Rank *rk1 = cl1.add_list();
-			rk1->CopyFrom(rk);
-		}
-	}
-	int sz = cl1.ByteSize();
-	char *buff=new char[sz];
-	cl1.SerializePartialToArray(buff, sz);
-	ccEvent *ev =new ccEvent(cl1.cmd(),buff,sz);
-	HandlerSRankHand(ev);
+// 	SRank cl1;
+// 	cl1.set_type(type);
+// 	if (index < 5){
+// 		char buff1[30];
+// 		for (int i = 0; i < 10; i++){
+// 			Rank rk;
+// 			rk.set_lv(index * 10 + (i + 1));
+// 			rk.set_number(10000 * type + 1000 * i);
+// 			sprintf(buff1, "1%d%d0%02d", type, index, i);
+// 			rk.set_uid(buff1);
+// 			sprintf(buff1, "qp1%d%d0%02d", type, index, i);
+// 			rk.set_uname(buff1);
+// 			rk.set_type(type);
+// 			Rank *rk1 = cl1.add_list();
+// 			rk1->CopyFrom(rk);
+// 		}
+// 	}
+// 	int sz = cl1.ByteSize();
+// 	char *buff=new char[sz];
+// 	cl1.SerializePartialToArray(buff, sz);
+// 	ccEvent *ev =new ccEvent(cl1.cmd(),buff,sz);
+// 	HandlerSRankHand(ev);
 }
 
 void HallInfo::HandlerSRankHand(ccEvent *event){
