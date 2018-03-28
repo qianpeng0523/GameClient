@@ -100,6 +100,7 @@ void HttpInfo::requestGateIPAndPort(){
 	md5.update("123456");
 	string pwd = md5.toString();
 	sd["pwd"] = pwd;
+	sd["type"] = 2;
 
 	XXHttpRequest::getIns()->postServerDataFromUrl(url,sd, httpresponse_selector(HttpInfo::GateIPAndPortCallBack));
 }
