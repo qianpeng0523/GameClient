@@ -139,5 +139,6 @@ YMSocketData XXHttpRequest::getSocketDataByStr(char* str, int sz){
 		return sd;
 	}
 	sd.parse(str, sz);
+	log("%s",sd.getJsonString().c_str());
 	return sd;
 }

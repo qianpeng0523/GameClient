@@ -97,7 +97,6 @@ bool MainLayer::init()
 	char buff[50];
 	for (int i = 0; i < 6; i++){
 		m_pParticleSystem[i] = CCParticleSystemQuad::create("particle/guangxiao3.plist");
-		m_pParticleSystem[i]->setAutoRemoveOnFinish(true);
 		ImageView *bg = (ImageView *)GameDataSet::getLayout(m_RootLayer, "bg");
 		bg->addChild(m_pParticleSystem[i], 0);
 		sprintf(buff,"particle%d",i+1);
