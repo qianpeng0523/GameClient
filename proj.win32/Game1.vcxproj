@@ -152,7 +152,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\cc\DBProto.cpp" />
     <ClCompile Include="..\Classes\cc\Hall.cpp" />
     <ClCompile Include="..\Classes\cc\Login.cpp" />
     <ClCompile Include="..\Classes\cc\Vo.cpp" />
@@ -221,7 +220,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AppMacros.h" />
-    <ClInclude Include="..\Classes\cc\DBProto.h" />
     <ClInclude Include="..\Classes\cc\Hall.h" />
     <ClInclude Include="..\Classes\cc\Login.h" />
     <ClInclude Include="..\Classes\cc\Vo.h" />

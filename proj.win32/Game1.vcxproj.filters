@@ -132,9 +132,6 @@
     <ClCompile Include="..\Classes\cryptopp\xxfsutility.cpp">
       <Filter>Classes\cryptopp</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\cc\DBProto.cpp">
-      <Filter>Classes\cc</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\cc\Login.cpp">
       <Filter>Classes\cc</Filter>
     </ClCompile>
@@ -391,9 +388,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\cryptopp\xxfsutility.h">
       <Filter>Classes\cryptopp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\cc\DBProto.h">
-      <Filter>Classes\cc</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\cc\Login.h">
       <Filter>Classes\cc</Filter>
