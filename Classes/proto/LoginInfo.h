@@ -20,12 +20,12 @@ public:
 	void SendCRegister(string uid,string pwd,string uname);
 	void HandlerSRegister(ccEvent *event);
 
-	DBUserInfo getMyDBUserInfo(){
+	UserBase getMyUserBase(){
 		return m_myinfo;
 	}
 private:
 	static LoginInfo *m_shareLoginInfo;
-	DBUserInfo m_myinfo;
+	UserBase m_myinfo;
 };
 
 #endif 

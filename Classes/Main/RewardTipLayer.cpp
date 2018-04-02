@@ -22,7 +22,7 @@ RewardTipLayer::~RewardTipLayer(){
 	}
 }
 
-RewardTipLayer *RewardTipLayer::create(vector<Prop> props){
+RewardTipLayer *RewardTipLayer::create(RepeatedPtrField<SignAward> props){
 	RewardTipLayer *p = new RewardTipLayer();
 	if (p&&p->init(props)){
 		p->autorelease();
@@ -33,7 +33,7 @@ RewardTipLayer *RewardTipLayer::create(vector<Prop> props){
 	return p;
 }
 
-bool RewardTipLayer::init(vector<Prop> props)
+bool RewardTipLayer::init(RepeatedPtrField<SignAward> props)
 {             
 	if (!Layer::init())
     {
@@ -53,9 +53,11 @@ bool RewardTipLayer::init(vector<Prop> props)
 		sprintf(buff,"iconbg%d",i+1);
 		Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
 		if (i < sz){
-			Prop p = props.at(i);
-			int id = p.id();
-			int number = p.number();
+			SignAward p = props.Get(i);
+			Reward reward = p.reward();
+			Prop prop = reward.prop();
+			int id = prop.id();
+			int number = reward.number();
 			sprintf(buff,"icon%d",i+1);
 			GameDataSet::setImageView(m_RootLayer, buff, id==1?"mall_SC_TB_jinbi2.png":"card1.png");
 			sprintf(buff,"BitmapLabel_%d",i+1);

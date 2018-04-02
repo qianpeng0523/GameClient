@@ -33,7 +33,7 @@ bool ChatItemLayer::init(string uid, string uname,string content)
 		return false;
 	}
 	m_uid = uid;
-	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	m_json = "chatitem1.json";
 	if (uid.compare(user.userid()) == 0){
 		m_json = "chatitem2.json";
@@ -130,7 +130,7 @@ bool ChatLayer::init(string uid, string uname)
 	m_ScrollView = (ui::ScrollView *)GameDataSet::getButton(m_RootLayer, "ScrollView", selector, this);
 	m_sbg = GameDataSet::getLayout(m_RootLayer, "sbg");
 
-	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	char buff[100];
 	for (int i = 0; i < 20;i++){
 		int index = i%2;
@@ -157,7 +157,7 @@ void ChatLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("send") == 0){
 			string content = m_input->getText();
 			if (!content.empty()){
-				DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+				UserBase user = LoginInfo::getIns()->getMyUserBase();
 				AddChatItem(0, user.userid(),user.username(), content);
 			}
 			else{

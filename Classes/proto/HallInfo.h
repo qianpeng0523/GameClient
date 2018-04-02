@@ -57,7 +57,7 @@ public:
 	void HandlerSTask(ccEvent *event);
 
 	///////////兑换
-	void SendCReward(int type,int id);
+	void SendCReward(int id);
 	void HandlerSReward(ccEvent *event);
 
 	void SendCExchangeReward();

@@ -44,7 +44,7 @@ bool FriendChatItemLayer::init(Friend hall)
 	GameDataSet::getButton(m_RootLayer, "zeng", selector, this);
 
 	bool online = hall.online();
-	string username = hall.userinfo().username();
+	string username = hall.info().username();
 	long time = hall.time();
 	char buff[100];
 	sprintf(buff,"[%s]%s",online?XXIconv::GBK2UTF("在线").c_str():XXIconv::GBK2UTF("离线").c_str(),username.c_str());
@@ -74,13 +74,13 @@ void FriendChatItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			log("chat");
 			ChatLayer *p = GameControl::getIns()->getChatLayer();
 			if (!p){
-				p = ChatLayer::create(m_hall.userinfo().userid(),m_hall.userinfo().username());
+				p = ChatLayer::create(m_hall.info().userid(),m_hall.info().username());
 				Director::sharedDirector()->getRunningScene()->addChild(p);
 			}
 		}
 		else if (name.compare("zeng") == 0){
 			log("zeng");
-			HallInfo::getIns()->SendCGiveFriend(m_hall.userinfo().username());
+			HallInfo::getIns()->SendCGiveFriend(m_hall.info().username());
 		}
 	}
 }
@@ -126,15 +126,15 @@ bool FriendNoticeLayer::init(FriendNotice hall)
 	GameDataSet::getButton(m_RootLayer, "btn1", selector, this);
 	GameDataSet::getButton(m_RootLayer, "btn2", selector, this);
 
-	string content = hall.notice().content();
-	string time = hall.notice().time();
+	string content = hall.content();
+	string time = hall.time();
 	GameDataSet::setText(m_RootLayer, "content", content);
 	GameDataSet::setText(m_RootLayer, "time", time);
 
-	bool isadd = hall.add();
+	int status = hall.status();
 	Layout *bg = GameDataSet::getLayout(m_RootLayer,"btnbg");
 	if (bg){
-		bg->setVisible(isadd);
+		bg->setVisible(status==1);
 	}
 
 	return true;
@@ -226,7 +226,7 @@ bool FriendLayer::init()
 	m_bg[2] = GameDataSet::getLayout(m_RootLayer, "tongzhibg");
 	
 
-	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	string uid = user.userid();
 	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_id", uid);
 
@@ -300,8 +300,8 @@ void FriendLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			int sz = fris.list_size();
 			if (index < sz){
 				Friend fri = fris.list(index);
-				log("userid:%s", fri.userinfo().userid().c_str());
-				HallInfo::getIns()->SendCAddFriend(fri.userinfo().userid());
+				log("userid:%s", fri.info().userid().c_str());
+				HallInfo::getIns()->SendCAddFriend(fri.info().userid());
 			}
 		}
 	}
@@ -378,7 +378,7 @@ void FriendLayer::ShowFriendEvent(int index){
 			Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
 			if (i < sz){
 				Friend fri=fris.list(i);
-				DBUserInfo user = fri.userinfo();
+				UserBase user = fri.info();
 				string name = user.username();
 				bool online = fri.online();
 				int act = fri.acttype();

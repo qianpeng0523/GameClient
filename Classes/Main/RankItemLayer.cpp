@@ -36,10 +36,13 @@ bool RankItemLayer::init(Rank hall)
 
 	this->setContentSize(m_RootLayer->getSize());
 
-	string uname = m_hall.uname();
-	string picurl = m_hall.picurl();
-	int picid = m_hall.picid();
-	int number = m_hall.number();
+	int type = hall.type();
+	UserBase user = hall.info();
+
+	string uname = user.username();
+	string picurl = user.picurl();
+	int picid = user.picid();
+	int number = type==1? user.gold():user.win();
 	int lv = m_hall.lv();
 	GameDataSet::setText(m_RootLayer, "name", uname);
 	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_fri", GameDataSet::getCNStringByInteger(number));

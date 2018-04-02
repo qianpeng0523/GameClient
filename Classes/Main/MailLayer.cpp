@@ -45,7 +45,7 @@ bool MailItemLayer::init(Mail mail)
 	string title = mail.title();
 	string content = mail.content();
 	string ctime = mail.time();
-	int id = mail.id();
+	int id = mail.eid();
 	GameDataSet::setText(m_RootLayer, "title",title);
 	GameDataSet::setText(m_RootLayer, "content", content);
 	GameDataSet::setText(m_RootLayer, "time", ctime);
@@ -65,7 +65,7 @@ void MailItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		UserDefault *p = UserDefault::sharedUserDefault();
 		if (name.compare("btn") == 0){
 			char buff[30];
-			sprintf(buff, "100000%d", m_mail.id());
+			sprintf(buff, "100000%d", m_mail.eid());
 			bool iskan = UserDefault::sharedUserDefault()->getBoolForKey(buff, false);
 			if (!iskan){
 				UserDefault::sharedUserDefault()->setBoolForKey(buff, true);

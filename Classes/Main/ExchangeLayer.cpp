@@ -39,15 +39,17 @@ bool ExchangeItemLayer::init(ExAward hall)
 
 	this->setContentSize(m_RootLayer->getSize());
 
-	bool can = hall.can();
+	
 	string title = hall.title();
-	int pid = hall.pid();
-	int gold = LoginInfo::getIns()->getMyDBUserInfo().gold();
-	Prop prop = hall.award();
-	int number = prop.number();
+	int pid = hall.eid();
+	int gold = LoginInfo::getIns()->getMyUserBase().gold();
+	Reward rd = hall.award();
+	int number = rd.number();
 	char buff[50];
 	sprintf(buff, "%d/%d", gold, number);
 	GameDataSet::setText(m_RootLayer, "pro", buff);
+
+	bool can = gold>=number;
 	Layout *ly = GameDataSet::getLayout(m_RootLayer, "hot");
 	ly->setVisible(can);
 
@@ -197,7 +199,7 @@ bool ExchangeLayer::init()
 	m_input->setPlaceHolder(XXIconv::GBK2UTF("请输入兑换码").c_str());
 	m_input->setFontColor(ccc3(0x98, 0x4E, 0x9C));
 	
-	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	int gold = user.gold();
 	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold));
 	HallInfo::getIns()->SendCExchangeReward();

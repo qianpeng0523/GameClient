@@ -44,14 +44,23 @@ bool TaskItemLayer::init(Task task)
 
 	string title = task.title();
 	string content = task.content();
-	int count = task.count();
-	int fcount = task.fcount();
 	int taskid = task.taskid();
-	int finish = task.finish();
-	Prop prop = task.award(0);
+
+	Status status = task.status();
+	int count = status.count();
+	int fcount = status.fcount();
+	int finish = status.finished();
+
+	int sz = task.rewardlist_size();
+	if (sz < 1){
+		return true;
+	}
+	Reward rd = task.rewardlist(0);
+	int number = rd.number();
+
+	Prop prop = rd.prop();
 	int id = prop.id();
 	string name = prop.name();
-	int number = prop.number();
 	
 	GameDataSet::setText(m_RootLayer, "content", content);
 	GameDataSet::setTextBMFont(m_RootLayer, "title", title);
@@ -91,7 +100,7 @@ void TaskItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			int type = m_task.type();
 			int id = m_task.taskid();
 			log("task:type:%d,id:%d",type,id);
-			HallInfo::getIns()->SendCReward(type,id);
+			HallInfo::getIns()->SendCReward(id);
 		}
 	}
 }

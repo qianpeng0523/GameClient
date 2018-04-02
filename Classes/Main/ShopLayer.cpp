@@ -38,13 +38,18 @@ bool ShopItemLayer::init(ShopItem item)
 
 	this->setContentSize(m_RootLayer->getSize());
 
-	int buynumber = item.number();
 	bool hot = item.hot();
-	int type = item.type();
-	Prop prop = item.prop();
+	Reward rd = item.prop();
+	int number = rd.number();
+	Prop prop = rd.prop();
 	int id = prop.id();
 	string name = prop.name();
-	int number = prop.number();
+
+	Reward consume = item.consume();
+	int buynumber = consume.number();
+
+	Reward give = item.give();
+	int givenum = give.number();
 
 	Layout *hotly = GameDataSet::getLayout(m_RootLayer,"hot");
 	hotly->setVisible(hot);
@@ -55,8 +60,7 @@ bool ShopItemLayer::init(ShopItem item)
 	sprintf(buff, "%s%s", GameDataSet::getCNStringByInteger(number).c_str(),name.c_str());
 	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_name", buff);
 
-	int znumber = item.givenum();
-	sprintf(buff, XXIconv::GBK2UTF("增%s").c_str(), GameDataSet::getCNStringByInteger(znumber).c_str());
+	sprintf(buff, XXIconv::GBK2UTF("增%s").c_str(), GameDataSet::getCNStringByInteger(givenum).c_str());
 	GameDataSet::setText(m_RootLayer,"zeng",buff);
 
 	string icon;
@@ -139,7 +143,7 @@ bool ShopLayer::init()
 	m_btntext[0] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_card");
 	m_btntext[1] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_gold");
 
-	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	string uname = user.username();
 	string uid = user.userid();
 	int card = user.card();
@@ -213,11 +217,22 @@ void ShopLayer::addShopItem(int index){
 	if (sbg->getChildrenCount() == 0){
 		for (int i = 0; i < 10; i++){
 			ShopItem rk;
-			rk.set_type(index+1);
-			Prop ppp;
-			Prop *pp = (Prop *)ccEvent::create_message(ppp.GetTypeName());
+			rk.set_hot(i%2);
+			Reward *rd = rk.mutable_prop();
+			rd->set_number(i * 10000 + 5000);
+			Prop *pp = rd->mutable_prop();
 			pp->set_id(index + 1);
-			rk.set_allocated_prop(pp);
+			
+			Reward *con = rk.mutable_consume();
+			con->set_number(6*i+6);
+			Prop *conprop = con->mutable_prop();
+			conprop->set_id(3);
+
+			Reward *give = rk.mutable_give();
+			give->set_number(2000 * i + 2000);
+			Prop *giveprop = give->mutable_prop();
+			giveprop->set_id(3);
+
 			ShopItemLayer *p = ShopItemLayer::create(rk);
 			GameDataSet::PushScrollItem(sbg, 2, 0, p, i, scroll);
 		}

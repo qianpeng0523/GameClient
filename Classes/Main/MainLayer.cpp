@@ -18,8 +18,11 @@ MainLayer::MainLayer(){
 }
 
 MainLayer::~MainLayer(){
+	ImageView *bg = (ImageView *)GameDataSet::getLayout(m_RootLayer, "bg");
+	char buff[50];
 	for (int i = 0; i < 6; i++){
-		m_pParticleSystem[i]->removeFromParentAndCleanup(true);
+		sprintf(buff,"particle%d",i+1);
+		bg->removeChildByName(buff);
 		m_pParticleSystem[i] = NULL;
 	}
 	RootRegister::getIns()->resetWidget(m_RootLayer);
@@ -73,7 +76,7 @@ bool MainLayer::init()
 	m_friendbtns[1] = GameDataSet::getButton(m_RootLayer, "shengju", selector, this);
 	GameDataSet::getButton(m_RootLayer, "haoyou_btn", selector, this);
 
-	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	string uname = user.username();
 	string uid = user.userid();
 	int card = user.card();
@@ -91,11 +94,14 @@ bool MainLayer::init()
 	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试11111111"), 3);
 	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试222222222"), 2);
 
+	char buff[50];
 	for (int i = 0; i < 6; i++){
 		m_pParticleSystem[i] = CCParticleSystemQuad::create("particle/guangxiao3.plist");
 		m_pParticleSystem[i]->setAutoRemoveOnFinish(true);
 		ImageView *bg = (ImageView *)GameDataSet::getLayout(m_RootLayer, "bg");
 		bg->addChild(m_pParticleSystem[i], 0);
+		sprintf(buff,"particle%d",i+1);
+		m_pParticleSystem[i]->setName(buff);
 		m_pParticleSystem[i]->setPosition(ccp(320 * i, 640));
 	}
     return true;

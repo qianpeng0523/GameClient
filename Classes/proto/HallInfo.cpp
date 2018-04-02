@@ -83,38 +83,17 @@ bool HallInfo::init()
 
 void HallInfo::SendCRank(int type, int index){
 	CRank cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_type(type);
 	cl.set_index(index);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSRankHand));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
-	//test
-// 	SRank cl1;
-// 	cl1.set_type(type);
-// 	if (index < 5){
-// 		char buff1[30];
-// 		for (int i = 0; i < 10; i++){
-// 			Rank rk;
-// 			rk.set_lv(index * 10 + (i + 1));
-// 			rk.set_number(10000 * type + 1000 * i);
-// 			sprintf(buff1, "1%d%d0%02d", type, index, i);
-// 			rk.set_uid(buff1);
-// 			sprintf(buff1, "qp1%d%d0%02d", type, index, i);
-// 			rk.set_uname(buff1);
-// 			rk.set_type(type);
-// 			Rank *rk1 = cl1.add_list();
-// 			rk1->CopyFrom(rk);
-// 		}
-// 	}
-// 	int sz = cl1.ByteSize();
-// 	char *buff=new char[sz];
-// 	cl1.SerializePartialToArray(buff, sz);
-// 	ccEvent *ev =new ccEvent(cl1.cmd(),buff,sz);
-// 	HandlerSRankHand(ev);
 }
 
 void HallInfo::HandlerSRankHand(ccEvent *event){
 	SRank cl;
+
 	cl.CopyFrom(*event->msg);
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSRankHand));
 	int err = cl.err();
@@ -166,6 +145,7 @@ void HallInfo::eraseRank(int type, int lv){
 
 void HallInfo::SendCShop(int type){
 	CShop cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_type(type);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSShop));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
@@ -204,27 +184,9 @@ SShop HallInfo::getSShop(int type){
 
 void HallInfo::SendCMail(){
 	CMail cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMail));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
-
-	//test
-	char buff[100];
-	SMail sl;
-	for (int i = 0; i < 8; i++){
-		Mail *ml= sl.add_list();
-		ml->set_id(i + 1);
-		sprintf(buff, XXIconv::GBK2UTF("邮件内容测试%d").c_str(),i+1);
-		ml->set_content(buff);
-		sprintf(buff, XXIconv::GBK2UTF("邮件标题%d").c_str(), i + 1);
-		ml->set_title(buff);
-		ml->set_time(GameDataSet::getLocalTime().c_str());
-		ml->set_type(1);
-	}
-	int sz = sl.ByteSize();
-	char *buffer = new char[sz];
-	sl.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(sl.cmd(),buffer,sz);
-	HandlerSMail(ev);
 }
 
 void HallInfo::HandlerSMail(ccEvent *event){
@@ -247,6 +209,7 @@ void HallInfo::HandlerSMail(ccEvent *event){
 
 void HallInfo::SendCMailAward(int eid){
 	CMailAward cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_id(eid);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMailAward));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
@@ -261,7 +224,7 @@ void HallInfo::HandlerSMailAward(ccEvent *event){
 		int id = cl.id();
 		for (int i = 0; i < m_pSMail.list_size();i++){
 			Mail p = m_pSMail.list(i);
-			if (p.id() == id){
+			if (p.eid() == id){
 				//查找到了  然后提示奖励界面
 
 				break;
@@ -272,6 +235,7 @@ void HallInfo::HandlerSMailAward(ccEvent *event){
 
 void HallInfo::SendCFriend(){
 	CFriend cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
@@ -282,11 +246,9 @@ void HallInfo::SendCFriend(){
 		fri->set_acttype(i%3+1);
 		fri->set_time(GameDataSet::getTime());
 		char buff[100];
-		DBUserInfo us;
-		DBUserInfo *user = (DBUserInfo *)ccEvent::create_message(us.GetTypeName());
+		UserBase *user = fri->mutable_info();
 		sprintf(buff, "10000%d", i);
 		user->set_username(buff);
-		fri->set_allocated_userinfo(user);
 	}
 	int sz = sf.ByteSize();
 	char *buffer = new char[sz];
@@ -315,6 +277,7 @@ void HallInfo::HandlerSFriend(ccEvent *event){
 
 void HallInfo::SendCFindFriend(string uid, int type){
 	CFindFriend cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_uid(uid);
 	cl.set_type(type);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFindFriend));
@@ -328,12 +291,10 @@ void HallInfo::SendCFindFriend(string uid, int type){
 		fri->set_acttype(i % 3 + 1);
 		fri->set_online(i % 2);
 		fri->set_time(GameDataSet::getTime());
-		DBUserInfo us;
-		DBUserInfo *user= (DBUserInfo *)ccEvent::create_message(us.GetTypeName());
+		UserBase *user= fri->mutable_info();
 		sprintf(buff, "10000%d", i);
 		user->set_username(buff);
 		user->set_userid(buff);
-		fri->set_allocated_userinfo(user);
 
 	}
 	int sz = fris.ByteSize();
@@ -363,6 +324,7 @@ void HallInfo::HandlerSFindFriend(ccEvent *event){
 
 void HallInfo::SendCGiveFriend(string uid){
 	CGiveFriend cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_uid(uid);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSGiveFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
@@ -384,6 +346,7 @@ void HallInfo::HandlerSGiveFriend(ccEvent *event){
 
 void HallInfo::SendCAddFriend(string uid){
 	CAddFriend cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_uid(uid);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
@@ -405,6 +368,7 @@ void HallInfo::HandlerSAddFriend(ccEvent *event){
 
 void HallInfo::SendCAddFriendList(){
 	CAddFriendList cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriendList));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
@@ -413,19 +377,13 @@ void HallInfo::SendCAddFriendList(){
 	SAddFriendList fris;
 	for (int i = 0; i < 5; i++){
 		FriendNotice *fri = fris.add_list();
-		fri->set_add(i%2);
+		fri->set_status(i%2);
 		sprintf(buff, "1000%02d", i);
 		fri->set_uid(buff);
-		Mail ml1;
-		Mail *ml = (Mail *)ccEvent::create_message(ml1.GetTypeName());
-		ml->set_id(i + 1);
+		fri->set_nid(i + 1);
 		sprintf(buff, XXIconv::GBK2UTF("%s添加您为好友").c_str(), buff);
-		ml->set_content(buff);
-		sprintf(buff, XXIconv::GBK2UTF("邮件标题%d").c_str(), i + 1);
-		ml->set_title(buff);
-		ml->set_time(GameDataSet::getLocalTime().c_str());
-		ml->set_type(1);
-		fri->set_allocated_notice(ml);
+		fri->set_content(buff);
+		fri->set_time(GameDataSet::getLocalTime().c_str());
 	}
 	int sz = fris.ByteSize();
 	char *buffer = new char[sz];
@@ -455,6 +413,7 @@ void HallInfo::HandlerSAddFriendList(ccEvent *event){
 
 void HallInfo::SendCActive(int type){
 	CActive cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_type(type);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSActive));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
@@ -479,6 +438,7 @@ void HallInfo::HandlerSActive(ccEvent *event){
 
 void HallInfo::SendCTask(){
 	CTask cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSTask));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
@@ -492,20 +452,23 @@ void HallInfo::SendCTask(){
 		ts->set_content(XXIconv::GBK2UTF("完成任务可获得大量金币"));
 		ts->set_taskid(i + 1);
 		int count = 3 * (i % 4) + 1;
-		ts->set_count(count);
+		Status *st = ts->mutable_status();
+		st->set_count(count);
 		int fcount = 2 * (i % 3) + 1;
-		ts->set_fcount(fcount);
+		st->set_fcount(fcount);
 		if (count <= fcount){
-			ts->set_finish(i%2+1);
+			st->set_finished(i % 2 + 1);
 		}
 		else{
-			ts->set_finish(0);
+			st->set_finished(0);
 		}
 		ts->set_type(i / 4 + 1);
-		Prop *prop = ts->add_award();
+
+		Reward *rd = ts->add_rewardlist();
+		Prop *prop = rd->mutable_prop();
 		prop->set_id(1);
 		prop->set_name(XXIconv::GBK2UTF("金币"));
-		prop->set_number((i+1)*(i / 4+1) * 1500);
+		rd->set_number((i+1)*(i / 4+1) * 1500);
 	}
 	int sz = st.ByteSize();
 	char *buffer = new char[sz];
@@ -531,9 +494,8 @@ void HallInfo::HandlerSTask(ccEvent *event){
 	}
 }
 
-void HallInfo::SendCReward(int type, int id){
+void HallInfo::SendCReward(int id){
 	CReward cl;
-	cl.set_type(type);
 	cl.set_id(id);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSReward));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
@@ -554,6 +516,7 @@ void HallInfo::HandlerSReward(ccEvent *event){
 
 void HallInfo::SendCAgreeFriend(string uid, bool agree){
 	CAgreeFriend cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_userid(uid);
 	cl.set_agree(agree);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAgreeFriend));
@@ -575,29 +538,29 @@ void HallInfo::HandlerSAgreeFriend(ccEvent *event){
 
 void HallInfo::SendCExchangeReward(){
 	CExchangeReward cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeReward));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
 	//test
 	char buff[100];
-	int gold = LoginInfo::getIns()->getMyDBUserInfo().gold();
+	int gold = LoginInfo::getIns()->getMyUserBase().gold();
 	SExchangeReward se;
 	for (int i = 0; i < 8; i++){
 		ExAward *ea = se.add_list();
 		ea->set_eid(i+1);
-		ea->set_pid(1);
-		int number = 28000*i;
-		sprintf(buff,XXIconv::GBK2UTF("%d元红包").c_str(),i*5+5);
+		sprintf(buff, XXIconv::GBK2UTF("%d元红包").c_str(), i * 5 + 5);
 		ea->set_title(buff);
-		ea->set_can(gold>=number);
-		Prop prop;
-		prop.set_id(1);
-		prop.set_name(XXIconv::GBK2UTF("金币"));
-		prop.set_number(number);
-		Prop *prop1=(Prop *)ccEvent::create_message(prop.GetTypeName());
-		prop1->CopyFrom(prop);
 
-		ea->set_allocated_award(prop1);
+		Reward *rd = ea->mutable_award();
+		rd->set_rid(1);
+		int number = 28000*i;
+		rd->set_number(number);
+		
+		Prop *prop=rd->mutable_prop();
+		prop->set_id(1);
+		prop->set_name(XXIconv::GBK2UTF("金币"));
+		
 	}
 	int sz = se.ByteSize();
 	char *buffer = new char[sz];
@@ -626,6 +589,7 @@ void HallInfo::HandlerSExchangeReward(ccEvent *event){
 
 void HallInfo::SendCExchangeCode(string excode, string yzcode){
 	CExchangeCode cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeCode));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
@@ -645,18 +609,19 @@ void HallInfo::HandlerSExchangeCode(ccEvent *event){
 
 void HallInfo::SendCExchangeRecord(){
 	CExchangeRecord cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
 	//test
 	char buff[100];
-	int gold = LoginInfo::getIns()->getMyDBUserInfo().gold();
+	int gold = LoginInfo::getIns()->getMyUserBase().gold();
 	SExchangeRecord se;
 	for (int i = 0; i < 8; i++){
 		ExRecord *ea = se.add_list();
 		sprintf(buff, XXIconv::GBK2UTF("%d元红包").c_str(), i * 5 + 5);
 		ea->set_title(buff);
-		ea->set_id(i+1);
+		ea->set_eid(i+1);
 		sprintf(buff,"201803201%04d",i);
 		ea->set_orderid(buff);
 		ea->set_status(i%3);
@@ -685,6 +650,7 @@ void HallInfo::HandlerSExchangeRecord(ccEvent *event){
 
 void HallInfo::SendCExchange(int id){
 	CExchange cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_id(id);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchange));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
@@ -702,6 +668,7 @@ void HallInfo::HandlerSExchange(ccEvent *event){
 
 void HallInfo::SendCApplePay(int id, string receipt){
 	CApplePay cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_id(id);
 	cl.set_receipt(receipt);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSApplePay));
@@ -721,6 +688,7 @@ void HallInfo::HandlerSApplePay(ccEvent *event){
 
 void HallInfo::SendCWxpayOrder(int id, string body){
 	CWxpayOrder cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_id(id);
 	cl.set_body(body);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSWxpayOrder));
@@ -743,6 +711,7 @@ void HallInfo::HandlerSWxpayOrder(ccEvent *event){
 
 void HallInfo::SendCWxpayQuery(string transid){
 	CWxpayQuery cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_transid(transid);
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
@@ -759,6 +728,7 @@ void HallInfo::HandlerSWxpayQuery(ccEvent *event){
 
 void HallInfo::SendCFirstBuy(int type){
 	CFirstBuy cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_type(type);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFirstBuy));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
@@ -780,6 +750,7 @@ void HallInfo::HandlerSFirstBuy(ccEvent *event){
 //反馈
 void HallInfo::SendCFeedBack(string uid, string uname, string content){
 	CFeedBack cl;
+	cl.set_cmd(cl.cmd());
 	cl.set_uid(uid);
 	cl.set_uname(uname);
 	cl.set_content(content);
@@ -813,6 +784,7 @@ void HallInfo::HandlerSFeedBack(ccEvent *event){
 //签到
 void HallInfo::SendCSign(){
 	CSign cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSSign));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
@@ -846,6 +818,7 @@ void HallInfo::HandlerSSign(ccEvent *event){
 
 void HallInfo::SendCSignList(){
 	CSignList cl;
+	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSSignList));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
@@ -858,12 +831,14 @@ void HallInfo::SendCSignList(){
 		SignAward *sa = sl.add_reward();
 		sa->set_id(i+1);
 		sa->set_day(dd[i]);
-		Prop p1;
-		Prop *p = (Prop *)ccEvent::create_message(p1.GetTypeName());
+
 		int pid = i % 2 + 1;
+		Reward *rd = sa->mutable_reward();
+		rd->set_number(pid == 1 ? 500 * dd[i] : i / 2);
+
+		Prop *p = rd->mutable_prop();
 		p->set_id(pid);
-		p->set_number(pid==1?500*dd[i]:i/2);
-		sa->set_allocated_reward(p);
+		
 	}
 	int sz = sl.ByteSize();
 	char *buffer = new char[sz];
@@ -879,6 +854,7 @@ void HallInfo::HandlerSSignList(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		m_pSSignList = cl;
+		
 		SignLayer *p = GameControl::getIns()->getSignLayer();
 		if (p){
 			p->setSignData();

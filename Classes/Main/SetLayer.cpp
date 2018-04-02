@@ -35,7 +35,7 @@ bool SetLayer::init()
 	GameDataSet::getButton(m_RootLayer, "fankui", selector, this);
 	GameDataSet::getButton(m_RootLayer, "guanyu", selector, this);
 	
-	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	string uname = user.username();
 	string picurl = user.picurl();
 	int picid = user.picid();

@@ -108,9 +108,10 @@ void SignLayer::setSignData(){
 		Layout *img = (Layout *)GameDataSet::getLayout(m_RootLayer, buff);
 		if (i < sz){
 			SignAward awrad = sl.reward(i);
-			Prop prop = awrad.reward();
+			Reward rd = awrad.reward();
+			Prop prop = rd.prop();
 			int id = prop.id();
-			int number = prop.number();
+			int number = rd.number();
 			int day = awrad.day();
 			sprintf(buff,XXIconv::GBK2UTF("%d天").c_str(),day);
 			GameDataSet::setTextBMFont(img, "BitmapLabel_w1", buff);
@@ -293,12 +294,17 @@ void SignLayer::RunEndCall(){
 
 	RewardTipLayer *p = GameControl::getIns()->getRewardTipLayer();
 	if (!p){
-		vector<Prop>vecs;
+		RepeatedPtrField<SignAward > vecs;
 		for (int i = 0; i < 2; i++){
-			Prop pp;
-			pp.set_id(i + 1);
-			pp.set_number(i == 0 ? 2000 : 2);
-			vecs.push_back(pp);
+			SignAward *sa = vecs.Add();
+			sa->set_day(3);
+			sa->set_id(i + 1);
+			Reward *rd =sa->mutable_reward();
+			rd->set_rid(i+1);
+			Prop *pp=rd->mutable_prop();
+			pp->set_id(i + 1);
+			rd->set_number(i == 0 ? 2000 : 2);
+			
 		}
 		p = RewardTipLayer::create(vecs);
 		this->addChild(p);

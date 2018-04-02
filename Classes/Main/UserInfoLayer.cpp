@@ -31,7 +31,7 @@ bool UserInfoLayer::init()
 	
 	GameDataSet::getButton(m_RootLayer, "close_btn", selector, this);
 	
-	DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	string uname = user.username();
 	string uid = user.userid();
 	int card = user.card();

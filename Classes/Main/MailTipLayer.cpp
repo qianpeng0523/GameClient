@@ -50,13 +50,14 @@ bool MailTipLayer::init(Mail mail)
 	GameDataSet::setText(m_RootLayer, "content", content);
 
 	char buff[50];
-	bool get = m_mail.get();
-	int sz = m_mail.prop_size();
+	bool get = m_mail.status();
+	int sz = m_mail.rewardlist_size();
 	for (int i = 0; i < 2;i++){
 		if (i < sz){
-			Prop p = m_mail.prop(i);
+			Reward rd = m_mail.rewardlist(i);
+			Prop p = rd.prop();
 			sprintf(buff, "BitmapLabel_%d", i + 1);
-			GameDataSet::setTextBMFont(m_RootLayer, buff, p.number());
+			GameDataSet::setTextBMFont(m_RootLayer, buff, rd.number());
 		}
 		else{
 			sprintf(buff, "icon%d", i + 1);
@@ -85,7 +86,7 @@ void MailTipLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		}
 		else if (name.compare("btn") == 0){
 			//领取邮件奖励
-			int id = m_mail.id();
+			int id = m_mail.eid();
 			HallInfo::getIns()->SendCMailAward(id);
 		}
 		

@@ -15,8 +15,8 @@ class RewardTipLayer : public BaseLayer
 public:
 	RewardTipLayer();
 	~RewardTipLayer();
-	static RewardTipLayer *create(vector<Prop> props);
-	virtual bool init(vector<Prop> props);
+	static RewardTipLayer *create(RepeatedPtrField<SignAward> props);
+	virtual bool init(RepeatedPtrField<SignAward> props);
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
 	

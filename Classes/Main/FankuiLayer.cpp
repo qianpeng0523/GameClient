@@ -54,7 +54,7 @@ void FankuiLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("send") == 0){
 			string content = m_input->getText();
 			if (!content.empty()){
-				DBUserInfo user = LoginInfo::getIns()->getMyDBUserInfo();
+				UserBase user = LoginInfo::getIns()->getMyUserBase();
 				HallInfo::getIns()->SendCFeedBack(user.userid(),user.username() ,content);
 			}
 			else{
