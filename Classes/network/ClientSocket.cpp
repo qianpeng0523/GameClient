@@ -19,7 +19,8 @@ ClientSocket *ClientSocket::getIns() {
 }
 
 ClientSocket::ClientSocket(){
-	m_stamp = 0;
+	m_sendstamp = 0;
+	m_recvstamp = 0;
 	m_tcpSocket = new TcpSocket();
 	createTcp();
 }
@@ -63,7 +64,8 @@ void ClientSocket::int2Chars(char *chars, int val, int start) {
 }
 
 int ClientSocket::connect(const char* ip, unsigned short port) {
-	m_stamp = 0;
+	m_sendstamp = 0;
+	m_recvstamp = 0;
 	m_ip = ip;
 	m_port = port;
 	
@@ -84,7 +86,8 @@ int ClientSocket::close() {
 	if (m_tcpSocket != NULL)
 	{
 		state = m_tcpSocket->Close();
-		m_stamp = 0;
+		m_sendstamp = 0;
+		m_recvstamp = 0;
 	}
 	createTcp();
 	return state;
@@ -99,7 +102,8 @@ int ClientSocket::GetError() {
 }
 
 void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
-	m_stamp = (m_stamp+1)%256;
+	m_sendstamp = (m_sendstamp+1)%256;
+	log("ssss:%d", m_sendstamp);
 	int len = msg->ByteSize();
 	char *buffer = new char[HEADLEN + len];
 	memset(buffer, 0, HEADLEN + len);
@@ -108,7 +112,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 	memcpy(buffer, "", 3);
 
 	//消息序列号
-	buffer[3] = m_stamp;
+	buffer[3] = m_sendstamp;
 	//bodylen
 	char * clen = (char *)&len;
 	for (int i = 0; i < 2; i++){
@@ -154,13 +158,14 @@ void *ClientSocket::threadHandler(void *arg) {
 			Head *head = (Head*)buff;
 			string servercode = p->getReq(head);
 			int stamp = p->getStamp(head);
+			log("jieshou:%d",stamp);
 			len = p->getBodyLen(head);
 			int cmd=p->getCMD(head);
 			
 			char *temp = new char[len];
 			p->Recv(temp, len, 0);
-			
-			if (stamp == p->m_stamp){
+			p->m_recvstamp = (p->m_recvstamp+1) % 256;
+			if (stamp == p->m_recvstamp){
 				char* out = new char[len + 1];
 				HttpInfo::getIns()->aes_decrypt(temp, len, out);
 				p->DataIn(out, len, cmd);
@@ -168,11 +173,11 @@ void *ClientSocket::threadHandler(void *arg) {
 			}
 			else{
 				delete temp;
-				printf("数据不合法\n");
+				log(XXIconv::GBK2UTF("数据不合法").c_str());
 			}
 
         } else{
-			printf("%s", "==== connect break up ====");
+			log("%s", "==== connect break up ====");
             //服务端断开
            p->close();
 			//断开线程

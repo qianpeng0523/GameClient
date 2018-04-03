@@ -57,17 +57,16 @@ bool ShopItemLayer::init(ShopItem item)
 	sprintf(buff, XXIconv::GBK2UTF("%d元").c_str(), buynumber);
 	GameDataSet::setTextBMFont(m_RootLayer,"BitmapLabel",buff);
 
-	sprintf(buff, "%s%s", GameDataSet::getCNStringByInteger(number).c_str(),name.c_str());
+	sprintf(buff, "%s%s", GameDataSet::getCNStringByInteger(number, true).c_str(), name.c_str());
 	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_name", buff);
 
-	sprintf(buff, XXIconv::GBK2UTF("增%s").c_str(), GameDataSet::getCNStringByInteger(givenum).c_str());
-	GameDataSet::setText(m_RootLayer,"zeng",buff);
-
-	string icon;
-	if (id == 2){
-
+	sprintf(buff, XXIconv::GBK2UTF("赠%s").c_str(), GameDataSet::getCNStringByInteger(givenum, true).c_str());
+	Text *tt =GameDataSet::setText(m_RootLayer,"zeng",buff);
+	if (givenum == 0){
+		tt->getParent()->setVisible(false);
 	}
-	else if (id == 1){
+	string icon;
+	if (id == 3){
 		GameDataSet::setImageView(m_RootLayer, "icon", "card1.png");
 	}
 
@@ -117,6 +116,8 @@ ShopLayer::ShopLayer(){
 }
 
 ShopLayer::~ShopLayer(){
+	m_sbg->removeAllChildrenWithCleanup(true);
+	m_sbg1->removeAllChildrenWithCleanup(true);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getShopLayer()){
 		GameControl::getIns()->setShopLayer(NULL);
@@ -149,8 +150,8 @@ bool ShopLayer::init()
 	int card = user.card();
 	long gold = user.gold();
 	
-	GameDataSet::setTextBMFont(m_RootLayer, "cardnum", GameDataSet::getCNStringByInteger(card));
-	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold));
+	GameDataSet::setTextBMFont(m_RootLayer, "cardnum", GameDataSet::getCNStringByInteger(card,true));
+	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold,true));
 
 
 	m_ScrollView = (ui::ScrollView *)GameDataSet::getButton(m_RootLayer, "ScrollView", selector, this);
@@ -161,7 +162,7 @@ bool ShopLayer::init()
 
 
 	SelectItem(0);
-	
+	HallInfo::getIns()->SendCShop(3);
     return true;
 }
 
@@ -195,6 +196,11 @@ void ShopLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		}
 		else if (name.compare("gold") == 0){
 			SelectItem(1);
+			SShop sp = HallInfo::getIns()->getSShop(1);
+			int sz = sp.list_size();
+			if (sz == 0){
+				HallInfo::getIns()->SendCShop(1);
+			}
 		}
 	}
 }
@@ -215,24 +221,15 @@ void ShopLayer::addShopItem(int index){
 		m_ScrollView1->setVisible(true);
 	}
 	if (sbg->getChildrenCount() == 0){
-		for (int i = 0; i < 10; i++){
-			ShopItem rk;
-			rk.set_hot(i%2);
-			Reward *rd = rk.mutable_prop();
-			rd->set_number(i * 10000 + 5000);
-			Prop *pp = rd->mutable_prop();
-			pp->set_id(index + 1);
-			
-			Reward *con = rk.mutable_consume();
-			con->set_number(6*i+6);
-			Prop *conprop = con->mutable_prop();
-			conprop->set_id(3);
-
-			Reward *give = rk.mutable_give();
-			give->set_number(2000 * i + 2000);
-			Prop *giveprop = give->mutable_prop();
-			giveprop->set_id(3);
-
+		int type = 1;
+		if (index == 0){
+			type = 3;
+		}
+		
+		SShop sp = HallInfo::getIns()->getSShop(type);
+		int sz = sp.list_size();
+		for (int i = 0; i < sz; i++){
+			ShopItem rk=sp.list(i);
 			ShopItemLayer *p = ShopItemLayer::create(rk);
 			GameDataSet::PushScrollItem(sbg, 2, 0, p, i, scroll);
 		}

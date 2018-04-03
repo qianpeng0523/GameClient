@@ -59,7 +59,6 @@ HallInfo::HallInfo()
 	SSignList sl23;
 	pe->registerProto(sl23.cmd(), sl23.GetTypeName());
 	
-	pe->addListener(sl19.cmd(), this, Event_Handler(HallInfo::HandlerSWxpayQuery));
 }
 
 HallInfo::~HallInfo(){
@@ -166,7 +165,12 @@ void HallInfo::HandlerSShop(ccEvent *event){
 		}
 		ShopLayer *p = GameControl::getIns()->getShopLayer();
 		if (p){
-			p->addShopItem(type);
+			if (type == 1){
+				p->addShopItem(1);
+			}
+			else if (type == 3){
+				p->addShopItem(0);
+			}
 		}
 	}
 	else{
