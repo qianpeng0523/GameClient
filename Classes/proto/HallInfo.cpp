@@ -705,9 +705,7 @@ void HallInfo::HandlerSWxpayOrder(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSWxpayOrder));
 	int err = cl.err();
 	if (err == 0){
-		string orderid = cl.orderid();
-		string payreq = cl.payreq();
-		YMSocketData sd = XXHttpRequest::getIns()->getSocketDataByStr((char *)payreq.c_str(),payreq.length());
+		//调用sdk支付
 
 	}
 }

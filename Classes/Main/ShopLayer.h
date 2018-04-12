@@ -20,6 +20,7 @@ public:
 	void TouchEvent(CCObject *obj, TouchEventType type);
 private:
 	ShopItem m_item;
+	string m_body;
 private:
 
 };

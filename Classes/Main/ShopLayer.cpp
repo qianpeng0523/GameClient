@@ -58,6 +58,7 @@ bool ShopItemLayer::init(ShopItem item)
 	GameDataSet::setTextBMFont(m_RootLayer,"BitmapLabel",buff);
 
 	sprintf(buff, "%s%s", GameDataSet::getCNStringByInteger(number, true).c_str(), name.c_str());
+	m_body = buff;
 	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_name", buff);
 
 	sprintf(buff, XXIconv::GBK2UTF("赠%s").c_str(), GameDataSet::getCNStringByInteger(givenum, true).c_str());
@@ -81,7 +82,7 @@ void ShopItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	if (type == TOUCH_EVENT_ENDED){
 		if (name.compare("btn") == 0){
 			int id = m_item.id();
-			
+			HallInfo::getIns()->SendCWxpayOrder(id, m_body);
 		}
 	}
 }

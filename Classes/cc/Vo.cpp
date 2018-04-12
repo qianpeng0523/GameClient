@@ -65,6 +65,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* SignAward_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SignAward_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SignZhuan_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SignZhuan_reflection_ = NULL;
+const ::google::protobuf::Descriptor* PayRecord_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  PayRecord_reflection_ = NULL;
 
 }  // namespace
 
@@ -266,11 +272,10 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Active));
   Status_descriptor_ = file->message_type(10);
-  static const int Status_offsets_[4] = {
+  static const int Status_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Status, count_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Status, fcount_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Status, finished_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Status, give_),
   };
   Status_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -357,6 +362,45 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SignAward));
+  SignZhuan_descriptor_ = file->message_type(15);
+  static const int SignZhuan_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignZhuan, index_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignZhuan, reward_),
+  };
+  SignZhuan_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SignZhuan_descriptor_,
+      SignZhuan::default_instance_,
+      SignZhuan_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignZhuan, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SignZhuan, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SignZhuan));
+  PayRecord_descriptor_ = file->message_type(16);
+  static const int PayRecord_offsets_[9] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, userid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, attach_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, out_trade_no_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, time_start_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, time_expire_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, prepay_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, body_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, total_fee_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, spbill_create_ip_),
+  };
+  PayRecord_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      PayRecord_descriptor_,
+      PayRecord::default_instance_,
+      PayRecord_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PayRecord, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(PayRecord));
 }
 
 namespace {
@@ -399,6 +443,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
     ExRecord_descriptor_, &ExRecord::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SignAward_descriptor_, &SignAward::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SignZhuan_descriptor_, &SignZhuan::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    PayRecord_descriptor_, &PayRecord::default_instance());
 }
 
 }  // namespace
@@ -434,6 +482,10 @@ void protobuf_ShutdownFile_Vo_2eproto() {
   delete ExRecord_reflection_;
   delete SignAward::default_instance_;
   delete SignAward_reflection_;
+  delete SignZhuan::default_instance_;
+  delete SignZhuan_reflection_;
+  delete PayRecord::default_instance_;
+  delete PayRecord_reflection_;
 }
 
 void protobuf_AddDesc_Vo_2eproto() {
@@ -468,19 +520,25 @@ void protobuf_AddDesc_Vo_2eproto() {
     "\006Friend\022 \n\004info\030\001 \001(\0132\022.protocol.UserBas"
     "e\022\016\n\006online\030\002 \001(\010\022\016\n\006friend\030\003 \001(\010\022\017\n\007act"
     "type\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\"/\n\006Active\022\n\n\002id"
-    "\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022\013\n\003url\030\003 \001(\t\"G\n\006Sta"
+    "\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022\013\n\003url\030\003 \001(\t\"9\n\006Sta"
     "tus\022\r\n\005count\030\001 \001(\r\022\016\n\006fcount\030\002 \001(\r\022\020\n\010fi"
-    "nished\030\003 \001(\010\022\014\n\004give\030\004 \001(\r\"\214\001\n\004Task\022\016\n\006t"
-    "askid\030\001 \001(\r\022\r\n\005title\030\002 \001(\t\022\017\n\007content\030\003 "
-    "\001(\t\022\014\n\004type\030\004 \001(\r\022$\n\nrewardlist\030\005 \003(\0132\020."
-    "protocol.Reward\022 \n\006status\030\006 \001(\0132\020.protoc"
-    "ol.Status\"e\n\007ExAward\022\013\n\003eid\030\001 \001(\r\022\r\n\005tit"
-    "le\030\002 \001(\t\022\037\n\005award\030\003 \001(\0132\020.protocol.Rewar"
-    "d\022\035\n\003buy\030\004 \001(\0132\020.protocol.Reward\"U\n\010ExRe"
-    "cord\022\013\n\003eid\030\001 \001(\r\022\r\n\005title\030\002 \001(\t\022\017\n\007orde"
-    "rid\030\003 \001(\t\022\014\n\004time\030\004 \001(\t\022\016\n\006status\030\005 \001(\r\""
-    "F\n\tSignAward\022\n\n\002id\030\001 \001(\r\022\013\n\003day\030\002 \001(\r\022 \n"
-    "\006reward\030\003 \001(\0132\020.protocol.Reward", 1511);
+    "nished\030\003 \001(\r\"\214\001\n\004Task\022\016\n\006taskid\030\001 \001(\r\022\r\n"
+    "\005title\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\022\014\n\004type\030\004 "
+    "\001(\r\022$\n\nrewardlist\030\005 \003(\0132\020.protocol.Rewar"
+    "d\022 \n\006status\030\006 \001(\0132\020.protocol.Status\"e\n\007E"
+    "xAward\022\013\n\003eid\030\001 \001(\r\022\r\n\005title\030\002 \001(\t\022\037\n\005aw"
+    "ard\030\003 \001(\0132\020.protocol.Reward\022\035\n\003buy\030\004 \001(\013"
+    "2\020.protocol.Reward\"U\n\010ExRecord\022\013\n\003eid\030\001 "
+    "\001(\r\022\r\n\005title\030\002 \001(\t\022\017\n\007orderid\030\003 \001(\t\022\014\n\004t"
+    "ime\030\004 \001(\t\022\016\n\006status\030\005 \001(\r\"F\n\tSignAward\022\n"
+    "\n\002id\030\001 \001(\r\022\013\n\003day\030\002 \001(\r\022 \n\006reward\030\003 \001(\0132"
+    "\020.protocol.Reward\"<\n\tSignZhuan\022\r\n\005index\030"
+    "\001 \001(\r\022 \n\006reward\030\002 \001(\0132\020.protocol.Reward\""
+    "\270\001\n\tPayRecord\022\016\n\006userid\030\001 \001(\t\022\016\n\006attach\030"
+    "\002 \001(\t\022\024\n\014out_trade_no\030\003 \001(\t\022\022\n\ntime_star"
+    "t\030\004 \001(\t\022\023\n\013time_expire\030\005 \001(\t\022\021\n\tprepay_i"
+    "d\030\006 \001(\t\022\014\n\004body\030\007 \001(\t\022\021\n\ttotal_fee\030\010 \001(\t"
+    "\022\030\n\020spbill_create_ip\030\t \001(\t", 1746);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Vo.proto", &protobuf_RegisterTypes);
   UserBase::default_instance_ = new UserBase();
@@ -498,6 +556,8 @@ void protobuf_AddDesc_Vo_2eproto() {
   ExAward::default_instance_ = new ExAward();
   ExRecord::default_instance_ = new ExRecord();
   SignAward::default_instance_ = new SignAward();
+  SignZhuan::default_instance_ = new SignZhuan();
+  PayRecord::default_instance_ = new PayRecord();
   UserBase::default_instance_->InitAsDefaultInstance();
   UserInfo::default_instance_->InitAsDefaultInstance();
   Rank::default_instance_->InitAsDefaultInstance();
@@ -513,6 +573,8 @@ void protobuf_AddDesc_Vo_2eproto() {
   ExAward::default_instance_->InitAsDefaultInstance();
   ExRecord::default_instance_->InitAsDefaultInstance();
   SignAward::default_instance_->InitAsDefaultInstance();
+  SignZhuan::default_instance_->InitAsDefaultInstance();
+  PayRecord::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Vo_2eproto);
 }
 
@@ -4499,7 +4561,6 @@ void Active::Swap(Active* other) {
 const int Status::kCountFieldNumber;
 const int Status::kFcountFieldNumber;
 const int Status::kFinishedFieldNumber;
-const int Status::kGiveFieldNumber;
 #endif  // !_MSC_VER
 
 Status::Status()
@@ -4520,8 +4581,7 @@ void Status::SharedCtor() {
   _cached_size_ = 0;
   count_ = 0u;
   fcount_ = 0u;
-  finished_ = false;
-  give_ = 0u;
+  finished_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -4559,8 +4619,7 @@ void Status::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     count_ = 0u;
     fcount_ = 0u;
-    finished_ = false;
-    give_ = 0u;
+    finished_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -4603,31 +4662,15 @@ bool Status::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool finished = 3;
+      // optional uint32 finished = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_finished:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &finished_)));
           set_has_finished();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(32)) goto parse_give;
-        break;
-      }
-
-      // optional uint32 give = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_give:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &give_)));
-          set_has_give();
         } else {
           goto handle_uninterpreted;
         }
@@ -4663,14 +4706,9 @@ void Status::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->fcount(), output);
   }
 
-  // optional bool finished = 3;
+  // optional uint32 finished = 3;
   if (has_finished()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->finished(), output);
-  }
-
-  // optional uint32 give = 4;
-  if (has_give()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->give(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->finished(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -4691,14 +4729,9 @@ void Status::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->fcount(), target);
   }
 
-  // optional bool finished = 3;
+  // optional uint32 finished = 3;
   if (has_finished()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->finished(), target);
-  }
-
-  // optional uint32 give = 4;
-  if (has_give()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->give(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->finished(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4726,16 +4759,11 @@ int Status::ByteSize() const {
           this->fcount());
     }
 
-    // optional bool finished = 3;
+    // optional uint32 finished = 3;
     if (has_finished()) {
-      total_size += 1 + 1;
-    }
-
-    // optional uint32 give = 4;
-    if (has_give()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->give());
+          this->finished());
     }
 
   }
@@ -4774,9 +4802,6 @@ void Status::MergeFrom(const Status& from) {
     if (from.has_finished()) {
       set_finished(from.finished());
     }
-    if (from.has_give()) {
-      set_give(from.give());
-    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -4803,7 +4828,6 @@ void Status::Swap(Status* other) {
     std::swap(count_, other->count_);
     std::swap(fcount_, other->fcount_);
     std::swap(finished_, other->finished_);
-    std::swap(give_, other->give_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -6329,6 +6353,946 @@ void SignAward::Swap(SignAward* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = SignAward_descriptor_;
   metadata.reflection = SignAward_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SignZhuan::kIndexFieldNumber;
+const int SignZhuan::kRewardFieldNumber;
+#endif  // !_MSC_VER
+
+SignZhuan::SignZhuan()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SignZhuan::InitAsDefaultInstance() {
+  reward_ = const_cast< ::protocol::Reward*>(&::protocol::Reward::default_instance());
+}
+
+SignZhuan::SignZhuan(const SignZhuan& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SignZhuan::SharedCtor() {
+  _cached_size_ = 0;
+  index_ = 0u;
+  reward_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SignZhuan::~SignZhuan() {
+  SharedDtor();
+}
+
+void SignZhuan::SharedDtor() {
+  if (this != default_instance_) {
+    delete reward_;
+  }
+}
+
+void SignZhuan::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SignZhuan::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SignZhuan_descriptor_;
+}
+
+const SignZhuan& SignZhuan::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Vo_2eproto();
+  return *default_instance_;
+}
+
+SignZhuan* SignZhuan::default_instance_ = NULL;
+
+SignZhuan* SignZhuan::New() const {
+  return new SignZhuan;
+}
+
+void SignZhuan::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    index_ = 0u;
+    if (has_reward()) {
+      if (reward_ != NULL) reward_->::protocol::Reward::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SignZhuan::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 index = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &index_)));
+          set_has_index();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_reward;
+        break;
+      }
+
+      // optional .protocol.Reward reward = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_reward:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_reward()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SignZhuan::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint32 index = 1;
+  if (has_index()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->index(), output);
+  }
+
+  // optional .protocol.Reward reward = 2;
+  if (has_reward()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->reward(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SignZhuan::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint32 index = 1;
+  if (has_index()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->index(), target);
+  }
+
+  // optional .protocol.Reward reward = 2;
+  if (has_reward()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->reward(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SignZhuan::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint32 index = 1;
+    if (has_index()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->index());
+    }
+
+    // optional .protocol.Reward reward = 2;
+    if (has_reward()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->reward());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SignZhuan::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SignZhuan* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SignZhuan*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SignZhuan::MergeFrom(const SignZhuan& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_index()) {
+      set_index(from.index());
+    }
+    if (from.has_reward()) {
+      mutable_reward()->::protocol::Reward::MergeFrom(from.reward());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SignZhuan::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SignZhuan::CopyFrom(const SignZhuan& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SignZhuan::IsInitialized() const {
+
+  return true;
+}
+
+void SignZhuan::Swap(SignZhuan* other) {
+  if (other != this) {
+    std::swap(index_, other->index_);
+    std::swap(reward_, other->reward_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SignZhuan::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SignZhuan_descriptor_;
+  metadata.reflection = SignZhuan_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int PayRecord::kUseridFieldNumber;
+const int PayRecord::kAttachFieldNumber;
+const int PayRecord::kOutTradeNoFieldNumber;
+const int PayRecord::kTimeStartFieldNumber;
+const int PayRecord::kTimeExpireFieldNumber;
+const int PayRecord::kPrepayIdFieldNumber;
+const int PayRecord::kBodyFieldNumber;
+const int PayRecord::kTotalFeeFieldNumber;
+const int PayRecord::kSpbillCreateIpFieldNumber;
+#endif  // !_MSC_VER
+
+PayRecord::PayRecord()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void PayRecord::InitAsDefaultInstance() {
+}
+
+PayRecord::PayRecord(const PayRecord& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void PayRecord::SharedCtor() {
+  _cached_size_ = 0;
+  userid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  attach_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  out_trade_no_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  time_start_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  time_expire_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  prepay_id_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  body_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  total_fee_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  spbill_create_ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+PayRecord::~PayRecord() {
+  SharedDtor();
+}
+
+void PayRecord::SharedDtor() {
+  if (userid_ != &::google::protobuf::internal::kEmptyString) {
+    delete userid_;
+  }
+  if (attach_ != &::google::protobuf::internal::kEmptyString) {
+    delete attach_;
+  }
+  if (out_trade_no_ != &::google::protobuf::internal::kEmptyString) {
+    delete out_trade_no_;
+  }
+  if (time_start_ != &::google::protobuf::internal::kEmptyString) {
+    delete time_start_;
+  }
+  if (time_expire_ != &::google::protobuf::internal::kEmptyString) {
+    delete time_expire_;
+  }
+  if (prepay_id_ != &::google::protobuf::internal::kEmptyString) {
+    delete prepay_id_;
+  }
+  if (body_ != &::google::protobuf::internal::kEmptyString) {
+    delete body_;
+  }
+  if (total_fee_ != &::google::protobuf::internal::kEmptyString) {
+    delete total_fee_;
+  }
+  if (spbill_create_ip_ != &::google::protobuf::internal::kEmptyString) {
+    delete spbill_create_ip_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void PayRecord::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* PayRecord::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return PayRecord_descriptor_;
+}
+
+const PayRecord& PayRecord::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Vo_2eproto();
+  return *default_instance_;
+}
+
+PayRecord* PayRecord::default_instance_ = NULL;
+
+PayRecord* PayRecord::New() const {
+  return new PayRecord;
+}
+
+void PayRecord::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_userid()) {
+      if (userid_ != &::google::protobuf::internal::kEmptyString) {
+        userid_->clear();
+      }
+    }
+    if (has_attach()) {
+      if (attach_ != &::google::protobuf::internal::kEmptyString) {
+        attach_->clear();
+      }
+    }
+    if (has_out_trade_no()) {
+      if (out_trade_no_ != &::google::protobuf::internal::kEmptyString) {
+        out_trade_no_->clear();
+      }
+    }
+    if (has_time_start()) {
+      if (time_start_ != &::google::protobuf::internal::kEmptyString) {
+        time_start_->clear();
+      }
+    }
+    if (has_time_expire()) {
+      if (time_expire_ != &::google::protobuf::internal::kEmptyString) {
+        time_expire_->clear();
+      }
+    }
+    if (has_prepay_id()) {
+      if (prepay_id_ != &::google::protobuf::internal::kEmptyString) {
+        prepay_id_->clear();
+      }
+    }
+    if (has_body()) {
+      if (body_ != &::google::protobuf::internal::kEmptyString) {
+        body_->clear();
+      }
+    }
+    if (has_total_fee()) {
+      if (total_fee_ != &::google::protobuf::internal::kEmptyString) {
+        total_fee_->clear();
+      }
+    }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (has_spbill_create_ip()) {
+      if (spbill_create_ip_ != &::google::protobuf::internal::kEmptyString) {
+        spbill_create_ip_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool PayRecord::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string userid = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_userid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->userid().data(), this->userid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_attach;
+        break;
+      }
+
+      // optional string attach = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_attach:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_attach()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->attach().data(), this->attach().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_out_trade_no;
+        break;
+      }
+
+      // optional string out_trade_no = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_out_trade_no:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_out_trade_no()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->out_trade_no().data(), this->out_trade_no().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_time_start;
+        break;
+      }
+
+      // optional string time_start = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_time_start:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_time_start()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->time_start().data(), this->time_start().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_time_expire;
+        break;
+      }
+
+      // optional string time_expire = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_time_expire:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_time_expire()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->time_expire().data(), this->time_expire().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(50)) goto parse_prepay_id;
+        break;
+      }
+
+      // optional string prepay_id = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_prepay_id:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_prepay_id()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->prepay_id().data(), this->prepay_id().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(58)) goto parse_body;
+        break;
+      }
+
+      // optional string body = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_body:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_body()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->body().data(), this->body().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(66)) goto parse_total_fee;
+        break;
+      }
+
+      // optional string total_fee = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_total_fee:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_total_fee()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->total_fee().data(), this->total_fee().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_spbill_create_ip;
+        break;
+      }
+
+      // optional string spbill_create_ip = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_spbill_create_ip:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_spbill_create_ip()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->spbill_create_ip().data(), this->spbill_create_ip().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void PayRecord::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional string userid = 1;
+  if (has_userid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->userid().data(), this->userid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->userid(), output);
+  }
+
+  // optional string attach = 2;
+  if (has_attach()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->attach().data(), this->attach().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->attach(), output);
+  }
+
+  // optional string out_trade_no = 3;
+  if (has_out_trade_no()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->out_trade_no().data(), this->out_trade_no().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->out_trade_no(), output);
+  }
+
+  // optional string time_start = 4;
+  if (has_time_start()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->time_start().data(), this->time_start().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->time_start(), output);
+  }
+
+  // optional string time_expire = 5;
+  if (has_time_expire()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->time_expire().data(), this->time_expire().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->time_expire(), output);
+  }
+
+  // optional string prepay_id = 6;
+  if (has_prepay_id()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->prepay_id().data(), this->prepay_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      6, this->prepay_id(), output);
+  }
+
+  // optional string body = 7;
+  if (has_body()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->body().data(), this->body().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      7, this->body(), output);
+  }
+
+  // optional string total_fee = 8;
+  if (has_total_fee()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->total_fee().data(), this->total_fee().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      8, this->total_fee(), output);
+  }
+
+  // optional string spbill_create_ip = 9;
+  if (has_spbill_create_ip()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->spbill_create_ip().data(), this->spbill_create_ip().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      9, this->spbill_create_ip(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* PayRecord::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional string userid = 1;
+  if (has_userid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->userid().data(), this->userid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->userid(), target);
+  }
+
+  // optional string attach = 2;
+  if (has_attach()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->attach().data(), this->attach().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->attach(), target);
+  }
+
+  // optional string out_trade_no = 3;
+  if (has_out_trade_no()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->out_trade_no().data(), this->out_trade_no().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->out_trade_no(), target);
+  }
+
+  // optional string time_start = 4;
+  if (has_time_start()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->time_start().data(), this->time_start().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->time_start(), target);
+  }
+
+  // optional string time_expire = 5;
+  if (has_time_expire()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->time_expire().data(), this->time_expire().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->time_expire(), target);
+  }
+
+  // optional string prepay_id = 6;
+  if (has_prepay_id()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->prepay_id().data(), this->prepay_id().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->prepay_id(), target);
+  }
+
+  // optional string body = 7;
+  if (has_body()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->body().data(), this->body().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->body(), target);
+  }
+
+  // optional string total_fee = 8;
+  if (has_total_fee()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->total_fee().data(), this->total_fee().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        8, this->total_fee(), target);
+  }
+
+  // optional string spbill_create_ip = 9;
+  if (has_spbill_create_ip()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->spbill_create_ip().data(), this->spbill_create_ip().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        9, this->spbill_create_ip(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int PayRecord::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string userid = 1;
+    if (has_userid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->userid());
+    }
+
+    // optional string attach = 2;
+    if (has_attach()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->attach());
+    }
+
+    // optional string out_trade_no = 3;
+    if (has_out_trade_no()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->out_trade_no());
+    }
+
+    // optional string time_start = 4;
+    if (has_time_start()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->time_start());
+    }
+
+    // optional string time_expire = 5;
+    if (has_time_expire()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->time_expire());
+    }
+
+    // optional string prepay_id = 6;
+    if (has_prepay_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->prepay_id());
+    }
+
+    // optional string body = 7;
+    if (has_body()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->body());
+    }
+
+    // optional string total_fee = 8;
+    if (has_total_fee()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->total_fee());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional string spbill_create_ip = 9;
+    if (has_spbill_create_ip()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->spbill_create_ip());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void PayRecord::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const PayRecord* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const PayRecord*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void PayRecord::MergeFrom(const PayRecord& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_userid()) {
+      set_userid(from.userid());
+    }
+    if (from.has_attach()) {
+      set_attach(from.attach());
+    }
+    if (from.has_out_trade_no()) {
+      set_out_trade_no(from.out_trade_no());
+    }
+    if (from.has_time_start()) {
+      set_time_start(from.time_start());
+    }
+    if (from.has_time_expire()) {
+      set_time_expire(from.time_expire());
+    }
+    if (from.has_prepay_id()) {
+      set_prepay_id(from.prepay_id());
+    }
+    if (from.has_body()) {
+      set_body(from.body());
+    }
+    if (from.has_total_fee()) {
+      set_total_fee(from.total_fee());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_spbill_create_ip()) {
+      set_spbill_create_ip(from.spbill_create_ip());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void PayRecord::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PayRecord::CopyFrom(const PayRecord& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PayRecord::IsInitialized() const {
+
+  return true;
+}
+
+void PayRecord::Swap(PayRecord* other) {
+  if (other != this) {
+    std::swap(userid_, other->userid_);
+    std::swap(attach_, other->attach_);
+    std::swap(out_trade_no_, other->out_trade_no_);
+    std::swap(time_start_, other->time_start_);
+    std::swap(time_expire_, other->time_expire_);
+    std::swap(prepay_id_, other->prepay_id_);
+    std::swap(body_, other->body_);
+    std::swap(total_fee_, other->total_fee_);
+    std::swap(spbill_create_ip_, other->spbill_create_ip_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata PayRecord::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = PayRecord_descriptor_;
+  metadata.reflection = PayRecord_reflection_;
   return metadata;
 }
 
