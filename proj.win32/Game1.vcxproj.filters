@@ -43,6 +43,9 @@
     <Filter Include="Classes\loading">
       <UniqueIdentifier>{2f15e93b-26f0-4e7d-bf70-4e21fabaedbb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Jni">
+      <UniqueIdentifier>{05e3696a-becd-4485-8b67-2f14197bbfb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -239,6 +242,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\loading\LoadingLayer.cpp">
       <Filter>Classes\loading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Jni\Jni.cpp">
+      <Filter>Classes\Jni</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -496,6 +502,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\loading\LoadingLayer.h">
       <Filter>Classes\loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Jni\Jni.h">
+      <Filter>Classes\Jni</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

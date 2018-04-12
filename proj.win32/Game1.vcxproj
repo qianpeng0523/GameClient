@@ -180,6 +180,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\cryptopp\xxfsutility.cpp" />
     <ClCompile Include="..\Classes\GameControl.cpp" />
     <ClCompile Include="..\Classes\http\HttpInfo.cpp" />
+    <ClCompile Include="..\Classes\Jni\Jni.cpp" />
     <ClCompile Include="..\Classes\loading\LoadingLayer.cpp" />
     <ClCompile Include="..\Classes\Logo\LogoLayer.cpp" />
     <ClCompile Include="..\Classes\Logo\LogoScene.cpp" />
@@ -259,6 +260,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\cryptopp\xxfsutility.h" />
     <ClInclude Include="..\Classes\GameControl.h" />
     <ClInclude Include="..\Classes\http\HttpInfo.h" />
+    <ClInclude Include="..\Classes\Jni\Jni.h" />
     <ClInclude Include="..\Classes\loading\LoadingLayer.h" />
     <ClInclude Include="..\Classes\Logo\LogoLayer.h" />
     <ClInclude Include="..\Classes\Logo\LogoScene.h" />
