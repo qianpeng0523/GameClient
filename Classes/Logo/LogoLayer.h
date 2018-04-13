@@ -3,9 +3,9 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "CursorTextField.h"
 #include "Adaptation.h"
 #include "string.h"
+#include "BaseLayer.h"
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
@@ -32,6 +32,8 @@ public:
 	void TouchEvent(Object *obj, TouchEventType type);
 	
 	void ShowYKLoginBtn(bool isshow);
+
+	void WXLoginSend(Object *obj);
 private:
 	Button *m_ykloginbtn;
 private:

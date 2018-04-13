@@ -5,15 +5,19 @@
 #include "HttpInfo.h"
 #include "GameControl.h"
 #include "ClientSocket.h"
+#include "YLJni.h"
+
 USING_NS_CC;
 
 
 
 LogoLayer::LogoLayer(){
 	GameControl::getIns()->setLoginLayer(this);
+	CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(LogoLayer::WXLoginSend), NOTICE_WXLOGIN, NULL);
 }
 
 LogoLayer::~LogoLayer(){
+	CCNotificationCenter::sharedNotificationCenter()->removeObserver(this, NOTICE_WXLOGIN);
 	RootRegister::getIns()->resetWidget("login.json");
 	if (this==GameControl::getIns()->getLoginLayer()){
 		GameControl::getIns()->setLoginLayer(NULL);
@@ -82,8 +86,16 @@ void LogoLayer::TouchEvent(Object *obj, TouchEventType type){
 		Button *btn = (Button *)obj;
 		string name = btn->getName();
 		if (name.compare("yklogin_btn") == 0){
-			HttpInfo *p = HttpInfo::getIns();
-			ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
+			//HttpInfo *p = HttpInfo::getIns();
+			//ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
+
+			//先去微信登录授权
+			YLJni::WeixinLogin();
 		}
 	}
+}
+
+void LogoLayer::WXLoginSend(Object *obj){
+	HttpInfo *p = HttpInfo::getIns();
+	ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
 }

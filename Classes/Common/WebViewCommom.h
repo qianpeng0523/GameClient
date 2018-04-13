@@ -31,7 +31,9 @@
 #include "ui/UILayout.h"
 #include "BaseLayer.h"
 
+
 #if(CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+#include "ui/UIWebView.h"
 using namespace cocos2d;
 using namespace cocos2d::ui;
 using namespace cocos2d::experimental::ui;

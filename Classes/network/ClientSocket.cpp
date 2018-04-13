@@ -9,7 +9,6 @@
 6-9		cmd
 **********总长度为10****/
 
-
 ClientSocket *ClientSocket::m_ins=NULL;
 ClientSocket *ClientSocket::getIns() {
 	if(!m_ins){
@@ -74,7 +73,22 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 		std::thread t1(&ClientSocket::threadHandler, this);//创建一个分支线程，回调到myThread函数里
 		t1.detach();
         m_isConnected = true;
-		LoginInfo::getIns()->SendCLogin("100001","123456");
+		LoginInfo *pLoginInfo = LoginInfo::getIns();
+		LOGINTYPE type = pLoginInfo->getLoginType();
+		if (type == LOGIN_WX){
+			string token = UserDefault::sharedUserDefault()->getStringForKey("token","");
+			if (token.empty()){
+				string code = pLoginInfo->getWXToken();
+				pLoginInfo->SendCWXLogin(code, "");
+			}
+			else{
+				pLoginInfo->SendCWXLogin("",token);
+			}
+			
+		}
+		else if (type == LOGIN_YK){
+			pLoginInfo->SendCLogin("100001", "123456");
+		}
 	}
     return connectFlag;
 }
@@ -173,7 +187,7 @@ void *ClientSocket::threadHandler(void *arg) {
 			}
 			else{
 				delete temp;
-				log(XXIconv::GBK2UTF("数据不合法").c_str());
+				log("%s",XXIconv::GBK2UTF("数据不合法").c_str());
 			}
 
         } else{

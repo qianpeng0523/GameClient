@@ -5,15 +5,19 @@
 #include "MainScene.h"
 #include "GameControl.h"
 #include "LoadingLayer.h"
-using namespace cocos2d_xx;
+
 LoginInfo *LoginInfo::m_shareLoginInfo=NULL;
 LoginInfo::LoginInfo()
 {
+	m_logintype = LOGIN_YK;
 	XXEventDispatcher *pe = XXEventDispatcher::getIns();
 	SLogin sl;
 	pe->registerProto(sl.cmd(), sl.GetTypeName());
 	SRegister sr;
 	pe->registerProto(sr.cmd(), sr.GetTypeName());
+
+	SWXLogin sl1;
+	pe->registerProto(sl1.cmd(), sl1.GetTypeName());
 }
 
 LoginInfo::~LoginInfo(){
@@ -88,5 +92,36 @@ void LoginInfo::HandlerSRegister(ccEvent *event){
 	}
 	else if(err==2){
 		log("%s", XXIconv::GBK2UTF("用户已存在!").c_str());
+	}
+}
+
+void LoginInfo::SendCWXLogin(string code, string token){
+	CWXLogin cl;
+	cl.set_code(code);
+	cl.set_token(token);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(LoginInfo::HandlerSWXLogin));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void LoginInfo::HandlerSWXLogin(ccEvent *event){
+	SWXLogin cl;
+	cl.CopyFrom(*event->msg);
+	UserDefault *pUserDefault = UserDefault::sharedUserDefault();
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(LoginInfo::HandlerSWXLogin));
+	int err = cl.err();
+	if (err == 0){
+		m_myinfo = cl.info();
+		string token = cl.token();
+		string tk = pUserDefault->getStringForKey("token", "");
+		if (tk.compare(token) != 0){
+			pUserDefault->setStringForKey("token", token);
+		}
+		log("%s", XXIconv::GBK2UTF("微信登录成功!").c_str());
+		Scene *scene = LoadingLayer::createScene(2);
+		GameControl::getIns()->replaceScene(scene);
+	}
+	else{
+		log("%s", XXIconv::GBK2UTF("微信登录失败!").c_str());
+		pUserDefault->setStringForKey("token", "");
 	}
 }

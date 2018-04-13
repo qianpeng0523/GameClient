@@ -9,7 +9,7 @@
 #include "YMSocketData.h"
 #include "XXHttpRequest.h"
 
-using namespace cocos2d_xx;
+
 HallInfo *HallInfo::m_shareHallInfo=NULL;
 HallInfo::HallInfo()
 {
@@ -174,7 +174,7 @@ void HallInfo::HandlerSShop(ccEvent *event){
 		}
 	}
 	else{
-		log("%s",XXIconv::GBK2UTF("获取商城列表失败"));
+		log("%s",XXIconv::GBK2UTF("获取商城列表失败").c_str());
 	}
 }
 
@@ -206,7 +206,7 @@ void HallInfo::HandlerSMail(ccEvent *event){
 		}
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("获取邮箱列表失败"));
+		log("%s", XXIconv::GBK2UTF("获取邮箱列表失败").c_str());
 	}
 }
 
@@ -385,7 +385,7 @@ void HallInfo::SendCAddFriendList(){
 		sprintf(buff, "1000%02d", i);
 		fri->set_uid(buff);
 		fri->set_nid(i + 1);
-		sprintf(buff, XXIconv::GBK2UTF("%s添加您为好友").c_str(), buff);
+		sprintf(buff,"%s%s", XXIconv::GBK2UTF("添加您为好友").c_str(), buff);
 		fri->set_content(buff);
 		fri->set_time(GameDataSet::getLocalTime().c_str());
 	}
@@ -436,7 +436,7 @@ void HallInfo::HandlerSActive(ccEvent *event){
 		}
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("获取活动列表失败"));
+		log("%s", XXIconv::GBK2UTF("获取活动列表失败").c_str());
 	}
 }
 
@@ -451,7 +451,7 @@ void HallInfo::SendCTask(){
 	STask st;
 	for (int i = 0; i < 20;i++){
 		Task *ts = st.add_list();
-		sprintf(buff,XXIconv::GBK2UTF("登录奖励%d").c_str(),i%4+1);
+		sprintf(buff,"%s%d",XXIconv::GBK2UTF("登录奖励").c_str(),i%4+1);
 		ts->set_title(buff);
 		ts->set_content(XXIconv::GBK2UTF("完成任务可获得大量金币"));
 		ts->set_taskid(i + 1);
@@ -494,7 +494,7 @@ void HallInfo::HandlerSTask(ccEvent *event){
 		}
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("获取活动列表失败"));
+		log("%s", XXIconv::GBK2UTF("获取活动列表失败").c_str());
 	}
 }
 
@@ -511,10 +511,10 @@ void HallInfo::HandlerSReward(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSReward));
 	int err = cl.err();
 	if (err == 0){
-		log("%s", XXIconv::GBK2UTF("领取奖励成功"));
+		log("%s", XXIconv::GBK2UTF("领取奖励成功").c_str());
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("领取奖励失败"));
+		log("%s", XXIconv::GBK2UTF("领取奖励失败").c_str());
 	}
 }
 
@@ -533,10 +533,10 @@ void HallInfo::HandlerSAgreeFriend(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAgreeFriend));
 	int err = cl.err();
 	if (err == 0){
-		log("%s", XXIconv::GBK2UTF("同意拒绝成功"));
+		log("%s", XXIconv::GBK2UTF("同意拒绝成功").c_str());
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("同意拒绝失败"));
+		log("%s", XXIconv::GBK2UTF("同意拒绝失败").c_str());
 	}
 }
 
@@ -553,7 +553,7 @@ void HallInfo::SendCExchangeReward(){
 	for (int i = 0; i < 8; i++){
 		ExAward *ea = se.add_list();
 		ea->set_eid(i+1);
-		sprintf(buff, XXIconv::GBK2UTF("%d元红包").c_str(), i * 5 + 5);
+		sprintf(buff, "%d%s", i * 5 + 5,XXIconv::GBK2UTF("元红包").c_str());
 		ea->set_title(buff);
 
 		Reward *rd = ea->mutable_award();
@@ -580,14 +580,14 @@ void HallInfo::HandlerSExchangeReward(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		m_pSExchangeReward = cl;
-		log("%s", XXIconv::GBK2UTF("获取兑换奖品成功"));
+		log("%s", XXIconv::GBK2UTF("获取兑换奖品成功").c_str());
 		ExchangeLayer *p = GameControl::getIns()->getExchangeLayer();
 		if (p){
 			p->SelectItem(0);
 		}
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("获取兑换奖品失败"));
+		log("%s", XXIconv::GBK2UTF("获取兑换奖品失败").c_str());
 	}
 }
 
@@ -604,10 +604,10 @@ void HallInfo::HandlerSExchangeCode(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeCode));
 	int err = cl.err();
 	if (err == 0){
-		log("%s", XXIconv::GBK2UTF("兑换码兑换成功"));
+		log("%s", XXIconv::GBK2UTF("兑换码兑换成功").c_str());
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("兑换码兑换失败"));
+		log("%s", XXIconv::GBK2UTF("兑换码兑换失败").c_str());
 	}
 }
 
@@ -623,7 +623,7 @@ void HallInfo::SendCExchangeRecord(){
 	SExchangeRecord se;
 	for (int i = 0; i < 8; i++){
 		ExRecord *ea = se.add_list();
-		sprintf(buff, XXIconv::GBK2UTF("%d元红包").c_str(), i * 5 + 5);
+		sprintf(buff, "%d%s", i * 5 + 5, XXIconv::GBK2UTF("元红包").c_str());
 		ea->set_title(buff);
 		ea->set_eid(i+1);
 		sprintf(buff,"201803201%04d",i);
@@ -645,10 +645,10 @@ void HallInfo::HandlerSExchangeRecord(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		m_pSExchangeRecord = cl;
-		log("%s", XXIconv::GBK2UTF("获取兑换记录成功"));
+		log("%s", XXIconv::GBK2UTF("获取兑换记录成功").c_str());
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("获取兑换记录失败"));
+		log("%s", XXIconv::GBK2UTF("获取兑换记录失败").c_str());
 	}
 }
 

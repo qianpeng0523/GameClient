@@ -1,13 +1,16 @@
-Ôªø#ifndef __APPMACROS_H__
+#ifndef __APPMACROS_H__
 #define __APPMACROS_H__
 
 #include "cocos2d.h"
-
 #include "ccEvent.h"
 #include "MD55.h"
 #include "XXIconv.h"
 #include "Hall.h"
+#include <string.h>
 //design screen size
+
+
+
 static cocos2d::Size designResolutionSize = cocos2d::Size(1280, 720);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(852, 480);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1280, 720);
@@ -34,17 +37,17 @@ using namespace cocos2d;
 using namespace std;
 using namespace protocol;
 using namespace ::google::protobuf;
-using namespace cocos2d_xx;
-static string g_version = cocos2d::cocos2dVersion();
+USING_NS_XX;
+//static string g_version = cocos2d::cocos2dVersion();
 
 /************************************************************************/
-/* ÂåÖÂ§¥                                                                 */
+/* ∞¸Õ∑                                                                 */
 /************************************************************************/
 typedef struct _Head
 {
-	char _req[3];//ÊúçÂä°Âô®Â∫èÂàóÂè∑
+	char _req[3];//∑˛ŒÒ∆˜–Ú¡–∫≈
 	char _stamp;
-	char _bodylen[2];//ÈïøÂ∫¶
+	char _bodylen[2];//≥§∂»
 	char _cmd[4];//cmd
 }Head, *PHead;
 
@@ -52,7 +55,10 @@ typedef struct _Head
 #define REPLACESTRR "||||&***#@"
 #define REPLACESTRN "%^&*():"
 
-typedef void (Object::*EventHandler)(ccEvent*);
+typedef void (Ref::*EventHandler)(ccEvent*);
 #define Event_Handler(_SELECTOR)(EventHandler)(&_SELECTOR)
 
 #endif /* __APPMACROS_H__ */
+
+/******NOTICE******/
+#define NOTICE_WXLOGIN "wxlogin"

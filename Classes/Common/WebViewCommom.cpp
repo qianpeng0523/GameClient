@@ -74,7 +74,7 @@ bool WebViewCommom::init(string url)
 
 WebViewCommom *WebViewCommom::create(string url){
 	WebViewCommom *p=new WebViewCommom();
-	if(p&&p->init(url,sz)){
+	if(p&&p->init(url)){
 		p->autorelease();
 	}else{
 		CC_SAFE_DELETE(p);

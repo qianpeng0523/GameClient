@@ -12,7 +12,7 @@
 #include <netinet/in.h>
 #endif
 USING_NS_CC;
-using namespace cocos2d_xx;
+
 
 int GameDataSet::m_zoder=3;
 GameDataSet::GameDataSet(){

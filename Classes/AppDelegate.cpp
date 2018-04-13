@@ -1,4 +1,4 @@
-#include "AppDelegate.h"
+﻿#include "AppDelegate.h"
 #include "Adaptation.h"
 #include "LogoScene.h"
 #include "YMSocketData.h"
@@ -64,10 +64,7 @@ void AppDelegate::applicationDidEnterBackground() {
 
 	//WebSocketControl::getIns()->onClose(false);
 
-	//Director::getInstance()->pause();
-#if(CC_TARGET_PLATFORM != CC_PLATFORM_WIN32&&!TARGET_IPHONE_SIMULATOR)
-	VoiceInfo::getIns()->SystemPause(true);
-#endif
+
 	Director::getInstance()->stopAnimation();
 }
 
@@ -79,10 +76,8 @@ void AppDelegate::applicationWillEnterForeground() {
 	//SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 	//SimpleAudioEngine::sharedEngine()->stopAllEffects();
 #else
-	SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(vo);
-	SimpleAudioEngine::sharedEngine()->setEffectsVolume(effectvo);
+	//SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(vo);
+	//SimpleAudioEngine::sharedEngine()->setEffectsVolume(effectvo);
 #endif
-#if(CC_TARGET_PLATFORM != CC_PLATFORM_WIN32&&!TARGET_IPHONE_SIMULATOR)
-	VoiceInfo::getIns()->SystemResume(true);
-#endif
+
 }

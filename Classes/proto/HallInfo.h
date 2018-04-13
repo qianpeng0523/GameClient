@@ -14,22 +14,22 @@ public:
 	static HallInfo* getIns();
 	bool init();
 public:
-	//排行榜
+	//rank
 	void SendCRank(int type,int index);
 	void HandlerSRankHand(ccEvent *event);
 
-	//商城
+	//shop
 	void SendCShop(int type);
 	void HandlerSShop(ccEvent *event);
 
-	//邮件
+	//mail
 	void SendCMail();
 	void HandlerSMail(ccEvent *event);
 
 	void SendCMailAward(int eid);
 	void HandlerSMailAward(ccEvent *event);
 
-	//好友
+	//friend
 	void SendCFriend();
 	void HandlerSFriend(ccEvent *event);
 
@@ -48,15 +48,15 @@ public:
 	void SendCAgreeFriend(string uid, bool agree);
 	void HandlerSAgreeFriend(ccEvent *event);
 
-	//活动
+	//active
 	void SendCActive(int type);
 	void HandlerSActive(ccEvent *event);
 
-	//任务
+	//task
 	void SendCTask();
 	void HandlerSTask(ccEvent *event);
 
-	///////////兑换
+	///////////exchange
 	void SendCReward(int id);
 	void HandlerSReward(ccEvent *event);
 
@@ -72,7 +72,7 @@ public:
 	void SendCExchange(int id);
 	void HandlerSExchange(ccEvent *event);
 
-	//////////支付
+	//////////pay
 	void SendCApplePay(int id, string receipt);
 	void HandlerSApplePay(ccEvent *event);
 
@@ -85,11 +85,11 @@ public:
 	void SendCFirstBuy(int type);
 	void HandlerSFirstBuy(ccEvent *event);
 
-	//反馈
+	//feedback
 	void SendCFeedBack(string uid,string uname,string content);
 	void HandlerSFeedBack(ccEvent *event);
 
-	//签到
+	//sign
 	void SendCSign();
 	void HandlerSSign(ccEvent *event);
 

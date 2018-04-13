@@ -11,7 +11,7 @@
 using namespace cocos2d;
 using namespace std;
 
-class ccEvent :public Object{
+class ccEvent :public Ref{
 public:
 	ccEvent(int pcmd, const char* data, int size);
 	int cmd;
