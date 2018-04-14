@@ -152,6 +152,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\cc\ConfigProto.cpp" />
     <ClCompile Include="..\Classes\cc\Hall.cpp" />
     <ClCompile Include="..\Classes\cc\Login.cpp" />
     <ClCompile Include="..\Classes\cc\Vo.cpp" />
@@ -160,7 +161,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Common\CDProgressTimer.cpp" />
     <ClCompile Include="..\Classes\Common\CircleMoveAction.cpp" />
     <ClCompile Include="..\Classes\Common\Common.cpp" />
-    <ClCompile Include="..\Classes\Common\CursorTextField.cpp" />
     <ClCompile Include="..\Classes\Common\EffectAnimation.cpp" />
     <ClCompile Include="..\Classes\Common\GameDataSet.cpp" />
     <ClCompile Include="..\Classes\Common\MD55.cpp" />
@@ -180,7 +180,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\cryptopp\xxfsutility.cpp" />
     <ClCompile Include="..\Classes\GameControl.cpp" />
     <ClCompile Include="..\Classes\http\HttpInfo.cpp" />
-    <ClCompile Include="..\Classes\Jni\Jni.cpp" />
+    <ClCompile Include="..\Classes\Jni\YLJni.cpp" />
     <ClCompile Include="..\Classes\loading\LoadingLayer.cpp" />
     <ClCompile Include="..\Classes\Logo\LogoLayer.cpp" />
     <ClCompile Include="..\Classes\Logo\LogoScene.cpp" />
@@ -214,6 +214,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\network\TcpSocket.cpp" />
     <ClCompile Include="..\Classes\network\XXEventDispatcher.cpp" />
     <ClCompile Include="..\Classes\network\XXHttpRequest.cpp" />
+    <ClCompile Include="..\Classes\PhotoDown.cpp" />
+    <ClCompile Include="..\Classes\proto\ConfigInfo.cpp" />
     <ClCompile Include="..\Classes\proto\HallInfo.cpp" />
     <ClCompile Include="..\Classes\proto\LoginInfo.cpp" />
     <ClCompile Include="main.cpp" />
@@ -221,6 +223,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AppMacros.h" />
+    <ClInclude Include="..\Classes\cc\ConfigProto.h" />
     <ClInclude Include="..\Classes\cc\Hall.h" />
     <ClInclude Include="..\Classes\cc\Login.h" />
     <ClInclude Include="..\Classes\cc\Vo.h" />
@@ -230,7 +233,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Common\CircleMoveAction.h" />
     <ClInclude Include="..\Classes\Common\Common.h" />
     <ClInclude Include="..\Classes\Common\CommonData.h" />
-    <ClInclude Include="..\Classes\Common\CursorTextField.h" />
     <ClInclude Include="..\Classes\Common\EffectAnimation.h" />
     <ClInclude Include="..\Classes\Common\GameDataSet.h" />
     <ClInclude Include="..\Classes\Common\MD55.h" />
@@ -260,7 +262,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\cryptopp\xxfsutility.h" />
     <ClInclude Include="..\Classes\GameControl.h" />
     <ClInclude Include="..\Classes\http\HttpInfo.h" />
-    <ClInclude Include="..\Classes\Jni\Jni.h" />
+    <ClInclude Include="..\Classes\Jni\YLJni.h" />
     <ClInclude Include="..\Classes\loading\LoadingLayer.h" />
     <ClInclude Include="..\Classes\Logo\LogoLayer.h" />
     <ClInclude Include="..\Classes\Logo\LogoScene.h" />
@@ -302,6 +304,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\network\TcpSocket.h" />
     <ClInclude Include="..\Classes\network\XXEventDispatcher.h" />
     <ClInclude Include="..\Classes\network\XXHttpRequest.h" />
+    <ClInclude Include="..\Classes\PhotoDown.h" />
+    <ClInclude Include="..\Classes\proto\ConfigInfo.h" />
     <ClInclude Include="..\Classes\proto\HallInfo.h" />
     <ClInclude Include="..\Classes\proto\LoginInfo.h" />
     <ClInclude Include="main.h" />

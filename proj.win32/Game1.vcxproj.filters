@@ -57,9 +57,6 @@
     <ClCompile Include="..\Classes\Common\Adaptation.cpp">
       <Filter>Classes\Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Common\CursorTextField.cpp">
-      <Filter>Classes\Common</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Common\XXIconv.cpp">
       <Filter>Classes\Common</Filter>
     </ClCompile>
@@ -243,8 +240,17 @@
     <ClCompile Include="..\Classes\loading\LoadingLayer.cpp">
       <Filter>Classes\loading</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Jni\Jni.cpp">
+    <ClCompile Include="..\Classes\Jni\YLJni.cpp">
       <Filter>Classes\Jni</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\proto\ConfigInfo.cpp">
+      <Filter>Classes\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cc\ConfigProto.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PhotoDown.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,9 +264,6 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Common\Adaptation.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\CursorTextField.h">
       <Filter>Classes\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Common\XXIconv.h">
@@ -503,8 +506,17 @@
     <ClInclude Include="..\Classes\loading\LoadingLayer.h">
       <Filter>Classes\loading</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Jni\Jni.h">
+    <ClInclude Include="..\Classes\Jni\YLJni.h">
       <Filter>Classes\Jni</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\proto\ConfigInfo.h">
+      <Filter>Classes\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\ConfigProto.h">
+      <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PhotoDown.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
