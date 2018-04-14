@@ -31,6 +31,23 @@ XXHttpRequest* XXHttpRequest::getIns(){
 	return m_ins;
 }
 
+void XXHttpRequest::getServerDataFromUrl(string url, SEL_HttpResponse respond, string tag, void *data){
+	log("%s", url.c_str());
+	HttpRequest* request = new HttpRequest();
+	//设置网络请求地址
+	//string url=GameControl::getIns()->getHttpUrl()+"login/youxia450/e10adc3949ba59abbe56e057f20f883e";
+	request->setUrl(url.c_str());
+	//设置网络请求方式
+	request->setRequestType(HttpRequest::Type::GET);
+	request->setResponseCallback(this, respond);
+	request->setTag(tag.c_str());
+	request->setUserData(data);
+	//提交请求
+	HttpClient::getInstance()->send(request);
+	//内存释放
+	request->release();
+}
+
 void XXHttpRequest::postServerDataFromUrl(string url, YMSocketData sd, SEL_HttpResponse respond){
 	CCLOG("%s", url.c_str());
 	HttpRequest* request = new HttpRequest();

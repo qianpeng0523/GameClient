@@ -18,6 +18,7 @@ extern "C" {
 	class	YLJni{
 	public:
 		static void WeixinLogin();
+		static void WeixinPay(const char* prepayid, const char* noncestr, const char* timestamp, const char* sign);
 	};
 }
 

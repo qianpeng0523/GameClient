@@ -12,7 +12,7 @@ void ccEvent::parse(const char* data, int size){
 	std::string type_name = XXEventDispatcher::getIns()->getProtoName(cmd);
 	if (!type_name.empty()){
 		msg = create_message(type_name);
-		msg->ParseFromArray(data, size);
+		msg->ParsePartialFromArray(data, size);
 
 		string ss = msg->DebugString();
 		log("ccEvent:%s",ss.c_str());

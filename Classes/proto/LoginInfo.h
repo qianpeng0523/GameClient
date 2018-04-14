@@ -33,6 +33,8 @@ public:
 		return m_myinfo;
 	}
 
+	void setMyUserBase(UserBase ub);
+
 	void setWxToken(string token){
 		setLoginType(LOGIN_WX);
 		m_wxtoken = token;

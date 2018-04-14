@@ -5,11 +5,11 @@
 #include "MainScene.h"
 #include "GameControl.h"
 #include "LoadingLayer.h"
-
+#include "YLJni.h"
 LoginInfo *LoginInfo::m_shareLoginInfo=NULL;
 LoginInfo::LoginInfo()
 {
-	m_logintype = LOGIN_YK;
+	m_logintype = LOGIN_WX;
 	XXEventDispatcher *pe = XXEventDispatcher::getIns();
 	SLogin sl;
 	pe->registerProto(sl.cmd(), sl.GetTypeName());
@@ -38,6 +38,19 @@ bool LoginInfo::init()
     return true;
 }
 
+void LoginInfo::setMyUserBase(UserBase ub){
+	m_myinfo = ub;
+	GameControl *pGameControl = GameControl::getIns();
+	MainLayer *p = pGameControl->getMainLayer();
+	if (p){
+		p->setData();
+	}
+	ShopLayer *pshop = pGameControl->getShopLayer();
+	if (pshop){
+		pshop->setData();
+	}
+}
+
 void LoginInfo::SendCLogin(string uid,string pwd){
 	CLogin cl;
 	cl.set_uid(uid);
@@ -55,6 +68,7 @@ void LoginInfo::HandlerSLoginHand(ccEvent *event){
 	int err = cl.err();
 	if (err==0){
 		m_myinfo = cl.info();
+		m_myinfo.set_picurl("http://www.lesharecs.com/1.jpg");
 		log("%s",XXIconv::GBK2UTF("登录成功!").c_str());
 		Scene *scene = LoadingLayer::createScene(2);
 		GameControl::getIns()->replaceScene(scene);
@@ -123,5 +137,6 @@ void LoginInfo::HandlerSWXLogin(ccEvent *event){
 	else{
 		log("%s", XXIconv::GBK2UTF("微信登录失败!").c_str());
 		pUserDefault->setStringForKey("token", "");
+		YLJni::WeixinLogin();
 	}
 }

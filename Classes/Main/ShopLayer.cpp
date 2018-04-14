@@ -145,15 +145,7 @@ bool ShopLayer::init()
 	m_btntext[0] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_card");
 	m_btntext[1] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, "BitmapLabel_gold");
 
-	UserBase user = LoginInfo::getIns()->getMyUserBase();
-	string uname = user.username();
-	string uid = user.userid();
-	int card = user.card();
-	long gold = user.gold();
-	
-	GameDataSet::setTextBMFont(m_RootLayer, "cardnum", GameDataSet::getCNStringByInteger(card,true));
-	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold,true));
-
+	setData();
 
 	m_ScrollView = (ui::ScrollView *)GameDataSet::getButton(m_RootLayer, "ScrollView", selector, this);
 	m_sbg = GameDataSet::getLayout(m_RootLayer, "sbg");
@@ -165,6 +157,17 @@ bool ShopLayer::init()
 	SelectItem(0);
 	HallInfo::getIns()->SendCShop(3);
     return true;
+}
+
+void ShopLayer::setData(){
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
+	string uname = user.username();
+	string uid = user.userid();
+	int card = user.card();
+	long gold = user.gold();
+
+	GameDataSet::setTextBMFont(m_RootLayer, "cardnum", GameDataSet::getCNStringByInteger(card, true));
+	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold, true));
 }
 
 void ShopLayer::SelectItem(int index){

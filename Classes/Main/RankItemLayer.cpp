@@ -4,12 +4,14 @@
 #include "ClientSocket.h"
 #include "LogoScene.h"
 #include "LoginInfo.h"
+#include "PhotoDown.h"
 
 RankItemLayer::RankItemLayer(){
 	
 }
 
 RankItemLayer::~RankItemLayer(){
+	PhotoDown::getIns()->erasePhoto(this);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
@@ -60,7 +62,8 @@ bool RankItemLayer::init(Rank hall)
 		GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_lv",lv);
 	}
 
-	
+	ImageView *img = (ImageView *)GameDataSet::getLayout(m_RootLayer, "head");
+	PhotoDown::getIns()->PushPhoto(this, user.userid(), img, user.picurl(), user.picid());
     return true;
 }
 

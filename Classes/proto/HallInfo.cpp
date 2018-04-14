@@ -8,7 +8,7 @@
 #include "LoginInfo.h"
 #include "YMSocketData.h"
 #include "XXHttpRequest.h"
-
+#include "YLJni.h"
 
 HallInfo *HallInfo::m_shareHallInfo=NULL;
 HallInfo::HallInfo()
@@ -252,6 +252,8 @@ void HallInfo::SendCFriend(){
 		char buff[100];
 		UserBase *user = fri->mutable_info();
 		sprintf(buff, "10000%d", i);
+		user->set_userid(buff);
+		user->set_picurl("http://www.lesharecs.com/1.jpg");
 		user->set_username(buff);
 	}
 	int sz = sf.ByteSize();
@@ -299,7 +301,7 @@ void HallInfo::SendCFindFriend(string uid, int type){
 		sprintf(buff, "10000%d", i);
 		user->set_username(buff);
 		user->set_userid(buff);
-
+		user->set_picurl("http://www.lesharecs.com/1.jpg");
 	}
 	int sz = fris.ByteSize();
 	char *buffer = new char[sz];
@@ -311,13 +313,16 @@ void HallInfo::SendCFindFriend(string uid, int type){
 void HallInfo::HandlerSFindFriend(ccEvent *event){
 	SFindFriend cl;
 	cl.CopyFrom(*event->msg);
+	int type = cl.type();
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFindFriend));
 	int err = cl.err();
 	if (err == 0){
 		m_pSFindFriend = cl;
 		FriendLayer *p = GameControl::getIns()->getFriendLayer();
 		if (p){
-			p->ShowFriendEvent(0);
+			if (cl.list_size() > 0){
+				p->ShowFriendEvent(0);
+			}
 		}
 	}
 	else{
@@ -378,6 +383,7 @@ void HallInfo::SendCAddFriendList(){
 
 	//test
 	char buff[100];
+	char buff1[100];
 	SAddFriendList fris;
 	for (int i = 0; i < 5; i++){
 		FriendNotice *fri = fris.add_list();
@@ -385,12 +391,12 @@ void HallInfo::SendCAddFriendList(){
 		sprintf(buff, "1000%02d", i);
 		fri->set_uid(buff);
 		fri->set_nid(i + 1);
-		sprintf(buff,"%s%s", XXIconv::GBK2UTF("添加您为好友").c_str(), buff);
-		fri->set_content(buff);
+		sprintf(buff1,"%s%s", XXIconv::GBK2UTF("添加您为好友").c_str(), buff);
+		fri->set_content(buff1);
 		fri->set_time(GameDataSet::getLocalTime().c_str());
 	}
 	int sz = fris.ByteSize();
-	char *buffer = new char[sz];
+	char *buffer = new char[sz+1];
 	fris.SerializePartialToArray(buffer, sz);
 	ccEvent *ev = new ccEvent(fris.cmd(), buffer, sz);
 	HandlerSAddFriendList(ev);
@@ -402,7 +408,7 @@ void HallInfo::HandlerSAddFriendList(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriendList));
 	int err = cl.err();
 	if (err == 0){
-		m_pSAddFriendList = cl;
+		m_pSAddFriendList.CopyFrom(cl);
 		FriendLayer *p = GameControl::getIns()->getFriendLayer();
 		if (p){
 			p->ShowFriendEvent(2);
@@ -706,7 +712,11 @@ void HallInfo::HandlerSWxpayOrder(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		//调用sdk支付
-
+		string prepayid = cl.payreq();
+		string noncestr = cl.noncestr();
+		string timestamp = cl.timestamp();
+		string sign = cl.sign();
+		YLJni::WeixinPay(prepayid.c_str(), noncestr.c_str(), timestamp.c_str(), sign.c_str());
 	}
 }
 

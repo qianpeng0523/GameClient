@@ -7,6 +7,7 @@
 #include "XXIconv.h"
 #include "Hall.h"
 #include <string.h>
+#include "ConfigProto.h"
 //design screen size
 
 

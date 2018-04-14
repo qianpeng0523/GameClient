@@ -6,7 +6,7 @@
 #include "GameControl.h"
 #include "ClientSocket.h"
 #include "YLJni.h"
-
+#include "LoginInfo.h"
 USING_NS_CC;
 
 
@@ -86,11 +86,23 @@ void LogoLayer::TouchEvent(Object *obj, TouchEventType type){
 		Button *btn = (Button *)obj;
 		string name = btn->getName();
 		if (name.compare("yklogin_btn") == 0){
-			//HttpInfo *p = HttpInfo::getIns();
-			//ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
-
-			//先去微信登录授权
-			YLJni::WeixinLogin();
+			LoginInfo *pLoginInfo = LoginInfo::getIns();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+			pLoginInfo->setLoginType(LOGIN_WX);
+			string token = UserDefault::sharedUserDefault()->getStringForKey("token", "");
+			if (token.empty()){
+				YLJni::WeixinLogin();
+			}
+			else{
+				HttpInfo *p = HttpInfo::getIns();
+				ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
+			}
+#else
+			pLoginInfo->setLoginType(LOGIN_YK);
+			HttpInfo *p = HttpInfo::getIns();
+			ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
+#endif
+			
 		}
 	}
 }

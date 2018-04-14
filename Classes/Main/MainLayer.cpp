@@ -10,6 +10,8 @@
 #include "SignLayer.h"
 #include "FriendLayer.h"
 #include "HallInfo.h"
+#include "ConfigInfo.h"
+#include "PhotoDown.h"
 
 MainLayer::MainLayer(){
 	m_finish = true;
@@ -18,6 +20,7 @@ MainLayer::MainLayer(){
 }
 
 MainLayer::~MainLayer(){
+	PhotoDown::getIns()->erasePhoto(this);
 	ImageView *bg = (ImageView *)GameDataSet::getLayout(m_RootLayer, "bg");
 	char buff[50];
 	for (int i = 0; i < 6; i++){
@@ -76,15 +79,7 @@ bool MainLayer::init()
 	m_friendbtns[1] = GameDataSet::getButton(m_RootLayer, "shengju", selector, this);
 	GameDataSet::getButton(m_RootLayer, "haoyou_btn", selector, this);
 
-	UserBase user = LoginInfo::getIns()->getMyUserBase();
-	string uname = user.username();
-	string uid = user.userid();
-	int card = user.card();
-	long gold = user.gold();
-	GameDataSet::setText(m_RootLayer,"id","ID:"+uid);
-	GameDataSet::setText(m_RootLayer, "name", uname);
-	GameDataSet::setTextBMFont(m_RootLayer, "card", card);
-	GameDataSet::setTextBMFont(m_RootLayer, "gold", GameDataSet::getCNStringByInteger(gold));
+	setData();
 
 	m_laba = (Text *)GameDataSet::getLayout(m_RootLayer,"Label_laba");
 	
@@ -103,7 +98,24 @@ bool MainLayer::init()
 		m_pParticleSystem[i]->setName(buff);
 		m_pParticleSystem[i]->setPosition(ccp(320 * i, 640));
 	}
+
+
+	ConfigInfo::getIns()->SendCConfig();
     return true;
+}
+
+void MainLayer::setData(){
+	UserBase user = LoginInfo::getIns()->getMyUserBase();
+	string uname = user.username();
+	string uid = user.userid();
+	int card = user.card();
+	long gold = user.gold();
+	GameDataSet::setText(m_RootLayer, "id", "ID:" + uid);
+	GameDataSet::setText(m_RootLayer, "name", uname);
+	GameDataSet::setTextBMFont(m_RootLayer, "card", card);
+	GameDataSet::setTextBMFont(m_RootLayer, "gold", GameDataSet::getCNStringByInteger(gold));
+	ImageView *img =(ImageView *)GameDataSet::getLayout(m_RootLayer,"head");
+	PhotoDown::getIns()->PushPhoto(this, uid,img,user.picurl(), user.picid());
 }
 
 void MainLayer::ShowLaBa(string content){

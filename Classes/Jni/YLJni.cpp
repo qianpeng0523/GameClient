@@ -17,8 +17,53 @@ static JniMethodInfo minfo;
 #endif
 
 void YLJni::WeixinLogin(){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	JniMethodInfo minfo;
+	bool isHave = JniHelper::getStaticMethodInfo(minfo, JAVA_CPP_HALPER_CLASS, "WeixinLogin", "()V");
+	if(isHave){
+		minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
+	}
+#elif(CC_TARGET_PLATFORM == CC_PLATFORM_WIN32||CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
 	
+#endif
 }
+
+void YLJni::WeixinPay(const char* prepayid, const char* noncestr, const char* timestamp, const char* sign){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	JniMethodInfo minfo;
+	bool isHave = JniHelper::getStaticMethodInfo(minfo, JAVA_CPP_HALPER_CLASS, "WeixinPay", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
+	if (isHave){
+		jstring jstr = minfo.env->NewStringUTF(prepayid);
+		jstring jstr1 = minfo.env->NewStringUTF(noncestr);
+		jstring jstr2 = minfo.env->NewStringUTF(timestamp);
+		jstring jstr3 = minfo.env->NewStringUTF(sign);
+		minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID, jstr, jstr1, jstr2, jstr3);
+	}
+#elif(CC_TARGET_PLATFORM == CC_PLATFORM_WIN32||CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
+
+#endif
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 

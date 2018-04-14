@@ -4,12 +4,14 @@
 #include "ClientSocket.h"
 #include "LogoScene.h"
 #include "LoginInfo.h"
+#include "PhotoDown.h"
 
 SetLayer::SetLayer(){
 	GameControl::getIns()->setSetLayer(this);
 }
 
 SetLayer::~SetLayer(){
+	PhotoDown::getIns()->erasePhoto(this);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getSetLayer()){
 		GameControl::getIns()->setSetLayer(NULL);
@@ -51,6 +53,9 @@ bool SetLayer::init()
 		CheckBox *cb = (CheckBox *)GameDataSet::getButton(m_RootLayer, buff, selector, this);
 		SelectCheckBox(i,isopen);
 	}
+
+	ImageView *img = (ImageView *)GameDataSet::getLayout(m_RootLayer, "head");
+	PhotoDown::getIns()->PushPhoto(this, user.userid(), img, user.picurl(), user.picid());
     return true;
 }
 

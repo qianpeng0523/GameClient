@@ -24,6 +24,8 @@ public:
 	bool isFinished(){
 		return m_finish;
 	}
+
+	void setData();
 private:
 	void SelectItem(int index);
 	void ScrollViewEvent(Ref* obj, ScrollviewEventType type);

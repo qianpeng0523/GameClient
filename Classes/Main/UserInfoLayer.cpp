@@ -4,12 +4,13 @@
 #include "ClientSocket.h"
 #include "LogoScene.h"
 #include "LoginInfo.h"
-
+#include "PhotoDown.h"
 UserInfoLayer::UserInfoLayer(){
 	GameControl::getIns()->setUserInfoLayer(this);
 }
 
 UserInfoLayer::~UserInfoLayer(){
+	PhotoDown::getIns()->erasePhoto(this);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getUserInfoLayer()){
 		GameControl::getIns()->setUserInfoLayer(NULL);
@@ -61,6 +62,9 @@ bool UserInfoLayer::init()
 	bar->setPercent(vip*1.0/10.0*100);
 	sprintf(buff,"%d/%d",vip,10);
 	GameDataSet::setText(m_RootLayer, "pro", buff);
+
+	ImageView *img = (ImageView *)GameDataSet::getLayout(m_RootLayer, "head");
+	PhotoDown::getIns()->PushPhoto(this, user.userid(), img, user.picurl(), user.picid());
     return true;
 }
 

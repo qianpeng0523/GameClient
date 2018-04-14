@@ -129,6 +129,7 @@ bool MailLayer::init()
 	GameDataSet::getButton(m_RootLayer, "close_btn", selector, this);
 	m_ScrollView = (ui::ScrollView *)GameDataSet::getButton(m_RootLayer, "ScrollView", selector, this);
 	m_sbg = GameDataSet::getLayout(m_RootLayer, "sbg");
+
 	HallInfo::getIns()->SendCMail();
     return true;
 }

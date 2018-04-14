@@ -47,6 +47,7 @@ public:
 	void SelectItem(int index);
 
 	void addShopItem(int index);
+	void setData();
 private:
 	Button *m_btns[2];
 	TextBMFont *m_btntext[2];

@@ -178,6 +178,7 @@ void *ClientSocket::threadHandler(void *arg) {
 			
 			char *temp = new char[len];
 			p->Recv(temp, len, 0);
+			
 			p->m_recvstamp = (p->m_recvstamp+1) % 256;
 			if (stamp == p->m_recvstamp){
 				char* out = new char[len + 1];

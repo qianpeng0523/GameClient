@@ -5,7 +5,7 @@
 #include "LogoScene.h"
 #include "LoginInfo.h"
 #include "HallInfo.h"
-
+#include "PhotoDown.h"
 
 
 FriendChatItemLayer::FriendChatItemLayer(){
@@ -13,6 +13,7 @@ FriendChatItemLayer::FriendChatItemLayer(){
 }
 
 FriendChatItemLayer::~FriendChatItemLayer(){
+	PhotoDown::getIns()->erasePhoto(this);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
@@ -44,7 +45,8 @@ bool FriendChatItemLayer::init(Friend hall)
 	GameDataSet::getButton(m_RootLayer, "zeng", selector, this);
 
 	bool online = hall.online();
-	string username = hall.info().username();
+	UserBase user = hall.info();
+	string username = user.username();
 	long time = hall.time();
 	char buff[100];
 	sprintf(buff,"[%s]%s",online?XXIconv::GBK2UTF("在线").c_str():XXIconv::GBK2UTF("离线").c_str(),username.c_str());
@@ -63,6 +65,9 @@ bool FriendChatItemLayer::init(Friend hall)
 	}
 	GameDataSet::setText(m_RootLayer, "time", buff);
 	
+	ImageView *img = (ImageView *)GameDataSet::getLayout(m_RootLayer, "icon");
+	PhotoDown::getIns()->PushPhoto(this, user.userid(), img, user.picurl(), user.picid());
+
 	return true;
 }
 
@@ -179,6 +184,7 @@ FriendLayer::FriendLayer(){
 }
 
 FriendLayer::~FriendLayer(){
+	PhotoDown::getIns()->erasePhoto(this);
 	m_input->setText("");
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getFriendLayer()){
@@ -241,6 +247,9 @@ bool FriendLayer::init()
 		sprintf(buff, "smallbg%d", i + 1);
 		Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
 		GameDataSet::getButton(ly, "btn", selector, this);
+
+		ImageView *img = (ImageView *)GameDataSet::getLayout(ly, "icon");
+		PhotoDown::getIns()->PushPhoto(this, user.userid(), img, user.picurl(), user.picid());
 	}
 	SelectItem(0);
 	Layout *in = GameDataSet::getLayout(m_RootLayer,"in");
@@ -249,6 +258,8 @@ bool FriendLayer::init()
 	m_input->setFontColor(ccc3(0x38,0x4E,0x9C));
 	m_input->setInputMode(ui::EditBox::InputMode::PHONE_NUMBER);
 	HallInfo::getIns()->SendCFindFriend("",2);
+
+	
     return true;
 }
 
