@@ -72,7 +72,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);$(EngineRoot)external\protobuf\src;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\network;$(EngineRoot);..\Classes\cc;..\Classes\http;..\Classes\proto;..\Classes\Loading;..\Classes\Login;..\Classes\Logo;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)\cocos\ui;$(EngineRoot)cocos\editor-support\cocostudio;..\Classes\Common;..\Classes\Jni;..\Classes\network;..\Classes\network\cc;..\Classes\Game\Game;..\Classes\protobuf\src;..\Classes\qrsprite;..\Classes\qrsprite\libqrencode;..\Classes\SocketInfo;..\Classes\NetTip;..\Classes\Main\Shop;$(EngineRoot)external\curl\include\win32;..\Classes\Main;$(EngineRoot)cocos\platform;..\Classes\netjson;$(EngineRoot)external\libMessagePack\src;..\Classes\Game\niuniu\BullHall;..\Classes\Game\Hand;..\Classes\Game\niuniu\Map;..\Classes\Game\niuniu\BullHall\BFSelect;..\Classes\Game\niuniu\Record;..\Classes\Server;..\Classes\Set;..\Classes\PersonInfo;..\Classes\Majiang;..\Classes\Dissolved;..\Classes\Chat;..\Classes\Game\niuniu\GameOver;..\Classes\Main\Zanji;..\Classes\Game\niuniu;..\Classes\Game\niuniu100;..\Classes\Main\Fuli;..\Classes\Main\Line;..\Classes\include;..\Classes\Voice;..\Classes\Game\niuniugold\BFSelect;..\Classes\Game\niuniugold;..\Classes\Game\daer;..\Classes\Game\daer\Table;..\Classes\Game\bars28;..\Classes\Main\Match;..\Classes\Main\GuaJiang;..\Classes\cryptopp;..\Classes\config</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);$(EngineRoot)external\protobuf\src;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\network;$(EngineRoot);..\Classes\cc;..\Classes\http;..\Classes\proto;..\Classes\Loading;..\Classes\Login;..\Classes\Logo;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)\cocos\ui;$(EngineRoot)cocos\editor-support\cocostudio;..\Classes\Common;..\Classes\Jni;..\Classes\network;..\Classes\network\cc;..\Classes\Game\Game;..\Classes\protobuf\src;..\Classes\qrsprite;..\Classes\qrsprite\libqrencode;..\Classes\SocketInfo;..\Classes\NetTip;..\Classes\Main\Shop;$(EngineRoot)external\curl\include\win32;..\Classes\Main;$(EngineRoot)cocos\platform;..\Classes\netjson;$(EngineRoot)external\libMessagePack\src;..\Classes\Game\niuniu\BullHall;..\Classes\Game\Hand;..\Classes\Game\niuniu\Map;..\Classes\Game\niuniu\BullHall\BFSelect;..\Classes\Game\niuniu\Record;..\Classes\Server;..\Classes\Set;..\Classes\PersonInfo;..\Classes\Majiang;..\Classes\Dissolved;..\Classes\Chat;..\Classes\Game\niuniu\GameOver;..\Classes\Main\Zanji;..\Classes\Game\niuniu;..\Classes\Game\niuniu100;..\Classes\Main\Fuli;..\Classes\Main\Line;..\Classes\include;..\Classes\Voice;..\Classes\Game\niuniugold\BFSelect;..\Classes\Game\niuniugold;..\Classes\Game\daer;..\Classes\Game\daer\Table;..\Classes\Game\bars28;..\Classes\Main\Match;..\Classes\Main\GuaJiang;..\Classes\cryptopp;..\Classes\config;..\Classes\Room</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;BUILDING_LIBCURL;HTTP_ONLY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -218,6 +218,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\proto\ConfigInfo.cpp" />
     <ClCompile Include="..\Classes\proto\HallInfo.cpp" />
     <ClCompile Include="..\Classes\proto\LoginInfo.cpp" />
+    <ClCompile Include="..\Classes\Room\CreateRoomLayer.cpp" />
+    <ClCompile Include="..\Classes\Room\JoinRoomLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +310,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\proto\ConfigInfo.h" />
     <ClInclude Include="..\Classes\proto\HallInfo.h" />
     <ClInclude Include="..\Classes\proto\LoginInfo.h" />
+    <ClInclude Include="..\Classes\Room\CreateRoomLayer.h" />
+    <ClInclude Include="..\Classes\Room\JoinRoomLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

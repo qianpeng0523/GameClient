@@ -46,6 +46,9 @@
     <Filter Include="Classes\Jni">
       <UniqueIdentifier>{05e3696a-becd-4485-8b67-2f14197bbfb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Room">
+      <UniqueIdentifier>{b8f18a36-e208-4843-8822-b6f58ee6a65e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -251,6 +254,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\PhotoDown.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\CreateRoomLayer.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\JoinRoomLayer.cpp">
+      <Filter>Classes\Room</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -517,6 +526,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PhotoDown.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\CreateRoomLayer.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\JoinRoomLayer.h">
+      <Filter>Classes\Room</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
