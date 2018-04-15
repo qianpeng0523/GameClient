@@ -2,7 +2,7 @@
 #define __PhotoDown_SCENE_H__
 
 #include "AppMacros.h"
-#include "UIImageView.h"
+#include "ui/UIImageView.h"
 #include "BaseLayer.h"
 #include "XXHttpRequest.h"
 

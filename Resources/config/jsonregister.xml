@@ -33,4 +33,7 @@
   <item json="webview.json" count="1" type="2"/>
   <item json="yaoqianshu.json" count="1" type="2"/>
   <item json="loading.json" count="1" type="0"/>
+  <item json="privatecreate.json" count="1" type="2"/>
+  <item json="privatejoin.json" count="1" type="2"/>
+  <item json="mjgamescene.json" count="1" type="3"/>
 </root>

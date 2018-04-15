@@ -24,7 +24,8 @@
 #include "RewardTipLayer.h"
 #include "RootRegister.h"
 #include "LoadingLayer.h"
-
+#include "CreateRoomLayer.h"
+#include "JoinRoomLayer.h"
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
@@ -185,6 +186,20 @@ public:
 		return m_pLoadingLayer;
 	}
 
+	void setCreateRoomLayer(CreateRoomLayer *p){
+		m_pCreateRoomLayer = p;
+	}
+	CreateRoomLayer *getCreateRoomLayer(){
+		return m_pCreateRoomLayer;
+	}
+
+	void setJoinRoomLayer(JoinRoomLayer *p){
+		m_pJoinRoomLayer = p;
+	}
+	JoinRoomLayer *getJoinRoomLayer(){
+		return m_pJoinRoomLayer;
+	}
+
 	void replaceScene(Scene *scene);
 
 	void PushLaBa(string content,int times);
@@ -211,6 +226,8 @@ private:
 	MailTipLayer *m_pMailTipLayer;
 	RewardTipLayer *m_pRewardTipLayer;
 	LoadingLayer *m_pLoadingLayer;
+	CreateRoomLayer *m_pCreateRoomLayer;
+	JoinRoomLayer *m_pJoinRoomLayer;
 	vector<LaBaItem *> m_contents;
 };
 

@@ -12,6 +12,7 @@
 #include "HallInfo.h"
 #include "ConfigInfo.h"
 #include "PhotoDown.h"
+#include "CreateRoomLayer.h"
 
 MainLayer::MainLayer(){
 	m_finish = true;
@@ -72,6 +73,10 @@ bool MainLayer::init()
 	GameDataSet::getButton(m_RootLayer, "huodong_btn", selector, this);
 	GameDataSet::getButton(m_RootLayer, "shouchong_btn", selector, this);
 	GameDataSet::getButton(m_RootLayer, "renwu_btn", selector, this);
+	GameDataSet::getButton(m_RootLayer, "game1", selector, this);
+	GameDataSet::getButton(m_RootLayer, "game2", selector, this);
+	GameDataSet::getButton(m_RootLayer, "game3", selector, this);
+	GameDataSet::getButton(m_RootLayer, "game4", selector, this);
 	GameDataSet::getButton(m_RootLayer, "mail_btn", selector, this);
 
 
@@ -301,6 +306,26 @@ void MainLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			FirstChargeLayer *p = GameControl::getIns()->getFirstChargeLayer();
 			if (!p){
 				p = FirstChargeLayer::create();
+				this->addChild(p);
+			}
+		}
+		else if (name.compare("game1") == 0){
+			
+		}
+		else if (name.compare("game2") == 0){
+
+		}
+		else if (name.compare("game3") == 0){
+			CreateRoomLayer *p = GameControl::getIns()->getCreateRoomLayer();
+			if (!p){
+				p = CreateRoomLayer::create();
+				this->addChild(p);
+			}
+		}
+		else if (name.compare("game4") == 0){
+			JoinRoomLayer *p = GameControl::getIns()->getJoinRoomLayer();
+			if (!p){
+				p = JoinRoomLayer::create();
 				this->addChild(p);
 			}
 		}

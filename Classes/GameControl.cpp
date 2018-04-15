@@ -25,6 +25,8 @@ GameControl::GameControl(){
 	m_pMailTipLayer = NULL;
 	m_pRewardTipLayer = NULL;
 	m_pLoadingLayer = NULL;
+	m_pCreateRoomLayer = NULL;
+	m_pJoinRoomLayer = NULL;
 	Director::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 
