@@ -21,7 +21,8 @@ public:
 	void TouchEvent(CCObject *obj, TouchEventType type);
 	
 private:
-	
+	TextBMFont *m_number[6];
+	int m_index;
 private:
 	
 };
