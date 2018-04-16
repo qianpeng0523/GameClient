@@ -31,7 +31,7 @@ static cocos2d::Size largeResolutionSize = cocos2d::Size(1280, 720);
 #define FONTS1 "fonts/yahei.ttf"
 #define  FONTS2 "fonts/STXingkai.ttf"
 //#define sqlhttp "http://192.168.50.151:8080/"
-#define sqlhttp "http://47.104.165.65:8080/"
+#define sqlhttp "http://www.lesharecs.com:8080/"
 #define DECKEY "FQ6M1w0GswdKkTuZWcFmM1rU3bDB/CTiw+KrONdCPOg"
 
 using namespace cocos2d;

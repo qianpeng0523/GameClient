@@ -9,6 +9,7 @@
 #include "ClientSocket.h"
 #include "Common.h"
 #include "GameControl.h"
+#include "GameDataSet.h"
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 #include <ws2tcpip.h>
 #else
@@ -95,7 +96,7 @@ void HttpInfo::requestGateIPAndPort(){
 	string url = sqlhttp;
 	YMSocketData sd;
 	sd["cmd"] = 0x0B;
-	sd["type"] = 1;
+	sd["type"] = 3;
 	MD55 md5;
 	md5.update("123456");
 	string pwd = md5.toString();
@@ -119,7 +120,7 @@ void HttpInfo::GateIPAndPortCallBack(HttpClient* client, HttpResponse* response)
 		printf("\n/************************************************/\n");
 		std::cout << "socket start:" << pHttpInfo->m_ip << pHttpInfo->m_port << std::endl;
 		printf("/************************************************/\n");
-		pHttpInfo->m_ip = sd["ip"].asString();
+		pHttpInfo->m_ip =GameDataSet::getHostNameIp(sd["ip"].asString());
 		LogoLayer *p = GameControl::getIns()->getLoginLayer();
 		if (p){
 			p->ShowYKLoginBtn(true);
