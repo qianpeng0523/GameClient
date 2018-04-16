@@ -82,7 +82,8 @@ void ShopItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	if (type == TOUCH_EVENT_ENDED){
 		if (name.compare("btn") == 0){
 			int id = m_item.id();
-			HallInfo::getIns()->SendCWxpayOrder(id, m_body);
+			HallInfo::getIns()->SendCAliPayOrder(id, m_body);
+			//HallInfo::getIns()->SendCWxpayOrder(id, m_body);
 		}
 	}
 }

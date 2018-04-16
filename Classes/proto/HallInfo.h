@@ -85,6 +85,9 @@ public:
 	void SendCFirstBuy(int type);
 	void HandlerSFirstBuy(ccEvent *event);
 
+	void SendCAliPayOrder(int id,string body);
+	void HandlerSAliPayOrder(ccEvent *event);
+
 	//feedback
 	void SendCFeedBack(string uid,string uname,string content);
 	void HandlerSFeedBack(ccEvent *event);

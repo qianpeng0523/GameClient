@@ -128,6 +128,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* SWxpayOrder_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SWxpayOrder_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CAliPayOrder_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CAliPayOrder_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SAliPayOrder_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SAliPayOrder_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CWxpayQuery_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CWxpayQuery_reflection_ = NULL;
@@ -776,7 +782,44 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SWxpayOrder));
-  CWxpayQuery_descriptor_ = file->message_type(36);
+  CAliPayOrder_descriptor_ = file->message_type(36);
+  static const int CAliPayOrder_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CAliPayOrder, cmd_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CAliPayOrder, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CAliPayOrder, body_),
+  };
+  CAliPayOrder_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      CAliPayOrder_descriptor_,
+      CAliPayOrder::default_instance_,
+      CAliPayOrder_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CAliPayOrder, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CAliPayOrder, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(CAliPayOrder));
+  SAliPayOrder_descriptor_ = file->message_type(37);
+  static const int SAliPayOrder_offsets_[6] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SAliPayOrder, cmd_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SAliPayOrder, orderinfo_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SAliPayOrder, appid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SAliPayOrder, timestamp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SAliPayOrder, privatekey_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SAliPayOrder, err_),
+  };
+  SAliPayOrder_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SAliPayOrder_descriptor_,
+      SAliPayOrder::default_instance_,
+      SAliPayOrder_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SAliPayOrder, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SAliPayOrder, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SAliPayOrder));
+  CWxpayQuery_descriptor_ = file->message_type(38);
   static const int CWxpayQuery_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CWxpayQuery, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CWxpayQuery, transid_),
@@ -792,7 +835,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CWxpayQuery));
-  SWxpayQuery_descriptor_ = file->message_type(37);
+  SWxpayQuery_descriptor_ = file->message_type(39);
   static const int SWxpayQuery_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SWxpayQuery, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SWxpayQuery, transid_),
@@ -809,7 +852,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SWxpayQuery));
-  CFirstBuy_descriptor_ = file->message_type(38);
+  CFirstBuy_descriptor_ = file->message_type(40);
   static const int CFirstBuy_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CFirstBuy, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CFirstBuy, type_),
@@ -825,7 +868,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CFirstBuy));
-  SFirstBuy_descriptor_ = file->message_type(39);
+  SFirstBuy_descriptor_ = file->message_type(41);
   static const int SFirstBuy_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SFirstBuy, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SFirstBuy, id_),
@@ -843,7 +886,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SFirstBuy));
-  CFeedBack_descriptor_ = file->message_type(40);
+  CFeedBack_descriptor_ = file->message_type(42);
   static const int CFeedBack_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CFeedBack, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CFeedBack, uid_),
@@ -861,7 +904,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CFeedBack));
-  SFeedBack_descriptor_ = file->message_type(41);
+  SFeedBack_descriptor_ = file->message_type(43);
   static const int SFeedBack_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SFeedBack, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SFeedBack, err_),
@@ -877,7 +920,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SFeedBack));
-  CSign_descriptor_ = file->message_type(42);
+  CSign_descriptor_ = file->message_type(44);
   static const int CSign_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CSign, cmd_),
   };
@@ -892,7 +935,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CSign));
-  SSign_descriptor_ = file->message_type(43);
+  SSign_descriptor_ = file->message_type(45);
   static const int SSign_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSign, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSign, index_),
@@ -910,7 +953,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSign));
-  CSignList_descriptor_ = file->message_type(44);
+  CSignList_descriptor_ = file->message_type(46);
   static const int CSignList_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CSignList, cmd_),
   };
@@ -925,7 +968,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CSignList));
-  SSignList_descriptor_ = file->message_type(45);
+  SSignList_descriptor_ = file->message_type(47);
   static const int SSignList_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSignList, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSignList, sign_),
@@ -944,7 +987,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSignList));
-  CMailAward_descriptor_ = file->message_type(46);
+  CMailAward_descriptor_ = file->message_type(48);
   static const int CMailAward_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CMailAward, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CMailAward, id_),
@@ -960,7 +1003,7 @@ void protobuf_AssignDesc_Hall_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CMailAward));
-  SMailAward_descriptor_ = file->message_type(47);
+  SMailAward_descriptor_ = file->message_type(49);
   static const int SMailAward_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SMailAward, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SMailAward, id_),
@@ -1062,6 +1105,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SWxpayOrder_descriptor_, &SWxpayOrder::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    CAliPayOrder_descriptor_, &CAliPayOrder::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SAliPayOrder_descriptor_, &SAliPayOrder::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CWxpayQuery_descriptor_, &CWxpayQuery::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SWxpayQuery_descriptor_, &SWxpayQuery::default_instance());
@@ -1162,6 +1209,10 @@ void protobuf_ShutdownFile_Hall_2eproto() {
   delete CWxpayOrder_reflection_;
   delete SWxpayOrder::default_instance_;
   delete SWxpayOrder_reflection_;
+  delete CAliPayOrder::default_instance_;
+  delete CAliPayOrder_reflection_;
+  delete SAliPayOrder::default_instance_;
+  delete SAliPayOrder_reflection_;
   delete CWxpayQuery::default_instance_;
   delete CWxpayQuery_reflection_;
   delete SWxpayQuery::default_instance_;
@@ -1253,25 +1304,30 @@ void protobuf_AddDesc_Hall_2eproto() {
     "497\022\n\n\002id\030\002 \001(\r\022\014\n\004body\030\003 \001(\t\"q\n\013SWxpayO"
     "rder\022\022\n\003cmd\030\001 \002(\r:\00520497\022\020\n\010noncestr\030\002 \001"
     "(\t\022\016\n\006payreq\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\t\022\014\n"
-    "\004sign\030\005 \001(\t\022\013\n\003err\030\006 \001(\r\"2\n\013CWxpayQuery\022"
-    "\022\n\003cmd\030\001 \002(\r:\00520498\022\017\n\007transid\030\002 \001(\t\"\?\n\013"
-    "SWxpayQuery\022\022\n\003cmd\030\001 \002(\r:\00520498\022\017\n\007trans"
-    "id\030\002 \001(\t\022\013\n\003err\030\003 \001(\r\"-\n\tCFirstBuy\022\022\n\003cm"
-    "d\030\001 \002(\r:\00520499\022\014\n\004type\030\002 \001(\r\"I\n\tSFirstBu"
-    "y\022\022\n\003cmd\030\001 \002(\r:\00520499\022\n\n\002id\030\002 \001(\r\022\017\n\007tra"
-    "nsid\030\003 \001(\t\022\013\n\003err\030\004 \001(\r\"L\n\tCFeedBack\022\022\n\003"
-    "cmd\030\001 \002(\r:\00520500\022\013\n\003uid\030\002 \001(\t\022\r\n\005uname\030\003"
-    " \001(\t\022\017\n\007content\030\004 \001(\t\",\n\tSFeedBack\022\022\n\003cm"
-    "d\030\001 \002(\r:\00520500\022\013\n\003err\030\002 \001(\r\"\033\n\005CSign\022\022\n\003"
-    "cmd\030\001 \002(\r:\00520501\"F\n\005SSign\022\022\n\003cmd\030\001 \002(\r:\005"
-    "20501\022\r\n\005index\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022\013\n\003e"
-    "rr\030\004 \001(\r\"\037\n\tCSignList\022\022\n\003cmd\030\001 \002(\r:\0052050"
-    "2\"n\n\tSSignList\022\022\n\003cmd\030\001 \002(\r:\00520502\022\014\n\004si"
-    "gn\030\002 \001(\r\022\r\n\005count\030\003 \001(\r\022#\n\006reward\030\004 \003(\0132"
-    "\023.protocol.SignAward\022\013\n\003err\030\005 \001(\r\",\n\nCMa"
-    "ilAward\022\022\n\003cmd\030\001 \002(\r:\00520503\022\n\n\002id\030\002 \002(\r\""
-    "9\n\nSMailAward\022\022\n\003cmd\030\001 \002(\r:\00520503\022\n\n\002id\030"
-    "\002 \001(\r\022\013\n\003err\030\003 \001(\r", 3018);
+    "\004sign\030\005 \001(\t\022\013\n\003err\030\006 \001(\r\"<\n\014CAliPayOrder"
+    "\022\022\n\003cmd\030\001 \002(\r:\00520504\022\n\n\002id\030\002 \001(\r\022\014\n\004body"
+    "\030\003 \001(\t\"x\n\014SAliPayOrder\022\022\n\003cmd\030\001 \002(\r:\005205"
+    "04\022\021\n\torderinfo\030\002 \001(\t\022\r\n\005appid\030\003 \001(\t\022\021\n\t"
+    "timestamp\030\004 \001(\t\022\022\n\nprivatekey\030\005 \001(\t\022\013\n\003e"
+    "rr\030\006 \001(\r\"2\n\013CWxpayQuery\022\022\n\003cmd\030\001 \002(\r:\00520"
+    "498\022\017\n\007transid\030\002 \001(\t\"\?\n\013SWxpayQuery\022\022\n\003c"
+    "md\030\001 \002(\r:\00520498\022\017\n\007transid\030\002 \001(\t\022\013\n\003err\030"
+    "\003 \001(\r\"-\n\tCFirstBuy\022\022\n\003cmd\030\001 \002(\r:\00520499\022\014"
+    "\n\004type\030\002 \001(\r\"I\n\tSFirstBuy\022\022\n\003cmd\030\001 \002(\r:\005"
+    "20499\022\n\n\002id\030\002 \001(\r\022\017\n\007transid\030\003 \001(\t\022\013\n\003er"
+    "r\030\004 \001(\r\"L\n\tCFeedBack\022\022\n\003cmd\030\001 \002(\r:\00520500"
+    "\022\013\n\003uid\030\002 \001(\t\022\r\n\005uname\030\003 \001(\t\022\017\n\007content\030"
+    "\004 \001(\t\",\n\tSFeedBack\022\022\n\003cmd\030\001 \002(\r:\00520500\022\013"
+    "\n\003err\030\002 \001(\r\"\033\n\005CSign\022\022\n\003cmd\030\001 \002(\r:\00520501"
+    "\"F\n\005SSign\022\022\n\003cmd\030\001 \002(\r:\00520501\022\r\n\005index\030\002"
+    " \001(\r\022\r\n\005count\030\003 \001(\r\022\013\n\003err\030\004 \001(\r\"\037\n\tCSig"
+    "nList\022\022\n\003cmd\030\001 \002(\r:\00520502\"n\n\tSSignList\022\022"
+    "\n\003cmd\030\001 \002(\r:\00520502\022\014\n\004sign\030\002 \001(\r\022\r\n\005coun"
+    "t\030\003 \001(\r\022#\n\006reward\030\004 \003(\0132\023.protocol.SignA"
+    "ward\022\013\n\003err\030\005 \001(\r\",\n\nCMailAward\022\022\n\003cmd\030\001"
+    " \002(\r:\00520503\022\n\n\002id\030\002 \002(\r\"9\n\nSMailAward\022\022\n"
+    "\003cmd\030\001 \002(\r:\00520503\022\n\n\002id\030\002 \001(\r\022\013\n\003err\030\003 \001"
+    "(\r", 3202);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Hall.proto", &protobuf_RegisterTypes);
   CRank::default_instance_ = new CRank();
@@ -1310,6 +1366,8 @@ void protobuf_AddDesc_Hall_2eproto() {
   SApplePay::default_instance_ = new SApplePay();
   CWxpayOrder::default_instance_ = new CWxpayOrder();
   SWxpayOrder::default_instance_ = new SWxpayOrder();
+  CAliPayOrder::default_instance_ = new CAliPayOrder();
+  SAliPayOrder::default_instance_ = new SAliPayOrder();
   CWxpayQuery::default_instance_ = new CWxpayQuery();
   SWxpayQuery::default_instance_ = new SWxpayQuery();
   CFirstBuy::default_instance_ = new CFirstBuy();
@@ -1358,6 +1416,8 @@ void protobuf_AddDesc_Hall_2eproto() {
   SApplePay::default_instance_->InitAsDefaultInstance();
   CWxpayOrder::default_instance_->InitAsDefaultInstance();
   SWxpayOrder::default_instance_->InitAsDefaultInstance();
+  CAliPayOrder::default_instance_->InitAsDefaultInstance();
+  SAliPayOrder::default_instance_->InitAsDefaultInstance();
   CWxpayQuery::default_instance_->InitAsDefaultInstance();
   SWxpayQuery::default_instance_->InitAsDefaultInstance();
   CFirstBuy::default_instance_->InitAsDefaultInstance();
@@ -11646,6 +11706,789 @@ void SWxpayOrder::Swap(SWxpayOrder* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = SWxpayOrder_descriptor_;
   metadata.reflection = SWxpayOrder_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int CAliPayOrder::kCmdFieldNumber;
+const int CAliPayOrder::kIdFieldNumber;
+const int CAliPayOrder::kBodyFieldNumber;
+#endif  // !_MSC_VER
+
+CAliPayOrder::CAliPayOrder()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void CAliPayOrder::InitAsDefaultInstance() {
+}
+
+CAliPayOrder::CAliPayOrder(const CAliPayOrder& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void CAliPayOrder::SharedCtor() {
+  _cached_size_ = 0;
+  cmd_ = 20504u;
+  id_ = 0u;
+  body_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+CAliPayOrder::~CAliPayOrder() {
+  SharedDtor();
+}
+
+void CAliPayOrder::SharedDtor() {
+  if (body_ != &::google::protobuf::internal::kEmptyString) {
+    delete body_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void CAliPayOrder::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CAliPayOrder::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CAliPayOrder_descriptor_;
+}
+
+const CAliPayOrder& CAliPayOrder::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Hall_2eproto();
+  return *default_instance_;
+}
+
+CAliPayOrder* CAliPayOrder::default_instance_ = NULL;
+
+CAliPayOrder* CAliPayOrder::New() const {
+  return new CAliPayOrder;
+}
+
+void CAliPayOrder::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    cmd_ = 20504u;
+    id_ = 0u;
+    if (has_body()) {
+      if (body_ != &::google::protobuf::internal::kEmptyString) {
+        body_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool CAliPayOrder::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required uint32 cmd = 1 [default = 20504];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &cmd_)));
+          set_has_cmd();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_id;
+        break;
+      }
+
+      // optional uint32 id = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_id:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &id_)));
+          set_has_id();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_body;
+        break;
+      }
+
+      // optional string body = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_body:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_body()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->body().data(), this->body().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void CAliPayOrder::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required uint32 cmd = 1 [default = 20504];
+  if (has_cmd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->cmd(), output);
+  }
+
+  // optional uint32 id = 2;
+  if (has_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->id(), output);
+  }
+
+  // optional string body = 3;
+  if (has_body()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->body().data(), this->body().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->body(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* CAliPayOrder::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required uint32 cmd = 1 [default = 20504];
+  if (has_cmd()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->cmd(), target);
+  }
+
+  // optional uint32 id = 2;
+  if (has_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->id(), target);
+  }
+
+  // optional string body = 3;
+  if (has_body()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->body().data(), this->body().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->body(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int CAliPayOrder::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required uint32 cmd = 1 [default = 20504];
+    if (has_cmd()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->cmd());
+    }
+
+    // optional uint32 id = 2;
+    if (has_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->id());
+    }
+
+    // optional string body = 3;
+    if (has_body()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->body());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CAliPayOrder::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const CAliPayOrder* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const CAliPayOrder*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void CAliPayOrder::MergeFrom(const CAliPayOrder& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_cmd()) {
+      set_cmd(from.cmd());
+    }
+    if (from.has_id()) {
+      set_id(from.id());
+    }
+    if (from.has_body()) {
+      set_body(from.body());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void CAliPayOrder::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CAliPayOrder::CopyFrom(const CAliPayOrder& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CAliPayOrder::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void CAliPayOrder::Swap(CAliPayOrder* other) {
+  if (other != this) {
+    std::swap(cmd_, other->cmd_);
+    std::swap(id_, other->id_);
+    std::swap(body_, other->body_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata CAliPayOrder::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = CAliPayOrder_descriptor_;
+  metadata.reflection = CAliPayOrder_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SAliPayOrder::kCmdFieldNumber;
+const int SAliPayOrder::kOrderinfoFieldNumber;
+const int SAliPayOrder::kAppidFieldNumber;
+const int SAliPayOrder::kTimestampFieldNumber;
+const int SAliPayOrder::kPrivatekeyFieldNumber;
+const int SAliPayOrder::kErrFieldNumber;
+#endif  // !_MSC_VER
+
+SAliPayOrder::SAliPayOrder()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SAliPayOrder::InitAsDefaultInstance() {
+}
+
+SAliPayOrder::SAliPayOrder(const SAliPayOrder& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SAliPayOrder::SharedCtor() {
+  _cached_size_ = 0;
+  cmd_ = 20504u;
+  orderinfo_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  appid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  timestamp_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  privatekey_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  err_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SAliPayOrder::~SAliPayOrder() {
+  SharedDtor();
+}
+
+void SAliPayOrder::SharedDtor() {
+  if (orderinfo_ != &::google::protobuf::internal::kEmptyString) {
+    delete orderinfo_;
+  }
+  if (appid_ != &::google::protobuf::internal::kEmptyString) {
+    delete appid_;
+  }
+  if (timestamp_ != &::google::protobuf::internal::kEmptyString) {
+    delete timestamp_;
+  }
+  if (privatekey_ != &::google::protobuf::internal::kEmptyString) {
+    delete privatekey_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void SAliPayOrder::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SAliPayOrder::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SAliPayOrder_descriptor_;
+}
+
+const SAliPayOrder& SAliPayOrder::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Hall_2eproto();
+  return *default_instance_;
+}
+
+SAliPayOrder* SAliPayOrder::default_instance_ = NULL;
+
+SAliPayOrder* SAliPayOrder::New() const {
+  return new SAliPayOrder;
+}
+
+void SAliPayOrder::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    cmd_ = 20504u;
+    if (has_orderinfo()) {
+      if (orderinfo_ != &::google::protobuf::internal::kEmptyString) {
+        orderinfo_->clear();
+      }
+    }
+    if (has_appid()) {
+      if (appid_ != &::google::protobuf::internal::kEmptyString) {
+        appid_->clear();
+      }
+    }
+    if (has_timestamp()) {
+      if (timestamp_ != &::google::protobuf::internal::kEmptyString) {
+        timestamp_->clear();
+      }
+    }
+    if (has_privatekey()) {
+      if (privatekey_ != &::google::protobuf::internal::kEmptyString) {
+        privatekey_->clear();
+      }
+    }
+    err_ = 0u;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SAliPayOrder::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required uint32 cmd = 1 [default = 20504];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &cmd_)));
+          set_has_cmd();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_orderinfo;
+        break;
+      }
+
+      // optional string orderinfo = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_orderinfo:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_orderinfo()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->orderinfo().data(), this->orderinfo().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_appid;
+        break;
+      }
+
+      // optional string appid = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_appid:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_appid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->appid().data(), this->appid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_timestamp;
+        break;
+      }
+
+      // optional string timestamp = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_timestamp:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_timestamp()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->timestamp().data(), this->timestamp().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_privatekey;
+        break;
+      }
+
+      // optional string privatekey = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_privatekey:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_privatekey()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->privatekey().data(), this->privatekey().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_err;
+        break;
+      }
+
+      // optional uint32 err = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_err:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &err_)));
+          set_has_err();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SAliPayOrder::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required uint32 cmd = 1 [default = 20504];
+  if (has_cmd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->cmd(), output);
+  }
+
+  // optional string orderinfo = 2;
+  if (has_orderinfo()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->orderinfo().data(), this->orderinfo().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->orderinfo(), output);
+  }
+
+  // optional string appid = 3;
+  if (has_appid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->appid().data(), this->appid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->appid(), output);
+  }
+
+  // optional string timestamp = 4;
+  if (has_timestamp()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->timestamp().data(), this->timestamp().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->timestamp(), output);
+  }
+
+  // optional string privatekey = 5;
+  if (has_privatekey()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->privatekey().data(), this->privatekey().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->privatekey(), output);
+  }
+
+  // optional uint32 err = 6;
+  if (has_err()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->err(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SAliPayOrder::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required uint32 cmd = 1 [default = 20504];
+  if (has_cmd()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->cmd(), target);
+  }
+
+  // optional string orderinfo = 2;
+  if (has_orderinfo()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->orderinfo().data(), this->orderinfo().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->orderinfo(), target);
+  }
+
+  // optional string appid = 3;
+  if (has_appid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->appid().data(), this->appid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->appid(), target);
+  }
+
+  // optional string timestamp = 4;
+  if (has_timestamp()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->timestamp().data(), this->timestamp().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->timestamp(), target);
+  }
+
+  // optional string privatekey = 5;
+  if (has_privatekey()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->privatekey().data(), this->privatekey().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->privatekey(), target);
+  }
+
+  // optional uint32 err = 6;
+  if (has_err()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->err(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SAliPayOrder::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required uint32 cmd = 1 [default = 20504];
+    if (has_cmd()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->cmd());
+    }
+
+    // optional string orderinfo = 2;
+    if (has_orderinfo()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->orderinfo());
+    }
+
+    // optional string appid = 3;
+    if (has_appid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->appid());
+    }
+
+    // optional string timestamp = 4;
+    if (has_timestamp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->timestamp());
+    }
+
+    // optional string privatekey = 5;
+    if (has_privatekey()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->privatekey());
+    }
+
+    // optional uint32 err = 6;
+    if (has_err()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->err());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SAliPayOrder::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SAliPayOrder* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SAliPayOrder*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SAliPayOrder::MergeFrom(const SAliPayOrder& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_cmd()) {
+      set_cmd(from.cmd());
+    }
+    if (from.has_orderinfo()) {
+      set_orderinfo(from.orderinfo());
+    }
+    if (from.has_appid()) {
+      set_appid(from.appid());
+    }
+    if (from.has_timestamp()) {
+      set_timestamp(from.timestamp());
+    }
+    if (from.has_privatekey()) {
+      set_privatekey(from.privatekey());
+    }
+    if (from.has_err()) {
+      set_err(from.err());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SAliPayOrder::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SAliPayOrder::CopyFrom(const SAliPayOrder& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SAliPayOrder::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void SAliPayOrder::Swap(SAliPayOrder* other) {
+  if (other != this) {
+    std::swap(cmd_, other->cmd_);
+    std::swap(orderinfo_, other->orderinfo_);
+    std::swap(appid_, other->appid_);
+    std::swap(timestamp_, other->timestamp_);
+    std::swap(privatekey_, other->privatekey_);
+    std::swap(err_, other->err_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SAliPayOrder::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SAliPayOrder_descriptor_;
+  metadata.reflection = SAliPayOrder_reflection_;
   return metadata;
 }
 

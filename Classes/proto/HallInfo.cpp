@@ -58,7 +58,8 @@ HallInfo::HallInfo()
 	pe->registerProto(sl22.cmd(), sl22.GetTypeName());
 	SSignList sl23;
 	pe->registerProto(sl23.cmd(), sl23.GetTypeName());
-	
+	SAliPayOrder sl24;
+	pe->registerProto(sl24.cmd(), sl24.GetTypeName());
 }
 
 HallInfo::~HallInfo(){
@@ -758,6 +759,28 @@ void HallInfo::HandlerSFirstBuy(ccEvent *event){
 	}
 }
 
+void HallInfo::SendCAliPayOrder(int id, string body){
+	CAliPayOrder cpo;
+	cpo.set_id(id);
+	cpo.set_body(body);
+	XXEventDispatcher::getIns()->addListener(cpo.cmd(), this, Event_Handler(HallInfo::HandlerSAliPayOrder));
+	ClientSocket::getIns()->sendMsg(cpo.cmd(), &cpo);
+}
+
+void HallInfo::HandlerSAliPayOrder(ccEvent *event){
+	SAliPayOrder cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAliPayOrder));
+	int err = cl.err();
+	if (err == 0){
+		string orderinfo = cl.orderinfo();
+		string timestamp=cl.timestamp();
+		string appid = cl.appid();
+		string privatekey = cl.privatekey();
+
+		YLJni::AliPay(appid.c_str(), timestamp.c_str(), orderinfo.c_str(), privatekey.c_str());
+	}
+}
 
 //反馈
 void HallInfo::SendCFeedBack(string uid, string uname, string content){

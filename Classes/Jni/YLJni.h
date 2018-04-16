@@ -19,6 +19,8 @@ extern "C" {
 	public:
 		static void WeixinLogin();
 		static void WeixinPay(const char* prepayid, const char* noncestr, const char* timestamp, const char* sign);
+
+		static void AliPay(const char* appid, const char* timestamp, const char* orderinfo, const char* privatekey);
 	};
 }
 
