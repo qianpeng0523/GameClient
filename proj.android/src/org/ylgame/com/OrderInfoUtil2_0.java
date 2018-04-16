@@ -1,0 +1,143 @@
+package org.ylgame.com;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Random;
+
+public class OrderInfoUtil2_0 {
+	/**
+	 * 鏋勯�犳敮浠樿鍗曞弬鏁板垪琛�
+	 * @param pid
+	 * @param app_id
+	 * @param target_id
+	 * @return
+	 */
+	public static Map<String, String> buildOrderParamMap(String app_id,String content, boolean rsa2) {
+		Map<String, String> keyValues = new HashMap<String, String>();
+
+		keyValues.put("app_id", app_id);
+
+		keyValues.put("biz_content", content);
+		
+		keyValues.put("charset", "utf-8");
+
+		keyValues.put("method", "alipay.trade.app.pay");
+
+		keyValues.put("sign_type", rsa2 ? "RSA2" : "RSA");
+
+		keyValues.put("timestamp", "2016-07-29 16:55:53");
+
+		keyValues.put("version", "1.0");
+		
+		return keyValues;
+	}
+	
+	/**
+	 * 鏋勯�犳敮浠樿鍗曞弬鏁颁俊鎭�
+	 * 
+	 * @param map
+	 * 鏀粯璁㈠崟鍙傛暟
+	 * @return
+	 */
+	public static String buildOrderParam(Map<String, String> map) {
+		List<String> keys = new ArrayList<String>(map.keySet());
+
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < keys.size() - 1; i++) {
+			String key = keys.get(i);
+			String value = map.get(key);
+			sb.append(buildKeyValue(key, value, true));
+			sb.append("&");
+		}
+
+		String tailKey = keys.get(keys.size() - 1);
+		String tailValue = map.get(tailKey);
+		sb.append(buildKeyValue(tailKey, tailValue, true));
+
+		return sb.toString();
+	}
+	
+	/**
+	 * 鎷兼帴閿�煎
+	 * 
+	 * @param key
+	 * @param value
+	 * @param isEncode
+	 * @return
+	 */
+	private static String buildKeyValue(String key, String value, boolean isEncode) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(key);
+		sb.append("=");
+		if (isEncode) {
+			try {
+				sb.append(URLEncoder.encode(value, "UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				sb.append(value);
+			}
+		} else {
+			sb.append(value);
+		}
+		return sb.toString();
+	}
+	
+	/**
+	 * 瀵规敮浠樺弬鏁颁俊鎭繘琛岀鍚�
+	 * 
+	 * @param map
+	 *            寰呯鍚嶆巿鏉冧俊鎭�
+	 * 
+	 * @return
+	 */
+	public static String getSign(Map<String, String> map, String rsaKey, boolean rsa2) {
+		List<String> keys = new ArrayList<String>(map.keySet());
+		// key鎺掑簭
+		Collections.sort(keys);
+
+		StringBuilder authInfo = new StringBuilder();
+		for (int i = 0; i < keys.size() - 1; i++) {
+			String key = keys.get(i);
+			String value = map.get(key);
+			authInfo.append(buildKeyValue(key, value, false));
+			authInfo.append("&");
+		}
+
+		String tailKey = keys.get(keys.size() - 1);
+		String tailValue = map.get(tailKey);
+		authInfo.append(buildKeyValue(tailKey, tailValue, false));
+
+		String oriSign = SignUtils.sign(authInfo.toString(), rsaKey, rsa2);
+		String encodedSign = "";
+
+		try {
+			encodedSign = URLEncoder.encode(oriSign, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return "sign=" + encodedSign;
+	}
+	
+	/**
+	 * 瑕佹眰澶栭儴璁㈠崟鍙峰繀椤诲敮涓�銆�
+	 * @return
+	 */
+	private static String getOutTradeNo() {
+		SimpleDateFormat format = new SimpleDateFormat("MMddHHmmss", Locale.getDefault());
+		Date date = new Date();
+		String key = format.format(date);
+
+		Random r = new Random();
+		key = key + r.nextInt();
+		key = key.substring(0, 15);
+		return key;
+	}
+
+}
