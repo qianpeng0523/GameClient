@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class OrderInfoUtil2_0 {
 	/**
-	 * 鏋勯�犳敮浠樿鍗曞弬鏁板垪琛�
+	 * 閺嬪嫰锟界姵鏁禒妯款吂閸楁洖寮弫鏉垮灙鐞涳拷
 	 * @param pid
 	 * @param app_id
 	 * @param target_id
@@ -41,10 +41,10 @@ public class OrderInfoUtil2_0 {
 	}
 	
 	/**
-	 * 鏋勯�犳敮浠樿鍗曞弬鏁颁俊鎭�
+	 * 閺嬪嫰锟界姵鏁禒妯款吂閸楁洖寮弫棰佷繆閹拷
 	 * 
 	 * @param map
-	 * 鏀粯璁㈠崟鍙傛暟
+	 * 閺�垯绮拋銏犲礋閸欏倹鏆�
 	 * @return
 	 */
 	public static String buildOrderParam(Map<String, String> map) {
@@ -66,7 +66,7 @@ public class OrderInfoUtil2_0 {
 	}
 	
 	/**
-	 * 鎷兼帴閿�煎
+	 * 閹峰吋甯撮柨顔硷拷鐓庮嚠
 	 * 
 	 * @param key
 	 * @param value
@@ -90,16 +90,16 @@ public class OrderInfoUtil2_0 {
 	}
 	
 	/**
-	 * 瀵规敮浠樺弬鏁颁俊鎭繘琛岀鍚�
+	 * 鐎佃鏁禒妯哄棘閺侀淇婇幁顖濈箻鐞涘瞼顒烽崥锟�
 	 * 
 	 * @param map
-	 *            寰呯鍚嶆巿鏉冧俊鎭�
+	 *            瀵板懐顒烽崥宥嗗房閺夊啩淇婇幁锟�
 	 * 
 	 * @return
 	 */
 	public static String getSign(Map<String, String> map, String rsaKey, boolean rsa2) {
 		List<String> keys = new ArrayList<String>(map.keySet());
-		// key鎺掑簭
+		// key閹烘帒绨�
 		Collections.sort(keys);
 
 		StringBuilder authInfo = new StringBuilder();
@@ -116,17 +116,18 @@ public class OrderInfoUtil2_0 {
 
 		String oriSign = SignUtils.sign(authInfo.toString(), rsaKey, rsa2);
 		String encodedSign = "";
-
-		try {
-			encodedSign = URLEncoder.encode(oriSign, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		if(oriSign!=null){
+			try {
+				encodedSign = URLEncoder.encode(oriSign, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
 		}
 		return "sign=" + encodedSign;
 	}
 	
 	/**
-	 * 瑕佹眰澶栭儴璁㈠崟鍙峰繀椤诲敮涓�銆�
+	 * 鐟曚焦鐪版径鏍劥鐠併垹宕熼崣宄扮箑妞よ鏁稉锟介妴锟�
 	 * @return
 	 */
 	private static String getOutTradeNo() {

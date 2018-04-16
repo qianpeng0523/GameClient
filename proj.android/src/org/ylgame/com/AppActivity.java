@@ -30,6 +30,7 @@ import java.util.Map;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import com.alipay.sdk.app.EnvUtils;
 import com.alipay.sdk.app.PayTask;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.modelpay.PayReq;
@@ -65,6 +66,7 @@ public class AppActivity extends Cocos2dxActivity{
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
 		super.onCreate(savedInstanceState);
 		main=AppActivity.this;
 		
@@ -89,9 +91,9 @@ public class AppActivity extends Cocos2dxActivity{
 	    req.transaction="login";
 	    boolean flag = AppActivity.api.sendReq(req);
 	    if(flag){
-	    	System.out.println("鍚姩寰俊鎴愬姛");
+	    	System.out.println("微信启动成功");
 	    }else{
-	    	System.out.println("鍚姩寰俊澶辫触");
+	    	System.out.println("微信启动失败");
 	    }
 		//Toast.makeText(_context, "launch result = " + AppActivity.api.openWXApp(), Toast.LENGTH_LONG).show();
 	}
@@ -124,10 +126,10 @@ public class AppActivity extends Cocos2dxActivity{
 				//
 				if (resultStatus.equalsIgnoreCase("9000")) {
 					//
-					Toast.makeText(AppActivity.this, "111", Toast.LENGTH_SHORT).show();
+					Toast.makeText(AppActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
 				} else {
 					//
-					Toast.makeText(AppActivity.this, "222", Toast.LENGTH_SHORT).show();
+					Toast.makeText(AppActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
 				}
 				break;
 			}
