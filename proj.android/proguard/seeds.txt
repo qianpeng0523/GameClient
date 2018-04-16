@@ -1,0 +1,1301 @@
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentActivity
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentTabHost
+android.support.v4.app.FragmentTabHost: FragmentTabHost(android.content.Context,android.util.AttributeSet)
+android.support.v4.app.FragmentTabHost$SavedState
+android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.NotificationCompatSideChannelService
+android.support.v4.content.FileProvider
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.content.WakefulBroadcastReceiver
+android.support.v4.media.MediaBrowserCompat$MediaBrowserImplBase$3
+android.support.v4.media.MediaBrowserCompat$MediaItem
+android.support.v4.media.MediaBrowserCompat$MediaItem: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.MediaBrowserServiceCompat
+android.support.v4.media.MediaDescriptionCompat
+android.support.v4.media.MediaDescriptionCompat: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.MediaMetadataCompat
+android.support.v4.media.MediaMetadataCompat: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.RatingCompat
+android.support.v4.media.RatingCompat: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.session.MediaButtonReceiver
+android.support.v4.media.session.MediaSessionCompat$QueueItem
+android.support.v4.media.session.MediaSessionCompat$QueueItem: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.session.MediaSessionCompat$ResultReceiverWrapper
+android.support.v4.media.session.MediaSessionCompat$ResultReceiverWrapper: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.session.MediaSessionCompat$Token
+android.support.v4.media.session.MediaSessionCompat$Token: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.session.ParcelableVolumeInfo
+android.support.v4.media.session.ParcelableVolumeInfo: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.session.PlaybackStateCompat
+android.support.v4.media.session.PlaybackStateCompat: android.os.Parcelable$Creator CREATOR
+android.support.v4.media.session.PlaybackStateCompat$CustomAction
+android.support.v4.media.session.PlaybackStateCompat$CustomAction: android.os.Parcelable$Creator CREATOR
+android.support.v4.os.ResultReceiver
+android.support.v4.os.ResultReceiver: android.os.Parcelable$Creator CREATOR
+android.support.v4.view.PagerTabStrip
+android.support.v4.view.PagerTabStrip: PagerTabStrip(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.PagerTitleStrip
+android.support.v4.view.PagerTitleStrip: PagerTitleStrip(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager
+android.support.v4.view.ViewPager: ViewPager(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager$LayoutParams
+android.support.v4.view.ViewPager$LayoutParams: ViewPager$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.ContentLoadingProgressBar
+android.support.v4.widget.ContentLoadingProgressBar: ContentLoadingProgressBar(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.DrawerLayout
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.DrawerLayout$LayoutParams
+android.support.v4.widget.DrawerLayout$LayoutParams: DrawerLayout$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.DrawerLayout$SavedState
+android.support.v4.widget.DrawerLayout$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.NestedScrollView
+android.support.v4.widget.NestedScrollView: NestedScrollView(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.NestedScrollView: NestedScrollView(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.NestedScrollView$SavedState
+android.support.v4.widget.NestedScrollView$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.SlidingPaneLayout
+android.support.v4.widget.SlidingPaneLayout: SlidingPaneLayout(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.SlidingPaneLayout: SlidingPaneLayout(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.SlidingPaneLayout$LayoutParams
+android.support.v4.widget.SlidingPaneLayout$LayoutParams: SlidingPaneLayout$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.SlidingPaneLayout$SavedState
+android.support.v4.widget.SlidingPaneLayout$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.Space
+android.support.v4.widget.Space: Space(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.Space: Space(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.SwipeRefreshLayout
+android.support.v4.widget.SwipeRefreshLayout: SwipeRefreshLayout(android.content.Context,android.util.AttributeSet)
+com.chukong.cocosplay.client.CocosPlayClient
+com.chukong.cocosplay.client.CocosPlayClient: java.lang.String[] getSearchPaths()
+com.tencent.apollo.ApolloVoiceEngine
+com.tencent.apollo.ApolloVoiceEngine: int Pause()
+com.tencent.apollo.ApolloVoiceEngine: int Resume()
+com.tencent.apollo.ApolloVoiceEngine: boolean GetHeadsetVoipState()
+com.tencent.apollo.ApolloVoiceEngine: int StartBlueTooth()
+com.tencent.apollo.ApolloVoiceEngine: int StopBlueTooth()
+com.tencent.apollo.apollovoice.httpclient.URLRequest
+com.tencent.apollo.apollovoice.httpclient.URLRequest: void response(int,long,int,java.lang.String,java.lang.String,java.lang.String,byte[],java.lang.String[])
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int EngineJniInstance()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int SetServerInfo(java.lang.String)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int SetAppInfo(java.lang.String,java.lang.String,java.lang.String)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int Init()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int SetNotify(com.tencent.gcloud.voice.IGCloudVoiceNotify)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int SetMode(int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int Poll()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int Pause()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int Resume()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int JoinTeamRoom(java.lang.String,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int JoinNationalRoom(java.lang.String,int,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int QuitRoom(java.lang.String,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int OpenMic()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int CloseMic()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int OpenSpeaker()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int CloseSpeaker()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int ApplyMessageKey(int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int SetMaxMessageLength(int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int StartRecording(java.lang.String)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int StopRecording()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int UploadRecordedFile(java.lang.String,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int DownloadRecordedFile(java.lang.String,java.lang.String,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int PlayRecordedFile(java.lang.String)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int StopPlayFile()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int SpeechToText(java.lang.String,int,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int JoinTeamRoom(java.lang.String,java.lang.String,int,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int JoinNationalRoom(java.lang.String,int,java.lang.String,int,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int ApplyMessageKey(java.lang.String,int,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int SpeechToText(java.lang.String,java.lang.String,int,int,int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int ForbidMemberVoice(int,boolean)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int EnableLog(boolean)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int GetMicLevel()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int GetSpeakerLevel()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int SetSpeakerVolume(int)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int TestMic()
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int GetFileParam(java.lang.String,java.lang.Integer,java.lang.Float)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int CaptureMicrophoneData(boolean)
+com.tencent.gcloud.voice.GCloudVoiceEngineHelper: int Invoke(int,int,int,int[])
+com.tencent.mm.opensdk.diffdev.OAuthErrCode: com.tencent.mm.opensdk.diffdev.OAuthErrCode[] values()
+com.tencent.mm.opensdk.diffdev.OAuthErrCode: com.tencent.mm.opensdk.diffdev.OAuthErrCode valueOf(java.lang.String)
+com.tencent.mm.opensdk.diffdev.a.g: com.tencent.mm.opensdk.diffdev.a.g[] values()
+com.tencent.mm.opensdk.diffdev.a.g: com.tencent.mm.opensdk.diffdev.a.g valueOf(java.lang.String)
+org.cocos2dx.lib.Cocos2dxAccelerometer
+org.cocos2dx.lib.Cocos2dxAccelerometer: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxAccelerometer: android.content.Context mContext
+org.cocos2dx.lib.Cocos2dxAccelerometer: android.hardware.SensorManager mSensorManager
+org.cocos2dx.lib.Cocos2dxAccelerometer: android.hardware.Sensor mAccelerometer
+org.cocos2dx.lib.Cocos2dxAccelerometer: int mNaturalOrientation
+org.cocos2dx.lib.Cocos2dxAccelerometer: void <clinit>()
+org.cocos2dx.lib.Cocos2dxAccelerometer: Cocos2dxAccelerometer(android.content.Context)
+org.cocos2dx.lib.Cocos2dxAccelerometer: void enable()
+org.cocos2dx.lib.Cocos2dxAccelerometer: void setInterval(float)
+org.cocos2dx.lib.Cocos2dxAccelerometer: void disable()
+org.cocos2dx.lib.Cocos2dxAccelerometer: void onSensorChanged(android.hardware.SensorEvent)
+org.cocos2dx.lib.Cocos2dxAccelerometer: void onAccuracyChanged(android.hardware.Sensor,int)
+org.cocos2dx.lib.Cocos2dxAccelerometer: void onSensorChanged(float,float,float,long)
+org.cocos2dx.lib.Cocos2dxActivity
+org.cocos2dx.lib.Cocos2dxActivity: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxGLSurfaceView mGLSurfaceView
+org.cocos2dx.lib.Cocos2dxActivity: int[] mGLContextAttrs
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxHandler mHandler
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxActivity sContext
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxVideoHelper mVideoHelper
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxWebViewHelper mWebViewHelper
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxEditBoxHelper mEditBoxHelper
+org.cocos2dx.lib.Cocos2dxActivity: boolean hasFocus
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.ResizeLayout mFrameLayout
+org.cocos2dx.lib.Cocos2dxActivity: void <clinit>()
+org.cocos2dx.lib.Cocos2dxActivity: Cocos2dxActivity()
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxGLSurfaceView getGLSurfaceView()
+org.cocos2dx.lib.Cocos2dxActivity: android.content.Context getContext()
+org.cocos2dx.lib.Cocos2dxActivity: void setKeepScreenOn(boolean)
+org.cocos2dx.lib.Cocos2dxActivity: void onLoadNativeLibraries()
+org.cocos2dx.lib.Cocos2dxActivity: void onCreate(android.os.Bundle)
+org.cocos2dx.lib.Cocos2dxActivity: int[] getGLContextAttrs()
+org.cocos2dx.lib.Cocos2dxActivity: void onResume()
+org.cocos2dx.lib.Cocos2dxActivity: void onWindowFocusChanged(boolean)
+org.cocos2dx.lib.Cocos2dxActivity: void resumeIfHasFocus()
+org.cocos2dx.lib.Cocos2dxActivity: void onPause()
+org.cocos2dx.lib.Cocos2dxActivity: void onDestroy()
+org.cocos2dx.lib.Cocos2dxActivity: void showDialog(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxActivity: void runOnGLThread(java.lang.Runnable)
+org.cocos2dx.lib.Cocos2dxActivity: void onActivityResult(int,int,android.content.Intent)
+org.cocos2dx.lib.Cocos2dxActivity: void init()
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxGLSurfaceView onCreateView()
+org.cocos2dx.lib.Cocos2dxActivity: boolean isAndroidEmulator()
+org.cocos2dx.lib.Cocos2dxActivity: org.cocos2dx.lib.Cocos2dxGLSurfaceView access$0(org.cocos2dx.lib.Cocos2dxActivity)
+org.cocos2dx.lib.Cocos2dxActivity$1
+org.cocos2dx.lib.Cocos2dxActivity$1: org.cocos2dx.lib.Cocos2dxActivity this$0
+org.cocos2dx.lib.Cocos2dxActivity$1: boolean val$newValue
+org.cocos2dx.lib.Cocos2dxActivity$1: Cocos2dxActivity$1(org.cocos2dx.lib.Cocos2dxActivity,boolean)
+org.cocos2dx.lib.Cocos2dxActivity$1: void run()
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser: int[] configAttribs
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser: org.cocos2dx.lib.Cocos2dxActivity this$0
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser: Cocos2dxActivity$Cocos2dxEGLConfigChooser(org.cocos2dx.lib.Cocos2dxActivity,int,int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser: Cocos2dxActivity$Cocos2dxEGLConfigChooser(org.cocos2dx.lib.Cocos2dxActivity,int[])
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser: int findConfigAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser: javax.microedition.khronos.egl.EGLConfig chooseConfig(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay)
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser: int access$0(org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser,javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: javax.microedition.khronos.egl.EGLConfig config
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: int[] configAttribs
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: int value
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser this$1
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: void calcValue()
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue(org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser,int[])
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue(org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser,javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig)
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: int compareTo(org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue)
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: java.lang.String toString()
+org.cocos2dx.lib.Cocos2dxActivity$Cocos2dxEGLConfigChooser$ConfigValue: int compareTo(java.lang.Object)
+org.cocos2dx.lib.Cocos2dxBitmap
+org.cocos2dx.lib.Cocos2dxBitmap: int HORIZONTAL_ALIGN_LEFT
+org.cocos2dx.lib.Cocos2dxBitmap: int HORIZONTAL_ALIGN_RIGHT
+org.cocos2dx.lib.Cocos2dxBitmap: int HORIZONTAL_ALIGN_CENTER
+org.cocos2dx.lib.Cocos2dxBitmap: int VERTICAL_ALIGN_TOP
+org.cocos2dx.lib.Cocos2dxBitmap: int VERTICAL_ALIGN_BOTTOM
+org.cocos2dx.lib.Cocos2dxBitmap: int VERTICAL_ALIGN_CENTER
+org.cocos2dx.lib.Cocos2dxBitmap: android.content.Context sContext
+org.cocos2dx.lib.Cocos2dxBitmap: Cocos2dxBitmap()
+org.cocos2dx.lib.Cocos2dxBitmap: void setContext(android.content.Context)
+org.cocos2dx.lib.Cocos2dxBitmap: void nativeInitBitmapDC(int,int,byte[])
+org.cocos2dx.lib.Cocos2dxBitmap: boolean createTextBitmapShadowStroke(byte[],java.lang.String,int,int,int,int,int,int,int,int,boolean,float,float,float,float,boolean,int,int,int,int,float)
+org.cocos2dx.lib.Cocos2dxBitmap: android.text.TextPaint newPaint(java.lang.String,int)
+org.cocos2dx.lib.Cocos2dxBitmap: void initNativeObject(android.graphics.Bitmap)
+org.cocos2dx.lib.Cocos2dxBitmap: byte[] getPixels(android.graphics.Bitmap)
+org.cocos2dx.lib.Cocos2dxBitmap: int getFontSizeAccordingHeight(int)
+org.cocos2dx.lib.Cocos2dxBitmap: java.lang.String getStringWithEllipsis(java.lang.String,float,float)
+org.cocos2dx.lib.Cocos2dxEditBox
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputModeAny
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputModeEmailAddr
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputModeNumeric
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputModePhoneNumber
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputModeUrl
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputModeDecimal
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputModeSingleLine
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputFlagPassword
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputFlagSensitive
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputFlagInitialCapsWord
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputFlagInitialCapsSentence
+org.cocos2dx.lib.Cocos2dxEditBox: int kEditBoxInputFlagInitialCapsAllCharacters
+org.cocos2dx.lib.Cocos2dxEditBox: int kKeyboardReturnTypeDefault
+org.cocos2dx.lib.Cocos2dxEditBox: int kKeyboardReturnTypeDone
+org.cocos2dx.lib.Cocos2dxEditBox: int kKeyboardReturnTypeSend
+org.cocos2dx.lib.Cocos2dxEditBox: int kKeyboardReturnTypeSearch
+org.cocos2dx.lib.Cocos2dxEditBox: int kKeyboardReturnTypeGo
+org.cocos2dx.lib.Cocos2dxEditBox: int mInputFlagConstraints
+org.cocos2dx.lib.Cocos2dxEditBox: int mInputModeContraints
+org.cocos2dx.lib.Cocos2dxEditBox: int mMaxLength
+org.cocos2dx.lib.Cocos2dxEditBox: float mScaleX
+org.cocos2dx.lib.Cocos2dxEditBox: Cocos2dxEditBox(android.content.Context)
+org.cocos2dx.lib.Cocos2dxEditBox: void setEditBoxViewRect(int,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBox: float getOpenGLViewScaleX()
+org.cocos2dx.lib.Cocos2dxEditBox: void setOpenGLViewScaleX(float)
+org.cocos2dx.lib.Cocos2dxEditBox: void setMaxLength(int)
+org.cocos2dx.lib.Cocos2dxEditBox: void setMultilineEnabled(boolean)
+org.cocos2dx.lib.Cocos2dxEditBox: void setReturnType(int)
+org.cocos2dx.lib.Cocos2dxEditBox: void setInputMode(int)
+org.cocos2dx.lib.Cocos2dxEditBox: boolean onKeyDown(int,android.view.KeyEvent)
+org.cocos2dx.lib.Cocos2dxEditBox: boolean onKeyPreIme(int,android.view.KeyEvent)
+org.cocos2dx.lib.Cocos2dxEditBox: void setInputFlag(int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: org.cocos2dx.lib.Cocos2dxActivity mCocos2dxActivity
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: org.cocos2dx.lib.ResizeLayout mFrameLayout
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: android.util.SparseArray mEditBoxArray
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: int mViewTag
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void <clinit>()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void editBoxEditingDidBegin(int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void __editBoxEditingDidBegin(int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void editBoxEditingChanged(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void __editBoxEditingChanged(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void editBoxEditingDidEnd(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void __editBoxEditingDidEnd(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: Cocos2dxEditBoxHelper(org.cocos2dx.lib.ResizeLayout)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: int convertToSP(float)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: int createEditBox(int,int,int,int,float)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void removeEditBox(int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setFont(int,java.lang.String,float)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setFontColor(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setPlaceHolderText(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setPlaceHolderTextColor(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setMaxLength(int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setVisible(int,boolean)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setText(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setReturnType(int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setInputMode(int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setInputFlag(int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void setEditBoxViewRect(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void openKeyboard(int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: void closeKeyboard(int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: org.cocos2dx.lib.Cocos2dxActivity access$0()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: org.cocos2dx.lib.ResizeLayout access$1()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: java.lang.String access$2()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper: android.util.SparseArray access$3()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1: float val$scaleX
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1: int val$height
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1: int val$left
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1: int val$top
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1: int val$width
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1: Cocos2dxEditBoxHelper$1(float,int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1: org.cocos2dx.lib.Cocos2dxEditBoxHelper$1 this$1
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1: Cocos2dxEditBoxHelper$1$1(org.cocos2dx.lib.Cocos2dxEditBoxHelper$1,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1: void beforeTextChanged(java.lang.CharSequence,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1: void onTextChanged(java.lang.CharSequence,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1: void afterTextChanged(android.text.Editable)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1$1
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1$1: org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1 this$2
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1$1: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1$1: java.lang.CharSequence val$s
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1$1: Cocos2dxEditBoxHelper$1$1$1(org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1,int,java.lang.CharSequence)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$1$1: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2: org.cocos2dx.lib.Cocos2dxEditBoxHelper$1 this$1
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2: org.cocos2dx.lib.Cocos2dxEditBox val$editBox
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2: Cocos2dxEditBoxHelper$1$2(org.cocos2dx.lib.Cocos2dxEditBoxHelper$1,org.cocos2dx.lib.Cocos2dxEditBox,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2: void onFocusChange(android.view.View,boolean)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$1
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$1: org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2 this$2
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$1: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$1: Cocos2dxEditBoxHelper$1$2$1(org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$1: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$2
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$2: org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2 this$2
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$2: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$2: org.cocos2dx.lib.Cocos2dxEditBox val$editBox
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$2: Cocos2dxEditBoxHelper$1$2$2(org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2,int,org.cocos2dx.lib.Cocos2dxEditBox)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$2$2: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$3
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$3: org.cocos2dx.lib.Cocos2dxEditBoxHelper$1 this$1
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$3: org.cocos2dx.lib.Cocos2dxEditBox val$editBox
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$3: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$3: Cocos2dxEditBoxHelper$1$3(org.cocos2dx.lib.Cocos2dxEditBoxHelper$1,org.cocos2dx.lib.Cocos2dxEditBox,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$3: boolean onKey(android.view.View,int,android.view.KeyEvent)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$4
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$4: org.cocos2dx.lib.Cocos2dxEditBoxHelper$1 this$1
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$4: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$4: Cocos2dxEditBoxHelper$1$4(org.cocos2dx.lib.Cocos2dxEditBoxHelper$1,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$1$4: boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$10
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$10: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$10: int val$returnType
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$10: Cocos2dxEditBoxHelper$10(int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$10: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$11
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$11: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$11: int val$inputMode
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$11: Cocos2dxEditBoxHelper$11(int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$11: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$12
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$12: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$12: int val$inputFlag
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$12: Cocos2dxEditBoxHelper$12(int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$12: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$13
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$13: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$13: int val$left
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$13: int val$top
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$13: int val$maxWidth
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$13: int val$maxHeight
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$13: Cocos2dxEditBoxHelper$13(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$13: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$2
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$2: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$2: Cocos2dxEditBoxHelper$2(int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$2: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$3
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$3: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$3: java.lang.String val$fontName
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$3: float val$fontSize
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$3: Cocos2dxEditBoxHelper$3(int,java.lang.String,float)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$3: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$4
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$4: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$4: int val$alpha
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$4: int val$red
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$4: int val$green
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$4: int val$blue
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$4: Cocos2dxEditBoxHelper$4(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$4: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$5
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$5: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$5: java.lang.String val$text
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$5: Cocos2dxEditBoxHelper$5(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$5: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$6
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$6: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$6: int val$alpha
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$6: int val$red
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$6: int val$green
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$6: int val$blue
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$6: Cocos2dxEditBoxHelper$6(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$6: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$7
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$7: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$7: int val$maxLength
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$7: Cocos2dxEditBoxHelper$7(int,int)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$7: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$8
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$8: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$8: boolean val$visible
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$8: Cocos2dxEditBoxHelper$8(int,boolean)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$8: void run()
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$9
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$9: int val$index
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$9: java.lang.String val$text
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$9: Cocos2dxEditBoxHelper$9(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxEditBoxHelper$9: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: int HANDLER_OPEN_IME_KEYBOARD
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: int HANDLER_CLOSE_IME_KEYBOARD
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: android.os.Handler sHandler
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxGLSurfaceView mCocos2dxGLSurfaceView
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxTextInputWraper sCocos2dxTextInputWraper
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxRenderer mCocos2dxRenderer
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxEditBox mCocos2dxEditText
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: boolean mSoftKeyboardShown
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void <clinit>()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: boolean isSoftKeyboardShown()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void setSoftKeyboardShown(boolean)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: Cocos2dxGLSurfaceView(android.content.Context)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: Cocos2dxGLSurfaceView(android.content.Context,android.util.AttributeSet)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void initView()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxGLSurfaceView getInstance()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void queueAccelerometer(float,float,float,long)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void setCocos2dxRenderer(org.cocos2dx.lib.Cocos2dxRenderer)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: java.lang.String getContentText()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxEditBox getCocos2dxEditText()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void setCocos2dxEditText(org.cocos2dx.lib.Cocos2dxEditBox)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void onResume()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void onPause()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: boolean onTouchEvent(android.view.MotionEvent)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void onSizeChanged(int,int,int,int)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: boolean onKeyDown(int,android.view.KeyEvent)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: boolean onKeyUp(int,android.view.KeyEvent)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void openIMEKeyboard()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void closeIMEKeyboard()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void insertText(java.lang.String)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void deleteBackward()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: void dumpMotionEvent(android.view.MotionEvent)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxEditBox access$0(org.cocos2dx.lib.Cocos2dxGLSurfaceView)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxTextInputWraper access$1()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxGLSurfaceView access$2()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView: org.cocos2dx.lib.Cocos2dxRenderer access$3(org.cocos2dx.lib.Cocos2dxGLSurfaceView)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$1
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$1: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$1: Cocos2dxGLSurfaceView$1(org.cocos2dx.lib.Cocos2dxGLSurfaceView)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$1: void handleMessage(android.os.Message)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$10
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$10: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$10: int[] val$ids
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$10: float[] val$xs
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$10: float[] val$ys
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$10: Cocos2dxGLSurfaceView$10(org.cocos2dx.lib.Cocos2dxGLSurfaceView,int[],float[],float[])
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$10: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$11
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$11: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$11: int val$pKeyCode
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$11: Cocos2dxGLSurfaceView$11(org.cocos2dx.lib.Cocos2dxGLSurfaceView,int)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$11: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$12
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$12: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$12: int val$keyCode
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$12: Cocos2dxGLSurfaceView$12(org.cocos2dx.lib.Cocos2dxGLSurfaceView,int)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$12: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$13
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$13: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$13: java.lang.String val$pText
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$13: Cocos2dxGLSurfaceView$13(org.cocos2dx.lib.Cocos2dxGLSurfaceView,java.lang.String)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$13: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$14
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$14: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$14: Cocos2dxGLSurfaceView$14(org.cocos2dx.lib.Cocos2dxGLSurfaceView)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$14: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$2
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$2: float val$x
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$2: float val$y
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$2: float val$z
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$2: long val$timestamp
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$2: Cocos2dxGLSurfaceView$2(float,float,float,long)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$2: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$3
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$3: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$3: Cocos2dxGLSurfaceView$3(org.cocos2dx.lib.Cocos2dxGLSurfaceView)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$3: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$4
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$4: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$4: Cocos2dxGLSurfaceView$4(org.cocos2dx.lib.Cocos2dxGLSurfaceView)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$4: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$5
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$5: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$5: int val$idPointerDown
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$5: float val$xPointerDown
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$5: float val$yPointerDown
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$5: Cocos2dxGLSurfaceView$5(org.cocos2dx.lib.Cocos2dxGLSurfaceView,int,float,float)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$5: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$6
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$6: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$6: int val$idDown
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$6: float val$xDown
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$6: float val$yDown
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$6: Cocos2dxGLSurfaceView$6(org.cocos2dx.lib.Cocos2dxGLSurfaceView,int,float,float)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$6: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$7
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$7: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$7: int[] val$ids
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$7: float[] val$xs
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$7: float[] val$ys
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$7: Cocos2dxGLSurfaceView$7(org.cocos2dx.lib.Cocos2dxGLSurfaceView,int[],float[],float[])
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$7: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$8
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$8: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$8: int val$idPointerUp
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$8: float val$xPointerUp
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$8: float val$yPointerUp
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$8: Cocos2dxGLSurfaceView$8(org.cocos2dx.lib.Cocos2dxGLSurfaceView,int,float,float)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$8: void run()
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$9
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$9: org.cocos2dx.lib.Cocos2dxGLSurfaceView this$0
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$9: int val$idUp
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$9: float val$xUp
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$9: float val$yUp
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$9: Cocos2dxGLSurfaceView$9(org.cocos2dx.lib.Cocos2dxGLSurfaceView,int,float,float)
+org.cocos2dx.lib.Cocos2dxGLSurfaceView$9: void run()
+org.cocos2dx.lib.Cocos2dxHandler
+org.cocos2dx.lib.Cocos2dxHandler: int HANDLER_SHOW_DIALOG
+org.cocos2dx.lib.Cocos2dxHandler: java.lang.ref.WeakReference mActivity
+org.cocos2dx.lib.Cocos2dxHandler: Cocos2dxHandler(org.cocos2dx.lib.Cocos2dxActivity)
+org.cocos2dx.lib.Cocos2dxHandler: void handleMessage(android.os.Message)
+org.cocos2dx.lib.Cocos2dxHandler: void showDialog(android.os.Message)
+org.cocos2dx.lib.Cocos2dxHandler$1
+org.cocos2dx.lib.Cocos2dxHandler$1: org.cocos2dx.lib.Cocos2dxHandler this$0
+org.cocos2dx.lib.Cocos2dxHandler$1: Cocos2dxHandler$1(org.cocos2dx.lib.Cocos2dxHandler)
+org.cocos2dx.lib.Cocos2dxHandler$1: void onClick(android.content.DialogInterface,int)
+org.cocos2dx.lib.Cocos2dxHandler$DialogMessage
+org.cocos2dx.lib.Cocos2dxHandler$DialogMessage: java.lang.String titile
+org.cocos2dx.lib.Cocos2dxHandler$DialogMessage: java.lang.String message
+org.cocos2dx.lib.Cocos2dxHandler$DialogMessage: Cocos2dxHandler$DialogMessage(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper
+org.cocos2dx.lib.Cocos2dxHelper: java.lang.String PREFS_NAME
+org.cocos2dx.lib.Cocos2dxHelper: int RUNNABLES_PER_FRAME
+org.cocos2dx.lib.Cocos2dxHelper: org.cocos2dx.lib.Cocos2dxMusic sCocos2dMusic
+org.cocos2dx.lib.Cocos2dxHelper: org.cocos2dx.lib.Cocos2dxSound sCocos2dSound
+org.cocos2dx.lib.Cocos2dxHelper: android.content.res.AssetManager sAssetManager
+org.cocos2dx.lib.Cocos2dxHelper: org.cocos2dx.lib.Cocos2dxAccelerometer sCocos2dxAccelerometer
+org.cocos2dx.lib.Cocos2dxHelper: boolean sAccelerometerEnabled
+org.cocos2dx.lib.Cocos2dxHelper: boolean sActivityVisible
+org.cocos2dx.lib.Cocos2dxHelper: java.lang.String sPackageName
+org.cocos2dx.lib.Cocos2dxHelper: java.lang.String sFileDirectory
+org.cocos2dx.lib.Cocos2dxHelper: android.app.Activity sActivity
+org.cocos2dx.lib.Cocos2dxHelper: org.cocos2dx.lib.Cocos2dxHelper$Cocos2dxHelperListener sCocos2dxHelperListener
+org.cocos2dx.lib.Cocos2dxHelper: java.util.Set onActivityResultListeners
+org.cocos2dx.lib.Cocos2dxHelper: android.os.Vibrator sVibrateService
+org.cocos2dx.lib.Cocos2dxHelper: com.enhance.gameservice.IGameTuningService mGameServiceBinder
+org.cocos2dx.lib.Cocos2dxHelper: int BOOST_TIME
+org.cocos2dx.lib.Cocos2dxHelper: boolean sInited
+org.cocos2dx.lib.Cocos2dxHelper: android.content.ServiceConnection connection
+org.cocos2dx.lib.Cocos2dxHelper: void <clinit>()
+org.cocos2dx.lib.Cocos2dxHelper: Cocos2dxHelper()
+org.cocos2dx.lib.Cocos2dxHelper: void runOnGLThread(java.lang.Runnable)
+org.cocos2dx.lib.Cocos2dxHelper: void init(android.app.Activity)
+org.cocos2dx.lib.Cocos2dxHelper: android.app.Activity getActivity()
+org.cocos2dx.lib.Cocos2dxHelper: void addOnActivityResultListener(android.preference.PreferenceManager$OnActivityResultListener)
+org.cocos2dx.lib.Cocos2dxHelper: java.util.Set getOnActivityResultListeners()
+org.cocos2dx.lib.Cocos2dxHelper: boolean isActivityVisible()
+org.cocos2dx.lib.Cocos2dxHelper: void nativeSetApkPath(java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: void nativeSetEditTextDialogResult(byte[])
+org.cocos2dx.lib.Cocos2dxHelper: void nativeSetContext(android.content.Context,android.content.res.AssetManager)
+org.cocos2dx.lib.Cocos2dxHelper: java.lang.String getCocos2dxPackageName()
+org.cocos2dx.lib.Cocos2dxHelper: java.lang.String getCocos2dxWritablePath()
+org.cocos2dx.lib.Cocos2dxHelper: java.lang.String getCurrentLanguage()
+org.cocos2dx.lib.Cocos2dxHelper: java.lang.String getDeviceModel()
+org.cocos2dx.lib.Cocos2dxHelper: android.content.res.AssetManager getAssetManager()
+org.cocos2dx.lib.Cocos2dxHelper: void enableAccelerometer()
+org.cocos2dx.lib.Cocos2dxHelper: void setAccelerometerInterval(float)
+org.cocos2dx.lib.Cocos2dxHelper: void disableAccelerometer()
+org.cocos2dx.lib.Cocos2dxHelper: void setKeepScreenOn(boolean)
+org.cocos2dx.lib.Cocos2dxHelper: void vibrate(float)
+org.cocos2dx.lib.Cocos2dxHelper: boolean openURL(java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: void preloadBackgroundMusic(java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: void playBackgroundMusic(java.lang.String,boolean)
+org.cocos2dx.lib.Cocos2dxHelper: void resumeBackgroundMusic()
+org.cocos2dx.lib.Cocos2dxHelper: void pauseBackgroundMusic()
+org.cocos2dx.lib.Cocos2dxHelper: void stopBackgroundMusic()
+org.cocos2dx.lib.Cocos2dxHelper: void rewindBackgroundMusic()
+org.cocos2dx.lib.Cocos2dxHelper: boolean isBackgroundMusicPlaying()
+org.cocos2dx.lib.Cocos2dxHelper: float getBackgroundMusicVolume()
+org.cocos2dx.lib.Cocos2dxHelper: void setBackgroundMusicVolume(float)
+org.cocos2dx.lib.Cocos2dxHelper: void preloadEffect(java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: int playEffect(java.lang.String,boolean,float,float,float)
+org.cocos2dx.lib.Cocos2dxHelper: void resumeEffect(int)
+org.cocos2dx.lib.Cocos2dxHelper: void pauseEffect(int)
+org.cocos2dx.lib.Cocos2dxHelper: void stopEffect(int)
+org.cocos2dx.lib.Cocos2dxHelper: float getEffectsVolume()
+org.cocos2dx.lib.Cocos2dxHelper: void setEffectsVolume(float)
+org.cocos2dx.lib.Cocos2dxHelper: void unloadEffect(java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: void pauseAllEffects()
+org.cocos2dx.lib.Cocos2dxHelper: void resumeAllEffects()
+org.cocos2dx.lib.Cocos2dxHelper: void stopAllEffects()
+org.cocos2dx.lib.Cocos2dxHelper: void end()
+org.cocos2dx.lib.Cocos2dxHelper: void onResume()
+org.cocos2dx.lib.Cocos2dxHelper: void onPause()
+org.cocos2dx.lib.Cocos2dxHelper: void onEnterBackground()
+org.cocos2dx.lib.Cocos2dxHelper: void onEnterForeground()
+org.cocos2dx.lib.Cocos2dxHelper: void terminateProcess()
+org.cocos2dx.lib.Cocos2dxHelper: void showDialog(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: void setEditTextDialogResult(java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: int getDPI()
+org.cocos2dx.lib.Cocos2dxHelper: boolean getBoolForKey(java.lang.String,boolean)
+org.cocos2dx.lib.Cocos2dxHelper: int getIntegerForKey(java.lang.String,int)
+org.cocos2dx.lib.Cocos2dxHelper: float getFloatForKey(java.lang.String,float)
+org.cocos2dx.lib.Cocos2dxHelper: double getDoubleForKey(java.lang.String,double)
+org.cocos2dx.lib.Cocos2dxHelper: java.lang.String getStringForKey(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: void setBoolForKey(java.lang.String,boolean)
+org.cocos2dx.lib.Cocos2dxHelper: void setIntegerForKey(java.lang.String,int)
+org.cocos2dx.lib.Cocos2dxHelper: void setFloatForKey(java.lang.String,float)
+org.cocos2dx.lib.Cocos2dxHelper: void setDoubleForKey(java.lang.String,double)
+org.cocos2dx.lib.Cocos2dxHelper: void setStringForKey(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: void deleteValueForKey(java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: byte[] conversionEncoding(byte[],java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper: int setResolutionPercent(int)
+org.cocos2dx.lib.Cocos2dxHelper: int setFPS(int)
+org.cocos2dx.lib.Cocos2dxHelper: int fastLoading(int)
+org.cocos2dx.lib.Cocos2dxHelper: int getTemperature()
+org.cocos2dx.lib.Cocos2dxHelper: int setLowPowerMode(boolean)
+org.cocos2dx.lib.Cocos2dxHelper: void access$0(com.enhance.gameservice.IGameTuningService)
+org.cocos2dx.lib.Cocos2dxHelper: android.app.Activity access$1()
+org.cocos2dx.lib.Cocos2dxHelper: android.content.ServiceConnection access$2()
+org.cocos2dx.lib.Cocos2dxHelper: void access$3(byte[])
+org.cocos2dx.lib.Cocos2dxHelper$1
+org.cocos2dx.lib.Cocos2dxHelper$1: Cocos2dxHelper$1()
+org.cocos2dx.lib.Cocos2dxHelper$1: void onServiceConnected(android.content.ComponentName,android.os.IBinder)
+org.cocos2dx.lib.Cocos2dxHelper$1: void onServiceDisconnected(android.content.ComponentName)
+org.cocos2dx.lib.Cocos2dxHelper$2
+org.cocos2dx.lib.Cocos2dxHelper$2: byte[] val$bytesUTF8
+org.cocos2dx.lib.Cocos2dxHelper$2: Cocos2dxHelper$2(byte[])
+org.cocos2dx.lib.Cocos2dxHelper$2: void run()
+org.cocos2dx.lib.Cocos2dxHelper$Cocos2dxHelperListener
+org.cocos2dx.lib.Cocos2dxHelper$Cocos2dxHelperListener: void showDialog(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHelper$Cocos2dxHelperListener: void runOnGLThread(java.lang.Runnable)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String POST_METHOD
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String PUT_METHOD
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: Cocos2dxHttpURLConnection()
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.net.HttpURLConnection createHttpURLConnection(java.lang.String)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: void setReadAndConnectTimeout(java.net.HttpURLConnection,int,int)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: void setRequestMethod(java.net.HttpURLConnection,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: void setVerifySSL(java.net.HttpURLConnection,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: void addRequestHeader(java.net.HttpURLConnection,java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: int connect(java.net.HttpURLConnection)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: void disconnect(java.net.HttpURLConnection)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: void sendRequest(java.net.HttpURLConnection,byte[])
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String getResponseHeaders(java.net.HttpURLConnection)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String getResponseHeaderByIdx(java.net.HttpURLConnection,int)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String getResponseHeaderByKey(java.net.HttpURLConnection,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: int getResponseHeaderByKeyInt(java.net.HttpURLConnection,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: byte[] getResponseContent(java.net.HttpURLConnection)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: int getResponseCode(java.net.HttpURLConnection)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String getResponseMessage(java.net.HttpURLConnection)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String listToString(java.util.List,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String combinCookies(java.util.List,java.lang.String)
+org.cocos2dx.lib.Cocos2dxHttpURLConnection: java.lang.String str2Seconds(java.lang.String)
+org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge
+org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge: Cocos2dxJavascriptJavaBridge()
+org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge: int evalString(java.lang.String)
+org.cocos2dx.lib.Cocos2dxLocalStorage
+org.cocos2dx.lib.Cocos2dxLocalStorage: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxLocalStorage: java.lang.String DATABASE_NAME
+org.cocos2dx.lib.Cocos2dxLocalStorage: java.lang.String TABLE_NAME
+org.cocos2dx.lib.Cocos2dxLocalStorage: int DATABASE_VERSION
+org.cocos2dx.lib.Cocos2dxLocalStorage: org.cocos2dx.lib.Cocos2dxLocalStorage$DBOpenHelper mDatabaseOpenHelper
+org.cocos2dx.lib.Cocos2dxLocalStorage: android.database.sqlite.SQLiteDatabase mDatabase
+org.cocos2dx.lib.Cocos2dxLocalStorage: void <clinit>()
+org.cocos2dx.lib.Cocos2dxLocalStorage: Cocos2dxLocalStorage()
+org.cocos2dx.lib.Cocos2dxLocalStorage: boolean init(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxLocalStorage: void destory()
+org.cocos2dx.lib.Cocos2dxLocalStorage: void setItem(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxLocalStorage: java.lang.String getItem(java.lang.String)
+org.cocos2dx.lib.Cocos2dxLocalStorage: void removeItem(java.lang.String)
+org.cocos2dx.lib.Cocos2dxLocalStorage: void clear()
+org.cocos2dx.lib.Cocos2dxLocalStorage: java.lang.String access$0()
+org.cocos2dx.lib.Cocos2dxLocalStorage: java.lang.String access$1()
+org.cocos2dx.lib.Cocos2dxLocalStorage$DBOpenHelper
+org.cocos2dx.lib.Cocos2dxLocalStorage$DBOpenHelper: Cocos2dxLocalStorage$DBOpenHelper(android.content.Context)
+org.cocos2dx.lib.Cocos2dxLocalStorage$DBOpenHelper: void onCreate(android.database.sqlite.SQLiteDatabase)
+org.cocos2dx.lib.Cocos2dxLocalStorage$DBOpenHelper: void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int)
+org.cocos2dx.lib.Cocos2dxLuaJavaBridge
+org.cocos2dx.lib.Cocos2dxLuaJavaBridge: Cocos2dxLuaJavaBridge()
+org.cocos2dx.lib.Cocos2dxLuaJavaBridge: int callLuaFunctionWithString(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxLuaJavaBridge: int callLuaGlobalFunctionWithString(java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxLuaJavaBridge: int retainLuaFunction(int)
+org.cocos2dx.lib.Cocos2dxLuaJavaBridge: int releaseLuaFunction(int)
+org.cocos2dx.lib.Cocos2dxMusic
+org.cocos2dx.lib.Cocos2dxMusic: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxMusic: android.content.Context mContext
+org.cocos2dx.lib.Cocos2dxMusic: android.media.MediaPlayer mBackgroundMediaPlayer
+org.cocos2dx.lib.Cocos2dxMusic: float mLeftVolume
+org.cocos2dx.lib.Cocos2dxMusic: float mRightVolume
+org.cocos2dx.lib.Cocos2dxMusic: boolean mPaused
+org.cocos2dx.lib.Cocos2dxMusic: boolean mIsLoop
+org.cocos2dx.lib.Cocos2dxMusic: boolean mManualPaused
+org.cocos2dx.lib.Cocos2dxMusic: java.lang.String mCurrentPath
+org.cocos2dx.lib.Cocos2dxMusic: void <clinit>()
+org.cocos2dx.lib.Cocos2dxMusic: Cocos2dxMusic(android.content.Context)
+org.cocos2dx.lib.Cocos2dxMusic: void preloadBackgroundMusic(java.lang.String)
+org.cocos2dx.lib.Cocos2dxMusic: void playBackgroundMusic(java.lang.String,boolean)
+org.cocos2dx.lib.Cocos2dxMusic: void stopBackgroundMusic()
+org.cocos2dx.lib.Cocos2dxMusic: void pauseBackgroundMusic()
+org.cocos2dx.lib.Cocos2dxMusic: void resumeBackgroundMusic()
+org.cocos2dx.lib.Cocos2dxMusic: void rewindBackgroundMusic()
+org.cocos2dx.lib.Cocos2dxMusic: boolean isBackgroundMusicPlaying()
+org.cocos2dx.lib.Cocos2dxMusic: void end()
+org.cocos2dx.lib.Cocos2dxMusic: float getBackgroundVolume()
+org.cocos2dx.lib.Cocos2dxMusic: void setBackgroundVolume(float)
+org.cocos2dx.lib.Cocos2dxMusic: void onEnterBackground()
+org.cocos2dx.lib.Cocos2dxMusic: void onEnterForeground()
+org.cocos2dx.lib.Cocos2dxMusic: void initData()
+org.cocos2dx.lib.Cocos2dxMusic: android.media.MediaPlayer createMediaplayer(java.lang.String)
+org.cocos2dx.lib.Cocos2dxRenderer
+org.cocos2dx.lib.Cocos2dxRenderer: long NANOSECONDSPERSECOND
+org.cocos2dx.lib.Cocos2dxRenderer: long NANOSECONDSPERMICROSECOND
+org.cocos2dx.lib.Cocos2dxRenderer: long sAnimationInterval
+org.cocos2dx.lib.Cocos2dxRenderer: long mLastTickInNanoSeconds
+org.cocos2dx.lib.Cocos2dxRenderer: int mScreenWidth
+org.cocos2dx.lib.Cocos2dxRenderer: int mScreenHeight
+org.cocos2dx.lib.Cocos2dxRenderer: boolean mNativeInitCompleted
+org.cocos2dx.lib.Cocos2dxRenderer: void <clinit>()
+org.cocos2dx.lib.Cocos2dxRenderer: Cocos2dxRenderer()
+org.cocos2dx.lib.Cocos2dxRenderer: void setAnimationInterval(float)
+org.cocos2dx.lib.Cocos2dxRenderer: void setScreenWidthAndHeight(int,int)
+org.cocos2dx.lib.Cocos2dxRenderer: void onSurfaceCreated(javax.microedition.khronos.opengles.GL10,javax.microedition.khronos.egl.EGLConfig)
+org.cocos2dx.lib.Cocos2dxRenderer: void onSurfaceChanged(javax.microedition.khronos.opengles.GL10,int,int)
+org.cocos2dx.lib.Cocos2dxRenderer: void onDrawFrame(javax.microedition.khronos.opengles.GL10)
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeTouchesBegin(int,float,float)
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeTouchesEnd(int,float,float)
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeTouchesMove(int[],float[],float[])
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeTouchesCancel(int[],float[],float[])
+org.cocos2dx.lib.Cocos2dxRenderer: boolean nativeKeyEvent(int,boolean)
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeRender()
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeInit(int,int)
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeOnSurfaceChanged(int,int)
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeOnPause()
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeOnResume()
+org.cocos2dx.lib.Cocos2dxRenderer: void handleActionDown(int,float,float)
+org.cocos2dx.lib.Cocos2dxRenderer: void handleActionUp(int,float,float)
+org.cocos2dx.lib.Cocos2dxRenderer: void handleActionCancel(int[],float[],float[])
+org.cocos2dx.lib.Cocos2dxRenderer: void handleActionMove(int[],float[],float[])
+org.cocos2dx.lib.Cocos2dxRenderer: void handleKeyDown(int)
+org.cocos2dx.lib.Cocos2dxRenderer: void handleKeyUp(int)
+org.cocos2dx.lib.Cocos2dxRenderer: void handleOnPause()
+org.cocos2dx.lib.Cocos2dxRenderer: void handleOnResume()
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeInsertText(java.lang.String)
+org.cocos2dx.lib.Cocos2dxRenderer: void nativeDeleteBackward()
+org.cocos2dx.lib.Cocos2dxRenderer: java.lang.String nativeGetContentText()
+org.cocos2dx.lib.Cocos2dxRenderer: void handleInsertText(java.lang.String)
+org.cocos2dx.lib.Cocos2dxRenderer: void handleDeleteBackward()
+org.cocos2dx.lib.Cocos2dxRenderer: java.lang.String getContentText()
+org.cocos2dx.lib.Cocos2dxSound
+org.cocos2dx.lib.Cocos2dxSound: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxSound: android.content.Context mContext
+org.cocos2dx.lib.Cocos2dxSound: android.media.SoundPool mSoundPool
+org.cocos2dx.lib.Cocos2dxSound: float mLeftVolume
+org.cocos2dx.lib.Cocos2dxSound: float mRightVolume
+org.cocos2dx.lib.Cocos2dxSound: java.util.HashMap mPathStreamIDsMap
+org.cocos2dx.lib.Cocos2dxSound: java.util.HashMap mPathSoundIDMap
+org.cocos2dx.lib.Cocos2dxSound: java.util.concurrent.ConcurrentHashMap mPlayWhenLoadedEffects
+org.cocos2dx.lib.Cocos2dxSound: int MAX_SIMULTANEOUS_STREAMS_DEFAULT
+org.cocos2dx.lib.Cocos2dxSound: int MAX_SIMULTANEOUS_STREAMS_I9100
+org.cocos2dx.lib.Cocos2dxSound: float SOUND_RATE
+org.cocos2dx.lib.Cocos2dxSound: int SOUND_PRIORITY
+org.cocos2dx.lib.Cocos2dxSound: int SOUND_QUALITY
+org.cocos2dx.lib.Cocos2dxSound: int INVALID_SOUND_ID
+org.cocos2dx.lib.Cocos2dxSound: int INVALID_STREAM_ID
+org.cocos2dx.lib.Cocos2dxSound: int LOAD_TIME_OUT
+org.cocos2dx.lib.Cocos2dxSound: void <clinit>()
+org.cocos2dx.lib.Cocos2dxSound: Cocos2dxSound(android.content.Context)
+org.cocos2dx.lib.Cocos2dxSound: void initData()
+org.cocos2dx.lib.Cocos2dxSound: int preloadEffect(java.lang.String)
+org.cocos2dx.lib.Cocos2dxSound: void unloadEffect(java.lang.String)
+org.cocos2dx.lib.Cocos2dxSound: int playEffect(java.lang.String,boolean,float,float,float)
+org.cocos2dx.lib.Cocos2dxSound: void stopEffect(int)
+org.cocos2dx.lib.Cocos2dxSound: void pauseEffect(int)
+org.cocos2dx.lib.Cocos2dxSound: void resumeEffect(int)
+org.cocos2dx.lib.Cocos2dxSound: void pauseAllEffects()
+org.cocos2dx.lib.Cocos2dxSound: void resumeAllEffects()
+org.cocos2dx.lib.Cocos2dxSound: void stopAllEffects()
+org.cocos2dx.lib.Cocos2dxSound: float getEffectsVolume()
+org.cocos2dx.lib.Cocos2dxSound: void setEffectsVolume(float)
+org.cocos2dx.lib.Cocos2dxSound: void end()
+org.cocos2dx.lib.Cocos2dxSound: int createSoundIDFromAsset(java.lang.String)
+org.cocos2dx.lib.Cocos2dxSound: float clamp(float,float,float)
+org.cocos2dx.lib.Cocos2dxSound: int doPlayEffect(java.lang.String,int,boolean,float,float,float)
+org.cocos2dx.lib.Cocos2dxSound: void onEnterBackground()
+org.cocos2dx.lib.Cocos2dxSound: void onEnterForeground()
+org.cocos2dx.lib.Cocos2dxSound: java.util.concurrent.ConcurrentHashMap access$0(org.cocos2dx.lib.Cocos2dxSound)
+org.cocos2dx.lib.Cocos2dxSound: int access$1(org.cocos2dx.lib.Cocos2dxSound,java.lang.String,int,boolean,float,float,float)
+org.cocos2dx.lib.Cocos2dxSound$OnLoadCompletedListener
+org.cocos2dx.lib.Cocos2dxSound$OnLoadCompletedListener: org.cocos2dx.lib.Cocos2dxSound this$0
+org.cocos2dx.lib.Cocos2dxSound$OnLoadCompletedListener: Cocos2dxSound$OnLoadCompletedListener(org.cocos2dx.lib.Cocos2dxSound)
+org.cocos2dx.lib.Cocos2dxSound$OnLoadCompletedListener: void onLoadComplete(android.media.SoundPool,int,int)
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted: boolean isLoop
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted: float pitch
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted: float pan
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted: float gain
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted: java.lang.String path
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted: int effectID
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted: org.cocos2dx.lib.Cocos2dxSound this$0
+org.cocos2dx.lib.Cocos2dxSound$SoundInfoForLoadedCompleted: Cocos2dxSound$SoundInfoForLoadedCompleted(org.cocos2dx.lib.Cocos2dxSound,java.lang.String,boolean,float,float,float)
+org.cocos2dx.lib.Cocos2dxTextInputWraper
+org.cocos2dx.lib.Cocos2dxTextInputWraper: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxTextInputWraper: org.cocos2dx.lib.Cocos2dxGLSurfaceView mCocos2dxGLSurfaceView
+org.cocos2dx.lib.Cocos2dxTextInputWraper: java.lang.String mText
+org.cocos2dx.lib.Cocos2dxTextInputWraper: java.lang.String mOriginText
+org.cocos2dx.lib.Cocos2dxTextInputWraper: void <clinit>()
+org.cocos2dx.lib.Cocos2dxTextInputWraper: Cocos2dxTextInputWraper(org.cocos2dx.lib.Cocos2dxGLSurfaceView)
+org.cocos2dx.lib.Cocos2dxTextInputWraper: boolean isFullScreenEdit()
+org.cocos2dx.lib.Cocos2dxTextInputWraper: void setOriginText(java.lang.String)
+org.cocos2dx.lib.Cocos2dxTextInputWraper: void afterTextChanged(android.text.Editable)
+org.cocos2dx.lib.Cocos2dxTextInputWraper: void beforeTextChanged(java.lang.CharSequence,int,int,int)
+org.cocos2dx.lib.Cocos2dxTextInputWraper: void onTextChanged(java.lang.CharSequence,int,int,int)
+org.cocos2dx.lib.Cocos2dxTextInputWraper: boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent)
+org.cocos2dx.lib.Cocos2dxTypefaces
+org.cocos2dx.lib.Cocos2dxTypefaces: java.util.HashMap sTypefaceCache
+org.cocos2dx.lib.Cocos2dxTypefaces: void <clinit>()
+org.cocos2dx.lib.Cocos2dxTypefaces: Cocos2dxTypefaces()
+org.cocos2dx.lib.Cocos2dxTypefaces: android.graphics.Typeface get(android.content.Context,java.lang.String)
+org.cocos2dx.lib.Cocos2dxVideoHelper
+org.cocos2dx.lib.Cocos2dxVideoHelper: android.widget.FrameLayout mLayout
+org.cocos2dx.lib.Cocos2dxVideoHelper: org.cocos2dx.lib.Cocos2dxActivity mActivity
+org.cocos2dx.lib.Cocos2dxVideoHelper: android.util.SparseArray sVideoViews
+org.cocos2dx.lib.Cocos2dxVideoHelper: org.cocos2dx.lib.Cocos2dxVideoHelper$VideoHandler mVideoHandler
+org.cocos2dx.lib.Cocos2dxVideoHelper: int videoTag
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskCreate
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskRemove
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskSetSource
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskSetRect
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskStart
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskPause
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskResume
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskStop
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskSeek
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskSetVisible
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskRestart
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskKeepRatio
+org.cocos2dx.lib.Cocos2dxVideoHelper: int VideoTaskFullScreen
+org.cocos2dx.lib.Cocos2dxVideoHelper: int KeyEventBack
+org.cocos2dx.lib.Cocos2dxVideoHelper: org.cocos2dx.lib.Cocos2dxVideoView$OnVideoEventListener videoEventListener
+org.cocos2dx.lib.Cocos2dxVideoHelper: void <clinit>()
+org.cocos2dx.lib.Cocos2dxVideoHelper: Cocos2dxVideoHelper(org.cocos2dx.lib.Cocos2dxActivity,android.widget.FrameLayout)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void nativeExecuteVideoCallback(int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: int createVideoWidget()
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _createVideoView(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void removeVideoWidget(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _removeVideoView(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void setVideoUrl(int,int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _setVideoURL(int,int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void setVideoRect(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _setVideoRect(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void setFullScreenEnabled(int,boolean,int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _setFullScreenEnabled(int,boolean,int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void onBackKeyEvent()
+org.cocos2dx.lib.Cocos2dxVideoHelper: void startVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _startVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void pauseVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _pauseVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void resumeVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _resumeVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void stopVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _stopVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void restartVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _restartVideo(int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void seekVideoTo(int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _seekVideoTo(int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void setVideoVisible(int,boolean)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _setVideoVisible(int,boolean)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void setVideoKeepRatioEnabled(int,boolean)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void _setVideoKeepRatio(int,boolean)
+org.cocos2dx.lib.Cocos2dxVideoHelper: org.cocos2dx.lib.Cocos2dxActivity access$0(org.cocos2dx.lib.Cocos2dxVideoHelper)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$1(org.cocos2dx.lib.Cocos2dxVideoHelper,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$2(org.cocos2dx.lib.Cocos2dxVideoHelper,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$3(org.cocos2dx.lib.Cocos2dxVideoHelper,int,int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$4(org.cocos2dx.lib.Cocos2dxVideoHelper,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$5(org.cocos2dx.lib.Cocos2dxVideoHelper,int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$6(org.cocos2dx.lib.Cocos2dxVideoHelper,int,boolean,int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$7(org.cocos2dx.lib.Cocos2dxVideoHelper,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$8(org.cocos2dx.lib.Cocos2dxVideoHelper,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$9(org.cocos2dx.lib.Cocos2dxVideoHelper,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$10(org.cocos2dx.lib.Cocos2dxVideoHelper,int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$11(org.cocos2dx.lib.Cocos2dxVideoHelper,int,boolean)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$12(org.cocos2dx.lib.Cocos2dxVideoHelper,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$13(org.cocos2dx.lib.Cocos2dxVideoHelper,int,boolean)
+org.cocos2dx.lib.Cocos2dxVideoHelper: void access$14(org.cocos2dx.lib.Cocos2dxVideoHelper)
+org.cocos2dx.lib.Cocos2dxVideoHelper$1
+org.cocos2dx.lib.Cocos2dxVideoHelper$1: org.cocos2dx.lib.Cocos2dxVideoHelper this$0
+org.cocos2dx.lib.Cocos2dxVideoHelper$1: Cocos2dxVideoHelper$1(org.cocos2dx.lib.Cocos2dxVideoHelper)
+org.cocos2dx.lib.Cocos2dxVideoHelper$1: void onVideoEvent(int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoEventRunnable
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoEventRunnable: int mVideoTag
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoEventRunnable: int mVideoEvent
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoEventRunnable: org.cocos2dx.lib.Cocos2dxVideoHelper this$0
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoEventRunnable: Cocos2dxVideoHelper$VideoEventRunnable(org.cocos2dx.lib.Cocos2dxVideoHelper,int,int)
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoEventRunnable: void run()
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoHandler
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoHandler: java.lang.ref.WeakReference mReference
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoHandler: Cocos2dxVideoHelper$VideoHandler(org.cocos2dx.lib.Cocos2dxVideoHelper)
+org.cocos2dx.lib.Cocos2dxVideoHelper$VideoHandler: void handleMessage(android.os.Message)
+org.cocos2dx.lib.Cocos2dxVideoView
+org.cocos2dx.lib.Cocos2dxVideoView: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxVideoView: android.net.Uri mVideoUri
+org.cocos2dx.lib.Cocos2dxVideoView: int mDuration
+org.cocos2dx.lib.Cocos2dxVideoView: int STATE_ERROR
+org.cocos2dx.lib.Cocos2dxVideoView: int STATE_IDLE
+org.cocos2dx.lib.Cocos2dxVideoView: int STATE_PREPARING
+org.cocos2dx.lib.Cocos2dxVideoView: int STATE_PREPARED
+org.cocos2dx.lib.Cocos2dxVideoView: int STATE_PLAYING
+org.cocos2dx.lib.Cocos2dxVideoView: int STATE_PAUSED
+org.cocos2dx.lib.Cocos2dxVideoView: int STATE_PLAYBACK_COMPLETED
+org.cocos2dx.lib.Cocos2dxVideoView: int mCurrentState
+org.cocos2dx.lib.Cocos2dxVideoView: int mTargetState
+org.cocos2dx.lib.Cocos2dxVideoView: android.view.SurfaceHolder mSurfaceHolder
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer mMediaPlayer
+org.cocos2dx.lib.Cocos2dxVideoView: int mVideoWidth
+org.cocos2dx.lib.Cocos2dxVideoView: int mVideoHeight
+org.cocos2dx.lib.Cocos2dxVideoView: org.cocos2dx.lib.Cocos2dxVideoView$OnVideoEventListener mOnVideoEventListener
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnPreparedListener mOnPreparedListener
+org.cocos2dx.lib.Cocos2dxVideoView: int mCurrentBufferPercentage
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnErrorListener mOnErrorListener
+org.cocos2dx.lib.Cocos2dxVideoView: int mSeekWhenPrepared
+org.cocos2dx.lib.Cocos2dxVideoView: org.cocos2dx.lib.Cocos2dxActivity mCocos2dxActivity
+org.cocos2dx.lib.Cocos2dxVideoView: int mViewLeft
+org.cocos2dx.lib.Cocos2dxVideoView: int mViewTop
+org.cocos2dx.lib.Cocos2dxVideoView: int mViewWidth
+org.cocos2dx.lib.Cocos2dxVideoView: int mViewHeight
+org.cocos2dx.lib.Cocos2dxVideoView: int mVisibleLeft
+org.cocos2dx.lib.Cocos2dxVideoView: int mVisibleTop
+org.cocos2dx.lib.Cocos2dxVideoView: int mVisibleWidth
+org.cocos2dx.lib.Cocos2dxVideoView: int mVisibleHeight
+org.cocos2dx.lib.Cocos2dxVideoView: boolean mFullScreenEnabled
+org.cocos2dx.lib.Cocos2dxVideoView: int mFullScreenWidth
+org.cocos2dx.lib.Cocos2dxVideoView: int mFullScreenHeight
+org.cocos2dx.lib.Cocos2dxVideoView: int mViewTag
+org.cocos2dx.lib.Cocos2dxVideoView: boolean mNeedResume
+org.cocos2dx.lib.Cocos2dxVideoView: boolean mIsAssetRouse
+org.cocos2dx.lib.Cocos2dxVideoView: java.lang.String mVideoFilePath
+org.cocos2dx.lib.Cocos2dxVideoView: java.lang.String AssetResourceRoot
+org.cocos2dx.lib.Cocos2dxVideoView: boolean mKeepRatio
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnVideoSizeChangedListener mSizeChangedListener
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnPreparedListener mPreparedListener
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnCompletionListener mCompletionListener
+org.cocos2dx.lib.Cocos2dxVideoView: int EVENT_PLAYING
+org.cocos2dx.lib.Cocos2dxVideoView: int EVENT_PAUSED
+org.cocos2dx.lib.Cocos2dxVideoView: int EVENT_STOPPED
+org.cocos2dx.lib.Cocos2dxVideoView: int EVENT_COMPLETED
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnErrorListener mErrorListener
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnBufferingUpdateListener mBufferingUpdateListener
+org.cocos2dx.lib.Cocos2dxVideoView: android.view.SurfaceHolder$Callback mSHCallback
+org.cocos2dx.lib.Cocos2dxVideoView: Cocos2dxVideoView(org.cocos2dx.lib.Cocos2dxActivity,int)
+org.cocos2dx.lib.Cocos2dxVideoView: void onMeasure(int,int)
+org.cocos2dx.lib.Cocos2dxVideoView: void setVideoRect(int,int,int,int)
+org.cocos2dx.lib.Cocos2dxVideoView: void setFullScreenEnabled(boolean,int,int)
+org.cocos2dx.lib.Cocos2dxVideoView: int resolveAdjustedSize(int,int)
+org.cocos2dx.lib.Cocos2dxVideoView: void setVisibility(int)
+org.cocos2dx.lib.Cocos2dxVideoView: void initVideoView()
+org.cocos2dx.lib.Cocos2dxVideoView: boolean onTouchEvent(android.view.MotionEvent)
+org.cocos2dx.lib.Cocos2dxVideoView: void setVideoFileName(java.lang.String)
+org.cocos2dx.lib.Cocos2dxVideoView: void setVideoURL(java.lang.String)
+org.cocos2dx.lib.Cocos2dxVideoView: void setVideoURI(android.net.Uri,java.util.Map)
+org.cocos2dx.lib.Cocos2dxVideoView: void stopPlayback()
+org.cocos2dx.lib.Cocos2dxVideoView: void openVideo()
+org.cocos2dx.lib.Cocos2dxVideoView: void setKeepRatio(boolean)
+org.cocos2dx.lib.Cocos2dxVideoView: void fixSize()
+org.cocos2dx.lib.Cocos2dxVideoView: void fixSize(int,int,int,int)
+org.cocos2dx.lib.Cocos2dxVideoView: void setOnPreparedListener(android.media.MediaPlayer$OnPreparedListener)
+org.cocos2dx.lib.Cocos2dxVideoView: void setOnCompletionListener(org.cocos2dx.lib.Cocos2dxVideoView$OnVideoEventListener)
+org.cocos2dx.lib.Cocos2dxVideoView: void setOnErrorListener(android.media.MediaPlayer$OnErrorListener)
+org.cocos2dx.lib.Cocos2dxVideoView: void release(boolean)
+org.cocos2dx.lib.Cocos2dxVideoView: void start()
+org.cocos2dx.lib.Cocos2dxVideoView: void pause()
+org.cocos2dx.lib.Cocos2dxVideoView: void stop()
+org.cocos2dx.lib.Cocos2dxVideoView: void suspend()
+org.cocos2dx.lib.Cocos2dxVideoView: void resume()
+org.cocos2dx.lib.Cocos2dxVideoView: void restart()
+org.cocos2dx.lib.Cocos2dxVideoView: int getDuration()
+org.cocos2dx.lib.Cocos2dxVideoView: int getCurrentPosition()
+org.cocos2dx.lib.Cocos2dxVideoView: void seekTo(int)
+org.cocos2dx.lib.Cocos2dxVideoView: boolean isPlaying()
+org.cocos2dx.lib.Cocos2dxVideoView: int getBufferPercentage()
+org.cocos2dx.lib.Cocos2dxVideoView: boolean isInPlaybackState()
+org.cocos2dx.lib.Cocos2dxVideoView: boolean canPause()
+org.cocos2dx.lib.Cocos2dxVideoView: boolean canSeekBackward()
+org.cocos2dx.lib.Cocos2dxVideoView: boolean canSeekForward()
+org.cocos2dx.lib.Cocos2dxVideoView: int getAudioSessionId()
+org.cocos2dx.lib.Cocos2dxVideoView: void access$0(org.cocos2dx.lib.Cocos2dxVideoView,int)
+org.cocos2dx.lib.Cocos2dxVideoView: void access$1(org.cocos2dx.lib.Cocos2dxVideoView,int)
+org.cocos2dx.lib.Cocos2dxVideoView: int access$2(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: int access$3(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: void access$4(org.cocos2dx.lib.Cocos2dxVideoView,int)
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnPreparedListener access$5(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer access$6(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: int access$7(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: int access$8(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: void access$9(org.cocos2dx.lib.Cocos2dxVideoView,int)
+org.cocos2dx.lib.Cocos2dxVideoView: void access$10(org.cocos2dx.lib.Cocos2dxVideoView,boolean)
+org.cocos2dx.lib.Cocos2dxVideoView: org.cocos2dx.lib.Cocos2dxVideoView$OnVideoEventListener access$11(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: int access$12(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: java.lang.String access$13(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: android.media.MediaPlayer$OnErrorListener access$14(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView: void access$15(org.cocos2dx.lib.Cocos2dxVideoView,int)
+org.cocos2dx.lib.Cocos2dxVideoView: void access$16(org.cocos2dx.lib.Cocos2dxVideoView,android.view.SurfaceHolder)
+org.cocos2dx.lib.Cocos2dxVideoView: void access$17(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView$1
+org.cocos2dx.lib.Cocos2dxVideoView$1: org.cocos2dx.lib.Cocos2dxVideoView this$0
+org.cocos2dx.lib.Cocos2dxVideoView$1: Cocos2dxVideoView$1(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView$1: void onVideoSizeChanged(android.media.MediaPlayer,int,int)
+org.cocos2dx.lib.Cocos2dxVideoView$2
+org.cocos2dx.lib.Cocos2dxVideoView$2: org.cocos2dx.lib.Cocos2dxVideoView this$0
+org.cocos2dx.lib.Cocos2dxVideoView$2: Cocos2dxVideoView$2(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView$2: void onPrepared(android.media.MediaPlayer)
+org.cocos2dx.lib.Cocos2dxVideoView$3
+org.cocos2dx.lib.Cocos2dxVideoView$3: org.cocos2dx.lib.Cocos2dxVideoView this$0
+org.cocos2dx.lib.Cocos2dxVideoView$3: Cocos2dxVideoView$3(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView$3: void onCompletion(android.media.MediaPlayer)
+org.cocos2dx.lib.Cocos2dxVideoView$4
+org.cocos2dx.lib.Cocos2dxVideoView$4: org.cocos2dx.lib.Cocos2dxVideoView this$0
+org.cocos2dx.lib.Cocos2dxVideoView$4: Cocos2dxVideoView$4(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView$4: boolean onError(android.media.MediaPlayer,int,int)
+org.cocos2dx.lib.Cocos2dxVideoView$4: org.cocos2dx.lib.Cocos2dxVideoView access$0(org.cocos2dx.lib.Cocos2dxVideoView$4)
+org.cocos2dx.lib.Cocos2dxVideoView$4$1
+org.cocos2dx.lib.Cocos2dxVideoView$4$1: org.cocos2dx.lib.Cocos2dxVideoView$4 this$1
+org.cocos2dx.lib.Cocos2dxVideoView$4$1: Cocos2dxVideoView$4$1(org.cocos2dx.lib.Cocos2dxVideoView$4)
+org.cocos2dx.lib.Cocos2dxVideoView$4$1: void onClick(android.content.DialogInterface,int)
+org.cocos2dx.lib.Cocos2dxVideoView$5
+org.cocos2dx.lib.Cocos2dxVideoView$5: org.cocos2dx.lib.Cocos2dxVideoView this$0
+org.cocos2dx.lib.Cocos2dxVideoView$5: Cocos2dxVideoView$5(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView$5: void onBufferingUpdate(android.media.MediaPlayer,int)
+org.cocos2dx.lib.Cocos2dxVideoView$6
+org.cocos2dx.lib.Cocos2dxVideoView$6: org.cocos2dx.lib.Cocos2dxVideoView this$0
+org.cocos2dx.lib.Cocos2dxVideoView$6: Cocos2dxVideoView$6(org.cocos2dx.lib.Cocos2dxVideoView)
+org.cocos2dx.lib.Cocos2dxVideoView$6: void surfaceChanged(android.view.SurfaceHolder,int,int,int)
+org.cocos2dx.lib.Cocos2dxVideoView$6: void surfaceCreated(android.view.SurfaceHolder)
+org.cocos2dx.lib.Cocos2dxVideoView$6: void surfaceDestroyed(android.view.SurfaceHolder)
+org.cocos2dx.lib.Cocos2dxVideoView$OnVideoEventListener
+org.cocos2dx.lib.Cocos2dxVideoView$OnVideoEventListener: void onVideoEvent(int,int)
+org.cocos2dx.lib.Cocos2dxWebView
+org.cocos2dx.lib.Cocos2dxWebView: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxWebView: int mViewTag
+org.cocos2dx.lib.Cocos2dxWebView: java.lang.String mJSScheme
+org.cocos2dx.lib.Cocos2dxWebView: void <clinit>()
+org.cocos2dx.lib.Cocos2dxWebView: Cocos2dxWebView(android.content.Context)
+org.cocos2dx.lib.Cocos2dxWebView: Cocos2dxWebView(android.content.Context,int)
+org.cocos2dx.lib.Cocos2dxWebView: void setJavascriptInterfaceScheme(java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebView: void setScalesPageToFit(boolean)
+org.cocos2dx.lib.Cocos2dxWebView: void setWebViewRect(int,int,int,int)
+org.cocos2dx.lib.Cocos2dxWebView: java.lang.String access$0(org.cocos2dx.lib.Cocos2dxWebView)
+org.cocos2dx.lib.Cocos2dxWebView: int access$1(org.cocos2dx.lib.Cocos2dxWebView)
+org.cocos2dx.lib.Cocos2dxWebView: java.lang.String access$2()
+org.cocos2dx.lib.Cocos2dxWebView$Cocos2dxWebViewClient
+org.cocos2dx.lib.Cocos2dxWebView$Cocos2dxWebViewClient: org.cocos2dx.lib.Cocos2dxWebView this$0
+org.cocos2dx.lib.Cocos2dxWebView$Cocos2dxWebViewClient: Cocos2dxWebView$Cocos2dxWebViewClient(org.cocos2dx.lib.Cocos2dxWebView)
+org.cocos2dx.lib.Cocos2dxWebView$Cocos2dxWebViewClient: boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebView$Cocos2dxWebViewClient: void onPageFinished(android.webkit.WebView,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebView$Cocos2dxWebViewClient: void onReceivedError(android.webkit.WebView,int,java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper
+org.cocos2dx.lib.Cocos2dxWebViewHelper: java.lang.String TAG
+org.cocos2dx.lib.Cocos2dxWebViewHelper: android.os.Handler sHandler
+org.cocos2dx.lib.Cocos2dxWebViewHelper: org.cocos2dx.lib.Cocos2dxActivity sCocos2dxActivity
+org.cocos2dx.lib.Cocos2dxWebViewHelper: android.widget.FrameLayout sLayout
+org.cocos2dx.lib.Cocos2dxWebViewHelper: android.util.SparseArray webViews
+org.cocos2dx.lib.Cocos2dxWebViewHelper: int viewTag
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void <clinit>()
+org.cocos2dx.lib.Cocos2dxWebViewHelper: Cocos2dxWebViewHelper(android.widget.FrameLayout)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: boolean shouldStartLoading(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: boolean _shouldStartLoading(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void didFinishLoading(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void _didFinishLoading(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void didFailLoading(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void _didFailLoading(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void onJsCallback(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void _onJsCallback(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: int createWebView()
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void removeWebView(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void setVisible(int,boolean)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void setWebViewRect(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void setJavascriptInterfaceScheme(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void loadData(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void loadHTMLString(int,java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void loadUrl(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void loadFile(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void stopLoading(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void reload(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: java.lang.Object callInMainThread(java.util.concurrent.Callable)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: boolean canGoBack(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: boolean canGoForward(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void goBack(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void goForward(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void evaluateJS(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: void setScalesPageToFit(int,boolean)
+org.cocos2dx.lib.Cocos2dxWebViewHelper: org.cocos2dx.lib.Cocos2dxActivity access$0()
+org.cocos2dx.lib.Cocos2dxWebViewHelper: android.widget.FrameLayout access$1()
+org.cocos2dx.lib.Cocos2dxWebViewHelper: android.util.SparseArray access$2()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$1
+org.cocos2dx.lib.Cocos2dxWebViewHelper$1: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$1: Cocos2dxWebViewHelper$1(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$1: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$10
+org.cocos2dx.lib.Cocos2dxWebViewHelper$10: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$10: Cocos2dxWebViewHelper$10(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$10: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$11
+org.cocos2dx.lib.Cocos2dxWebViewHelper$11: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$11: Cocos2dxWebViewHelper$11(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$11: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$12
+org.cocos2dx.lib.Cocos2dxWebViewHelper$12: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$12: Cocos2dxWebViewHelper$12(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$12: java.lang.Boolean call()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$12: java.lang.Object call()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$13
+org.cocos2dx.lib.Cocos2dxWebViewHelper$13: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$13: Cocos2dxWebViewHelper$13(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$13: java.lang.Boolean call()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$13: java.lang.Object call()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$14
+org.cocos2dx.lib.Cocos2dxWebViewHelper$14: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$14: Cocos2dxWebViewHelper$14(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$14: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$15
+org.cocos2dx.lib.Cocos2dxWebViewHelper$15: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$15: Cocos2dxWebViewHelper$15(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$15: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$16
+org.cocos2dx.lib.Cocos2dxWebViewHelper$16: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$16: java.lang.String val$js
+org.cocos2dx.lib.Cocos2dxWebViewHelper$16: Cocos2dxWebViewHelper$16(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$16: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$17
+org.cocos2dx.lib.Cocos2dxWebViewHelper$17: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$17: boolean val$scalesPageToFit
+org.cocos2dx.lib.Cocos2dxWebViewHelper$17: Cocos2dxWebViewHelper$17(int,boolean)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$17: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$2
+org.cocos2dx.lib.Cocos2dxWebViewHelper$2: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$2: Cocos2dxWebViewHelper$2(int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$2: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$3
+org.cocos2dx.lib.Cocos2dxWebViewHelper$3: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$3: boolean val$visible
+org.cocos2dx.lib.Cocos2dxWebViewHelper$3: Cocos2dxWebViewHelper$3(int,boolean)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$3: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$4
+org.cocos2dx.lib.Cocos2dxWebViewHelper$4: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$4: int val$left
+org.cocos2dx.lib.Cocos2dxWebViewHelper$4: int val$top
+org.cocos2dx.lib.Cocos2dxWebViewHelper$4: int val$maxWidth
+org.cocos2dx.lib.Cocos2dxWebViewHelper$4: int val$maxHeight
+org.cocos2dx.lib.Cocos2dxWebViewHelper$4: Cocos2dxWebViewHelper$4(int,int,int,int,int)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$4: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$5
+org.cocos2dx.lib.Cocos2dxWebViewHelper$5: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$5: java.lang.String val$scheme
+org.cocos2dx.lib.Cocos2dxWebViewHelper$5: Cocos2dxWebViewHelper$5(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$5: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$6
+org.cocos2dx.lib.Cocos2dxWebViewHelper$6: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$6: java.lang.String val$baseURL
+org.cocos2dx.lib.Cocos2dxWebViewHelper$6: java.lang.String val$data
+org.cocos2dx.lib.Cocos2dxWebViewHelper$6: java.lang.String val$mimeType
+org.cocos2dx.lib.Cocos2dxWebViewHelper$6: java.lang.String val$encoding
+org.cocos2dx.lib.Cocos2dxWebViewHelper$6: Cocos2dxWebViewHelper$6(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$6: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$7
+org.cocos2dx.lib.Cocos2dxWebViewHelper$7: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$7: java.lang.String val$baseUrl
+org.cocos2dx.lib.Cocos2dxWebViewHelper$7: java.lang.String val$data
+org.cocos2dx.lib.Cocos2dxWebViewHelper$7: Cocos2dxWebViewHelper$7(int,java.lang.String,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$7: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$8
+org.cocos2dx.lib.Cocos2dxWebViewHelper$8: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$8: java.lang.String val$url
+org.cocos2dx.lib.Cocos2dxWebViewHelper$8: Cocos2dxWebViewHelper$8(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$8: void run()
+org.cocos2dx.lib.Cocos2dxWebViewHelper$9
+org.cocos2dx.lib.Cocos2dxWebViewHelper$9: int val$index
+org.cocos2dx.lib.Cocos2dxWebViewHelper$9: java.lang.String val$filePath
+org.cocos2dx.lib.Cocos2dxWebViewHelper$9: Cocos2dxWebViewHelper$9(int,java.lang.String)
+org.cocos2dx.lib.Cocos2dxWebViewHelper$9: void run()
+org.cocos2dx.lib.GameControllerAdapter
+org.cocos2dx.lib.GameControllerAdapter: java.util.ArrayList sRunnableFrameStartList
+org.cocos2dx.lib.GameControllerAdapter: void <clinit>()
+org.cocos2dx.lib.GameControllerAdapter: GameControllerAdapter()
+org.cocos2dx.lib.GameControllerAdapter: void addRunnableToFrameStartList(java.lang.Runnable)
+org.cocos2dx.lib.GameControllerAdapter: void removeRunnableFromFrameStartList(java.lang.Runnable)
+org.cocos2dx.lib.GameControllerAdapter: void onDrawFrameStart()
+org.cocos2dx.lib.GameControllerAdapter: void onConnected(java.lang.String,int)
+org.cocos2dx.lib.GameControllerAdapter: void onDisconnected(java.lang.String,int)
+org.cocos2dx.lib.GameControllerAdapter: void onButtonEvent(java.lang.String,int,int,boolean,float,boolean)
+org.cocos2dx.lib.GameControllerAdapter: void onAxisEvent(java.lang.String,int,int,float,boolean)
+org.cocos2dx.lib.GameControllerAdapter: void nativeControllerConnected(java.lang.String,int)
+org.cocos2dx.lib.GameControllerAdapter: void nativeControllerDisconnected(java.lang.String,int)
+org.cocos2dx.lib.GameControllerAdapter: void nativeControllerButtonEvent(java.lang.String,int,int,boolean,float,boolean)
+org.cocos2dx.lib.GameControllerAdapter: void nativeControllerAxisEvent(java.lang.String,int,int,float,boolean)
+org.cocos2dx.lib.GameControllerAdapter: void access$0(java.lang.String,int)
+org.cocos2dx.lib.GameControllerAdapter: void access$1(java.lang.String,int)
+org.cocos2dx.lib.GameControllerAdapter: void access$2(java.lang.String,int,int,boolean,float,boolean)
+org.cocos2dx.lib.GameControllerAdapter: void access$3(java.lang.String,int,int,float,boolean)
+org.cocos2dx.lib.GameControllerAdapter$1
+org.cocos2dx.lib.GameControllerAdapter$1: java.lang.String val$vendorName
+org.cocos2dx.lib.GameControllerAdapter$1: int val$controller
+org.cocos2dx.lib.GameControllerAdapter$1: GameControllerAdapter$1(java.lang.String,int)
+org.cocos2dx.lib.GameControllerAdapter$1: void run()
+org.cocos2dx.lib.GameControllerAdapter$2
+org.cocos2dx.lib.GameControllerAdapter$2: java.lang.String val$vendorName
+org.cocos2dx.lib.GameControllerAdapter$2: int val$controller
+org.cocos2dx.lib.GameControllerAdapter$2: GameControllerAdapter$2(java.lang.String,int)
+org.cocos2dx.lib.GameControllerAdapter$2: void run()
+org.cocos2dx.lib.GameControllerAdapter$3
+org.cocos2dx.lib.GameControllerAdapter$3: java.lang.String val$vendorName
+org.cocos2dx.lib.GameControllerAdapter$3: int val$controller
+org.cocos2dx.lib.GameControllerAdapter$3: int val$button
+org.cocos2dx.lib.GameControllerAdapter$3: boolean val$isPressed
+org.cocos2dx.lib.GameControllerAdapter$3: float val$value
+org.cocos2dx.lib.GameControllerAdapter$3: boolean val$isAnalog
+org.cocos2dx.lib.GameControllerAdapter$3: GameControllerAdapter$3(java.lang.String,int,int,boolean,float,boolean)
+org.cocos2dx.lib.GameControllerAdapter$3: void run()
+org.cocos2dx.lib.GameControllerAdapter$4
+org.cocos2dx.lib.GameControllerAdapter$4: java.lang.String val$vendorName
+org.cocos2dx.lib.GameControllerAdapter$4: int val$controller
+org.cocos2dx.lib.GameControllerAdapter$4: int val$axisID
+org.cocos2dx.lib.GameControllerAdapter$4: float val$value
+org.cocos2dx.lib.GameControllerAdapter$4: boolean val$isAnalog
+org.cocos2dx.lib.GameControllerAdapter$4: GameControllerAdapter$4(java.lang.String,int,int,float,boolean)
+org.cocos2dx.lib.GameControllerAdapter$4: void run()
+org.cocos2dx.lib.GameControllerDelegate
+org.cocos2dx.lib.GameControllerDelegate: int KEY_BASE
+org.cocos2dx.lib.GameControllerDelegate: int THUMBSTICK_LEFT_X
+org.cocos2dx.lib.GameControllerDelegate: int THUMBSTICK_LEFT_Y
+org.cocos2dx.lib.GameControllerDelegate: int THUMBSTICK_RIGHT_X
+org.cocos2dx.lib.GameControllerDelegate: int THUMBSTICK_RIGHT_Y
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_A
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_B
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_C
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_X
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_Y
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_Z
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_DPAD_UP
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_DPAD_DOWN
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_DPAD_LEFT
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_DPAD_RIGHT
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_DPAD_CENTER
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_LEFT_SHOULDER
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_RIGHT_SHOULDER
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_LEFT_TRIGGER
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_RIGHT_TRIGGER
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_LEFT_THUMBSTICK
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_RIGHT_THUMBSTICK
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_START
+org.cocos2dx.lib.GameControllerDelegate: int BUTTON_SELECT
+org.cocos2dx.lib.GameControllerDelegate: void onCreate(android.content.Context)
+org.cocos2dx.lib.GameControllerDelegate: void onPause()
+org.cocos2dx.lib.GameControllerDelegate: void onResume()
+org.cocos2dx.lib.GameControllerDelegate: void onDestroy()
+org.cocos2dx.lib.GameControllerDelegate: boolean dispatchKeyEvent(android.view.KeyEvent)
+org.cocos2dx.lib.GameControllerDelegate: boolean dispatchGenericMotionEvent(android.view.MotionEvent)
+org.cocos2dx.lib.GameControllerDelegate: void setControllerEventListener(org.cocos2dx.lib.GameControllerDelegate$ControllerEventListener)
+org.cocos2dx.lib.GameControllerDelegate$ControllerEventListener
+org.cocos2dx.lib.GameControllerDelegate$ControllerEventListener: void onButtonEvent(java.lang.String,int,int,boolean,float,boolean)
+org.cocos2dx.lib.GameControllerDelegate$ControllerEventListener: void onAxisEvent(java.lang.String,int,int,float,boolean)
+org.cocos2dx.lib.GameControllerDelegate$ControllerEventListener: void onConnected(java.lang.String,int)
+org.cocos2dx.lib.GameControllerDelegate$ControllerEventListener: void onDisconnected(java.lang.String,int)
+org.cocos2dx.lib.GameControllerUtils
+org.cocos2dx.lib.GameControllerUtils: GameControllerUtils()
+org.cocos2dx.lib.GameControllerUtils: void ensureDirectoryExist(java.lang.String)
+org.cocos2dx.lib.GameControllerUtils: java.lang.String readJsonFile(java.lang.String)
+org.cocos2dx.lib.ResizeLayout
+org.cocos2dx.lib.ResizeLayout: boolean mEnableForceDoLayout
+org.cocos2dx.lib.ResizeLayout: ResizeLayout(android.content.Context)
+org.cocos2dx.lib.ResizeLayout: ResizeLayout(android.content.Context,android.util.AttributeSet)
+org.cocos2dx.lib.ResizeLayout: void setEnableForceDoLayout(boolean)
+org.cocos2dx.lib.ResizeLayout: void onLayout(boolean,int,int,int,int)
+org.cocos2dx.lib.ResizeLayout$1
+org.cocos2dx.lib.ResizeLayout$1: org.cocos2dx.lib.ResizeLayout this$0
+org.cocos2dx.lib.ResizeLayout$1: ResizeLayout$1(org.cocos2dx.lib.ResizeLayout)
+org.cocos2dx.lib.ResizeLayout$1: void run()
+org.lxqcgame.com.AppActivity
+org.lxqcgame.com.AppActivity: AppActivity()
+org.lxqcgame.com.BatteryBroadcastReceiver
+org.lxqcgame.com.CppHelper
+org.lxqcgame.com.CppHelper: void payResult(int,java.lang.String)
+org.lxqcgame.com.CppHelper: void IBpayResult(int)
+org.lxqcgame.com.CppHelper: void LoginSucess(java.lang.String)
+org.lxqcgame.com.CppHelper: void WeixinCode(java.lang.String)
+org.lxqcgame.com.CppHelper: void InviteFriendSucess()
+org.lxqcgame.com.CppHelper: void WeixinPaySuccess(java.lang.String)
+org.lxqcgame.com.CppHelper: void setPercent(int,int)
+org.lxqcgame.com.CppHelper: void DownFinished()
+org.lxqcgame.com.JniInterface
+org.lxqcgame.com.JniInterface: void LoadImgFilePath(java.lang.String,int)
+org.lxqcgame.com.loading.LoadingView
+org.lxqcgame.com.loading.LoadingView: LoadingView(android.content.Context,android.util.AttributeSet)
+org.lxqcgame.com.wxapi.WXEntryActivity
+org.lxqcgame.com.wxapi.WXEntryActivity: WXEntryActivity()
+org.lxqcgame.com.wxapi.WXPayEntryActivity
+org.lxqcgame.com.wxapi.WXPayEntryActivity: WXPayEntryActivity()
