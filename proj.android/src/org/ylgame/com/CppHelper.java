@@ -16,7 +16,7 @@ public class CppHelper {
 	
 	public static void AliPay(String appid,String timestamp,String orderinfo,String privatekey){
 		System.out.println("AliPay:"+appid+","+timestamp+","+orderinfo+","+privatekey);
-		AppActivity.main.AliPay(appid,timestamp,orderinfo,privatekey);
+		AppActivity.main.AliPay(appid,timestamp,orderinfo,privatekey,"http://www.lesharecs.com/alipaycallback");
 	}
 }
 

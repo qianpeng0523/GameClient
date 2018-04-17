@@ -20,23 +20,16 @@ public class OrderInfoUtil2_0 {
 	 * @param target_id
 	 * @return
 	 */
-	public static Map<String, String> buildOrderParamMap(String app_id,String content, boolean rsa2) {
+	public static Map<String, String> buildOrderParamMap(String app_id,String content,String timestamp,String notifyurl, boolean rsa2) {
 		Map<String, String> keyValues = new HashMap<String, String>();
-
 		keyValues.put("app_id", app_id);
-
 		keyValues.put("biz_content", content);
-		
 		keyValues.put("charset", "utf-8");
-
 		keyValues.put("method", "alipay.trade.app.pay");
-
+		keyValues.put("notify_url", notifyurl);
 		keyValues.put("sign_type", rsa2 ? "RSA2" : "RSA");
-
-		keyValues.put("timestamp", "2016-07-29 16:55:53");
-
+		keyValues.put("timestamp", timestamp);
 		keyValues.put("version", "1.0");
-		
 		return keyValues;
 	}
 	
