@@ -27,6 +27,7 @@ public class OrderInfoUtil2_0 {
 		keyValues.put("charset", "utf-8");
 		keyValues.put("method", "alipay.trade.app.pay");
 		keyValues.put("notify_url", notifyurl);
+		keyValues.put("return_url", notifyurl);
 		keyValues.put("sign_type", rsa2 ? "RSA2" : "RSA");
 		keyValues.put("timestamp", timestamp);
 		keyValues.put("version", "1.0");

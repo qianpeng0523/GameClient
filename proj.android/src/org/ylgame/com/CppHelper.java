@@ -4,6 +4,7 @@ package org.ylgame.com;
 public class CppHelper {
 	
 	public native static void WXLoginSucess(String code);
+	public native static void AliPaySucess(String content);
 	public static void WeixinLogin(){
 		System.out.println("WeixinLogin:");
 		AppActivity.main.WeixinLogin();

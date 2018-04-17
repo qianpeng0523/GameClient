@@ -91,9 +91,9 @@ public class AppActivity extends Cocos2dxActivity{
 	    req.transaction="login";
 	    boolean flag = AppActivity.api.sendReq(req);
 	    if(flag){
-	    	System.out.println("寰俊鍚姩鎴愬姛");
+	    	System.out.println("微信启动成功");
 	    }else{
-	    	System.out.println("寰俊鍚姩澶辫触");
+	    	System.out.println("微信启动失败");
 	    }
 		//Toast.makeText(_context, "launch result = " + AppActivity.api.openWXApp(), Toast.LENGTH_LONG).show();
 	}
@@ -126,10 +126,11 @@ public class AppActivity extends Cocos2dxActivity{
 				//
 				if (resultStatus.equalsIgnoreCase("9000")) {
 					//
-					Toast.makeText(AppActivity.this, "支鏀粯鎴愬姛", Toast.LENGTH_SHORT).show();
+					CppHelper.AliPaySucess(msg.obj.toString());
+					Toast.makeText(AppActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
 				} else {
 					//
-					Toast.makeText(AppActivity.this, "支鏀粯澶辫触", Toast.LENGTH_SHORT).show();
+					Toast.makeText(AppActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
 				}
 				break;
 			}
