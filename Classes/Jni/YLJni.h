@@ -31,6 +31,9 @@ extern "C" {
 	
 	JNIEXPORT void JNICALL Java_org_ylgame_com_CppHelper_WXLoginSucess
 		(JNIEnv *, jclass, jstring);
+
+	JNIEXPORT void JNICALL Java_org_ylgame_com_CppHelper_AliPaySucess
+		(JNIEnv *, jclass, jstring);
 #ifdef __cplusplus
 }
 #endif

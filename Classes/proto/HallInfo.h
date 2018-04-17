@@ -88,6 +88,9 @@ public:
 	void SendCAliPayOrder(int id,string body);
 	void HandlerSAliPayOrder(ccEvent *event);
 
+	void SendCAliPayResult(string content);
+	void HandlerSAliPayResult(ccEvent *event);
+
 	//feedback
 	void SendCFeedBack(string uid,string uname,string content);
 	void HandlerSFeedBack(ccEvent *event);

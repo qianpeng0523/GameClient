@@ -4,7 +4,7 @@
 #include "GameControl.h"
 #include "deprecated/CCNotificationCenter.h"
 #include "LoginInfo.h"
-
+#include "HallInfo.h"
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "IosUtils.h"
 #endif
@@ -89,6 +89,13 @@ JNIEXPORT void JNICALL Java_org_ylgame_com_CppHelper_WXLoginSucess
 	const char* token = env->GetStringUTFChars(acctoken, 0);
 	LoginInfo::getIns()->setWxToken(token);
 	CCNotificationCenter::sharedNotificationCenter()->postNotification(NOTICE_WXLOGIN,NULL);
+}
+
+JNIEXPORT void JNICALL Java_org_ylgame_com_CppHelper_AliPaySucess
+(JNIEnv * env, jclass c, jstring content)
+{
+	const char* content1 = env->GetStringUTFChars(content, 0);
+	HallInfo::getIns()->SendCAliPayResult(content1);
 }
 
 #endif
