@@ -48,6 +48,9 @@ public:
 
 	void addShopItem(int index);
 	void setData();
+	int getPayType(){
+		return m_paytype;
+	}
 private:
 	Button *m_btns[2];
 	TextBMFont *m_btntext[2];
@@ -55,6 +58,9 @@ private:
 	Layout *m_sbg;
 	ui::ScrollView *m_ScrollView1;
 	Layout *m_sbg1;
+	int m_paytype;
+	Button *m_alibtn;
+	Button *m_wxbtn;
 private:
 	
 };

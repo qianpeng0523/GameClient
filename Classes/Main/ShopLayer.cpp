@@ -82,8 +82,16 @@ void ShopItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 	if (type == TOUCH_EVENT_ENDED){
 		if (name.compare("btn") == 0){
 			int id = m_item.id();
-			HallInfo::getIns()->SendCAliPayOrder(id, m_body);
-			//HallInfo::getIns()->SendCWxpayOrder(id, m_body);
+			ShopLayer *p = GameControl::getIns()->getShopLayer();
+			if (p){
+				int ptype = p->getPayType();
+				if (ptype == 1){
+					HallInfo::getIns()->SendCAliPayOrder(id, m_body);
+				}
+				else{
+					HallInfo::getIns()->SendCWxpayOrder(id, m_body);
+				}
+			}
 		}
 	}
 }
@@ -140,6 +148,8 @@ bool ShopLayer::init()
 	SEL_TouchEvent selector = toucheventselector(ShopLayer::TouchEvent);
 	
 	GameDataSet::getButton(m_RootLayer, "close_btn", selector, this);
+	m_wxbtn=GameDataSet::getButton(m_RootLayer, "wxbtn", selector, this);
+	m_alibtn=GameDataSet::getButton(m_RootLayer, "alibtn", selector, this);
 	m_btns[0] = GameDataSet::getButton(m_RootLayer, "card", selector, this);
 	m_btns[1] = GameDataSet::getButton(m_RootLayer, "gold", selector, this);
 	
@@ -154,6 +164,9 @@ bool ShopLayer::init()
 	m_ScrollView1 = (ui::ScrollView *)GameDataSet::getButton(m_RootLayer, "ScrollView_1", selector, this);
 	m_sbg1 = GameDataSet::getLayout(m_RootLayer, "sbg_1");
 
+	m_paytype = 1;
+	m_alibtn->setBright(false);
+	m_wxbtn->setBright(true);
 
 	SelectItem(0);
 	HallInfo::getIns()->SendCShop(3);
@@ -206,6 +219,16 @@ void ShopLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			if (sz == 0){
 				HallInfo::getIns()->SendCShop(1);
 			}
+		}
+		else if (name.compare("wxbtn") == 0){
+			m_paytype = 2;
+			m_alibtn->setBright(true);
+			m_wxbtn->setBright(false);
+		}
+		else if (name.compare("alibtn") == 0){
+			m_paytype = 1;
+			m_alibtn->setBright(false);
+			m_wxbtn->setBright(true);
 		}
 	}
 }
