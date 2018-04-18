@@ -261,6 +261,18 @@
     <ClCompile Include="..\Classes\Room\JoinRoomLayer.cpp">
       <Filter>Classes\Room</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Room\GameHead.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\GameUI.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\MJGameLayer.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\MJGameScene.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -531,6 +543,18 @@
       <Filter>Classes\Room</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Room\JoinRoomLayer.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\GameHead.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\GameUI.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\MJGameLayer.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\MJGameScene.h">
       <Filter>Classes\Room</Filter>
     </ClInclude>
   </ItemGroup>

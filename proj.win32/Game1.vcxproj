@@ -219,7 +219,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\proto\HallInfo.cpp" />
     <ClCompile Include="..\Classes\proto\LoginInfo.cpp" />
     <ClCompile Include="..\Classes\Room\CreateRoomLayer.cpp" />
+    <ClCompile Include="..\Classes\Room\GameHead.cpp" />
+    <ClCompile Include="..\Classes\Room\GameUI.cpp" />
     <ClCompile Include="..\Classes\Room\JoinRoomLayer.cpp" />
+    <ClCompile Include="..\Classes\Room\MJGameLayer.cpp" />
+    <ClCompile Include="..\Classes\Room\MJGameScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -311,7 +315,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\proto\HallInfo.h" />
     <ClInclude Include="..\Classes\proto\LoginInfo.h" />
     <ClInclude Include="..\Classes\Room\CreateRoomLayer.h" />
+    <ClInclude Include="..\Classes\Room\GameHead.h" />
+    <ClInclude Include="..\Classes\Room\GameUI.h" />
     <ClInclude Include="..\Classes\Room\JoinRoomLayer.h" />
+    <ClInclude Include="..\Classes\Room\MJGameLayer.h" />
+    <ClInclude Include="..\Classes\Room\MJGameScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
