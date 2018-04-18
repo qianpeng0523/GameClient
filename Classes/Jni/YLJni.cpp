@@ -87,6 +87,7 @@ JNIEXPORT void JNICALL Java_org_ylgame_com_CppHelper_WXLoginSucess
 (JNIEnv * env, jclass c, jstring acctoken)
 {
 	const char* token = env->GetStringUTFChars(acctoken, 0);
+	log("111:%s",token);
 	LoginInfo::getIns()->setWxToken(token);
 	CCNotificationCenter::sharedNotificationCenter()->postNotification(NOTICE_WXLOGIN,NULL);
 }
