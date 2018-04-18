@@ -91,9 +91,9 @@ public class AppActivity extends Cocos2dxActivity{
 	    req.transaction="login";
 	    boolean flag = AppActivity.api.sendReq(req);
 	    if(flag){
-	    	System.out.println("微信启动成功");
+	    	System.out.println("鍚姩鎴愬姛");
 	    }else{
-	    	System.out.println("微信启动失败");
+	    	System.out.println("鍚姩澶辫触");
 	    }
 		//Toast.makeText(_context, "launch result = " + AppActivity.api.openWXApp(), Toast.LENGTH_LONG).show();
 	}
@@ -118,20 +118,21 @@ public class AppActivity extends Cocos2dxActivity{
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case SDK_PAY_FLAG: {
-				@SuppressWarnings("unchecked")
-				PayResult payResult = new PayResult((Map<String, String>) msg.obj);
-				
-				String resultInfo = payResult.getResult();//
-				String resultStatus = payResult.getResultStatus();
-				//
-				if (resultStatus.equalsIgnoreCase("9000")) {
-					//
-					CppHelper.AliPaySucess(msg.obj.toString());
-					Toast.makeText(AppActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
-				} else {
-					//
-					Toast.makeText(AppActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
-				}
+				CppHelper.AliPaySucess((String)msg.obj);
+//				@SuppressWarnings("unchecked")
+//				PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+//				
+//				String resultInfo = payResult.getResult();//
+//				String resultStatus = payResult.getResultStatus();
+//				//
+//				if (resultStatus.equalsIgnoreCase("9000")) {
+//					//
+//					CppHelper.AliPaySucess(msg.obj.toString());
+//					Toast.makeText(AppActivity.this, "支鏀粯鎴愬姛", Toast.LENGTH_SHORT).show();
+//				} else {
+//					//
+//					Toast.makeText(AppActivity.this, "支鏀粯澶辫触", Toast.LENGTH_SHORT).show();
+//				}
 				break;
 			}
 			
@@ -153,8 +154,8 @@ public class AppActivity extends Cocos2dxActivity{
 			@Override
 			public void run() {
 				PayTask alipay = new PayTask(AppActivity.this);
-				Map<String, String> result = alipay.payV2(orderInfo, true);
-				Log.i("msp", result.toString());
+				String result = alipay.pay(orderInfo, true);
+				Log.i("msp", result);
 				
 				Message msg = new Message();
 				msg.what = SDK_PAY_FLAG;
