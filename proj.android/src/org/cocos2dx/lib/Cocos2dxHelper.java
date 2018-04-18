@@ -107,7 +107,7 @@ public class Cocos2dxHelper {
             Cocos2dxHelper.sCocos2dMusic = new Cocos2dxMusic(activity);
             Cocos2dxHelper.sCocos2dSound = new Cocos2dxSound(activity);
             Cocos2dxHelper.sAssetManager = activity.getAssets();
-            Cocos2dxHelper.nativeSetContext(activity, Cocos2dxHelper.sAssetManager);
+            Cocos2dxHelper.nativeSetContext((Context)activity, Cocos2dxHelper.sAssetManager);
     
             Cocos2dxBitmap.setContext(activity);
 
@@ -125,14 +125,12 @@ public class Cocos2dxHelper {
     
     //Enhance API modification begin
     private static ServiceConnection connection = new ServiceConnection() {
-        @Override
-		public void onServiceConnected(ComponentName name, IBinder service) {
+        public void onServiceConnected(ComponentName name, IBinder service) {
             mGameServiceBinder = IGameTuningService.Stub.asInterface(service);
             fastLoading(BOOST_TIME);
         }
 
-        @Override
-		public void onServiceDisconnected(ComponentName name) {
+        public void onServiceDisconnected(ComponentName name) {
             sActivity.getApplicationContext().unbindService(connection);
         }
     };

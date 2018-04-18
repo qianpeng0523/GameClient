@@ -118,21 +118,20 @@ public class AppActivity extends Cocos2dxActivity{
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case SDK_PAY_FLAG: {
-				CppHelper.AliPaySucess((String)msg.obj);
-//				@SuppressWarnings("unchecked")
-//				PayResult payResult = new PayResult((Map<String, String>) msg.obj);
-//				
-//				String resultInfo = payResult.getResult();//
-//				String resultStatus = payResult.getResultStatus();
-//				//
-//				if (resultStatus.equalsIgnoreCase("9000")) {
-//					//
-//					CppHelper.AliPaySucess(msg.obj.toString());
-//					Toast.makeText(AppActivity.this, "֧支付成功", Toast.LENGTH_SHORT).show();
-//				} else {
-//					//
-//					Toast.makeText(AppActivity.this, "֧支付失败", Toast.LENGTH_SHORT).show();
-//				}
+				@SuppressWarnings("unchecked")
+				PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+				
+				String resultInfo = payResult.getResult();//
+				String resultStatus = payResult.getResultStatus();
+				//
+				if (resultStatus.equalsIgnoreCase("9000")) {
+					//
+					CppHelper.AliPaySucess(resultInfo);
+					Toast.makeText(AppActivity.this, "֧支付成功", Toast.LENGTH_SHORT).show();
+				} else {
+					//
+					Toast.makeText(AppActivity.this, "֧支付失败", Toast.LENGTH_SHORT).show();
+				}
 				break;
 			}
 			
@@ -154,8 +153,8 @@ public class AppActivity extends Cocos2dxActivity{
 			@Override
 			public void run() {
 				PayTask alipay = new PayTask(AppActivity.this);
-				String result = alipay.pay(orderInfo, true);
-				Log.i("msp", result);
+				Map<String, String> result = alipay.payV2(orderInfo, true);
+				Log.i("msp", result.toString());
 				
 				Message msg = new Message();
 				msg.what = SDK_PAY_FLAG;

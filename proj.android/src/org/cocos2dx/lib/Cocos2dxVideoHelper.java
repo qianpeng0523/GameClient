@@ -29,7 +29,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.SparseArray;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 
 import org.cocos2dx.lib.Cocos2dxVideoView.OnVideoEventListener;
@@ -210,8 +209,8 @@ public class Cocos2dxVideoHelper {
         Cocos2dxVideoView videoView = new Cocos2dxVideoView(mActivity,index);
         sVideoViews.put(index, videoView);
         FrameLayout.LayoutParams lParams = new FrameLayout.LayoutParams(
-                LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT);
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT);
         mLayout.addView(videoView, lParams);
         videoView.setZOrderOnTop(true);
         videoView.setOnCompletionListener(videoEventListener);

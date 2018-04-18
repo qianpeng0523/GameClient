@@ -111,7 +111,7 @@ public final class Cocos2dxBitmap {
 
         int maxWidth = width;
         if (maxWidth <= 0) {
-            maxWidth = (int)Math.ceil( Layout.getDesiredWidth(string, paint));
+            maxWidth = (int)Math.ceil( StaticLayout.getDesiredWidth(string, paint));
         }
         StaticLayout staticLayout = new StaticLayout(string, paint, maxWidth , hAlignment,1.0f,0.0f,false);
         int layoutWidth = staticLayout.getWidth();

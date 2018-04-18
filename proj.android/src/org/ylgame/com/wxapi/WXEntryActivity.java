@@ -52,7 +52,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
 				System.out.println("不支持该设备");
 				break;
 			case BaseResp.ErrCode.ERR_BAN:
-				System.out.println("");
+				System.out.println("签名错误");
 				break;
 			default:
 				System.out.println("其他错误");

@@ -37,7 +37,6 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
@@ -116,8 +115,8 @@ public class Cocos2dxEditBoxHelper {
 
 
                 FrameLayout.LayoutParams lParams = new FrameLayout.LayoutParams(
-                        LayoutParams.WRAP_CONTENT,
-                        LayoutParams.WRAP_CONTENT);
+                        FrameLayout.LayoutParams.WRAP_CONTENT,
+                        FrameLayout.LayoutParams.WRAP_CONTENT);
 
                 lParams.leftMargin = left;
                 lParams.topMargin = top;
@@ -182,8 +181,7 @@ public class Cocos2dxEditBoxHelper {
                 });
 
                 editBox.setOnKeyListener(new View.OnKeyListener() {
-                    @Override
-					public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
                         // If the event is a key-down event on the "enter" button
                         if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                                 (keyCode == KeyEvent.KEYCODE_ENTER)) {
@@ -387,7 +385,7 @@ public class Cocos2dxEditBoxHelper {
 
 
     public static void openKeyboard(int index) {
-        final InputMethodManager imm = (InputMethodManager) Cocos2dxActivity.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        final InputMethodManager imm = (InputMethodManager) mCocos2dxActivity.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         Cocos2dxEditBox editBox = mEditBoxArray.get(index);
         if (null != editBox) {
             imm.showSoftInput(editBox, 0);
@@ -396,7 +394,7 @@ public class Cocos2dxEditBoxHelper {
     }
 
     public static void closeKeyboard(int index) {
-        final InputMethodManager imm = (InputMethodManager) Cocos2dxActivity.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        final InputMethodManager imm = (InputMethodManager) mCocos2dxActivity.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         Cocos2dxEditBox editBox = mEditBoxArray.get(index);
         if (null != editBox) {
             imm.hideSoftInputFromWindow(editBox.getWindowToken(), 0);
