@@ -87,7 +87,11 @@ void LogoLayer::TouchEvent(Object *obj, TouchEventType type){
 		string name = btn->getName();
 		if (name.compare("yklogin_btn") == 0){
 			LoginInfo *pLoginInfo = LoginInfo::getIns();
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+			pLoginInfo->setLoginType(LOGIN_YK);
+			HttpInfo *p = HttpInfo::getIns();
+			ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
+#else
 			pLoginInfo->setLoginType(LOGIN_WX);
 			string token = UserDefault::sharedUserDefault()->getStringForKey("token", "");
 			if (token.empty()){
@@ -97,10 +101,7 @@ void LogoLayer::TouchEvent(Object *obj, TouchEventType type){
 				HttpInfo *p = HttpInfo::getIns();
 				ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
 			}
-#else
-			pLoginInfo->setLoginType(LOGIN_YK);
-			HttpInfo *p = HttpInfo::getIns();
-			ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
+			
 #endif
 			
 		}
