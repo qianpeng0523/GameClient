@@ -104,7 +104,12 @@ void RootRegister::CallBack(Node *node, void *data){
 	LayoutItem *p = (LayoutItem *)data;
 	
 	if (p->_layout){
-		FindNext(p);
+		LayoutItem *nowp = FindNext(p);
+		if (nowp){
+			node->runAction(Sequence::create(DelayTime::create(0.01),
+				CCCallFuncND::create(this, callfuncND_selector(RootRegister::CallBack), nowp)
+				, NULL));
+		}
 		return;
 	}
 	

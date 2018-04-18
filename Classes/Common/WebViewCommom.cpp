@@ -36,7 +36,8 @@ WebViewCommom::WebViewCommom()
 
 WebViewCommom::~WebViewCommom()
 {
-	
+	_webView->removeFromParentAndCleanup(true);
+	RootRegister::getIns()->resetWidget("webview.json");
 }
 
 bool WebViewCommom::init(string url)
@@ -56,9 +57,9 @@ bool WebViewCommom::init(string url)
 
 	_webView = WebView::create();
 	_webView->setContentSize(winSize);
+	_webView->setSize(winSize);
 	_webView->loadURL(url.c_str());
 	_webView->setScalesPageToFit(true);
-	
 
 	_webView->setOnShouldStartLoading(CC_CALLBACK_2(WebViewCommom::onWebViewShouldStartLoading, this));
 	_webView->setOnDidFinishLoading(CC_CALLBACK_2(WebViewCommom::onWebViewDidFinishLoading, this));

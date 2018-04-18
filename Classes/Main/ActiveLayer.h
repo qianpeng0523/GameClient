@@ -3,6 +3,8 @@
 
 #include "AppMacros.h"
 #include "BaseLayer.h"
+#include "WebViewCommom.h"
+
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
@@ -25,6 +27,9 @@ private:
 	Button *m_titlebtns[2];
 	TextBMFont *m_btntext[3];
 	int m_type;
+#if(CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+	WebViewCommom *m_pWebViewCommom[4];
+#endif
 private:
 	
 };

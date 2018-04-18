@@ -87,7 +87,7 @@ void LogoLayer::TouchEvent(Object *obj, TouchEventType type){
 		string name = btn->getName();
 		if (name.compare("yklogin_btn") == 0){
 			LoginInfo *pLoginInfo = LoginInfo::getIns();
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
 			pLoginInfo->setLoginType(LOGIN_WX);
 			string token = UserDefault::sharedUserDefault()->getStringForKey("token", "");
 			if (token.empty()){

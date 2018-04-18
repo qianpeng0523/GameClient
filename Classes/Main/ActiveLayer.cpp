@@ -12,10 +12,21 @@
 
 ActiveLayer::ActiveLayer(){
 	m_type = 1;
+#if(CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+	memset(m_pWebViewCommom,NULL,sizeof(WebViewCommom *)*4);
+#endif
 	GameControl::getIns()->setActiveLayer(this);
 }
 
 ActiveLayer::~ActiveLayer(){
+#if(CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+	for (int i = 0; i < 4; i++){
+		if (m_pWebViewCommom[i]){
+			m_pWebViewCommom[i]->removeFromParentAndCleanup(true);
+			m_pWebViewCommom[i] = NULL;
+		}
+	}
+#endif
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getActiveLayer()){
 		GameControl::getIns()->setActiveLayer(NULL);
@@ -109,10 +120,13 @@ void ActiveLayer::ShowItem(int type, int index){
 		text->setFntFile("fonts/xiaodan10.fnt");
 	}
 	
-	sprintf(buff,"sbg%d",type-1);
+	sprintf(buff,"sbg%d",type);
 	Layout *sbg=GameDataSet::getLayout(m_RootLayer,buff);
 #if(CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
-	WebViewCommom *p = WebViewCommom::create("https://baidu.com");
-	sbg->addChild(p);
+	int ii=(type-1)*3+index;
+	if(!m_pWebViewCommom[ii]){
+		m_pWebViewCommom[ii] = WebViewCommom::create("http://www.lesharecs.com");
+		sbg->addChild(m_pWebViewCommom[ii]);
+	}
 #endif
 }

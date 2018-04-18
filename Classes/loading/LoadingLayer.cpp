@@ -22,6 +22,7 @@ LoadingLayer::LoadingLayer(){
 }
 
 LoadingLayer::~LoadingLayer(){
+	m_isupdate = false;
 	openUpdate(false);
 	char buff[50];
 	sprintf(buff, XXIconv::GBK2UTF("正在加载资源%d%%").c_str(), 0);
