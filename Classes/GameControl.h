@@ -26,6 +26,10 @@
 #include "LoadingLayer.h"
 #include "CreateRoomLayer.h"
 #include "JoinRoomLayer.h"
+#include "MJGameLayer.h"
+#include "GameUI.h"
+#include "MJGameScene.h"
+
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
@@ -200,6 +204,27 @@ public:
 		return m_pJoinRoomLayer;
 	}
 
+	void setMJGameLayer(MJGameLayer *p){
+		m_pMJGameLayer = p;
+	}
+	MJGameLayer *getMJGameLayer(){
+		return m_pMJGameLayer;
+	}
+
+	void setGameUI(GameUI *p){
+		m_pGameUI = p;
+	}
+	GameUI *getGameUI(){
+		return m_pGameUI;
+	}
+
+	void setMJGameScene(MJGameScene *p){
+		m_pMJGameScene = p;
+	}
+	MJGameScene *getMJGameScene(){
+		return m_pMJGameScene;
+	}
+
 	void replaceScene(Scene *scene);
 
 	void PushLaBa(string content,int times);
@@ -228,6 +253,9 @@ private:
 	LoadingLayer *m_pLoadingLayer;
 	CreateRoomLayer *m_pCreateRoomLayer;
 	JoinRoomLayer *m_pJoinRoomLayer;
+	MJGameLayer *m_pMJGameLayer;
+	GameUI *m_pGameUI;
+	MJGameScene *m_pMJGameScene;
 	vector<LaBaItem *> m_contents;
 };
 

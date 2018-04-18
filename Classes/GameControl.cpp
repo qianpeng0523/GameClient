@@ -27,6 +27,9 @@ GameControl::GameControl(){
 	m_pLoadingLayer = NULL;
 	m_pCreateRoomLayer = NULL;
 	m_pJoinRoomLayer = NULL;
+	m_pMJGameLayer = NULL;
+	m_pGameUI = NULL;
+	m_pMJGameScene = NULL;
 	Director::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 

@@ -103,6 +103,9 @@ void LoadingLayer::replaceScene(){
 	case 2:
 		scene = MainScene::create();
 		break;
+	case 3:
+		scene = MJGameScene::create();
+		break;
 	default:
 		break;
 	}

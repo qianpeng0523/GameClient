@@ -106,6 +106,9 @@ void CreateRoomLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		}
 		else if (name.compare("btn") == 0){
 			log("%d,%d,%d,%d,%d\n",m_type,m_ante,m_time,m_bao,m_bang);
+			Scene *scene = LoadingLayer::createScene(3);
+			GameControl::getIns()->replaceScene(scene);
+
 		}
 		else if (name.find("CheckBox_j1") == 0){
 			int in = name.find("CheckBox_j1");
