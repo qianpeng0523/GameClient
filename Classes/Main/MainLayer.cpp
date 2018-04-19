@@ -90,9 +90,10 @@ bool MainLayer::init()
 	
 	SelectItem(0);
 	m_laba->setPositionX(-m_laba->getSize().width*1.01);
-	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试"),-1);
-	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试11111111"), 3);
-	GameControl::getIns()->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试222222222"), 2);
+	GameControl *pGameControl = GameControl::getIns();
+	pGameControl->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试"), -1);
+	pGameControl->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试11111111"), 3);
+	pGameControl->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试222222222"), 2);
 
 	char buff[50];
 	for (int i = 0; i < 6; i++){
@@ -104,9 +105,21 @@ bool MainLayer::init()
 		m_pParticleSystem[i]->setPosition(ccp(320 * i, 640));
 	}
 
+	this->runAction(Sequence::create(DelayTime::create(0.5),
+		CCCallFunc::create(this, callfunc_selector(MainLayer::test))
+		,NULL));
 
 	ConfigInfo::getIns()->SendCConfig();
     return true;
+}
+
+void MainLayer::test(){
+	char buff[50];
+	GameControl *pGameControl = GameControl::getIns();
+	for (int i = 0; i < 10; i++){
+		sprintf(buff, "%s%d", XXIconv::GBK2UTF("测试消息").c_str(), rand() % 100000 + 1);
+		pGameControl->ShowTopTip(buff);
+	}
 }
 
 void MainLayer::setData(){

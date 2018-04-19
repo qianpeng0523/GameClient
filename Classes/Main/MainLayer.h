@@ -26,6 +26,9 @@ public:
 	}
 
 	void setData();
+
+	//test
+	void test();
 private:
 	void SelectItem(int index);
 	void ScrollViewEvent(Ref* obj, ScrollviewEventType type);

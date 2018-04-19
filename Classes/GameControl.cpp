@@ -31,6 +31,7 @@ GameControl::GameControl(){
 	m_pGameUI = NULL;
 	m_pMJGameScene = NULL;
 	m_pTipLayer = NULL;
+	m_pTopTipLayer = NULL;
 	CCDirector::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 
@@ -163,5 +164,20 @@ void GameControl::HideLoading(BaseLayer *layer, Layout *ly){
 		if (mp.empty()){
 			m_pLoadings.erase(m_pLoadings.find(layer));
 		}
+	}
+}
+
+void GameControl::ShowTopTip(string tip){
+	if (!m_pTopTipLayer){
+		m_pTopTipLayer = TopTipLayer::create();
+		Director *pDirector = Director::sharedDirector();
+		pDirector->getRunningScene()->addChild(m_pTopTipLayer, 2001);
+		Size sz = pDirector->getWinSize();
+		m_pTopTipLayer->setPositionX(m_pTopTipLayer->getContentSize().width / 2.0);
+		m_pTopTipLayer->setPositionY(sz.height-m_pTopTipLayer->getContentSize().height);
+		m_pTopTipLayer->PushTip(tip);
+	}
+	else{
+		m_pTopTipLayer->PushTip(tip);
 	}
 }
