@@ -2,7 +2,7 @@
 #include "GameControl.h"
 #include "GameDataSet.h"
 #include "ClientSocket.h"
-#include "LogoScene.h"
+#include "LoginScene.h"
 #include "LoginInfo.h"
 #include "MainScene.h"
 Scene *LoadingLayer::createScene(int type){
@@ -98,7 +98,7 @@ void LoadingLayer::replaceScene(){
 	switch (m_type)
 	{
 	case 1:
-		scene = LogoScene::create();
+		scene = LoginScene::create();
 		break;
 	case 2:
 		scene = MainScene::create();

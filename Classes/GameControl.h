@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "LogoLayer.h"
+#include "LoginLayer.h"
 #include "MainLayer.h"
 #include "UserInfoLayer.h"
 #include "SetLayer.h"
@@ -24,6 +24,7 @@
 #include "RewardTipLayer.h"
 #include "RootRegister.h"
 #include "LoadingLayer.h"
+#include "LoadLayer.h"
 #include "CreateRoomLayer.h"
 #include "JoinRoomLayer.h"
 #include "MJGameLayer.h"
@@ -50,10 +51,10 @@ public:
 	static GameControl* getIns();
 	
 public:
-	void setLoginLayer(LogoLayer *p){
+	void setLoginLayer(LoginLayer *p){
 		m_pLoginLayer = p;
 	}
-	LogoLayer *getLoginLayer(){
+	LoginLayer *getLoginLayer(){
 		return m_pLoginLayer;
 	}
 
@@ -225,13 +226,20 @@ public:
 		return m_pMJGameScene;
 	}
 
+	void ShowLoading();
+	void HideLoading();
+	void ShowLoading(BaseLayer *layer,Layout *ly);
+	void HideLoading(BaseLayer *layer);
+	void HideLoading(BaseLayer *layer,Layout *ly);
+
 	void replaceScene(Scene *scene);
 
 	void PushLaBa(string content,int times);
 	void update(float dt);
+
 private:
 	static GameControl *m_ins;
-	LogoLayer *m_pLoginLayer;
+	LoginLayer *m_pLoginLayer;
 	MainLayer *m_pMainLayer;
 	UserInfoLayer *m_pUserInfoLayer;
 	SetLayer *m_pSetLayer;
@@ -257,6 +265,7 @@ private:
 	GameUI *m_pGameUI;
 	MJGameScene *m_pMJGameScene;
 	vector<LaBaItem *> m_contents;
+	map<BaseLayer *, map<Layout *,LoadLayer *>>m_pLoadings;
 };
 
 #endif // __GameControl_SCENE_H__

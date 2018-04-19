@@ -93,3 +93,74 @@ void GameControl::update(float dt){
 		}
 	}
 }
+
+void GameControl::ShowLoading(){
+	Scene *scene = Director::sharedDirector()->getRunningScene();
+	if (scene){
+		LoadLayer *p = (LoadLayer *)scene->getChildByName("g_loading");
+		if (!p){
+			p = LoadLayer::create(NULL);
+			p->setName("g_loading");
+			scene->addChild(p);
+		}
+		else if (!p->isVisible()){
+			p->setVisible(true);
+		}
+	}
+}
+
+void GameControl::HideLoading(){
+	Scene *scene = Director::sharedDirector()->getRunningScene();
+	if (scene){
+		scene->removeChildByName("g_loading", true);
+	}
+}
+
+void GameControl::ShowLoading(BaseLayer *layer, Layout *ly){
+	if (m_pLoadings.find(layer)!=m_pLoadings.end()){
+		map<Layout *, LoadLayer*> mp=m_pLoadings.at(layer);
+		LoadLayer *p = NULL;
+		if (mp.find(ly) != mp.end()){
+			p = mp.at(ly);
+			p->setVisible(true);
+		}
+		else{
+			p = LoadLayer::create(ly);
+			ly->addChild(p);
+			mp.insert(make_pair(ly, p));
+		}
+	}
+}
+
+void GameControl::HideLoading(BaseLayer *layer){
+	if (m_pLoadings.find(layer) != m_pLoadings.end()){
+		map<Layout *, LoadLayer*> mp = m_pLoadings.at(layer);
+		for (auto itr = mp.begin(); itr != mp.end();){
+			LoadLayer *p = itr->second;
+			p->removeFromParentAndCleanup(true);
+			itr = mp.erase(itr);
+		}
+		m_pLoadings.clear();
+	}
+}
+
+void GameControl::HideLoading(BaseLayer *layer, Layout *ly){
+	if (m_pLoadings.find(layer) != m_pLoadings.end()){
+		map<Layout *, LoadLayer*> mp = m_pLoadings.at(layer);
+		for (auto itr = mp.begin(); itr != mp.end();){
+			Layout *parent = itr->first;
+			if (parent == ly){
+				LoadLayer *p = itr->second;
+				p->removeFromParentAndCleanup(true);
+				itr = mp.erase(itr);
+				break;
+			}
+			else{
+				itr++;
+			}
+		}
+		if (mp.empty()){
+			m_pLoadings.erase(m_pLoadings.find(layer));
+		}
+	}
+}

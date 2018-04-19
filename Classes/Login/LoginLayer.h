@@ -1,5 +1,5 @@
-#ifndef __LogoLayer_SCENE_H__
-#define __LogoLayer_SCENE_H__
+#ifndef __LoginLayer_SCENE_H__
+#define __LoginLayer_SCENE_H__
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
@@ -21,12 +21,12 @@ struct CursorItem{
 	Size dsz;
 };
 
-class LogoLayer : public BaseLayer
+class LoginLayer : public BaseLayer
 {
 public:
-	LogoLayer();
-	~LogoLayer();
-	CREATE_FUNC(LogoLayer);
+	LoginLayer();
+	~LoginLayer();
+	CREATE_FUNC(LoginLayer);
     virtual bool init();
 	static ui::EditBox *AddCursorTextField(Layout *parent,int fontsz=20,bool ispass=false);
 	void TouchEvent(Object *obj, TouchEventType type);
@@ -40,4 +40,4 @@ private:
 	
 };
 
-#endif // __LogoLayer_SCENE_H__
+#endif // __LoginLayer_SCENE_H__

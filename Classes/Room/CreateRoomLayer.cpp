@@ -2,7 +2,7 @@
 #include "GameControl.h"
 #include "GameDataSet.h"
 #include "ClientSocket.h"
-#include "LogoScene.h"
+#include "LoginScene.h"
 #include "LoginInfo.h"
 #include "WebViewCommom.h"
 
@@ -74,7 +74,7 @@ bool CreateRoomLayer::init()
 	for (int i = 0; i < 2; i++){
 		sprintf(buff,"in%d",i+1);
 		Layout *in = GameDataSet::getLayout(m_RootLayer, buff);
-		m_input[i] = LogoLayer::AddCursorTextField(in, 24);
+		m_input[i] = LoginLayer::AddCursorTextField(in, 24);
 		m_input[i]->setFontColor(ccc3(0xFF,0x3C,0x00));
 		m_input[i]->setPlaceHolder(XXIconv::GBK2UTF("自定义").c_str());
 		m_input[i]->setTouchEnabled(false);

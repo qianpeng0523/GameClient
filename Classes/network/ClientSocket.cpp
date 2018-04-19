@@ -2,6 +2,7 @@
 #include "LoginInfo.h"
 #include "XXEventDispatcher.h"
 #include "HttpInfo.h"
+#include "GameControl.h"
 /**********消息头********
 0		服务器序列号
 1		stamp
@@ -118,6 +119,7 @@ int ClientSocket::GetError() {
 }
 
 void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
+	GameControl::getIns()->ShowLoading();
 	if (!m_isConnected){
 		int con= reConnect();
 		if (con == SOCKET_ERROR){
@@ -164,6 +166,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 
 
 void ClientSocket::DataIn(char* data, int size,int cmd){
+	GameControl::getIns()->HideLoading();
 	//数据不能用string  只能用char*
 	LoginInfo::getIns()->setTime();
 	log("datain size:%d cmd:%d", size, cmd);
@@ -181,7 +184,7 @@ void *ClientSocket::threadHandler(void *arg) {
 			Head *head = (Head*)buff;
 			string servercode = p->getReq(head);
 			int stamp = p->getStamp(head);
-			log("jieshou:%d",stamp);
+			
 			len = p->getBodyLen(head);
 			int cmd=p->getCMD(head);
 			

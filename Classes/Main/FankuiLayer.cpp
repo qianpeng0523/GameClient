@@ -2,7 +2,7 @@
 #include "GameControl.h"
 #include "GameDataSet.h"
 #include "ClientSocket.h"
-#include "LogoScene.h"
+#include "LoginScene.h"
 #include "LoginInfo.h"
 #include "HallInfo.h"
 
@@ -35,7 +35,7 @@ bool FankuiLayer::init()
 	m_btn=GameDataSet::getButton(m_RootLayer, "send", selector, this);
 	
 	Layout *in = GameDataSet::getLayout(m_RootLayer, "in");
-	m_input = LogoLayer::AddCursorTextField(in, 24);
+	m_input = LoginLayer::AddCursorTextField(in, 24);
 	m_input->setPlaceHolder(XXIconv::GBK2UTF("请输入您的反馈意见").c_str());
 	m_input->setFontColor(ccc3(0x38, 0x4E, 0x9C));
 	m_input->setInputMode(ui::EditBox::InputMode::PHONE_NUMBER);

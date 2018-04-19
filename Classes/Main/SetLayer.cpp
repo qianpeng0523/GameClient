@@ -2,7 +2,7 @@
 #include "GameControl.h"
 #include "GameDataSet.h"
 #include "ClientSocket.h"
-#include "LogoScene.h"
+#include "LoginScene.h"
 #include "LoginInfo.h"
 #include "PhotoDown.h"
 
@@ -81,7 +81,7 @@ void SetLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			int err=ClientSocket::getIns()->close();
 			if (err == 0){
 				ClientSocket::getIns()->setBegin(false);
-				GameControl::getIns()->replaceScene(LogoScene::create());
+				GameControl::getIns()->replaceScene(LoginScene::create());
 			}
 		}
 		else if (name.compare("help") == 0){

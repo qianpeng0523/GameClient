@@ -1,4 +1,4 @@
-#include "LogoLayer.h"
+#include "LoginLayer.h"
 #include "SimpleAudioEngine.h"
 #include "AppMacros.h"
 #include "GameDataSet.h"
@@ -11,12 +11,12 @@ USING_NS_CC;
 
 
 
-LogoLayer::LogoLayer(){
+LoginLayer::LoginLayer(){
 	GameControl::getIns()->setLoginLayer(this);
-	CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(LogoLayer::WXLoginSend), NOTICE_WXLOGIN, NULL);
+	CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(LoginLayer::WXLoginSend), NOTICE_WXLOGIN, NULL);
 }
 
-LogoLayer::~LogoLayer(){
+LoginLayer::~LoginLayer(){
 	CCNotificationCenter::sharedNotificationCenter()->removeObserver(this, NOTICE_WXLOGIN);
 	RootRegister::getIns()->resetWidget("login.json");
 	if (this==GameControl::getIns()->getLoginLayer()){
@@ -24,7 +24,7 @@ LogoLayer::~LogoLayer(){
 	}
 }
 
-bool LogoLayer::init()
+bool LoginLayer::init()
 {
 	if (!Layer::init())
     {
@@ -33,20 +33,20 @@ bool LogoLayer::init()
 
  	m_RootLayer =RootRegister::getIns()->getWidget("login.json");
  	this->addChild(m_RootLayer);
-	SEL_TouchEvent selector = toucheventselector(LogoLayer::TouchEvent);
+	SEL_TouchEvent selector = toucheventselector(LoginLayer::TouchEvent);
 	m_ykloginbtn = GameDataSet::getButton(m_RootLayer, "yklogin_btn", selector, this);
 	ShowYKLoginBtn(false);
 	HttpInfo::getIns()->requestGateIPAndPort();
     return true;
 }
 
-void LogoLayer::ShowYKLoginBtn(bool isshow){
+void LoginLayer::ShowYKLoginBtn(bool isshow){
 	if (m_ykloginbtn){
 		m_ykloginbtn->setVisible(isshow);
 	}
 }
 
-ui::EditBox *LogoLayer::AddCursorTextField(Layout *parent, int fontsz, bool ispass){
+ui::EditBox *LoginLayer::AddCursorTextField(Layout *parent, int fontsz, bool ispass){
 	parent->setClippingEnabled(true);
 	parent->setClippingType(Layout::ClippingType::SCISSOR);
 	
@@ -81,7 +81,7 @@ ui::EditBox *LogoLayer::AddCursorTextField(Layout *parent, int fontsz, bool ispa
 	return pCursorTextField;
 }
 
-void LogoLayer::TouchEvent(Object *obj, TouchEventType type){
+void LoginLayer::TouchEvent(Object *obj, TouchEventType type){
 	if (type == TOUCH_EVENT_ENDED){
 		Button *btn = (Button *)obj;
 		string name = btn->getName();
@@ -108,7 +108,7 @@ void LogoLayer::TouchEvent(Object *obj, TouchEventType type){
 	}
 }
 
-void LogoLayer::WXLoginSend(Object *obj){
+void LoginLayer::WXLoginSend(Object *obj){
 	HttpInfo *p = HttpInfo::getIns();
 	ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
 }

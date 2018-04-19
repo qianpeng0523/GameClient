@@ -1,6 +1,6 @@
 ﻿#include "AppDelegate.h"
 #include "Adaptation.h"
-#include "LogoScene.h"
+#include "LoginScene.h"
 #include "YMSocketData.h"
 #include "XXHttpRequest.h"
 #include "Common.h"

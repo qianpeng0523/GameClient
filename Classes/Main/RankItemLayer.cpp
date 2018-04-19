@@ -2,7 +2,7 @@
 #include "GameControl.h"
 #include "GameDataSet.h"
 #include "ClientSocket.h"
-#include "LogoScene.h"
+#include "LoginScene.h"
 #include "LoginInfo.h"
 #include "PhotoDown.h"
 
