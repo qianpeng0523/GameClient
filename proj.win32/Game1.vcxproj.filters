@@ -49,6 +49,9 @@
     <Filter Include="Classes\Room">
       <UniqueIdentifier>{b8f18a36-e208-4843-8822-b6f58ee6a65e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Login">
+      <UniqueIdentifier>{90d9951b-ea40-4b95-a36c-82366bd0504b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -92,12 +95,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Common\CircleMoveAction.cpp">
       <Filter>Classes\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Logo\LogoLayer.cpp">
-      <Filter>Classes\Logo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Logo\LogoScene.cpp">
-      <Filter>Classes\Logo</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Common\SpecialAction.cpp">
       <Filter>Classes\Common</Filter>
@@ -273,6 +270,15 @@
     <ClCompile Include="..\Classes\Room\MJGameScene.cpp">
       <Filter>Classes\Room</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Login\LoginLayer.cpp">
+      <Filter>Classes\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Login\LoginScene.cpp">
+      <Filter>Classes\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\loading\LoadLayer.cpp">
+      <Filter>Classes\loading</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -346,12 +352,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Common\CircleMoveAction.h">
       <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Logo\LogoLayer.h">
-      <Filter>Classes\Logo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Logo\LogoScene.h">
-      <Filter>Classes\Logo</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Common\CommonData.h">
       <Filter>Classes\Common</Filter>
@@ -556,6 +556,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Room\MJGameScene.h">
       <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Login\LoginLayer.h">
+      <Filter>Classes\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Login\LoginScene.h">
+      <Filter>Classes\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\loading\LoadLayer.h">
+      <Filter>Classes\loading</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -182,8 +182,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\http\HttpInfo.cpp" />
     <ClCompile Include="..\Classes\Jni\YLJni.cpp" />
     <ClCompile Include="..\Classes\loading\LoadingLayer.cpp" />
-    <ClCompile Include="..\Classes\Logo\LogoLayer.cpp" />
-    <ClCompile Include="..\Classes\Logo\LogoScene.cpp" />
+    <ClCompile Include="..\Classes\loading\LoadLayer.cpp" />
+    <ClCompile Include="..\Classes\Login\LoginLayer.cpp" />
+    <ClCompile Include="..\Classes\Login\LoginScene.cpp" />
     <ClCompile Include="..\Classes\Main\AboutLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ActiveLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ChatLayer.cpp" />
@@ -270,8 +271,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\http\HttpInfo.h" />
     <ClInclude Include="..\Classes\Jni\YLJni.h" />
     <ClInclude Include="..\Classes\loading\LoadingLayer.h" />
-    <ClInclude Include="..\Classes\Logo\LogoLayer.h" />
-    <ClInclude Include="..\Classes\Logo\LogoScene.h" />
+    <ClInclude Include="..\Classes\loading\LoadLayer.h" />
+    <ClInclude Include="..\Classes\Login\LoginLayer.h" />
+    <ClInclude Include="..\Classes\Login\LoginScene.h" />
     <ClInclude Include="..\Classes\Main\AboutLayer.h" />
     <ClInclude Include="..\Classes\Main\ActiveLayer.h" />
     <ClInclude Include="..\Classes\Main\ChatLayer.h" />
