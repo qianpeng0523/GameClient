@@ -174,6 +174,7 @@ void LoginInfo::update(float dt){
 		SendCPing();
 	}
 	if (m_pingcount >= 3 && t - m_lasttime >= 5){
+		m_lasttime = t;
 		//判定客户端已经与服务器端断开
 		ClientSocket::getIns()->close();
 	}

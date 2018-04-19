@@ -32,6 +32,7 @@ GameControl::GameControl(){
 	m_pMJGameScene = NULL;
 	m_pTipLayer = NULL;
 	m_pTopTipLayer = NULL;
+	m_topcopy = false;
 	CCDirector::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 
@@ -92,6 +93,13 @@ void GameControl::update(float dt){
 				}
 				break;
 			}
+		}
+	}
+	if (m_topcopy){
+		m_topcopy = false;
+		for (auto itr = m_toptips.begin(); itr != m_toptips.end();){
+			ShowTopTip(*itr);
+			itr = m_toptips.erase(itr);
 		}
 	}
 }
@@ -180,4 +188,9 @@ void GameControl::ShowTopTip(string tip){
 	else{
 		m_pTopTipLayer->PushTip(tip);
 	}
+}
+
+void GameControl::setTopTips(vector<string> vec){
+	std::copy(vec.begin(), vec.end(), std::back_inserter(m_toptips));
+	m_topcopy = true;
 }

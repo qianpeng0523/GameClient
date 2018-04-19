@@ -120,6 +120,9 @@ void MainLayer::test(){
 		sprintf(buff, "%s%d", XXIconv::GBK2UTF("测试消息").c_str(), rand() % 100000 + 1);
 		pGameControl->ShowTopTip(buff);
 	}
+	this->runAction(Sequence::create(DelayTime::create(20.0),
+		CCCallFunc::create(this, callfunc_selector(MainLayer::test))
+		, NULL));
 }
 
 void MainLayer::setData(){

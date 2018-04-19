@@ -4,7 +4,7 @@
 #include "ClientSocket.h"
 #include "LoginScene.h"
 #include "LoginInfo.h"
-
+#include "MainScene.h"
 
 
 
@@ -50,7 +50,12 @@ void GameUI::TouchEvent(CCObject *obj, TouchEventType type){
 			m_isopenmenu ? closeMenu() : openMenu();
 		}
 		else if (name.compare("exit_btn") == 0){
-
+			TipLayer *tip = GameControl::getIns()->getTipLayer();
+			if (!tip){
+				tip = TipLayer::create();
+				this->addChild(tip);
+				tip->setContent(XXIconv::GBK2UTF("是否退出游戏返回大厅?"));
+			}
 		}
 		else if (name.compare("task_btn") == 0){
 			TaskLayer *p = GameControl::getIns()->getTaskLayer();

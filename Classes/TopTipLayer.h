@@ -21,6 +21,7 @@ public:
 	void setContent(string tip);
 	void PushTip(string tip);
 	void CallBack();
+	void CallBack(Node *node);
 private:
 	bool m_lock;
 private:

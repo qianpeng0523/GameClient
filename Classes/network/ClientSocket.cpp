@@ -133,7 +133,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 		}
 	}
 	m_sendstamp = (m_sendstamp+1)%256;
-	log("ssss:%d", m_sendstamp);
+	log("m_sendstamp:%d", m_sendstamp);
 	int len = msg->ByteSize();
 	char *buffer = new char[HEADLEN + len];
 	memset(buffer, 0, HEADLEN + len);
@@ -198,6 +198,7 @@ void *ClientSocket::threadHandler(void *arg) {
 			p->Recv(temp, len, 0);
 			
 			p->m_recvstamp = (p->m_recvstamp+1) % 256;
+			log("server stamp[%d]---stamp[%d]",stamp,p->m_recvstamp);
 			if (stamp == p->m_recvstamp){
 				char* out = new char[len + 1];
 				HttpInfo::getIns()->aes_decrypt(temp, len, out);
@@ -206,6 +207,7 @@ void *ClientSocket::threadHandler(void *arg) {
 			}
 			else{
 				delete temp;
+				p->close();
 				log("%s",XXIconv::GBK2UTF("数据不合法").c_str());
 			}
 

@@ -253,7 +253,7 @@ public:
 
 	void PushLaBa(string content,int times);
 	void update(float dt);
-
+	void setTopTips(vector<string> vec);
 private:
 	static GameControl *m_ins;
 	LoginLayer *m_pLoginLayer;
@@ -285,6 +285,8 @@ private:
 	TopTipLayer *m_pTopTipLayer;
 	vector<LaBaItem *> m_contents;
 	map<BaseLayer *, map<Layout *,LoadLayer *>>m_pLoadings;
+	vector<string> m_toptips;
+	bool m_topcopy;
 };
 
 #endif // __GameControl_SCENE_H__

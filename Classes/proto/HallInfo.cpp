@@ -798,7 +798,9 @@ void HallInfo::SendCAliPayResult(string content){
 }
 
 void HallInfo::HandlerSAliPayResult(ccEvent *event){
-
+	SAliPayResult cpo;
+	cpo.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cpo.cmd(), this, Event_Handler(HallInfo::HandlerSAliPayResult));
 }
 
 //反馈

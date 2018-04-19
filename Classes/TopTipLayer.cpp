@@ -16,6 +16,7 @@ TopTipLayer::TopTipLayer(){
 }
 
 TopTipLayer::~TopTipLayer(){
+	GameControl::getIns()->setTopTips(m_tips);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getTopTipLayer()){
 		GameControl::getIns()->setTopTipLayer(NULL);
@@ -39,13 +40,45 @@ bool TopTipLayer::init()
 void TopTipLayer::setContent(string tip){
 	m_lock = true;
 	Text *tt =GameDataSet::setText(m_RootLayer, "tip", tip);
-	tt->setPositionY(tt->getParent()->getContentSize().height/2.0);
+	float y = m_RootLayer->getPositionY();
 	Size sz = m_RootLayer->getSize();
-	m_RootLayer->runAction(Sequence::create(Show::create(),MoveTo::create(0.2, ccp(0, 0)), 
-		DelayTime::create(0.5),
-		 MoveTo::create(0.2, ccp(0, sz.height))
-		 , Hide::create(), CCCallFunc::create(this, callfunc_selector(TopTipLayer::CallBack))
-		, NULL));
+	float dt1 = 0.5;
+	float dt2 = 1.0;
+	if (m_tips.empty()){
+		if (y == 0){
+			tt->setTag(1);
+			tt->setPositionY(-tt->getSize().height-sz.height/2.0);
+			tt->runAction(Sequence::create(Show::create(), MoveTo::create(dt1, ccp(tt->getPositionX(), sz.height / 2.0)),
+				DelayTime::create(dt2),
+				CCCallFuncN::create(this, callfuncN_selector(TopTipLayer::CallBack)),
+				NULL));
+		}
+		else{
+			m_RootLayer->setTag(2);
+			tt->setPositionY(sz.height / 2.0);
+			m_RootLayer->runAction(Sequence::create(Show::create(), MoveTo::create(dt1, ccp(0, 0)),
+				DelayTime::create(dt2),
+				 CCCallFuncN::create(this, callfuncN_selector(TopTipLayer::CallBack))
+				, NULL));
+		}
+	}
+	else{
+		if (y == 0){
+			tt->setPositionY(tt->getSize().height + sz.height / 2.0);
+			tt->runAction(Sequence::create(Show::create(), MoveTo::create(dt1, ccp(tt->getPositionX(), sz.height / 2.0)),
+				DelayTime::create(dt2),
+				MoveTo::create(dt1, ccp(tt->getPositionX(), -tt->getSize().height - sz.height / 2.0)),
+				CCCallFuncN::create(this, callfuncN_selector(TopTipLayer::CallBack)), NULL));
+		}
+		else{
+			tt->setPositionY(sz.height / 2.0);
+			m_RootLayer->runAction(Sequence::create(Show::create(), MoveTo::create(dt1, ccp(0, 0)),
+				DelayTime::create(dt2),
+				CCCallFunc::create(this, callfunc_selector(TopTipLayer::CallBack))
+				, NULL));
+		}
+	}
+	
 }
 
 void TopTipLayer::PushTip(string tip){
@@ -65,5 +98,20 @@ void TopTipLayer::CallBack(){
 	if (itr != m_tips.end()){
 		setContent(*itr);
 		m_tips.erase(itr);
+	}
+}
+
+void TopTipLayer::CallBack(Node *node){
+	int tag = node->getTag();
+	Size sz = m_RootLayer->getSize();
+	if (m_tips.empty()){
+		m_lock = false;
+		m_RootLayer->runAction(Sequence::create(
+			MoveTo::create(0.5, ccp(0, sz.height))
+			, Hide::create()
+			,NULL));
+	}
+	else{
+		CallBack();
 	}
 }
