@@ -36,4 +36,5 @@
   <item json="privatecreate.json" count="1" type="2"/>
   <item json="privatejoin.json" count="1" type="2"/>
   <item json="mjgamescene.json" count="1" type="3"/>
+  <item json="tiplayer.json" count="1" type="1"/>
 </root>

@@ -30,6 +30,7 @@
 #include "MJGameLayer.h"
 #include "GameUI.h"
 #include "MJGameScene.h"
+#include "TipLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
@@ -226,6 +227,13 @@ public:
 		return m_pMJGameScene;
 	}
 
+	void setTipLayer(TipLayer *p){
+		m_pTipLayer = p;
+	}
+	TipLayer *getTipLayer(){
+		return m_pTipLayer;
+	}
+
 	void ShowLoading();
 	void HideLoading();
 	void ShowLoading(BaseLayer *layer,Layout *ly);
@@ -264,6 +272,7 @@ private:
 	MJGameLayer *m_pMJGameLayer;
 	GameUI *m_pGameUI;
 	MJGameScene *m_pMJGameScene;
+	TipLayer *m_pTipLayer;
 	vector<LaBaItem *> m_contents;
 	map<BaseLayer *, map<Layout *,LoadLayer *>>m_pLoadings;
 };

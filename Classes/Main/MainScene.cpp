@@ -1,5 +1,5 @@
 #include "MainScene.h"
-
+#include "KeyBoard.h"
 USING_NS_CC;
 
 MainScene::MainScene(){
@@ -16,7 +16,7 @@ bool MainScene::init()
 	{
 		return false;
 	}
-
+	KeyBoard::getIns()->setKetPad(EXIT_KEYTYPE, this);
 	if (!m_pMainLayer){
 		m_pMainLayer = MainLayer::create();
 		this->addChild(m_pMainLayer);

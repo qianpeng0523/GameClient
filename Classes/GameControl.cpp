@@ -30,6 +30,7 @@ GameControl::GameControl(){
 	m_pMJGameLayer = NULL;
 	m_pGameUI = NULL;
 	m_pMJGameScene = NULL;
+	m_pTipLayer = NULL;
 	CCDirector::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 

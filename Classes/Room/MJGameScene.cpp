@@ -1,5 +1,7 @@
 #include "MJGameScene.h"
 #include "GameControl.h"
+#include "KeyBoard.h"
+
 USING_NS_CC;
 
 MJGameScene::MJGameScene(){
@@ -21,7 +23,7 @@ bool MJGameScene::init()
 	{
 		return false;
 	}
-
+	KeyBoard::getIns()->setKetPad(BACK_KEYTYPE, this);
 	if (!m_pMJGameLayer){
 		m_pMJGameLayer = MJGameLayer::create();
 		this->addChild(m_pMJGameLayer);

@@ -71,7 +71,9 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 	m_ip = ip;
 	m_port = port;
 	m_isbegin = true;
+	GameControl::getIns()->ShowLoading();
 	int connectFlag = m_tcpSocket->Connect(ip, port);
+	GameControl::getIns()->HideLoading();
     if (connectFlag != SOCKET_ERROR) {
 		std::thread t1(&ClientSocket::threadHandler, this);//创建一个分支线程，回调到myThread函数里
 		t1.detach();
@@ -119,7 +121,11 @@ int ClientSocket::GetError() {
 }
 
 void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
-	GameControl::getIns()->ShowLoading();
+	SPing sp;
+	if (cmd != sp.cmd()){
+		GameControl::getIns()->ShowLoading();
+	}
+	
 	if (!m_isConnected){
 		int con= reConnect();
 		if (con == SOCKET_ERROR){
