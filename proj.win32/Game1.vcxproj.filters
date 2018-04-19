@@ -285,6 +285,9 @@
     <ClCompile Include="..\Classes\TipLayer.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\TopTipLayer.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -576,6 +579,9 @@
       <Filter>Classes\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\TipLayer.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TopTipLayer.h">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>

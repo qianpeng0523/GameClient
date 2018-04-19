@@ -227,6 +227,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Room\MJGameLayer.cpp" />
     <ClCompile Include="..\Classes\Room\MJGameScene.cpp" />
     <ClCompile Include="..\Classes\TipLayer.cpp" />
+    <ClCompile Include="..\Classes\TopTipLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +327,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Room\MJGameLayer.h" />
     <ClInclude Include="..\Classes\Room\MJGameScene.h" />
     <ClInclude Include="..\Classes\TipLayer.h" />
+    <ClInclude Include="..\Classes\TopTipLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
