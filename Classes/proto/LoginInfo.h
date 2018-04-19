@@ -11,7 +11,7 @@ enum LOGINTYPE
 	LOGIN_YK   ,
 };
 
-class LoginInfo:public Object
+class LoginInfo:public Ref
 {
 public:
 	LoginInfo();
@@ -28,6 +28,10 @@ public:
 	////////微信登录
 	void SendCWXLogin(string code,string token);
 	void HandlerSWXLogin(ccEvent *event);
+
+	//心跳
+	void SendCPing();
+	void HandlerSPing(ccEvent *event);
 
 	UserBase getMyUserBase(){
 		return m_myinfo;
@@ -49,11 +53,16 @@ public:
 	LOGINTYPE getLoginType(){
 		return m_logintype;
 	}
+
+	void update(float dt);
+	void setTime();
 private:
 	static LoginInfo *m_shareLoginInfo;
 	UserBase m_myinfo;
 	string m_wxtoken;
 	LOGINTYPE m_logintype;
+	time_t m_lasttime;
+	int m_pingcount;
 };
 
 #endif 

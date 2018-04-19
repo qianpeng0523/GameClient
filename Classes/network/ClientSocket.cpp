@@ -20,8 +20,10 @@ ClientSocket *ClientSocket::getIns() {
 ClientSocket::ClientSocket(){
 	m_sendstamp = 0;
 	m_recvstamp = 0;
+	m_isbegin = false;
 	m_tcpSocket = new TcpSocket();
 	createTcp();
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(ClientSocket::update), this, 8.0, false);
 }
 
 void ClientSocket::createTcp(){
@@ -37,7 +39,7 @@ void ClientSocket::createTcp(){
 }
 
 ClientSocket::~ClientSocket() {
-	
+	CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(ClientSocket::update), this);
 }
 
 string ClientSocket::int2String(unsigned int val) {
@@ -67,7 +69,7 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 	m_recvstamp = 0;
 	m_ip = ip;
 	m_port = port;
-	
+	m_isbegin = true;
 	int connectFlag = m_tcpSocket->Connect(ip, port);
     if (connectFlag != SOCKET_ERROR) {
 		std::thread t1(&ClientSocket::threadHandler, this);//创建一个分支线程，回调到myThread函数里
@@ -116,6 +118,12 @@ int ClientSocket::GetError() {
 }
 
 void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
+	if (!m_isConnected){
+		int con= reConnect();
+		if (con == SOCKET_ERROR){
+			return;
+		}
+	}
 	m_sendstamp = (m_sendstamp+1)%256;
 	log("ssss:%d", m_sendstamp);
 	int len = msg->ByteSize();
@@ -157,6 +165,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 
 void ClientSocket::DataIn(char* data, int size,int cmd){
 	//数据不能用string  只能用char*
+	LoginInfo::getIns()->setTime();
 	log("datain size:%d cmd:%d", size, cmd);
 	ccEvent *sEvent = new ccEvent(cmd, data, size);
 	XXEventDispatcher::getIns()->disEventDispatcher(sEvent);
@@ -202,14 +211,17 @@ void *ClientSocket::threadHandler(void *arg) {
     return 0;
 }
 
-void ClientSocket::reConnect(){
-	if (m_tcpSocket){
-		m_tcpSocket->Connect(m_ip.c_str(), m_port);
+int ClientSocket::reConnect(){
+	if (m_tcpSocket&&!m_isConnected){
+		return m_tcpSocket->Connect(m_ip.c_str(), m_port);
 	}
+	return SOCKET_ERROR;
 }
 
 void ClientSocket::update(float dt){
-	
+	if (!m_isConnected&&m_isbegin){
+		reConnect();
+	}
 }
 
 

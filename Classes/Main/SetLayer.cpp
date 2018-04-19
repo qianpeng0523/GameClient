@@ -80,6 +80,7 @@ void SetLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("exchange") == 0){
 			int err=ClientSocket::getIns()->close();
 			if (err == 0){
+				ClientSocket::getIns()->setBegin(false);
 				GameControl::getIns()->replaceScene(LogoScene::create());
 			}
 		}

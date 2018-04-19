@@ -6,10 +6,14 @@
 #include "GameControl.h"
 #include "LoadingLayer.h"
 #include "YLJni.h"
+#include "GameDataSet.h"
+
 LoginInfo *LoginInfo::m_shareLoginInfo=NULL;
 LoginInfo::LoginInfo()
 {
 	m_logintype = LOGIN_WX;
+	m_lasttime = 0;
+	m_pingcount = 0;
 	XXEventDispatcher *pe = XXEventDispatcher::getIns();
 	SLogin sl;
 	pe->registerProto(sl.cmd(), sl.GetTypeName());
@@ -18,10 +22,14 @@ LoginInfo::LoginInfo()
 
 	SWXLogin sl1;
 	pe->registerProto(sl1.cmd(), sl1.GetTypeName());
+
+	SPing sl2;
+	pe->registerProto(sl2.cmd(), sl2.GetTypeName());
+	Director::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(LoginInfo::update), this, 1, false);
 }
 
 LoginInfo::~LoginInfo(){
-	
+	Director::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(LoginInfo::update),this);
 }
 
 LoginInfo* LoginInfo::getIns(){
@@ -138,5 +146,35 @@ void LoginInfo::HandlerSWXLogin(ccEvent *event){
 		log("%s", XXIconv::GBK2UTF("微信登录失败!").c_str());
 		pUserDefault->setStringForKey("token", "");
 		YLJni::WeixinLogin();
+	}
+}
+
+void LoginInfo::SendCPing(){
+	m_pingcount++;
+	CPing cl;
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(LoginInfo::HandlerSPing));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void LoginInfo::HandlerSPing(ccEvent *event){
+	m_pingcount = 0;
+	SPing cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(LoginInfo::HandlerSPing));
+}
+
+void LoginInfo::setTime(){
+	m_lasttime = GameDataSet::getTime();
+}
+
+void LoginInfo::update(float dt){
+	time_t t = GameDataSet::getTime();
+	if (m_lasttime!=0&&t - m_lasttime >= 10){
+		m_lasttime=t;
+		SendCPing();
+	}
+	if (m_pingcount >= 3 && t - m_lasttime >= 5){
+		//判定客户端已经与服务器端断开
+		ClientSocket::getIns()->close();
 	}
 }

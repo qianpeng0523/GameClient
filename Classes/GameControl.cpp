@@ -30,11 +30,11 @@ GameControl::GameControl(){
 	m_pMJGameLayer = NULL;
 	m_pGameUI = NULL;
 	m_pMJGameScene = NULL;
-	Director::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
+	CCDirector::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 
 GameControl::~GameControl(){
-	Director::sharedDirector()->getScheduler()->unscheduleUpdate(this);
+	CCDirector::sharedDirector()->getScheduler()->unscheduleUpdate(this);
 }
 
 bool GameControl::init()
@@ -52,6 +52,7 @@ GameControl* GameControl::getIns(){
 }
 
 void GameControl::replaceScene(Scene *scene){
+	TextureCache::sharedTextureCache()->removeUnusedTextures();
 	Director *p = Director::sharedDirector();
 	CCTransitionFade *reScene = CCTransitionFade::create(0.3, scene);
 	p->replaceScene(reScene);
