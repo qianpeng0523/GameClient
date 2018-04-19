@@ -163,6 +163,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Common\Common.cpp" />
     <ClCompile Include="..\Classes\Common\EffectAnimation.cpp" />
     <ClCompile Include="..\Classes\Common\GameDataSet.cpp" />
+    <ClCompile Include="..\Classes\Common\KeyBoard.cpp" />
     <ClCompile Include="..\Classes\Common\MD55.cpp" />
     <ClCompile Include="..\Classes\Common\RootRegister.cpp" />
     <ClCompile Include="..\Classes\Common\SpecialAction.cpp" />
@@ -225,6 +226,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Room\JoinRoomLayer.cpp" />
     <ClCompile Include="..\Classes\Room\MJGameLayer.cpp" />
     <ClCompile Include="..\Classes\Room\MJGameScene.cpp" />
+    <ClCompile Include="..\Classes\TipLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +244,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Common\CommonData.h" />
     <ClInclude Include="..\Classes\Common\EffectAnimation.h" />
     <ClInclude Include="..\Classes\Common\GameDataSet.h" />
+    <ClInclude Include="..\Classes\Common\KeyBoard.h" />
     <ClInclude Include="..\Classes\Common\MD55.h" />
     <ClInclude Include="..\Classes\Common\RootRegister.h" />
     <ClInclude Include="..\Classes\Common\SpecialAction.h" />
@@ -322,6 +325,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Room\JoinRoomLayer.h" />
     <ClInclude Include="..\Classes\Room\MJGameLayer.h" />
     <ClInclude Include="..\Classes\Room\MJGameScene.h" />
+    <ClInclude Include="..\Classes\TipLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

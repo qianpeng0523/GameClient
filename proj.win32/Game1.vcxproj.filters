@@ -279,6 +279,12 @@
     <ClCompile Include="..\Classes\loading\LoadLayer.cpp">
       <Filter>Classes\loading</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Common\KeyBoard.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TipLayer.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -565,6 +571,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\loading\LoadLayer.h">
       <Filter>Classes\loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\KeyBoard.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TipLayer.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
