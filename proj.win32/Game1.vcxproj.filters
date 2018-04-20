@@ -288,6 +288,12 @@
     <ClCompile Include="..\Classes\TopTipLayer.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\cc\Room.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cc\RoomLogic.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -583,6 +589,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\TopTipLayer.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\Room.h">
+      <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\RoomLogic.h">
+      <Filter>Classes\cc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

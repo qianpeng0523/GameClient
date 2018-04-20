@@ -155,6 +155,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\cc\ConfigProto.cpp" />
     <ClCompile Include="..\Classes\cc\Hall.cpp" />
     <ClCompile Include="..\Classes\cc\Login.cpp" />
+    <ClCompile Include="..\Classes\cc\Room.cpp" />
+    <ClCompile Include="..\Classes\cc\RoomLogic.cpp" />
     <ClCompile Include="..\Classes\cc\Vo.cpp" />
     <ClCompile Include="..\Classes\Common\Adaptation.cpp" />
     <ClCompile Include="..\Classes\Common\BaseLayer.cpp" />
@@ -236,6 +238,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\cc\ConfigProto.h" />
     <ClInclude Include="..\Classes\cc\Hall.h" />
     <ClInclude Include="..\Classes\cc\Login.h" />
+    <ClInclude Include="..\Classes\cc\Room.h" />
+    <ClInclude Include="..\Classes\cc\RoomLogic.h" />
     <ClInclude Include="..\Classes\cc\Vo.h" />
     <ClInclude Include="..\Classes\Common\Adaptation.h" />
     <ClInclude Include="..\Classes\Common\BaseLayer.h" />
