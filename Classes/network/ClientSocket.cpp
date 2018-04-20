@@ -24,7 +24,7 @@ ClientSocket::ClientSocket(){
 	m_isbegin = false;
 	m_tcpSocket = new TcpSocket();
 	createTcp();
-	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(ClientSocket::update), this, 8.0, false);
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(ClientSocket::update), this, 5.0, false);
 }
 
 void ClientSocket::createTcp(){
@@ -33,9 +33,9 @@ void ClientSocket::createTcp(){
 	TcpSocket::Init();
 	int ret = m_tcpSocket->Create(AF_INET, SOCK_STREAM, IPPROTO_IP);
 	if (ret) {
-		printf("Create socket:success,ret:%d\n", ret);
+		log("Create socket:success,ret:%d\n", ret);
 	} else {
-		printf("Create socket:fail,ret:%d", ret);
+		log("Create socket:fail,ret:%d", ret);
 	}
 }
 
@@ -75,6 +75,8 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 	int connectFlag = m_tcpSocket->Connect(ip, port);
 	GameControl::getIns()->HideLoading();
     if (connectFlag != SOCKET_ERROR) {
+		log("Connect success:%s,%d",ip,port);
+		LoginInfo::getIns()->setTime();
 		std::thread t1(&ClientSocket::threadHandler, this);//创建一个分支线程，回调到myThread函数里
 		t1.detach();
         m_isConnected = true;
@@ -95,6 +97,10 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 			pLoginInfo->SendCLogin("100001", "123456");
 		}
 	}
+	else{
+		LoginInfo::getIns()->setTime();
+		log("Connect faild:%s,%d", ip, port);
+	}
     return connectFlag;
 }
 
@@ -107,8 +113,9 @@ int ClientSocket::close() {
 		state = m_tcpSocket->Close();
 		m_sendstamp = 0;
 		m_recvstamp = 0;
+		log("socket close zhudong!!!!!!!!!!!");
 	}
-	createTcp();
+	//createTcp();
 	return state;
 }
 
@@ -132,7 +139,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 			return;
 		}
 	}
-	m_sendstamp = (m_sendstamp+1)%256;
+	m_sendstamp = (m_sendstamp + 1) % MAXSTAMP;
 	log("m_sendstamp:%d", m_sendstamp);
 	int len = msg->ByteSize();
 	char *buffer = new char[HEADLEN + len];
@@ -174,7 +181,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 void ClientSocket::DataIn(char* data, int size,int cmd){
 	GameControl::getIns()->HideLoading();
 	//数据不能用string  只能用char*
-	LoginInfo::getIns()->setTime();
+	
 	log("datain size:%d cmd:%d", size, cmd);
 	ccEvent *sEvent = new ccEvent(cmd, data, size);
 	XXEventDispatcher::getIns()->disEventDispatcher(sEvent);
@@ -186,6 +193,7 @@ void *ClientSocket::threadHandler(void *arg) {
 	ClientSocket *p = ClientSocket::getIns();
     while (1) {
 		len = p->Recv(buff, HEADLEN, 0);
+		LoginInfo::getIns()->setTime();
         if (len > 0) {
 			Head *head = (Head*)buff;
 			string servercode = p->getReq(head);
@@ -197,7 +205,7 @@ void *ClientSocket::threadHandler(void *arg) {
 			char *temp = new char[len];
 			p->Recv(temp, len, 0);
 			
-			p->m_recvstamp = (p->m_recvstamp+1) % 256;
+			p->m_recvstamp = (p->m_recvstamp + 1) % MAXSTAMP;
 			log("server stamp[%d]---stamp[%d]",stamp,p->m_recvstamp);
 			if (stamp == p->m_recvstamp){
 				char* out = new char[len + 1];
@@ -207,14 +215,15 @@ void *ClientSocket::threadHandler(void *arg) {
 			}
 			else{
 				delete temp;
-				p->close();
+				log("no match server stamp[%d]---stamp[%d]", stamp, p->m_recvstamp);
 				log("%s",XXIconv::GBK2UTF("数据不合法").c_str());
+				p->close();
 			}
 
         } else{
 			log("%s", "==== connect break up ====");
             //服务端断开
-           p->close();
+			p->close();
 			//断开线程
             break;
         }
@@ -224,7 +233,8 @@ void *ClientSocket::threadHandler(void *arg) {
 
 int ClientSocket::reConnect(){
 	if (m_tcpSocket&&!m_isConnected){
-		return m_tcpSocket->Connect(m_ip.c_str(), m_port);
+		createTcp();
+		return connect(m_ip.c_str(), m_port);
 	}
 	return SOCKET_ERROR;
 }

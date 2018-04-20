@@ -63,3 +63,4 @@ typedef void (Ref::*EventHandler)(ccEvent*);
 
 /******NOTICE******/
 #define NOTICE_WXLOGIN "wxlogin"
+#define MAXSTAMP 128

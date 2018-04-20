@@ -1,4 +1,4 @@
-
+﻿
 #ifndef _KeyBoard_h
 #define _KeyBoard_h
 #include "cocos2d.h"

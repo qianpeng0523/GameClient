@@ -1,16 +1,16 @@
-#include "KeyBoard.h"
+ï»¿#include "KeyBoard.h"
 #include "TipLayer.h"
 #include "GameControl.h"
 #include "LoginLayer.h"
 
 
 KeyLayer::KeyLayer(){
-	//¶ÔÊÖ»ú·µ»Ø¼üµÄ¼àÌı 
+	//å¯¹æ‰‹æœºè¿”å›é”®çš„ç›‘å¬ 
 	auto listener = EventListenerKeyboard::create();
-	//ºÍ»Øµ÷º¯Êı°ó¶¨ 
+	//å’Œå›è°ƒå‡½æ•°ç»‘å®š 
 	listener->onKeyPressed = CC_CALLBACK_2(KeyLayer::onKeyPressed, this);
 	listener->onKeyReleased = CC_CALLBACK_2(KeyLayer::onKeyReleased, this);
-	//Ìí¼Óµ½ÊÂ¼ş·Ö·¢Æ÷ÖĞ 
+	//æ·»åŠ åˆ°äº‹ä»¶åˆ†å‘å™¨ä¸­ 
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
@@ -56,10 +56,10 @@ void KeyLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event){
 			tip = TipLayer::create();
 			this->addChild(tip);
 			if (m_type == EXIT_KEYTYPE){
-				tip->setContent(XXIconv::GBK2UTF("ÊÇ·ñÈ·¶¨ÒªÍË³öÓÎÏ·?"));
+				tip->setContent(XXIconv::GBK2UTF("æ˜¯å¦ç¡®å®šè¦é€€å‡ºæ¸¸æˆ?"));
 			}
 			else if (m_type == BACK_KEYTYPE){
-				tip->setContent(XXIconv::GBK2UTF("ÊÇ·ñÈ·¶¨·µ»Ø?"));
+				tip->setContent(XXIconv::GBK2UTF("æ˜¯å¦ç¡®å®šè¿”å›?"));
 			}
 		}
 	}

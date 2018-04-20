@@ -78,8 +78,11 @@ void LoginInfo::HandlerSLoginHand(ccEvent *event){
 		m_myinfo = cl.info();
 		m_myinfo.set_picurl("http://www.lesharecs.com/1.jpg");
 		log("%s",XXIconv::GBK2UTF("登录成功!").c_str());
-		Scene *scene = LoadingLayer::createScene(2);
-		GameControl::getIns()->replaceScene(scene);
+		LoginLayer *p = GameControl::getIns()->getLoginLayer();
+		if (p){
+			Scene *scene = LoadingLayer::createScene(2);
+			GameControl::getIns()->replaceScene(scene);
+		}
 	}
 	else{
 		log("%s", XXIconv::GBK2UTF("账号密码错误").c_str());
@@ -106,8 +109,11 @@ void LoginInfo::HandlerSRegister(ccEvent *event){
 	if (err == 0){
 		m_myinfo = cl.info();
 		log("%s", XXIconv::GBK2UTF("注册成功!").c_str());
-		Scene *scene = LoadingLayer::createScene(2);
-		GameControl::getIns()->replaceScene(scene);
+		LoginLayer *p = GameControl::getIns()->getLoginLayer();
+		if (p){
+			Scene *scene = LoadingLayer::createScene(2);
+			GameControl::getIns()->replaceScene(scene);
+		}
 	}
 	else if(err==1){
 		log("%s", XXIconv::GBK2UTF("注册失败!").c_str());
@@ -139,8 +145,11 @@ void LoginInfo::HandlerSWXLogin(ccEvent *event){
 			pUserDefault->setStringForKey("token", token);
 		}
 		log("%s", XXIconv::GBK2UTF("微信登录成功!").c_str());
-		Scene *scene = LoadingLayer::createScene(2);
-		GameControl::getIns()->replaceScene(scene);
+		LoginLayer *p = GameControl::getIns()->getLoginLayer();
+		if (p){
+			Scene *scene = LoadingLayer::createScene(2);
+			GameControl::getIns()->replaceScene(scene);
+		}
 	}
 	else{
 		log("%s", XXIconv::GBK2UTF("微信登录失败!").c_str());
@@ -169,12 +178,14 @@ void LoginInfo::setTime(){
 
 void LoginInfo::update(float dt){
 	time_t t = GameDataSet::getTime();
-	if (m_lasttime!=0&&t - m_lasttime >= 10){
+	if (m_lasttime!=0&&t - m_lasttime >= 13){
 		m_lasttime=t;
 		SendCPing();
 	}
-	if (m_pingcount >= 3 && t - m_lasttime >= 5){
+	if (m_pingcount >= 4 && m_lasttime!=0&& t - m_lasttime >= 0){
+		log("pingocunt[%d]--t[%ld]---lasttime[%ld]",m_pingcount,t,m_lasttime);
 		m_lasttime = t;
+		m_pingcount = 0;
 		//判定客户端已经与服务器端断开
 		ClientSocket::getIns()->close();
 	}
