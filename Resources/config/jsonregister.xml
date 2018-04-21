@@ -3,9 +3,9 @@
 <root>
   <item json="about.json" count="1" type="2"/>
   <item json="activity.json" count="1" type="2"/>
-  <item json="chat.json" count="1" type="2"/>
-  <item json="chatitem1.json" count="10" type="2"/>
-  <item json="chatitem2.json" count="10" type="2"/>
+  <item json="dchat.json" count="1" type="2"/>
+  <item json="dchatitem1.json" count="10" type="2"/>
+  <item json="dchatitem2.json" count="10" type="2"/>
   <item json="exchange.json" count="1" type="2"/>
   <item json="exchangeitem.json" count="10" type="2"/>
   <item json="exchangerecorditem.json" count="10" type="2"/>
@@ -37,4 +37,26 @@
   <item json="privatejoin.json" count="1" type="2"/>
   <item json="mjgamescene.json" count="1" type="3"/>
   <item json="tiplayer.json" count="1" type="1"/>
+  <item json="chat.json" count="1" type="3"/>
+  <item json="chatitem.json" count="10" type="3"/>
+  <item json="mjhu4.json" count="1" type="3"/>
+  <item json="mjhu3.json" count="1" type="3"/>
+  <item json="mjhu2.json" count="1" type="3"/>
+  <item json="mjhu1.json" count="1" type="3"/>
+  <item json="mjchu4.json" count="1" type="3"/>
+  <item json="mjchu3.json" count="1" type="3"/>
+  <item json="mjchu2.json" count="1" type="3"/>
+  <item json="mjchu1.json" count="1" type="3"/>
+  <item json="mjcpg4.json" count="1" type="3"/>
+  <item json="mjcpg3.json" count="1" type="3"/>
+  <item json="mjcpg2.json" count="1" type="3"/>
+  <item json="mjcpg1.json" count="1" type="3"/>
+  <item json="mjhand4.json" count="1" type="3"/>
+  <item json="mjhand3.json" count="1" type="3"/>
+  <item json="mjhand2.json" count="1" type="3"/>
+  <item json="mjhand1.json" count="1" type="3"/>
+  <item json="mjwall4.json" count="1" type="3"/>
+  <item json="mjwall3.json" count="1" type="3"/>
+  <item json="mjwall2.json" count="1" type="3"/>
+  <item json="mjwall1.json" count="1" type="3"/>
 </root>

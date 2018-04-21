@@ -14,7 +14,7 @@
   ],
   "texturesPng": [
     "game/RushMahjong/textures/majiang_tableui.plist",
-    "chat.png"
+    "chatbtn.png"
   ],
   "version": "1.6.0.0",
   "widgetTree": {
@@ -830,7 +830,7 @@
           "fontType": 0,
           "normal": null,
           "normalData": {
-            "path": "chat.png",
+            "path": "chatbtn.png",
             "plistFile": "",
             "resourceType": 0
           },

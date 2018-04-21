@@ -32,6 +32,7 @@
 #include "MJGameScene.h"
 #include "TipLayer.h"
 #include "TopTipLayer.h"
+#include "GameChatLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
@@ -241,6 +242,14 @@ public:
 	TopTipLayer *getTopTipLayer(){
 		return m_pTopTipLayer;
 	}
+
+	void setGameChatLayer(GameChatLayer *p){
+		m_pGameChatLayer = p;
+	}
+	GameChatLayer *getGameChatLayer(){
+		return m_pGameChatLayer;
+	}
+
 	void ShowTopTip(string tip);
 
 	void ShowLoading();
@@ -283,10 +292,13 @@ private:
 	MJGameScene *m_pMJGameScene;
 	TipLayer *m_pTipLayer;
 	TopTipLayer *m_pTopTipLayer;
+	GameChatLayer *m_pGameChatLayer;
 	vector<LaBaItem *> m_contents;
 	map<BaseLayer *, map<Layout *,LoadLayer *>>m_pLoadings;
 	vector<string> m_toptips;
 	bool m_topcopy;
+	vector<LaBaItem *>::iterator m_itr;
+	int m_index;
 };
 
 #endif // __GameControl_SCENE_H__

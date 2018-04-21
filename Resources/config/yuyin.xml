@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--  
+id:唯一性标志，也就是扑克的图片
+tempid:对应的牌值
+name:扑克名称
+-->
+<root>
+  <item id="30" name="v1" content="快点啊，我等的花儿都也谢了"/>
+  <item id="31" name="v2" content="怎么又断线了啊，网络怎么这么差啊"/>
+  <item id="32" name="v3" content="不要走，决战到天亮"/>
+  <item id="33" name="v4" content="你的牌打得太好啦"/>
+  <item id="34" name="v5" content="你是妹妹还是哥哥"/>
+  <item id="35" name="v6" content="和你合作真是太愉快了啊"/>
+  <item id="36" name="v7" content="大家好，很高兴见到各位"/>
+  <item id="37" name="v8" content="各位，不好意思啊，我得离开一会儿"/>
+  <item id="38" name="v9" content="不要吵了，吵什么吵，专心玩游戏吧"/>
+</root>

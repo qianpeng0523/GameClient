@@ -18,7 +18,7 @@ LoginLayer::LoginLayer(){
 
 LoginLayer::~LoginLayer(){
 	CCNotificationCenter::sharedNotificationCenter()->removeObserver(this, NOTICE_WXLOGIN);
-	RootRegister::getIns()->resetWidget("login.json");
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this==GameControl::getIns()->getLoginLayer()){
 		GameControl::getIns()->setLoginLayer(NULL);
 	}

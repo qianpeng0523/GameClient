@@ -34,9 +34,9 @@ bool ChatItemLayer::init(string uid, string uname,string content)
 	}
 	m_uid = uid;
 	UserBase user = LoginInfo::getIns()->getMyUserBase();
-	m_json = "chatitem1.json";
+	m_json = "dchatitem1.json";
 	if (uid.compare(user.userid()) == 0){
-		m_json = "chatitem2.json";
+		m_json = "dchatitem2.json";
 	}
 	m_RootLayer = RootRegister::getIns()->getWidget(m_json.c_str());
 	this->addChild(m_RootLayer);
@@ -118,7 +118,7 @@ bool ChatLayer::init(string uid, string uname)
     }
 	m_uid = uid;
 	m_uname = uname;
-	m_RootLayer =RootRegister::getIns()->getWidget("chat.json");
+	m_RootLayer =RootRegister::getIns()->getWidget("dchat.json");
 	this->addChild(m_RootLayer);
 
 	SEL_TouchEvent selector = toucheventselector(ChatLayer::TouchEvent);

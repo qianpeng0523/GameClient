@@ -45,11 +45,9 @@ public:
 	void initPercent(){
 		m_per = 0;
 		m_count = 0;
-		m_nowpLayoutItem = NULL;
-		m_itr = m_dict.begin();
 	}
 	void CallBack(Node *node,void *data);
-	LayoutItem * FindNext(LayoutItem *p);
+	LayoutItem * FindNext(int type);
 public:
 	
 private:
@@ -57,8 +55,7 @@ private:
 	map<string, vector<LayoutItem *>>m_dict;
 	float m_per;
 	int m_count;
-	LayoutItem *m_nowpLayoutItem;
-	map<string, vector<LayoutItem *>>::iterator m_itr;
+	map<string , vector<LayoutItem *>>m_curdict;
 };
 
 #endif // __RootRegister_SCENE_H__

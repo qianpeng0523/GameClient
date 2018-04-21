@@ -24,6 +24,7 @@ public:
 	void CallBack(Node *node);
 private:
 	bool m_lock;
+	ImageView *m_bg;
 private:
 	vector<string >m_tips;
 };

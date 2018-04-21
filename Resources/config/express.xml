@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--  
+id:唯一性标志，也就是扑克的图片
+key:对应的牌值
+name:扑克名称
+-->
+<root>
+  <item id="1" name="E00E" file="speakFace/LT_BQ1.png" ani="" count="1"/>
+  <item id="2" name="E02B" file="speakFace/LT_BQ2.png" ani="" count="1"/>
+  <item id="3" name="E04F" file="speakFace/LT_BQ3.png" ani="" count="1"/>
+  <item id="4" name="E40A" file="speakFace/LT_BQ4.png" ani="" count="1"/>
+  <item id="5" name="E40B" file="speakFace/LT_BQ5.png" ani="" count="1"/>
+  <item id="6" name="E40C" file="speakFace/LT_BQ6.png" ani="" count="1"/>
+  <item id="7" name="E40D" file="speakFace/LT_BQ7.png" ani="" count="1"/>
+  <item id="8" name="E40E" file="speakFace/LT_BQ8.png" ani="" count="1"/>
+  <item id="9" name="E40F" file="speakFace/LT_BQ9.png" ani="" count="1"/>
+  <item id="10" name="E41D" file="speakFace/LT_BQ10.png" ani="" count="1"/>
+  <item id="11" name="E41F" file="speakFace/LT_BQ11.png" ani="" count="1"/>
+  <item id="12" name="E043" file="speakFace/LT_BQ12.png" ani="" count="1"/>
+  <item id="13" name="E051" file="speakFace/LT_BQ13.png" ani="" count="1"/>
+  <item id="14" name="E052" file="speakFace/LT_BQ14.png" ani="" count="1"/>
+</root>

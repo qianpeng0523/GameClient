@@ -89,7 +89,7 @@ ExchangeRecordItemLayer::ExchangeRecordItemLayer(){
 }
 
 ExchangeRecordItemLayer::~ExchangeRecordItemLayer(){
-	RootRegister::getIns()->resetWidget("exchangerecorditem.json");
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
 ExchangeRecordItemLayer *ExchangeRecordItemLayer::create(ExRecord hall){
@@ -159,7 +159,7 @@ ExchangeLayer::ExchangeLayer(){
 }
 
 ExchangeLayer::~ExchangeLayer(){
-	RootRegister::getIns()->resetWidget("exchange.json");
+	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getExchangeLayer()){
 		GameControl::getIns()->setExchangeLayer(NULL);
 

@@ -37,7 +37,7 @@ WebViewCommom::WebViewCommom()
 WebViewCommom::~WebViewCommom()
 {
 	_webView->removeFromParentAndCleanup(true);
-	RootRegister::getIns()->resetWidget("webview.json");
+	GameChatItemLayer("webview.json");
 }
 
 bool WebViewCommom::init(string url)

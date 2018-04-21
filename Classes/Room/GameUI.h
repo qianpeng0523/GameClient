@@ -19,7 +19,7 @@ public:
     virtual bool init();
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
-	
+	void update(float dt);
 private:
 	void openMenu();
 	void closeMenu();

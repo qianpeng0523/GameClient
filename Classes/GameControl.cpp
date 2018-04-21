@@ -32,7 +32,9 @@ GameControl::GameControl(){
 	m_pMJGameScene = NULL;
 	m_pTipLayer = NULL;
 	m_pTopTipLayer = NULL;
+	m_pGameChatLayer = NULL;
 	m_topcopy = false;
+	m_index = 0;
 	CCDirector::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 
@@ -70,28 +72,25 @@ void GameControl::PushLaBa(string content, int times){
 
 void GameControl::update(float dt){
 	if (m_pMainLayer&&m_pMainLayer->isFinished() && !m_contents.empty()){
-		vector<LaBaItem *>::iterator itr = m_contents.begin();
-		for (itr; itr != m_contents.end();itr++){
-			LaBaItem *item = *itr;
+		int sz = m_contents.size();
+		if (m_index >= sz){
+			m_index = 0;
+		}
+		m_itr = m_contents.begin()+m_index++;
+		if (m_itr != m_contents.end()){
+			LaBaItem *item = *m_itr;
 			string content = item->_content;
 			int times = item->_times;
-			if (m_contents.size() == 1&&times==-1){
-				if (m_pMainLayer){
-					m_pMainLayer->ShowLaBa(content);
-				}
-				break;
-			}
-			else if(times!=-1){
-				if (m_pMainLayer){
-					m_pMainLayer->ShowLaBa(content);
+			if (m_pMainLayer){
+				m_pMainLayer->ShowLaBa(content);
+				if (times != -1){
 					times -= 1;
 					item->_times = times;
 					if (times <= 0){
 						delete item;
-						m_contents.erase(itr);
+						m_contents.erase(m_itr);
 					}
 				}
-				break;
 			}
 		}
 	}
@@ -182,7 +181,13 @@ void GameControl::ShowTopTip(string tip){
 		pDirector->getRunningScene()->addChild(m_pTopTipLayer, 2001);
 		Size sz = pDirector->getWinSize();
 		m_pTopTipLayer->setPositionX(m_pTopTipLayer->getContentSize().width / 2.0);
-		m_pTopTipLayer->setPositionY(sz.height-m_pTopTipLayer->getContentSize().height);
+		if(m_pMainLayer){
+			m_pTopTipLayer->setPositionX(m_pTopTipLayer->getPositionX()+60);
+			m_pTopTipLayer->setPositionY(sz.height - m_pTopTipLayer->getContentSize().height-66);
+		}else{
+			m_pTopTipLayer->setPositionY(sz.height - m_pTopTipLayer->getContentSize().height);
+		}
+		
 		m_pTopTipLayer->PushTip(tip);
 	}
 	else{

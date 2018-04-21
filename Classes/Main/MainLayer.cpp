@@ -89,7 +89,7 @@ bool MainLayer::init()
 	m_laba = (Text *)GameDataSet::getLayout(m_RootLayer,"Label_laba");
 	
 	SelectItem(0);
-	m_laba->setPositionX(-m_laba->getSize().width*1.01);
+	m_laba->setPositionX(-m_laba->getSize().width*1.1);
 	GameControl *pGameControl = GameControl::getIns();
 	pGameControl->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试"), -1);
 	pGameControl->PushLaBa(XXIconv::GBK2UTF("测试测试测试测试11111111"), 3);
@@ -116,11 +116,11 @@ bool MainLayer::init()
 void MainLayer::test(){
 	char buff[50];
 	GameControl *pGameControl = GameControl::getIns();
-	for (int i = 0; i < 10; i++){
+	for (int i = 0; i < 4; i++){
 		sprintf(buff, "%s%d", XXIconv::GBK2UTF("测试消息").c_str(), rand() % 100000 + 1);
 		pGameControl->ShowTopTip(buff);
 	}
-	this->runAction(Sequence::create(DelayTime::create(20.0),
+	this->runAction(Sequence::create(DelayTime::create(4),
 		CCCallFunc::create(this, callfunc_selector(MainLayer::test))
 		, NULL));
 }
