@@ -158,6 +158,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\cc\Room.cpp" />
     <ClCompile Include="..\Classes\cc\RoomLogic.cpp" />
     <ClCompile Include="..\Classes\cc\Vo.cpp" />
+    <ClCompile Include="..\Classes\Chat\GameChatItemLayer.cpp" />
+    <ClCompile Include="..\Classes\Chat\GameChatLayer.cpp" />
     <ClCompile Include="..\Classes\Common\Adaptation.cpp" />
     <ClCompile Include="..\Classes\Common\BaseLayer.cpp" />
     <ClCompile Include="..\Classes\Common\CDProgressTimer.cpp" />
@@ -172,7 +174,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Common\SpriteBlur.cpp" />
     <ClCompile Include="..\Classes\Common\WebViewCommom.cpp" />
     <ClCompile Include="..\Classes\Common\XXIconv.cpp" />
+    <ClCompile Include="..\Classes\config\ExpressConfig.cpp" />
     <ClCompile Include="..\Classes\config\JsonRegisterConfig.cpp" />
+    <ClCompile Include="..\Classes\config\YuYinConfig.cpp" />
     <ClCompile Include="..\Classes\cryptopp\aes_core.cpp" />
     <ClCompile Include="..\Classes\cryptopp\crypto_utils.cpp" />
     <ClCompile Include="..\Classes\cryptopp\crypto_wrapper.cpp" />
@@ -226,8 +230,13 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Room\GameHead.cpp" />
     <ClCompile Include="..\Classes\Room\GameUI.cpp" />
     <ClCompile Include="..\Classes\Room\JoinRoomLayer.cpp" />
+    <ClCompile Include="..\Classes\Room\MJChu.cpp" />
+    <ClCompile Include="..\Classes\Room\MJCPH.cpp" />
     <ClCompile Include="..\Classes\Room\MJGameLayer.cpp" />
     <ClCompile Include="..\Classes\Room\MJGameScene.cpp" />
+    <ClCompile Include="..\Classes\Room\MJHand.cpp" />
+    <ClCompile Include="..\Classes\Room\MJHu.cpp" />
+    <ClCompile Include="..\Classes\Room\MJWall.cpp" />
     <ClCompile Include="..\Classes\TipLayer.cpp" />
     <ClCompile Include="..\Classes\TopTipLayer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -241,6 +250,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\cc\Room.h" />
     <ClInclude Include="..\Classes\cc\RoomLogic.h" />
     <ClInclude Include="..\Classes\cc\Vo.h" />
+    <ClInclude Include="..\Classes\Chat\GameChatItemLayer.h" />
+    <ClInclude Include="..\Classes\Chat\GameChatLayer.h" />
     <ClInclude Include="..\Classes\Common\Adaptation.h" />
     <ClInclude Include="..\Classes\Common\BaseLayer.h" />
     <ClInclude Include="..\Classes\Common\CDProgressTimer.h" />
@@ -257,7 +268,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Common\WebViewCommom.h" />
     <ClInclude Include="..\Classes\Common\XXIconv.h" />
     <ClInclude Include="..\Classes\Common\XXMacros.h" />
+    <ClInclude Include="..\Classes\config\ExpressConfig.h" />
     <ClInclude Include="..\Classes\config\JsonRegisterConfig.h" />
+    <ClInclude Include="..\Classes\config\YuYinConfig.h" />
     <ClInclude Include="..\Classes\cryptopp\aes.h" />
     <ClInclude Include="..\Classes\cryptopp\crypto_utils.h" />
     <ClInclude Include="..\Classes\cryptopp\crypto_wrapper.h" />
@@ -328,8 +341,13 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Room\GameHead.h" />
     <ClInclude Include="..\Classes\Room\GameUI.h" />
     <ClInclude Include="..\Classes\Room\JoinRoomLayer.h" />
+    <ClInclude Include="..\Classes\Room\MJChu.h" />
+    <ClInclude Include="..\Classes\Room\MJCPH.h" />
     <ClInclude Include="..\Classes\Room\MJGameLayer.h" />
     <ClInclude Include="..\Classes\Room\MJGameScene.h" />
+    <ClInclude Include="..\Classes\Room\MJHand.h" />
+    <ClInclude Include="..\Classes\Room\MJHu.h" />
+    <ClInclude Include="..\Classes\Room\MJWall.h" />
     <ClInclude Include="..\Classes\TipLayer.h" />
     <ClInclude Include="..\Classes\TopTipLayer.h" />
     <ClInclude Include="main.h" />

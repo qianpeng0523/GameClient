@@ -52,6 +52,9 @@
     <Filter Include="Classes\Login">
       <UniqueIdentifier>{90d9951b-ea40-4b95-a36c-82366bd0504b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Chat">
+      <UniqueIdentifier>{2e907f55-a20e-4994-bdf9-8a8b4799b987}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -288,11 +291,32 @@
     <ClCompile Include="..\Classes\TopTipLayer.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\cc\Room.cpp">
-      <Filter>Classes\cc</Filter>
+    <ClCompile Include="..\Classes\Chat\GameChatItemLayer.cpp">
+      <Filter>Classes\Chat</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\cc\RoomLogic.cpp">
-      <Filter>Classes\cc</Filter>
+    <ClCompile Include="..\Classes\Chat\GameChatLayer.cpp">
+      <Filter>Classes\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\config\YuYinConfig.cpp">
+      <Filter>Classes\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\config\ExpressConfig.cpp">
+      <Filter>Classes\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\MJChu.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\MJCPH.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\MJHand.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\MJHu.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\MJWall.cpp">
+      <Filter>Classes\Room</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -590,11 +614,32 @@
     <ClInclude Include="..\Classes\TopTipLayer.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\cc\Room.h">
-      <Filter>Classes\cc</Filter>
+    <ClInclude Include="..\Classes\Chat\GameChatItemLayer.h">
+      <Filter>Classes\Chat</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\cc\RoomLogic.h">
-      <Filter>Classes\cc</Filter>
+    <ClInclude Include="..\Classes\Chat\GameChatLayer.h">
+      <Filter>Classes\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\config\YuYinConfig.h">
+      <Filter>Classes\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\config\ExpressConfig.h">
+      <Filter>Classes\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\MJChu.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\MJCPH.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\MJHand.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\MJHu.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\MJWall.h">
+      <Filter>Classes\Room</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
