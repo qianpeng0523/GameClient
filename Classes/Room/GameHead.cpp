@@ -59,7 +59,7 @@ bool GameHead::init()
 		sprintf(buff, "BitmapLabel_%d", i + 1);
 		m_scores[i] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, buff);
 
-		
+		setWin(i + 1, false);
 	}
 	offLine(0);
 	offLine(1);
@@ -75,6 +75,11 @@ bool GameHead::init()
 	setScore(2, 20000);
 	setScore(3, 20080);
 	setScore(4, 200880);
+	setTip(1,"10001",120);
+// 	setWin(1, -128);
+// 	setWin(2, 128);
+// 	setWin(3, 128);
+// 	setWin(4, -128);
     return true;
 }
 
@@ -95,6 +100,36 @@ void GameHead::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("btn4") == 0){
 
 		}
+	}
+}
+
+void GameHead::setTip(int pos,string uid, int time){
+	int index = changePos(pos);
+	char buff[500];
+	sprintf(buff, "%s%s%s%02d:%02d%s", XXIconv::GBK2UTF("玩家").c_str(), uid.c_str(), XXIconv::GBK2UTF("玩家已经离线，等待玩家上线，还有").c_str(),
+		time / 60, time % 60, XXIconv::GBK2UTF("房间解散").c_str()
+		);
+	char buff1[30];
+	sprintf(buff1, "tip%d", index + 1);
+	Text *t= GameDataSet::setText(m_RootLayer, buff1, buff);
+	if (index >= 0){
+		t->setFontSize(18);
+		setTipVisible(pos, true);
+	}
+}
+
+void GameHead::setTip(string uid, int time){
+	int pos = getPosition1(uid);
+	setTip(pos, uid,time);
+}
+
+void GameHead::setTipVisible(int pos, bool isv){
+	int index = changePos(pos);
+	char buff[50];
+	for (int i = 0; i < 4; i++){
+		sprintf(buff, "tipbg%d", i + 1);
+		Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
+		ly->setVisible((i==index)?true:false);
 	}
 }
 
@@ -152,6 +187,33 @@ void GameHead::setScore(string uid, int score){
 	if (s > 0 && tp.length()>4){
 		m_scores[index]->setScale(1.0 - s);
 	}
+}
+
+void GameHead::setWin(int pos, int win){
+	int index = changePos(pos);
+	char buff[50];
+	sprintf(buff,"BitmapLabel_win%d",index+1);
+	string fnt = "fonts/jiesuan_shu_shuzi.fnt";
+	char buff1[30];
+	if (win > 0){
+		fnt = "fonts/jiesuan_ying_shuzi.fnt";
+		sprintf(buff1, "+%d",win);
+	}
+	else if(win<0){
+		sprintf(buff1, "%d", win);
+	}
+	TextBMFont *t= (TextBMFont *)GameDataSet::getLayout(m_RootLayer, buff);
+	t->setFntFile(fnt);
+	t->setText(buff1);
+	setWinVisible(pos,win!=0? true:false);
+}
+
+void GameHead::setWinVisible(int pos, bool isv){
+	int index = changePos(pos);
+	char buff[50];
+	sprintf(buff, "BitmapLabel_win%d", index + 1);
+	Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
+	ly->setVisible(isv);
 }
 
 void GameHead::PushRoomUser(RoomUser ru){
@@ -229,6 +291,15 @@ int GameHead::getPos(string uid){
 	return -1;
 }
 
+int GameHead::getPosition1(string uid){
+	for (int i = 0; i < 4; i++){
+		if (m_users[i] && m_users[i]->userid().compare(uid) == 0){
+			return m_users[i]->position();
+		}
+	}
+	return -1;
+}
+
 void GameHead::setGray(ImageView *img){
 	auto program = CCGLProgram::createWithFilenames("gray.vsh", "gray.fsh"); //装配一个shader文件
 	program->link();
@@ -238,7 +309,7 @@ void GameHead::setGray(ImageView *img){
 }
 
 void GameHead::removeGray(ImageView *img){
-	auto program = CCGLProgram::createWithFilenames("", ""); //装配一个shader文件
+	auto program = CCGLProgram::createWithByteArrays("",""); //装配一个shader文件
 	program->link();
 	program->updateUniforms();
 	Sprite *spr = ((ui::Scale9Sprite *)img->getVirtualRenderer())->getSprite();

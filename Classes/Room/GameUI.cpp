@@ -41,8 +41,13 @@ bool GameUI::init()
 	GameDataSet::getButton(m_RootLayer, "yuyin_btn", selector, this);
 	GameDataSet::getButton(m_RootLayer, "set_btn", selector, this);
 	GameDataSet::getButton(m_RootLayer, "help_btn", selector, this);
+	m_beginbtn = GameDataSet::getButton(m_RootLayer, "begin_btn", selector, this);
+	m_readybtn = GameDataSet::getButton(m_RootLayer, "ready_btn", selector, this);
+
 	m_menubg =(Layout *) GameDataSet::getButton(m_RootLayer, "menubg", selector, this);
 	update(0);
+	ShowReady(false);
+	ShowBegin(false);
     return true;
 }
 
@@ -99,8 +104,21 @@ void GameUI::TouchEvent(CCObject *obj, TouchEventType type){
 				this->addChild(p);
 			}
 		}
-		
+		else if (name.compare("begin_btn") == 0){
+
+		}
+		else if (name.compare("ready_btn") == 0){
+
+		}
 	}
+}
+
+void GameUI::ShowReady(bool isv){
+	m_readybtn->setVisible(isv);
+}
+
+void GameUI::ShowBegin(bool isv){
+	m_beginbtn->setVisible(isv);
 }
 
 void GameUI::openMenu(){

@@ -101,7 +101,7 @@
               "customProperty": "",
               "flipX": false,
               "flipY": false,
-              "height": 41,
+              "height": 40,
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
@@ -118,7 +118,7 @@
               "touchAble": false,
               "useMergedTexture": false,
               "visible": true,
-              "width": 58,
+              "width": 57,
               "x": -16,
               "y": 251,
               "capInsetsHeight": 1,
@@ -127,13 +127,13 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_00.png",
+                "path": "majiang_pai_xj_cpg_z_02.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
               "scale9Enable": false,
-              "scale9Height": 41,
-              "scale9Width": 58
+              "scale9Height": 40,
+              "scale9Width": 57
             }
           },
           {
@@ -236,7 +236,7 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_01.png",
+                "path": "majiang_pai_xj_cpg_z_02.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
@@ -345,7 +345,7 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_02.png",
+                "path": "majiang_pai_xj_cpg_z_01.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
@@ -445,7 +445,7 @@
               "touchAble": false,
               "useMergedTexture": false,
               "visible": true,
-              "width": 58,
+              "width": 60,
               "x": 5,
               "y": 190,
               "capInsetsHeight": 1,
@@ -454,13 +454,13 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_03.png",
+                "path": "majiang_pai_xj_cpg_b_05.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 41,
-              "scale9Width": 58
+              "scale9Width": 60
             }
           },
           {
@@ -537,12 +537,12 @@
               "customProperty": "",
               "flipX": false,
               "flipY": false,
-              "height": 43,
+              "height": 41,
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
               "positionPercentX": 0.113333337,
-              "positionPercentY": 0.3,
+              "positionPercentY": 0.298,
               "positionType": 0,
               "rotation": 0,
               "scaleX": 1,
@@ -554,22 +554,22 @@
               "touchAble": false,
               "useMergedTexture": false,
               "visible": true,
-              "width": 62,
+              "width": 60,
               "x": 17,
-              "y": 150,
+              "y": 149,
               "capInsetsHeight": 1,
               "capInsetsWidth": 1,
               "capInsetsX": 0,
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_04.png",
+                "path": "majiang_pai_xj_cpg_z_06.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
               "scale9Enable": false,
-              "scale9Height": 43,
-              "scale9Width": 62
+              "scale9Height": 41,
+              "scale9Width": 60
             }
           },
           {
@@ -646,12 +646,12 @@
               "customProperty": "",
               "flipX": false,
               "flipY": false,
-              "height": 42,
+              "height": 41,
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
               "positionPercentX": 0.16,
-              "positionPercentY": 0.256,
+              "positionPercentY": 0.254,
               "positionType": 0,
               "rotation": 0,
               "scaleX": 1,
@@ -663,22 +663,22 @@
               "touchAble": false,
               "useMergedTexture": false,
               "visible": true,
-              "width": 61,
+              "width": 60,
               "x": 24,
-              "y": 128,
+              "y": 127,
               "capInsetsHeight": 1,
               "capInsetsWidth": 1,
               "capInsetsX": 0,
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_05.png",
+                "path": "majiang_pai_xj_cpg_z_06.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
               "scale9Enable": false,
-              "scale9Height": 42,
-              "scale9Width": 61
+              "scale9Height": 41,
+              "scale9Width": 60
             }
           },
           {
@@ -760,7 +760,7 @@
               "layoutParameter": null,
               "opacity": 255,
               "positionPercentX": 0.206666663,
-              "positionPercentY": 0.212,
+              "positionPercentY": 0.21,
               "positionType": 0,
               "rotation": 0,
               "scaleX": 1,
@@ -774,7 +774,7 @@
               "visible": true,
               "width": 60,
               "x": 31,
-              "y": 106,
+              "y": 105,
               "capInsetsHeight": 1,
               "capInsetsWidth": 1,
               "capInsetsX": 0,
@@ -881,7 +881,7 @@
               "touchAble": false,
               "useMergedTexture": false,
               "visible": true,
-              "width": 61,
+              "width": 62,
               "x": 38,
               "y": 83,
               "capInsetsHeight": 1,
@@ -890,13 +890,13 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_07.png",
+                "path": "majiang_pai_xj_cpg_b_03.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 43,
-              "scale9Width": 61
+              "scale9Width": 62
             }
           },
           {
@@ -973,11 +973,11 @@
               "customProperty": "",
               "flipX": false,
               "flipY": false,
-              "height": 46,
+              "height": 44,
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
-              "positionPercentX": 0.34,
+              "positionPercentX": 0.333333343,
               "positionPercentY": 0.078,
               "positionType": 0,
               "rotation": 0,
@@ -990,8 +990,8 @@
               "touchAble": false,
               "useMergedTexture": false,
               "visible": true,
-              "width": 65,
-              "x": 51,
+              "width": 64,
+              "x": 50,
               "y": 39,
               "capInsetsHeight": 1,
               "capInsetsWidth": 1,
@@ -999,13 +999,13 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_11.png",
+                "path": "majiang_pai_xj_cpg_z_10.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
               "scale9Enable": false,
-              "scale9Height": 46,
-              "scale9Width": 65
+              "scale9Height": 44,
+              "scale9Width": 64
             }
           },
           {
@@ -1304,7 +1304,7 @@
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
-              "positionPercentX": 0.486666679,
+              "positionPercentX": 0.5,
               "positionPercentY": -0.068,
               "positionType": 0,
               "rotation": 0,
@@ -1318,7 +1318,7 @@
               "useMergedTexture": false,
               "visible": true,
               "width": 66,
-              "x": 73,
+              "x": 75,
               "y": -34,
               "capInsetsHeight": 1,
               "capInsetsWidth": 1,
@@ -1409,7 +1409,7 @@
               "customProperty": "",
               "flipX": false,
               "flipY": false,
-              "height": 49,
+              "height": 47,
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
@@ -1426,7 +1426,7 @@
               "touchAble": false,
               "useMergedTexture": false,
               "visible": true,
-              "width": 71,
+              "width": 68,
               "x": 87,
               "y": -82,
               "capInsetsHeight": 1,
@@ -1435,13 +1435,13 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_15.png",
+                "path": "majiang_pai_xj_cpg_z_14.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
               "scale9Enable": false,
-              "scale9Height": 49,
-              "scale9Width": 71
+              "scale9Height": 47,
+              "scale9Width": 68
             }
           },
           {
@@ -1736,7 +1736,7 @@
               "customProperty": "",
               "flipX": false,
               "flipY": false,
-              "height": 49,
+              "height": 48,
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
@@ -1762,12 +1762,12 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "majiang_pai_xj_cpg_z_12.png",
+                "path": "majiang_pai_xj_cpg_b_09.png",
                 "plistFile": "majiangtu/majiang_pai02.plist",
                 "resourceType": 1
               },
               "scale9Enable": false,
-              "scale9Height": 49,
+              "scale9Height": 48,
               "scale9Width": 71
             }
           }

@@ -89,7 +89,7 @@
             "options": {
               "__type": "ImageViewSurrogate:#EditorCommon.JsonModel.Component.GUI",
               "classname": "ImageView",
-              "name": "c15",
+              "name": "c13",
               "ZOrder": 3,
               "actiontag": 39760196,
               "anchorPointX": 0.5,
@@ -198,7 +198,7 @@
             "options": {
               "__type": "ImageViewSurrogate:#EditorCommon.JsonModel.Component.GUI",
               "classname": "ImageView",
-              "name": "c16",
+              "name": "c14",
               "ZOrder": 3,
               "actiontag": 66459347,
               "anchorPointX": 0.5,
@@ -307,7 +307,7 @@
             "options": {
               "__type": "ImageViewSurrogate:#EditorCommon.JsonModel.Component.GUI",
               "classname": "ImageView",
-              "name": "c17",
+              "name": "c15",
               "ZOrder": 3,
               "actiontag": 14498059,
               "anchorPointX": 0.5,
@@ -416,7 +416,7 @@
             "options": {
               "__type": "ImageViewSurrogate:#EditorCommon.JsonModel.Component.GUI",
               "classname": "ImageView",
-              "name": "c18",
+              "name": "c16",
               "ZOrder": 3,
               "actiontag": 33492115,
               "anchorPointX": 0.5,

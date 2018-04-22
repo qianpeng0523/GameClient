@@ -38,10 +38,19 @@ public:
 	void setScore(int pos,int score);
 	void setScore(string uid,int score);
 
+	void setWin(int pos,int win);
+	void setWinVisible(int pos, bool isv);
+
+	void setTip(int pos, string uid, int time);
+	void setTip(string uid, int time);
+	
+	void setTipVisible(int pos,bool isv);
+
 	static int changePos(int pos);
 	static void setGray(ImageView *img);
 	static void removeGray(ImageView *img);
 	static int getPos(string uid);
+	static int getPosition1(string uid);
 private:
 	static RoomUser *m_users[4];
 	ImageView *m_heads[4];

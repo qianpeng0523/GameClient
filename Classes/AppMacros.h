@@ -59,8 +59,15 @@ typedef struct _Head
 typedef void (Ref::*EventHandler)(ccEvent*);
 #define Event_Handler(_SELECTOR)(EventHandler)(&_SELECTOR)
 
-#endif /* __APPMACROS_H__ */
+
 
 /******NOTICE******/
 #define NOTICE_WXLOGIN "wxlogin"
 #define MAXSTAMP 128
+
+
+
+
+
+#endif /* __APPMACROS_H__ */
+

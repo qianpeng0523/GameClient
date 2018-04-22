@@ -26,7 +26,7 @@ bool MJHu::init(int pos)
 	sprintf(buff, "mjhu%d.json", pos);
 	m_RootLayer =RootRegister::getIns()->getWidget(buff);
 	this->addChild(m_RootLayer);
-
+	this->setVisible(false);
     return true;
 }
 
