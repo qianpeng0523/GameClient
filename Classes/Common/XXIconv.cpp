@@ -132,7 +132,7 @@ std::string XXIconv::getU8SubString(std::string u8_str,int sBegin,int strnum,con
 			strNo ++;
 			if(byteBegin >= 0)
 			{
-				strnum -= 1;
+				strnum -= (byteBegin == 3 ? 2 : 1);
 				if( strnum <= 0)
 				{
 					break;
@@ -141,15 +141,15 @@ std::string XXIconv::getU8SubString(std::string u8_str,int sBegin,int strnum,con
 		}	
 		
 	}
-	byteNum = iStr - u8_str.begin() - byteBegin;
+	byteNum = iStr - u8_str.begin()/* - byteBegin*/;
 	//汉字个数大于要截取的个数
 	if( iStr != u8_str.end() )
 	{
-		return u8_str.substr(byteBegin,byteNum).append(ext);
+		return u8_str.substr(0,byteNum).append(ext);
 	}
 	else
 	{
-		return u8_str.substr(byteBegin,byteNum);
+		return u8_str.substr(0,byteNum);
 	}	
 }
 
