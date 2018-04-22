@@ -38,13 +38,13 @@ bool MJChu::init(int pos)
 		m_cardimgs[i]->setScaleY(sy*0.85);
 	}
 	resetCard();
-	char a[MAX_COUNT] = { 0 };
-	int sz = rand()%9+13;
-	for (int i = 0; i < sz;i++){
-		int va = CardStr::g_cards[rand() % 34];
-		a[i] = va;
-	}
-	PushCard(a);
+// 	char a[MAX_COUNT] = { 0 };
+// 	int sz = rand()%9+13;
+// 	for (int i = 0; i < sz;i++){
+// 		int va = CardStr::g_cards[rand() % 34];
+// 		a[i] = va;
+// 	}
+// 	PushCard(a);
     return true;
 }
 

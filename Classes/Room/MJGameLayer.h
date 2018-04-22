@@ -20,8 +20,12 @@ public:
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
 	
+	void resetFa();
+	void setFa(int pos,int count);
 private:
-	
+	ImageView *m_faimgs[4];
+	TextBMFont *m_facounts[4];
+	int m_facards[4][4];
 private:
 	
 };
