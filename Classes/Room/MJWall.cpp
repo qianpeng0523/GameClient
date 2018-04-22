@@ -22,11 +22,16 @@ bool MJWall::init(int pos)
         return false;
     }
 	m_position = pos;
+	m_index = GameHead::changePos(pos);
 	char buff[50];
 	sprintf(buff, "mjwall%d.json", pos);
 	m_RootLayer =RootRegister::getIns()->getWidget(buff);
 	this->addChild(m_RootLayer);
-
+	for (int i = 0; i < MAXWALLCOUNT; i++){
+		sprintf(buff,"lp%d",i+1);
+		m_imgwall[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer,buff);
+	}
+	resetCard();
     return true;
 }
 
@@ -41,13 +46,16 @@ MJWall* MJWall::create(int pos){
 	return p;
 }
 
-void MJWall::TouchEvent(CCObject *obj, TouchEventType type){
-	Button *btn = (Button *)obj;
-	string name = btn->getName();
-	if (type == TOUCH_EVENT_ENDED){
-		UserDefault *p = UserDefault::sharedUserDefault();
-		if (name.compare("close_btn") == 0){
-			this->removeFromParentAndCleanup(true);
-		}
+void MJWall::resetCard(){
+	for (int i = 0; i < MAXWALLCOUNT; i++){
+		m_imgwall[i]->setVisible(false);
 	}
+}
+
+void MJWall::PopCard(int index){
+
+}
+
+void MJWall::cutCard(int mindice, int maxdice){
+
 }

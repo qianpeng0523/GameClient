@@ -7,7 +7,7 @@ using namespace cocos2d;
 using namespace ui;
 using namespace std;
 
-
+#define MAXWALLCOUNT 30
 
 
 class MJWall : public BaseLayer
@@ -18,10 +18,13 @@ public:
 	static MJWall* create(int pos);
 	virtual bool init(int pos);
 	
-	void TouchEvent(CCObject *obj, TouchEventType type);
-	
+	void resetCard();
+	void PopCard(int index);
+	void cutCard(int mindice,int maxdice);
 private:
 	int m_position;
+	int m_index;
+	ImageView *m_imgwall[MAXWALLCOUNT];
 private:
 	
 };

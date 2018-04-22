@@ -46,10 +46,10 @@ bool MJGameLayer::init()
 		m_facounts[i] = (TextBMFont *)GameDataSet::getLayout((Layout *)m_faimgs[i], "BitmapLabel_num");
 	}
 	resetFa();
-	setFa(1, 1);
-	setFa(2, 2);
-	setFa(3, 3);
-	setFa(4, 0);
+// 	setFa(1, 1);
+// 	setFa(2, 2);
+// 	setFa(3, 3);
+// 	setFa(4, 0);
     return true;
 }
 
