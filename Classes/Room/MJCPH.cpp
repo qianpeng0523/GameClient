@@ -90,19 +90,19 @@ bool MJCPH::init(int pos)
 		m_cardimgs[index][zindex] = (ImageView *)img->getChildren().at(0);
 	}
 	resetCards();
-	char a[4] = { 0, 0, 0, 0 };
-	for (int i = 0; i < 4; i++){
-		CPGCardData cpg;
-		cpg.set_type(i + 1);
-		int index = rand()%34;
-		for (int j = 0; j < 4; j++){
-			a[j] = CardStr::g_cards[index];
-			log("%d", a[j]);
-		}
-		
-		cpg.set_cards(a, 4);
-		setValue(i,cpg);
-	}
+// 	char a[4] = { 0, 0, 0, 0 };
+// 	for (int i = 0; i < 4; i++){
+// 		CPGCardData cpg;
+// 		cpg.set_type(i + 1);
+// 		int index = rand()%34;
+// 		for (int j = 0; j < 4; j++){
+// 			a[j] = CardStr::g_cards[index];
+// 			log("%d", a[j]);
+// 		}
+// 		
+// 		cpg.set_cards(a, 4);
+// 		setValue(i,cpg);
+// 	}
     return true;
 }
 
@@ -129,7 +129,7 @@ void MJCPH::resetCards(){
 	for (int i = 0; i < 4; i++){
 		for (int j = 0; j < 4; j++){
 			m_cardbgs[i][j]->loadTexture(g_paistr[m_index][i*4+j], Widget::TextureResType::PLIST);
-			m_cardbgs[i][j]->setVisible(true);
+			m_cardbgs[i][j]->setVisible(false);
 			m_cardimgs[i][j]->setVisible(true);
 		}
 	}

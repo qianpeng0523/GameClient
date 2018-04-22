@@ -20,8 +20,14 @@ public:
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
 	
+	void resetCard();
+	void setCard(int index,int card);
+	void setCards(string cards);
 private:
 	int m_position;
+	ImageView *m_cardbgs[14];
+	ImageView *m_cardimgs[14];
+	int m_index;
 private:
 	
 };
