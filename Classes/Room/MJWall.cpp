@@ -4,7 +4,7 @@
 #include "ClientSocket.h"
 #include "LoginScene.h"
 #include "LoginInfo.h"
-
+#include "RoomControl.h"
 
 MJWall::MJWall(){
 	

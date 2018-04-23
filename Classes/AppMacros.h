@@ -8,6 +8,7 @@
 #include "Hall.h"
 #include <string.h>
 #include "ConfigProto.h"
+#include "RoomLogic.h"
 //design screen size
 
 

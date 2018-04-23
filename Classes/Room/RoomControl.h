@@ -40,7 +40,7 @@ public:
 	bool isEnd(){
 		return m_isend;
 	}
-	bool setEnd(bool isend){
+	void setEnd(bool isend){
 		m_isend = isend;
 	}
 private:
