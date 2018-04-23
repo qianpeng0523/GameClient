@@ -310,9 +310,9 @@ void GameHead::setGray(ImageView *img){
 }
 
 void GameHead::removeGray(ImageView *img){
-	auto program = CCGLProgram::createWithByteArrays("",""); //装配一个shader文件
-	program->link();
-	program->updateUniforms();
 	Sprite *spr = ((ui::Scale9Sprite *)img->getVirtualRenderer())->getSprite();
-	spr->setShaderProgram(program);
+	std::string str = "ShaderPositionTextureColor_noMVP";
+	GLProgram * pProgram = ShaderCache::getInstance()->getGLProgram(str);
+	spr->setShaderProgram(pProgram);
+	CHECK_GL_ERROR_DEBUG();
 }

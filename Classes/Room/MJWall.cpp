@@ -61,6 +61,16 @@ void MJWall::initCard(){
 
 void MJWall::PopCard(int index){
 	if (index < MAXWALLCOUNT){
-		m_imgwall[index]->setVisible(false);
+		if (m_imgwall[index]->isVisible()){
+			m_imgwall[index]->setVisible(false);
+		}
+		else{
+			log("all popcard!!!!!!");
+			MJGameScene *scene = GameControl::getIns()->getMJGameScene();
+			if (scene){
+				scene->resetAllWall();
+			}
+			RoomControl::shareRoomControl()->setEnd(true);
+		}
 	}
 }

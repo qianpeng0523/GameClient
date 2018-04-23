@@ -74,7 +74,7 @@ bool MJGameScene::init()
 
 	m_index = 0;
 	RoomControl *pRoomControl = RoomControl::shareRoomControl();
-	pRoomControl->setZhuang(1);
+	pRoomControl->setZhuang(4);
 	pRoomControl->cutCard(3, 4);
 	this->runAction(Sequence::create(DelayTime::create(0.5),
 		CCCallFunc::create(this, callfunc_selector(MJGameScene::testCallBack))
@@ -82,18 +82,18 @@ bool MJGameScene::init()
 	return true;
 }
 
-void MJGameScene::setMJWall(int dir, int index){
+void MJGameScene::setMJWall(int dir, int index, bool isfront){
 	m_pMJWall[dir]->PopCard(index - 1);
 }
 
 void MJGameScene::testCallBack(){
 	RoomControl *pRoomControl = RoomControl::shareRoomControl();
-	if (m_index > 128){
+	if (m_index >= MAXWALLCOUNT*4){
 
 	}
 	else{
-		pRoomControl->getWallData((m_index++)%5!=4);
-		this->runAction(Sequence::create(DelayTime::create(0.5),
+		pRoomControl->getWallData((m_index++)%24!=1);
+		this->runAction(Sequence::create(DelayTime::create(0.1),
 			CCCallFunc::create(this, callfunc_selector(MJGameScene::testCallBack))
 			, NULL));
 	}
@@ -102,5 +102,13 @@ void MJGameScene::testCallBack(){
 void MJGameScene::setMyPosition(int pos){
 	if (m_pGameHead){
 		m_pGameHead->setMyPosition(pos);
+	}
+}
+
+void MJGameScene::resetAllWall(){
+	for (int i = 0; i < 4; i++){
+		if (m_pMJWall[i]){
+			m_pMJWall[i]->resetCard();
+		}
 	}
 }

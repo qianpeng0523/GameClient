@@ -33,9 +33,16 @@ public:
 	void reset();
 	void setZhuang(int zhuang);
 	
-	MJWallData getWallData(bool isfront);
+	void getWallData(bool isfront);
 	void PushRoomUser(RoomUser user);
 	void setMyPosition(int pos);
+
+	bool isEnd(){
+		return m_isend;
+	}
+	bool setEnd(bool isend){
+		m_isend = isend;
+	}
 private:
 	static RoomControl *m_shareRoomControl;
 	MJWallData m_frontdata;

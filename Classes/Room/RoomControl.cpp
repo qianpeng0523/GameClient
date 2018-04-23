@@ -43,11 +43,12 @@ void RoomControl::reset(){
 
 void RoomControl::cutCard(int mindice, int maxdice){
 	int count = mindice + maxdice;
-	int index = (count-1) % 4;
-	if (index == 0){
-		index = 2;
+	int index = (count - 1 + m_zhuangindex) % 4;
+	if (index == m_zhuangindex){
+		index += 2;
+		index %= 4;
 	}
-	m_frontdata._dirindex = index + m_zhuangindex;
+	m_frontdata._dirindex = index;
 	m_frontdata._index = mindice * 2 + 1;
 	m_backdata._dirindex = m_frontdata._dirindex;
 	m_backdata._index = m_frontdata._index - 2;
@@ -69,7 +70,7 @@ void RoomControl::PopCard(bool isfront){
 				m_frontdata._dirindex = m_frontdata._dirindex % 4;
 			}
 		}
-		else{
+		else{ 
 			int d = m_backdata._index % 2;
 			if (d == 1){
 				m_backdata._index++;
@@ -82,6 +83,7 @@ void RoomControl::PopCard(bool isfront){
 					m_backdata._dirindex = (m_backdata._dirindex + 4) % 4;
 				}
 			}
+
 		}
 
 		int count = m_frontindex + m_backindex;
@@ -97,21 +99,13 @@ void RoomControl::PopCard(bool isfront){
 	}
 }
 
-MJWallData RoomControl::getWallData(bool isfront){
+void RoomControl::getWallData(bool isfront){
 	MJWallData wd = isfront ? m_frontdata : m_backdata;
-	PopCard(isfront);
-	log("/**************************************/");
-	if (isfront){
-		log("front:dir[%d]----index[%d]", wd._dirindex, wd._index);
-	}
-	else{
-		log("back:dir[%d]----index[%d]", wd._dirindex, wd._index);
-	}
 	MJGameScene *p = GameControl::getIns()->getMJGameScene();
 	if (p){
-		p->setMJWall(wd._dirindex,wd._index);
+		p->setMJWall(wd._dirindex, wd._index,isfront);
 	}
-	return wd;
+	PopCard(isfront);
 }
 
 void RoomControl::PushRoomUser(RoomUser user){

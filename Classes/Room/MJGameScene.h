@@ -20,9 +20,10 @@ public:
     virtual bool init();
 	CREATE_FUNC(MJGameScene);
 	
-	void setMJWall(int dir,int index);
+	void setMJWall(int dir,int index,bool isfront);
 	void setMyPosition(int pos);
 
+	void resetAllWall();
 	void testCallBack();
 private:
 	MJGameLayer *m_pMJGameLayer;
