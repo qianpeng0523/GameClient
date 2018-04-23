@@ -318,10 +318,23 @@
     <ClCompile Include="..\Classes\Room\MJWall.cpp">
       <Filter>Classes\Room</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\cc\Room.cpp" />
-    <ClCompile Include="..\Classes\cc\RoomLogic.cpp" />
     <ClCompile Include="..\Classes\config\CardsStr.cpp">
       <Filter>Classes\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\RoomControl.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\proto\RoomInfo.cpp">
+      <Filter>Classes\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\proto\RoomLogicInfo.cpp">
+      <Filter>Classes\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cc\Room.cpp">
+      <Filter>Classes\cc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\cc\RoomLogic.cpp">
+      <Filter>Classes\cc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -646,10 +659,23 @@
     <ClInclude Include="..\Classes\Room\MJWall.h">
       <Filter>Classes\Room</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\cc\Room.h" />
-    <ClInclude Include="..\Classes\cc\RoomLogic.h" />
     <ClInclude Include="..\Classes\config\CardsStr.h">
       <Filter>Classes\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\RoomControl.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\proto\RoomInfo.h">
+      <Filter>Classes\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\proto\RoomLogicInfo.h">
+      <Filter>Classes\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\Room.h">
+      <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cc\RoomLogic.h">
+      <Filter>Classes\cc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

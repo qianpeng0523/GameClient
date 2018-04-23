@@ -227,6 +227,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\proto\ConfigInfo.cpp" />
     <ClCompile Include="..\Classes\proto\HallInfo.cpp" />
     <ClCompile Include="..\Classes\proto\LoginInfo.cpp" />
+    <ClCompile Include="..\Classes\proto\RoomInfo.cpp" />
+    <ClCompile Include="..\Classes\proto\RoomLogicInfo.cpp" />
     <ClCompile Include="..\Classes\Room\CreateRoomLayer.cpp" />
     <ClCompile Include="..\Classes\Room\GameHead.cpp" />
     <ClCompile Include="..\Classes\Room\GameUI.cpp" />
@@ -238,6 +240,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Room\MJHand.cpp" />
     <ClCompile Include="..\Classes\Room\MJHu.cpp" />
     <ClCompile Include="..\Classes\Room\MJWall.cpp" />
+    <ClCompile Include="..\Classes\Room\RoomControl.cpp" />
     <ClCompile Include="..\Classes\TipLayer.cpp" />
     <ClCompile Include="..\Classes\TopTipLayer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -339,6 +342,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\proto\ConfigInfo.h" />
     <ClInclude Include="..\Classes\proto\HallInfo.h" />
     <ClInclude Include="..\Classes\proto\LoginInfo.h" />
+    <ClInclude Include="..\Classes\proto\RoomInfo.h" />
+    <ClInclude Include="..\Classes\proto\RoomLogicInfo.h" />
     <ClInclude Include="..\Classes\Room\CreateRoomLayer.h" />
     <ClInclude Include="..\Classes\Room\GameHead.h" />
     <ClInclude Include="..\Classes\Room\GameUI.h" />
@@ -350,6 +355,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Room\MJHand.h" />
     <ClInclude Include="..\Classes\Room\MJHu.h" />
     <ClInclude Include="..\Classes\Room\MJWall.h" />
+    <ClInclude Include="..\Classes\Room\RoomControl.h" />
     <ClInclude Include="..\Classes\TipLayer.h" />
     <ClInclude Include="..\Classes\TopTipLayer.h" />
     <ClInclude Include="main.h" />
