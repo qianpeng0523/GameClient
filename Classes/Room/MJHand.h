@@ -25,6 +25,7 @@ public:
 	void setValue(int index,bool isvisible);
 private:
 	int m_position;
+	int m_index;
 	ImageView *m_cardbgs[14];
 	ImageView *m_cards[14];
 private:

@@ -76,7 +76,7 @@ bool MJCPH::init(int pos)
 	m_position = pos;
 	m_index = GameHead::changePos(pos);
 	char buff[50];
-	sprintf(buff, "mjcpg%d.json", pos);
+	sprintf(buff, "mjcpg%d.json", m_index + 1);
 	m_json = buff;
 	m_RootLayer =RootRegister::getIns()->getWidget(buff);
 	this->addChild(m_RootLayer);

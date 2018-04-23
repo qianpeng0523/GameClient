@@ -223,9 +223,6 @@ void GameHead::PushRoomUser(RoomUser ru){
 		m_users[index] = (RoomUser *)ccEvent::create_message(ru.GetTypeName());
 	}
 	m_users[index]->CopyFrom(ru);
-	if (index == 0){
-		m_mimepos = position;
-	}
 	PhotoDown::getIns()->PushPhoto(this, ru.userid(), m_heads[index], ru.picurl(), ru.picid());
 	m_headbgs[index]->setVisible(false);
 }
@@ -242,6 +239,10 @@ void GameHead::PopRoomUser(string uid){
 
 }
 
+void GameHead::setMyPosition(int pos){
+	m_mimepos = pos;
+}
+
 void GameHead::PopRoomUser(int pos){
 	int i = changePos(pos);
 	delete m_users[i];
@@ -250,7 +251,7 @@ void GameHead::PopRoomUser(int pos){
 }
 
 int GameHead::changePos(int pos){
-	int pp = (pos-m_mimepos+4)%4;
+	int pp = (4 - (pos - m_mimepos + 4) % 4) % 4;
 	return pp;
 }
 

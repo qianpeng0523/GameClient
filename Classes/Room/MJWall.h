@@ -19,8 +19,11 @@ public:
 	virtual bool init(int pos);
 	
 	void resetCard();
+	void initCard();
 	void PopCard(int index);
-	void cutCard(int mindice,int maxdice);
+	int getIndex(){
+		return m_index;
+	}
 private:
 	int m_position;
 	int m_index;

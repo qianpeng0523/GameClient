@@ -25,7 +25,7 @@ bool MJChu::init(int pos)
 	m_position = pos;
 	m_index = GameHead::changePos(pos);
 	char buff[50];
-	sprintf(buff, "mjchu%d.json", pos);
+	sprintf(buff, "mjchu%d.json", m_index+1);
 	m_RootLayer =RootRegister::getIns()->getWidget(buff);
 	this->addChild(m_RootLayer);
 	for (int i = 0; i < MAX_COUNT; i++){

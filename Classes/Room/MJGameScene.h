@@ -20,6 +20,10 @@ public:
     virtual bool init();
 	CREATE_FUNC(MJGameScene);
 	
+	void setMJWall(int dir,int index);
+	void setMyPosition(int pos);
+
+	void testCallBack();
 private:
 	MJGameLayer *m_pMJGameLayer;
 	GameUI *m_pGameUI;
@@ -29,6 +33,7 @@ private:
 	MJCPH *m_pMJCPH[4];
 	MJChu *m_pMJChu[4];
 	MJWall *m_pMJWall[4];
+	int m_index;
 };
 
 #endif // __MJGameScene_SCENE_H__

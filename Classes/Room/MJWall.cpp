@@ -24,14 +24,15 @@ bool MJWall::init(int pos)
 	m_position = pos;
 	m_index = GameHead::changePos(pos);
 	char buff[50];
-	sprintf(buff, "mjwall%d.json", pos);
+	sprintf(buff, "mjwall%d.json", m_index+1);
 	m_RootLayer =RootRegister::getIns()->getWidget(buff);
 	this->addChild(m_RootLayer);
 	for (int i = 0; i < MAXWALLCOUNT; i++){
 		sprintf(buff,"lp%d",i+1);
-		m_imgwall[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer,buff);
+		m_imgwall[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
 	}
-	resetCard();
+	
+	//resetCard();
     return true;
 }
 
@@ -52,10 +53,14 @@ void MJWall::resetCard(){
 	}
 }
 
-void MJWall::PopCard(int index){
-
+void MJWall::initCard(){
+	for (int i = 0; i < MAXWALLCOUNT; i++){
+		m_imgwall[i]->setVisible(true);
+	}
 }
 
-void MJWall::cutCard(int mindice, int maxdice){
-
+void MJWall::PopCard(int index){
+	if (index < MAXWALLCOUNT){
+		m_imgwall[index]->setVisible(false);
+	}
 }

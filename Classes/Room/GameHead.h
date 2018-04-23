@@ -32,6 +32,8 @@ public:
 	void setZhuang(int pos,bool iszhuang);
 	void setZhuang(string uid, bool iszhuang);
 
+	void setMyPosition(int pos);
+
 	void setName(int pos,string name);
 	void setName(string uid,string name);
 

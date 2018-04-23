@@ -23,9 +23,9 @@ bool MJHand::init(int pos)
         return false;
     }
 	m_position = pos;
-	
+	m_index = GameHead::changePos(pos);
 	char buff[50];
-	sprintf(buff,"mjhand%d.json",pos);
+	sprintf(buff, "mjhand%d.json", m_index + 1);
 	m_RootLayer =RootRegister::getIns()->getWidget(buff);
 	this->addChild(m_RootLayer);
 

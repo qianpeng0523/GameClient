@@ -1,7 +1,7 @@
 #include "MJGameScene.h"
 #include "GameControl.h"
 #include "KeyBoard.h"
-
+#include "RoomControl.h"
 USING_NS_CC;
 
 MJGameScene::MJGameScene(){
@@ -30,14 +30,16 @@ bool MJGameScene::init()
 		return false;
 	}
 	KeyBoard::getIns()->setKetPad(BACK_KEYTYPE, this);
-	if (!m_pMJGameLayer){
-		m_pMJGameLayer = MJGameLayer::create();
-		this->addChild(m_pMJGameLayer);
-	}
 
 	if (!m_pGameHead){
 		m_pGameHead = GameHead::create();
 		this->addChild(m_pGameHead, 4);
+	}
+	//test
+	RoomControl::shareRoomControl()->setMyPosition(1);
+	if (!m_pMJGameLayer){
+		m_pMJGameLayer = MJGameLayer::create();
+		this->addChild(m_pMJGameLayer);
 	}
 
 	if (!m_pGameUI){
@@ -46,26 +48,59 @@ bool MJGameScene::init()
 	}
 
 	for (int i = 0; i < 4;i++){
-		m_pMJWall[i]=MJWall::create(i + 1);
-		this->addChild(m_pMJWall[i]);
-		if (i == 2){
-			m_pMJWall[i]->setZOrder(3);
+		int pos =i+1 ;
+		int index = GameHead::changePos(pos);
+
+		m_pMJWall[index] = MJWall::create(pos);
+		this->addChild(m_pMJWall[index]);
+		if (index == 2){
+			m_pMJWall[index]->setZOrder(3);
 		}
-		m_pMJChu[i] = MJChu::create(i+1);
-		this->addChild(m_pMJChu[i]);
+		m_pMJChu[index] = MJChu::create(pos);
+		this->addChild(m_pMJChu[index]);
 
-		m_pMJHand[i] = MJHand::create(i + 1);
-		this->addChild(m_pMJHand[i]);
-		if (i == 2){
-			m_pMJHand[i]->setZOrder(2);
+		m_pMJHand[index] = MJHand::create(pos);
+		this->addChild(m_pMJHand[index]);
+		if (index == 2){
+			m_pMJHand[index]->setZOrder(2);
 		}
 
-		m_pMJCPH[i] = MJCPH::create(i + 1);
-		this->addChild(m_pMJCPH[i]);
+		m_pMJCPH[index] = MJCPH::create(pos);
+		this->addChild(m_pMJCPH[index]);
 
-		m_pMJHu[i] = MJHu::create(i + 1);
-		this->addChild(m_pMJHu[i]);
+		m_pMJHu[index] = MJHu::create(pos);
+		this->addChild(m_pMJHu[index]);
 	}
 
+	m_index = 0;
+	RoomControl *pRoomControl = RoomControl::shareRoomControl();
+	pRoomControl->setZhuang(1);
+	pRoomControl->cutCard(3, 4);
+	this->runAction(Sequence::create(DelayTime::create(0.5),
+		CCCallFunc::create(this, callfunc_selector(MJGameScene::testCallBack))
+		,NULL));
 	return true;
+}
+
+void MJGameScene::setMJWall(int dir, int index){
+	m_pMJWall[dir]->PopCard(index - 1);
+}
+
+void MJGameScene::testCallBack(){
+	RoomControl *pRoomControl = RoomControl::shareRoomControl();
+	if (m_index > 128){
+
+	}
+	else{
+		pRoomControl->getWallData((m_index++)%5!=4);
+		this->runAction(Sequence::create(DelayTime::create(0.5),
+			CCCallFunc::create(this, callfunc_selector(MJGameScene::testCallBack))
+			, NULL));
+	}
+}
+
+void MJGameScene::setMyPosition(int pos){
+	if (m_pGameHead){
+		m_pGameHead->setMyPosition(pos);
+	}
 }

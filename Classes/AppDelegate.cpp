@@ -6,6 +6,8 @@
 #include "Common.h"
 #include "RootRegister.h"
 #include "LoadingLayer.h"
+#include "RoomControl.h"
+
 USING_NS_CC;
 
 
@@ -42,7 +44,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
 	Adaptation::shareAdaptation();
 	register_all_packages();
-	
+// 	RoomControl *pRoomControl = RoomControl::shareRoomControl();
+// 	pRoomControl->setZhuang(1);
+// 	pRoomControl->cutCard(3, 4);
+// 	for (int i = 0; i < 130; i++){
+// 		pRoomControl->getWallData(i % 24 != 0);
+// 	}
+
 	RootRegister::getIns()->loadJson(0);
 	auto director = Director::getInstance();
 	Scene *scene = LoadingLayer::createScene(1);
