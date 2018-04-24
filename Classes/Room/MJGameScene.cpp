@@ -13,7 +13,7 @@ MJGameScene::MJGameScene(){
 	memset(m_pMJHu, NULL, sizeof(MJHand *)* 4);
 	memset(m_pMJCPH, NULL, sizeof(MJCPH *)* 4);
 	memset(m_pMJChu, NULL, sizeof(MJChu *)* 4);
-
+	m_pMJDice = NULL;
 	GameControl::getIns()->setMJGameScene(this);
 }
 
@@ -41,7 +41,11 @@ bool MJGameScene::init()
 		m_pMJGameLayer = MJGameLayer::create();
 		this->addChild(m_pMJGameLayer);
 	}
-
+	if (!m_pMJDice){
+		
+		m_pMJDice = MJDice::create();
+		this->addChild(m_pMJDice);
+	}
 	if (!m_pGameUI){
 		m_pGameUI = GameUI::create();
 		this->addChild(m_pGameUI, 5);

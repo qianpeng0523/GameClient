@@ -10,15 +10,18 @@
 
 
 MJGameLayer::MJGameLayer(){
+	m_downtime = -1;
 	for (int i = 0; i < 4;i++){
 		for (int j = 0; j < 4; j++){
 			m_facards[i][j] = 0;
 		}
 	}
 	GameControl::getIns()->setMJGameLayer(this);
+	Director::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(MJGameLayer::update), this, 1.0, false);
 }
 
 MJGameLayer::~MJGameLayer(){
+	Director::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(MJGameLayer::update), this);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getMJGameLayer()){
 		GameControl::getIns()->setMJGameLayer(NULL);
@@ -46,10 +49,7 @@ bool MJGameLayer::init()
 		m_facounts[i] = (TextBMFont *)GameDataSet::getLayout((Layout *)m_faimgs[i], "BitmapLabel_num");
 	}
 	resetFa();
-// 	setFa(1, 1);
-// 	setFa(2, 2);
-// 	setFa(3, 3);
-// 	setFa(4, 0);
+
     return true;
 }
 
@@ -68,7 +68,7 @@ void MJGameLayer::resetFa(){
 		}
 		m_faimgs[i]->setVisible(false);
 	}
-
+	setTimeVisible(false);
 }
 
 void MJGameLayer::setFa(int pos, int count){
@@ -82,4 +82,20 @@ void MJGameLayer::setFa(int pos, int count){
 	else{
 		m_faimgs[index]->setVisible(false);
 	}
+}
+
+void MJGameLayer::update(float dt){
+	if (m_downtime > 0){
+		setTime(m_downtime--);
+	}
+}
+
+void MJGameLayer::setTime(int time){
+	GameDataSet::setTextBMFont(m_RootLayer, "time", time);
+	setTimeVisible(true);
+}
+
+void MJGameLayer::setTimeVisible(bool isv){
+	Text *tt = (Text *)GameDataSet::getLayout(m_RootLayer, "time");
+	tt->setVisible(isv);
 }

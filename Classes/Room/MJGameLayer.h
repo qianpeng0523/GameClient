@@ -22,10 +22,14 @@ public:
 	
 	void resetFa();
 	void setFa(int pos,int count);
+	void update(float dt);
+	void setTime(int time);
+	void setTimeVisible(bool isv);
 private:
 	ImageView *m_faimgs[4];
 	TextBMFont *m_facounts[4];
 	int m_facards[4][4];
+	int m_downtime;
 private:
 	
 };

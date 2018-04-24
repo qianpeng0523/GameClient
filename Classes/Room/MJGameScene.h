@@ -12,6 +12,7 @@
 #include "MJCPH.h"
 #include "MJChu.h"
 #include "MJWall.h"
+#include "MJDice.h"
 class MJGameScene : public CCScene
 {
 public:
@@ -25,6 +26,9 @@ public:
 
 	void resetAllWall();
 	void testCallBack();
+	MJDice *getMJDice(){
+		return m_pMJDice;
+	}
 private:
 	MJGameLayer *m_pMJGameLayer;
 	GameUI *m_pGameUI;
@@ -34,6 +38,7 @@ private:
 	MJCPH *m_pMJCPH[4];
 	MJChu *m_pMJChu[4];
 	MJWall *m_pMJWall[4];
+	MJDice *m_pMJDice;
 	int m_index;
 };
 

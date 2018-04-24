@@ -59,4 +59,5 @@
   <item json="mjwall3.json" count="1" type="3"/>
   <item json="mjwall2.json" count="1" type="3"/>
   <item json="mjwall1.json" count="1" type="3"/>
+  <item json="mjdice.json" count="1" type="3"/>
 </root>

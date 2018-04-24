@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--  
+type:1表示list 0表示local
+-->
+<root>
+  <item id="1" name="touzi" file="tx_youxi_shaizi_xuanzhuang_%02d.png" count="28" begin="0" type="1" scenetype="3" dur="1.0" time="2"/>
+</root>
