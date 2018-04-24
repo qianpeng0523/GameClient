@@ -72,9 +72,6 @@
     <ClCompile Include="..\Classes\Common\GameDataSet.cpp">
       <Filter>Classes\Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Common\EffectAnimation.cpp">
-      <Filter>Classes\Common</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\network\XXHttpRequest.cpp">
       <Filter>Classes\network</Filter>
     </ClCompile>
@@ -336,6 +333,15 @@
     <ClCompile Include="..\Classes\cc\RoomLogic.cpp">
       <Filter>Classes\cc</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Room\MJDice.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Common\MayaAction.cpp">
+      <Filter>Classes\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\config\ActionConfig.cpp">
+      <Filter>Classes\config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -357,9 +363,6 @@
       <Filter>Classes\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Common\GameDataSet.h">
-      <Filter>Classes\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Common\EffectAnimation.h">
       <Filter>Classes\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\network\XXHttpRequest.h">
@@ -676,6 +679,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\cc\RoomLogic.h">
       <Filter>Classes\cc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\MJDice.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\MayaAction.h">
+      <Filter>Classes\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\config\ActionConfig.h">
+      <Filter>Classes\config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

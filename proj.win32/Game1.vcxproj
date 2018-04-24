@@ -165,15 +165,16 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Common\CDProgressTimer.cpp" />
     <ClCompile Include="..\Classes\Common\CircleMoveAction.cpp" />
     <ClCompile Include="..\Classes\Common\Common.cpp" />
-    <ClCompile Include="..\Classes\Common\EffectAnimation.cpp" />
     <ClCompile Include="..\Classes\Common\GameDataSet.cpp" />
     <ClCompile Include="..\Classes\Common\KeyBoard.cpp" />
+    <ClCompile Include="..\Classes\Common\MayaAction.cpp" />
     <ClCompile Include="..\Classes\Common\MD55.cpp" />
     <ClCompile Include="..\Classes\Common\RootRegister.cpp" />
     <ClCompile Include="..\Classes\Common\SpecialAction.cpp" />
     <ClCompile Include="..\Classes\Common\SpriteBlur.cpp" />
     <ClCompile Include="..\Classes\Common\WebViewCommom.cpp" />
     <ClCompile Include="..\Classes\Common\XXIconv.cpp" />
+    <ClCompile Include="..\Classes\config\ActionConfig.cpp" />
     <ClCompile Include="..\Classes\config\CardsStr.cpp" />
     <ClCompile Include="..\Classes\config\ExpressConfig.cpp" />
     <ClCompile Include="..\Classes\config\JsonRegisterConfig.cpp" />
@@ -235,6 +236,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Room\JoinRoomLayer.cpp" />
     <ClCompile Include="..\Classes\Room\MJChu.cpp" />
     <ClCompile Include="..\Classes\Room\MJCPH.cpp" />
+    <ClCompile Include="..\Classes\Room\MJDice.cpp" />
     <ClCompile Include="..\Classes\Room\MJGameLayer.cpp" />
     <ClCompile Include="..\Classes\Room\MJGameScene.cpp" />
     <ClCompile Include="..\Classes\Room\MJHand.cpp" />
@@ -262,9 +264,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Common\CircleMoveAction.h" />
     <ClInclude Include="..\Classes\Common\Common.h" />
     <ClInclude Include="..\Classes\Common\CommonData.h" />
-    <ClInclude Include="..\Classes\Common\EffectAnimation.h" />
     <ClInclude Include="..\Classes\Common\GameDataSet.h" />
     <ClInclude Include="..\Classes\Common\KeyBoard.h" />
+    <ClInclude Include="..\Classes\Common\MayaAction.h" />
     <ClInclude Include="..\Classes\Common\MD55.h" />
     <ClInclude Include="..\Classes\Common\RootRegister.h" />
     <ClInclude Include="..\Classes\Common\SpecialAction.h" />
@@ -272,6 +274,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Common\WebViewCommom.h" />
     <ClInclude Include="..\Classes\Common\XXIconv.h" />
     <ClInclude Include="..\Classes\Common\XXMacros.h" />
+    <ClInclude Include="..\Classes\config\ActionConfig.h" />
     <ClInclude Include="..\Classes\config\CardsStr.h" />
     <ClInclude Include="..\Classes\config\ExpressConfig.h" />
     <ClInclude Include="..\Classes\config\JsonRegisterConfig.h" />
@@ -350,6 +353,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Room\JoinRoomLayer.h" />
     <ClInclude Include="..\Classes\Room\MJChu.h" />
     <ClInclude Include="..\Classes\Room\MJCPH.h" />
+    <ClInclude Include="..\Classes\Room\MJDice.h" />
     <ClInclude Include="..\Classes\Room\MJGameLayer.h" />
     <ClInclude Include="..\Classes\Room\MJGameScene.h" />
     <ClInclude Include="..\Classes\Room\MJHand.h" />
