@@ -56,6 +56,8 @@ class RoomUser;
 class TingCard;
 class UserOver;
 class UserRound;
+class CPing;
+class SPing;
 
 // ===================================================================
 
@@ -2396,6 +2398,18 @@ class RoomData : public ::google::protobuf::Message {
   inline ::std::string* release_roomtype();
   inline void set_allocated_roomtype(::std::string* roomtype);
 
+  // optional string uid = 8;
+  inline bool has_uid() const;
+  inline void clear_uid();
+  static const int kUidFieldNumber = 8;
+  inline const ::std::string& uid() const;
+  inline void set_uid(const ::std::string& value);
+  inline void set_uid(const char* value);
+  inline void set_uid(const char* value, size_t size);
+  inline ::std::string* mutable_uid();
+  inline ::std::string* release_uid();
+  inline void set_allocated_uid(::std::string* uid);
+
   // @@protoc_insertion_point(class_scope:protocol.RoomData)
  private:
   inline void set_has_type();
@@ -2412,6 +2426,8 @@ class RoomData : public ::google::protobuf::Message {
   inline void clear_has_roomid();
   inline void set_has_roomtype();
   inline void clear_has_roomtype();
+  inline void set_has_uid();
+  inline void clear_has_uid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -2421,10 +2437,11 @@ class RoomData : public ::google::protobuf::Message {
   ::google::protobuf::uint32 bao_;
   ::std::string* roomid_;
   ::std::string* roomtype_;
+  ::std::string* uid_;
   ::google::protobuf::uint32 bang_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_Vo_2eproto();
   friend void protobuf_AssignDesc_Vo_2eproto();
@@ -3190,6 +3207,170 @@ class UserRound : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static UserRound* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CPing : public ::google::protobuf::Message {
+ public:
+  CPing();
+  virtual ~CPing();
+
+  CPing(const CPing& from);
+
+  inline CPing& operator=(const CPing& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CPing& default_instance();
+
+  void Swap(CPing* other);
+
+  // implements Message ----------------------------------------------
+
+  CPing* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CPing& from);
+  void MergeFrom(const CPing& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 cmd = 1 [default = 16387];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.CPing)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 cmd_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Vo_2eproto();
+  friend void protobuf_AssignDesc_Vo_2eproto();
+  friend void protobuf_ShutdownFile_Vo_2eproto();
+
+  void InitAsDefaultInstance();
+  static CPing* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SPing : public ::google::protobuf::Message {
+ public:
+  SPing();
+  virtual ~SPing();
+
+  SPing(const SPing& from);
+
+  inline SPing& operator=(const SPing& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SPing& default_instance();
+
+  void Swap(SPing* other);
+
+  // implements Message ----------------------------------------------
+
+  SPing* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SPing& from);
+  void MergeFrom(const SPing& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 cmd = 1 [default = 16387];
+  inline bool has_cmd() const;
+  inline void clear_cmd();
+  static const int kCmdFieldNumber = 1;
+  inline ::google::protobuf::uint32 cmd() const;
+  inline void set_cmd(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.SPing)
+ private:
+  inline void set_has_cmd();
+  inline void clear_has_cmd();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 cmd_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Vo_2eproto();
+  friend void protobuf_AssignDesc_Vo_2eproto();
+  friend void protobuf_ShutdownFile_Vo_2eproto();
+
+  void InitAsDefaultInstance();
+  static SPing* default_instance_;
 };
 // ===================================================================
 
@@ -6958,6 +7139,76 @@ inline void RoomData::set_allocated_roomtype(::std::string* roomtype) {
   }
 }
 
+// optional string uid = 8;
+inline bool RoomData::has_uid() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void RoomData::set_has_uid() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void RoomData::clear_has_uid() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void RoomData::clear_uid() {
+  if (uid_ != &::google::protobuf::internal::kEmptyString) {
+    uid_->clear();
+  }
+  clear_has_uid();
+}
+inline const ::std::string& RoomData::uid() const {
+  return *uid_;
+}
+inline void RoomData::set_uid(const ::std::string& value) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    uid_ = new ::std::string;
+  }
+  uid_->assign(value);
+}
+inline void RoomData::set_uid(const char* value) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    uid_ = new ::std::string;
+  }
+  uid_->assign(value);
+}
+inline void RoomData::set_uid(const char* value, size_t size) {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    uid_ = new ::std::string;
+  }
+  uid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* RoomData::mutable_uid() {
+  set_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    uid_ = new ::std::string;
+  }
+  return uid_;
+}
+inline ::std::string* RoomData::release_uid() {
+  clear_has_uid();
+  if (uid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = uid_;
+    uid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void RoomData::set_allocated_uid(::std::string* uid) {
+  if (uid_ != &::google::protobuf::internal::kEmptyString) {
+    delete uid_;
+  }
+  if (uid) {
+    set_has_uid();
+    uid_ = uid;
+  } else {
+    clear_has_uid();
+    uid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
 // CPGCardData
@@ -8329,6 +8580,58 @@ inline void UserRound::set_allocated_win(::std::string* win) {
     clear_has_win();
     win_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
+}
+
+// -------------------------------------------------------------------
+
+// CPing
+
+// optional uint32 cmd = 1 [default = 16387];
+inline bool CPing::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CPing::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CPing::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CPing::clear_cmd() {
+  cmd_ = 16387u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 CPing::cmd() const {
+  return cmd_;
+}
+inline void CPing::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SPing
+
+// optional uint32 cmd = 1 [default = 16387];
+inline bool SPing::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SPing::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SPing::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SPing::clear_cmd() {
+  cmd_ = 16387u;
+  clear_has_cmd();
+}
+inline ::google::protobuf::uint32 SPing::cmd() const {
+  return cmd_;
+}
+inline void SPing::set_cmd(::google::protobuf::uint32 value) {
+  set_has_cmd();
+  cmd_ = value;
 }
 
 

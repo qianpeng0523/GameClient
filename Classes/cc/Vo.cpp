@@ -89,6 +89,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* UserRound_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   UserRound_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CPing_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CPing_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SPing_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SPing_reflection_ = NULL;
 
 }  // namespace
 
@@ -420,7 +426,7 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PayRecord));
   RoomData_descriptor_ = file->message_type(17);
-  static const int RoomData_offsets_[7] = {
+  static const int RoomData_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomData, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomData, ante_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomData, round_),
@@ -428,6 +434,7 @@ void protobuf_AssignDesc_Vo_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomData, bang_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomData, roomid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomData, roomtype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomData, uid_),
   };
   RoomData_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -543,6 +550,36 @@ void protobuf_AssignDesc_Vo_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UserRound));
+  CPing_descriptor_ = file->message_type(23);
+  static const int CPing_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CPing, cmd_),
+  };
+  CPing_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      CPing_descriptor_,
+      CPing::default_instance_,
+      CPing_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CPing, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CPing, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(CPing));
+  SPing_descriptor_ = file->message_type(24);
+  static const int SPing_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SPing, cmd_),
+  };
+  SPing_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SPing_descriptor_,
+      SPing::default_instance_,
+      SPing_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SPing, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SPing, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SPing));
 }
 
 namespace {
@@ -601,6 +638,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
     UserOver_descriptor_, &UserOver::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     UserRound_descriptor_, &UserRound::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    CPing_descriptor_, &CPing::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SPing_descriptor_, &SPing::default_instance());
 }
 
 }  // namespace
@@ -652,6 +693,10 @@ void protobuf_ShutdownFile_Vo_2eproto() {
   delete UserOver_reflection_;
   delete UserRound::default_instance_;
   delete UserRound_reflection_;
+  delete CPing::default_instance_;
+  delete CPing_reflection_;
+  delete SPing::default_instance_;
+  delete SPing_reflection_;
 }
 
 void protobuf_AddDesc_Vo_2eproto() {
@@ -704,24 +749,26 @@ void protobuf_AddDesc_Vo_2eproto() {
     "\002 \001(\t\022\024\n\014out_trade_no\030\003 \001(\t\022\022\n\ntime_star"
     "t\030\004 \001(\t\022\023\n\013time_expire\030\005 \001(\t\022\021\n\tprepay_i"
     "d\030\006 \001(\t\022\014\n\004body\030\007 \001(\t\022\021\n\ttotal_fee\030\010 \001(\t"
-    "\022\030\n\020spbill_create_ip\030\t \001(\t\"r\n\010RoomData\022\014"
+    "\022\030\n\020spbill_create_ip\030\t \001(\t\"\177\n\010RoomData\022\014"
     "\n\004type\030\001 \001(\r\022\014\n\004ante\030\002 \001(\r\022\r\n\005round\030\003 \001("
     "\r\022\013\n\003bao\030\004 \001(\r\022\014\n\004bang\030\005 \001(\r\022\016\n\006roomid\030\006"
-    " \001(\t\022\020\n\010roomtype\030\007 \001(\t\"F\n\013CPGCardData\022\014\n"
-    "\004type\030\001 \001(\r\022\r\n\005cards\030\002 \001(\014\022\r\n\005index\030\003 \001("
-    "\r\022\013\n\003bei\030\004 \001(\r\"\254\002\n\010RoomUser\022\016\n\006userid\030\001 "
-    "\001(\t\022\020\n\010username\030\002 \001(\t\022\r\n\005picid\030\003 \001(\r\022\016\n\006"
-    "picurl\030\004 \001(\t\022\013\n\003sex\030\005 \001(\r\022\n\n\002ip\030\006 \001(\t\022\014\n"
-    "\004gold\030\007 \001(\r\022\r\n\005score\030\010 \001(\r\022\013\n\003win\030\t \001(\r\022"
-    "\014\n\004lose\030\n \001(\r\022\014\n\004ping\030\013 \001(\r\022\013\n\003vip\030\014 \001(\r"
-    "\022&\n\007cpgcard\030\r \003(\0132\025.protocol.CPGCardData"
-    "\022\020\n\010position\030\016 \001(\r\022\r\n\005cards\030\017 \001(\014\022\020\n\010out"
-    "cards\030\020 \001(\014\022\n\n\002fa\030\021 \001(\r\022\014\n\004piao\030\022 \001(\r\"&\n"
-    "\010TingCard\022\014\n\004card\030\001 \001(\r\022\014\n\004ting\030\002 \001(\014\"Y\n"
-    "\010UserOver\022\016\n\006userid\030\001 \001(\t\022\020\n\010position\030\002 "
-    "\001(\r\022\r\n\005score\030\003 \001(\r\022\r\n\005total\030\004 \001(\r\022\r\n\005car"
-    "ds\030\005 \001(\014\"D\n\tUserRound\022\016\n\006userid\030\001 \001(\t\022\r\n"
-    "\005total\030\002 \001(\r\022\013\n\003pao\030\003 \001(\t\022\013\n\003win\030\004 \001(\t", 2438);
+    " \001(\t\022\020\n\010roomtype\030\007 \001(\t\022\013\n\003uid\030\010 \001(\t\"F\n\013C"
+    "PGCardData\022\014\n\004type\030\001 \001(\r\022\r\n\005cards\030\002 \001(\014\022"
+    "\r\n\005index\030\003 \001(\r\022\013\n\003bei\030\004 \001(\r\"\254\002\n\010RoomUser"
+    "\022\016\n\006userid\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\022\r\n\005pi"
+    "cid\030\003 \001(\r\022\016\n\006picurl\030\004 \001(\t\022\013\n\003sex\030\005 \001(\r\022\n"
+    "\n\002ip\030\006 \001(\t\022\014\n\004gold\030\007 \001(\r\022\r\n\005score\030\010 \001(\r\022"
+    "\013\n\003win\030\t \001(\r\022\014\n\004lose\030\n \001(\r\022\014\n\004ping\030\013 \001(\r"
+    "\022\013\n\003vip\030\014 \001(\r\022&\n\007cpgcard\030\r \003(\0132\025.protoco"
+    "l.CPGCardData\022\020\n\010position\030\016 \001(\r\022\r\n\005cards"
+    "\030\017 \001(\014\022\020\n\010outcards\030\020 \001(\014\022\n\n\002fa\030\021 \001(\r\022\014\n\004"
+    "piao\030\022 \001(\r\"&\n\010TingCard\022\014\n\004card\030\001 \001(\r\022\014\n\004"
+    "ting\030\002 \001(\014\"Y\n\010UserOver\022\016\n\006userid\030\001 \001(\t\022\020"
+    "\n\010position\030\002 \001(\r\022\r\n\005score\030\003 \001(\r\022\r\n\005total"
+    "\030\004 \001(\r\022\r\n\005cards\030\005 \001(\014\"D\n\tUserRound\022\016\n\006us"
+    "erid\030\001 \001(\t\022\r\n\005total\030\002 \001(\r\022\013\n\003pao\030\003 \001(\t\022\013"
+    "\n\003win\030\004 \001(\t\"\033\n\005CPing\022\022\n\003cmd\030\001 \001(\r:\00516387"
+    "\"\033\n\005SPing\022\022\n\003cmd\030\001 \001(\r:\00516387", 2509);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Vo.proto", &protobuf_RegisterTypes);
   UserBase::default_instance_ = new UserBase();
@@ -747,6 +794,8 @@ void protobuf_AddDesc_Vo_2eproto() {
   TingCard::default_instance_ = new TingCard();
   UserOver::default_instance_ = new UserOver();
   UserRound::default_instance_ = new UserRound();
+  CPing::default_instance_ = new CPing();
+  SPing::default_instance_ = new SPing();
   UserBase::default_instance_->InitAsDefaultInstance();
   UserInfo::default_instance_->InitAsDefaultInstance();
   Rank::default_instance_->InitAsDefaultInstance();
@@ -770,6 +819,8 @@ void protobuf_AddDesc_Vo_2eproto() {
   TingCard::default_instance_->InitAsDefaultInstance();
   UserOver::default_instance_->InitAsDefaultInstance();
   UserRound::default_instance_->InitAsDefaultInstance();
+  CPing::default_instance_->InitAsDefaultInstance();
+  SPing::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Vo_2eproto);
 }
 
@@ -7502,6 +7553,7 @@ const int RoomData::kBaoFieldNumber;
 const int RoomData::kBangFieldNumber;
 const int RoomData::kRoomidFieldNumber;
 const int RoomData::kRoomtypeFieldNumber;
+const int RoomData::kUidFieldNumber;
 #endif  // !_MSC_VER
 
 RoomData::RoomData()
@@ -7527,6 +7579,7 @@ void RoomData::SharedCtor() {
   bang_ = 0u;
   roomid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   roomtype_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  uid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -7540,6 +7593,9 @@ void RoomData::SharedDtor() {
   }
   if (roomtype_ != &::google::protobuf::internal::kEmptyString) {
     delete roomtype_;
+  }
+  if (uid_ != &::google::protobuf::internal::kEmptyString) {
+    delete uid_;
   }
   if (this != default_instance_) {
   }
@@ -7581,6 +7637,11 @@ void RoomData::Clear() {
     if (has_roomtype()) {
       if (roomtype_ != &::google::protobuf::internal::kEmptyString) {
         roomtype_->clear();
+      }
+    }
+    if (has_uid()) {
+      if (uid_ != &::google::protobuf::internal::kEmptyString) {
+        uid_->clear();
       }
     }
   }
@@ -7703,6 +7764,23 @@ bool RoomData::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(66)) goto parse_uid;
+        break;
+      }
+
+      // optional string uid = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_uid:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_uid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->uid().data(), this->uid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -7768,6 +7846,15 @@ void RoomData::SerializeWithCachedSizes(
       7, this->roomtype(), output);
   }
 
+  // optional string uid = 8;
+  if (has_uid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->uid().data(), this->uid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      8, this->uid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -7819,6 +7906,16 @@ void RoomData::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         7, this->roomtype(), target);
+  }
+
+  // optional string uid = 8;
+  if (has_uid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->uid().data(), this->uid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        8, this->uid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -7881,6 +7978,13 @@ int RoomData::ByteSize() const {
           this->roomtype());
     }
 
+    // optional string uid = 8;
+    if (has_uid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->uid());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -7929,6 +8033,9 @@ void RoomData::MergeFrom(const RoomData& from) {
     if (from.has_roomtype()) {
       set_roomtype(from.roomtype());
     }
+    if (from.has_uid()) {
+      set_uid(from.uid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -7959,6 +8066,7 @@ void RoomData::Swap(RoomData* other) {
     std::swap(bang_, other->bang_);
     std::swap(roomid_, other->roomid_);
     std::swap(roomtype_, other->roomtype_);
+    std::swap(uid_, other->uid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -10318,6 +10426,422 @@ void UserRound::Swap(UserRound* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = UserRound_descriptor_;
   metadata.reflection = UserRound_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int CPing::kCmdFieldNumber;
+#endif  // !_MSC_VER
+
+CPing::CPing()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void CPing::InitAsDefaultInstance() {
+}
+
+CPing::CPing(const CPing& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void CPing::SharedCtor() {
+  _cached_size_ = 0;
+  cmd_ = 16387u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+CPing::~CPing() {
+  SharedDtor();
+}
+
+void CPing::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void CPing::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CPing::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CPing_descriptor_;
+}
+
+const CPing& CPing::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Vo_2eproto();
+  return *default_instance_;
+}
+
+CPing* CPing::default_instance_ = NULL;
+
+CPing* CPing::New() const {
+  return new CPing;
+}
+
+void CPing::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    cmd_ = 16387u;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool CPing::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 cmd = 1 [default = 16387];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &cmd_)));
+          set_has_cmd();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void CPing::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint32 cmd = 1 [default = 16387];
+  if (has_cmd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->cmd(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* CPing::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint32 cmd = 1 [default = 16387];
+  if (has_cmd()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->cmd(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int CPing::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint32 cmd = 1 [default = 16387];
+    if (has_cmd()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->cmd());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CPing::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const CPing* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const CPing*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void CPing::MergeFrom(const CPing& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_cmd()) {
+      set_cmd(from.cmd());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void CPing::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CPing::CopyFrom(const CPing& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CPing::IsInitialized() const {
+
+  return true;
+}
+
+void CPing::Swap(CPing* other) {
+  if (other != this) {
+    std::swap(cmd_, other->cmd_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata CPing::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = CPing_descriptor_;
+  metadata.reflection = CPing_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SPing::kCmdFieldNumber;
+#endif  // !_MSC_VER
+
+SPing::SPing()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SPing::InitAsDefaultInstance() {
+}
+
+SPing::SPing(const SPing& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SPing::SharedCtor() {
+  _cached_size_ = 0;
+  cmd_ = 16387u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SPing::~SPing() {
+  SharedDtor();
+}
+
+void SPing::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void SPing::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SPing::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SPing_descriptor_;
+}
+
+const SPing& SPing::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Vo_2eproto();
+  return *default_instance_;
+}
+
+SPing* SPing::default_instance_ = NULL;
+
+SPing* SPing::New() const {
+  return new SPing;
+}
+
+void SPing::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    cmd_ = 16387u;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SPing::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 cmd = 1 [default = 16387];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &cmd_)));
+          set_has_cmd();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SPing::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint32 cmd = 1 [default = 16387];
+  if (has_cmd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->cmd(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SPing::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint32 cmd = 1 [default = 16387];
+  if (has_cmd()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->cmd(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SPing::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint32 cmd = 1 [default = 16387];
+    if (has_cmd()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->cmd());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SPing::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SPing* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SPing*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SPing::MergeFrom(const SPing& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_cmd()) {
+      set_cmd(from.cmd());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SPing::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SPing::CopyFrom(const SPing& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SPing::IsInitialized() const {
+
+  return true;
+}
+
+void SPing::Swap(SPing* other) {
+  if (other != this) {
+    std::swap(cmd_, other->cmd_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SPing::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SPing_descriptor_;
+  metadata.reflection = SPing_reflection_;
   return metadata;
 }
 

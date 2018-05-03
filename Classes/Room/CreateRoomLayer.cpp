@@ -5,7 +5,7 @@
 #include "LoginScene.h"
 #include "LoginInfo.h"
 #include "WebViewCommom.h"
-
+#include "RoomInfo.h"
 
 const int g_ante[3] = { 1, 2, 5 };
 const int g_time[2] = { 8, 16 };
@@ -106,8 +106,15 @@ void CreateRoomLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		}
 		else if (name.compare("btn") == 0){
 			log("%d,%d,%d,%d,%d\n",m_type,m_ante,m_time,m_bao,m_bang);
-			Scene *scene = LoadingLayer::createScene(3);
-			GameControl::getIns()->replaceScene(scene);
+			CHMMJCreateRoom cl;
+			cl.set_ante(m_ante);
+			cl.set_bang(m_bang);
+			cl.set_bao(m_bao);
+			cl.set_round(m_type==1?8:16);
+			cl.set_type(1);
+			RoomInfo::getIns()->SendCHMMJCreateRoom(cl);
+// 			Scene *scene = LoadingLayer::createScene(3);
+// 			GameControl::getIns()->replaceScene(scene);
 
 		}
 		else if (name.find("CheckBox_j1") == 0){

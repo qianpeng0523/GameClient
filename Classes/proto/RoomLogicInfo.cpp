@@ -7,6 +7,7 @@
 #include "LoadingLayer.h"
 #include "YLJni.h"
 #include "GameDataSet.h"
+#include "LoginInfo.h"
 
 RoomLogicInfo *RoomLogicInfo::m_shareRoomLogicInfo=NULL;
 RoomLogicInfo::RoomLogicInfo()
@@ -98,6 +99,8 @@ bool RoomLogicInfo::init()
 
 void RoomLogicInfo::SendCDice(){
 	CDice cl;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cl.set_uid(uid);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(RoomLogicInfo::HandlerSDice));
 	ClientSocket::getIns()->sendMsg(cl.cmd(),&cl);
 }
@@ -136,6 +139,8 @@ void RoomLogicInfo::HandSCard(ccEvent *event){
 
 void RoomLogicInfo::SendCDiscard(int card){
 	CDiscard cl;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cl.set_uid(uid);
 	cl.set_card(card);
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
@@ -157,6 +162,8 @@ void RoomLogicInfo::HandSOtherDraw(ccEvent *event){
 
 void RoomLogicInfo::SendChi(string chi){
 	CChi cl;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cl.set_uid(uid);
 	cl.set_card(chi);
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
@@ -168,6 +175,8 @@ void RoomLogicInfo::HandSChi(ccEvent *event){
 
 void RoomLogicInfo::SendCPeng(int card){
 	CPeng cl;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cl.set_uid(uid);
 	cl.set_card(card);
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
@@ -179,6 +188,8 @@ void RoomLogicInfo::HandSPeng(ccEvent *event){
 
 void RoomLogicInfo::SendCMingGang(int card, int type){
 	CMingGang cl;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cl.set_uid(uid);
 	cl.set_card(card);
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
@@ -190,6 +201,8 @@ void RoomLogicInfo::HandSMingGang(ccEvent *event){
 
 void RoomLogicInfo::SendCAnGang(int card, int type){
 	CAnGang cl;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cl.set_uid(uid);
 	cl.set_card(card);
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
@@ -206,6 +219,8 @@ void RoomLogicInfo::HandSFa(ccEvent *event){
 
 void RoomLogicInfo::SendCHu(){
 	CHu cl;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cl.set_uid(uid);
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 

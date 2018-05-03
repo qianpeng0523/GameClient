@@ -7,6 +7,7 @@
 #include "LoadingLayer.h"
 #include "YLJni.h"
 #include "GameDataSet.h"
+#include "LoginInfo.h"
 
 RoomInfo *RoomInfo::m_shareRoomInfo=NULL;
 RoomInfo::RoomInfo()
@@ -73,6 +74,8 @@ bool RoomInfo::init()
 }
 
 void RoomInfo::SendCHMMJCreateRoom(CHMMJCreateRoom cl){
+	string uid= LoginInfo::getIns()->getMyUserBase().userid();
+	cl.set_uid(uid);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(RoomInfo::HandlerSHMMJCreateRoom));
 	ClientSocket::getIns()->sendMsg(cl.cmd(),&cl);
 }
@@ -92,6 +95,8 @@ void RoomInfo::HandlerSHMMJCreateRoom(ccEvent *event){
 
 void RoomInfo::SendCHMMJEnterRoom(int rtype, string rid){
 	CHMMJEnterRoom cr;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cr.set_uid(uid);
 	cr.set_rtype(rtype);
 	cr.set_roomid(rid);
 	XXEventDispatcher::getIns()->addListener(cr.cmd(), this, Event_Handler(RoomInfo::HandSHMMJEnterRoom));
@@ -120,6 +125,8 @@ void RoomInfo::HandSComein(ccEvent *event){
 
 void RoomInfo::SendCBegin(int rtype){
 	CBegin cr;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cr.set_uid(uid);
 	cr.set_type(rtype);
 	XXEventDispatcher::getIns()->addListener(cr.cmd(), this, Event_Handler(RoomInfo::HandSBegin));
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
@@ -140,6 +147,8 @@ void RoomInfo::HandSBegin(ccEvent *event){
 
 void RoomInfo::SendCReady(bool isready){
 	CReady cr;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cr.set_uid(uid);
 	cr.set_ready(isready);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
 }
@@ -158,6 +167,8 @@ void RoomInfo::HandSReady(ccEvent *event){
 
 void RoomInfo::SendCLeave(){
 	CLeave cr;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cr.set_uid(uid);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
 }
 
@@ -175,6 +186,8 @@ void RoomInfo::HandSLeave(ccEvent *event){
 
 void RoomInfo::SendCLine(bool online){
 	CLine cr;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cr.set_uid(uid);
 	cr.set_online(online);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
 }
@@ -193,6 +206,8 @@ void RoomInfo::HandSLine(ccEvent *event){
 
 void RoomInfo::SendCDissolveRoom(string rid){
 	CDissolveRoom cr;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cr.set_uid(uid);
 	cr.set_rid(rid);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
 }
@@ -211,6 +226,8 @@ void RoomInfo::HandSDissolveRoom(ccEvent *event){
 
 void RoomInfo::SendCVote(bool agree){
 	CVote cr;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cr.set_uid(uid);
 	cr.set_agree(agree);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
 }
@@ -228,6 +245,8 @@ void RoomInfo::HandSVoteResult(ccEvent *event){
 
 void RoomInfo::SendCRChat(string content){
 	CRChat cr;
+	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	cr.set_uid(uid);
 	cr.set_content(content);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
 }
