@@ -86,10 +86,11 @@ void RoomInfo::HandlerSHMMJCreateRoom(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(RoomInfo::HandlerSHMMJCreateRoom));
 	int err = cl.err();
 	if (err==0){
-		
+		 Scene *scene = LoadingLayer::createScene(3);
+		 GameControl::getIns()->replaceScene(scene);
 	}
 	else{
-		
+		log("create room error:%d",err);
 	}
 }
 
@@ -109,10 +110,11 @@ void RoomInfo::HandSHMMJEnterRoom(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(RoomInfo::HandSHMMJEnterRoom));
 	int err = cl.err();
 	if (err == 0){
-
+		Scene *scene = LoadingLayer::createScene(3);
+		GameControl::getIns()->replaceScene(scene);
 	}
 	else{
-
+		log("enter room error:%d", err);
 	}
 }
 

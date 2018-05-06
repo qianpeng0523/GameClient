@@ -113,8 +113,6 @@ void CreateRoomLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			cl.set_round(m_type==1?8:16);
 			cl.set_type(1);
 			RoomInfo::getIns()->SendCHMMJCreateRoom(cl);
-// 			Scene *scene = LoadingLayer::createScene(3);
-// 			GameControl::getIns()->replaceScene(scene);
 
 		}
 		else if (name.find("CheckBox_j1") == 0){

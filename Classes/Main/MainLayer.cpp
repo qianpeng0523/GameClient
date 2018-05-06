@@ -231,7 +231,7 @@ void MainLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			SetLayer *p = GameControl::getIns()->getSetLayer();
 			if (!p){
 				p = SetLayer::create();
-				this->addChild(p);
+				this->addChild(p,3);
 			}
 		}
 		else if (name.compare("shop_btn") == 0){

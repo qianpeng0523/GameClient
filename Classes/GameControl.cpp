@@ -178,7 +178,7 @@ void GameControl::ShowTopTip(string tip){
 	if (!m_pTopTipLayer){
 		m_pTopTipLayer = TopTipLayer::create();
 		Director *pDirector = Director::sharedDirector();
-		pDirector->getRunningScene()->addChild(m_pTopTipLayer, 2001);
+		pDirector->getRunningScene()->addChild(m_pTopTipLayer, 2);
 		Size sz = pDirector->getWinSize();
 		m_pTopTipLayer->setPositionX(m_pTopTipLayer->getContentSize().width / 2.0);
 		if(m_pMainLayer){
@@ -192,6 +192,14 @@ void GameControl::ShowTopTip(string tip){
 	}
 	else{
 		m_pTopTipLayer->PushTip(tip);
+	}
+}
+
+void GameControl::setTopTip(bool istop){
+	if (m_pTopTipLayer){
+		Director *pDirector = Director::sharedDirector();
+		Size sz = pDirector->getWinSize();
+		m_pTopTipLayer->setPositionY(istop ? (sz.height - m_pTopTipLayer->getContentSize().height) : (sz.height - m_pTopTipLayer->getContentSize().height - 66));
 	}
 }
 

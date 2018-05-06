@@ -69,6 +69,7 @@ public:
 	}
 
 	void setUserInfoLayer(UserInfoLayer *p){
+		setTopTip(p?true:false);
 		m_pUserInfoLayer = p;
 	}
 	UserInfoLayer *getUserInfoLayer(){
@@ -76,6 +77,7 @@ public:
 	}
 
 	void setSetLayer(SetLayer *p){
+		setTopTip(p ? true : false);
 		m_pSetLayer = p;
 	}
 	SetLayer *getSetLayer(){
@@ -83,6 +85,7 @@ public:
 	}
 
 	void setShopLayer(ShopLayer *p){
+		setTopTip(p ? true : false);
 		m_pShopLayer = p;
 	}
 	ShopLayer *getShopLayer(){
@@ -90,6 +93,7 @@ public:
 	}
 
 	void setSignLayer(SignLayer *p){
+		setTopTip(p ? true : false);
 		m_pSignLayer = p;
 	}
 	SignLayer *getSignLayer(){
@@ -97,6 +101,7 @@ public:
 	}
 
 	void setFriendLayer(FriendLayer *p){
+		setTopTip(p ? true : false);
 		m_pFriendLayer = p;
 	}
 	FriendLayer *getFriendLayer(){
@@ -104,6 +109,7 @@ public:
 	}
 
 	void setFankuiLayer(FankuiLayer *p){
+		setTopTip(p ? true : false);
 		m_pFankuiLayer = p;
 	}
 	FankuiLayer *getFankuiLayer(){
@@ -111,6 +117,7 @@ public:
 	}
 
 	void setFreeLayer(FreeLayer *p){
+		setTopTip(p ? true : false);
 		m_pFreeLayer = p;
 	}
 	FreeLayer *getFreeLayer(){
@@ -118,6 +125,7 @@ public:
 	}
 
 	void setExchangeLayer(ExchangeLayer *p){
+		setTopTip(p ? true : false);
 		m_pExchangeLayer = p;
 	}
 	ExchangeLayer *getExchangeLayer(){
@@ -125,6 +133,7 @@ public:
 	}
 
 	void setTaskLayer(TaskLayer *p){
+		setTopTip(p ? true : false);
 		m_pTaskLayer = p;
 	}
 	TaskLayer *getTaskLayer(){
@@ -132,6 +141,7 @@ public:
 	}
 
 	void setMailLayer(MailLayer *p){
+		setTopTip(p ? true : false);
 		m_pMailLayer = p;
 	}
 	MailLayer *getMailLayer(){
@@ -139,6 +149,7 @@ public:
 	}
 
 	void setActiveLayer(ActiveLayer *p){
+		setTopTip(p ? true : false);
 		m_pActiveLayer = p;
 	}
 	ActiveLayer *getActiveLayer(){
@@ -146,6 +157,7 @@ public:
 	}
 
 	void setFirstChargeLayer(FirstChargeLayer *p){
+		setTopTip(p ? true : false);
 		m_pFirstChargeLayer = p;
 	}
 	FirstChargeLayer *getFirstChargeLayer(){
@@ -153,6 +165,7 @@ public:
 	}
 
 	void setAboutLayer(AboutLayer *p){
+		setTopTip(p ? true : false);
 		m_pAboutLayer = p;
 	}
 	AboutLayer *getAboutLayer(){
@@ -160,6 +173,7 @@ public:
 	}
 
 	void setHelpLayer(HelpLayer *p){
+		setTopTip(p ? true : false);
 		m_pHelpLayer = p;
 	}
 	HelpLayer *getHelpLayer(){
@@ -167,6 +181,7 @@ public:
 	}
 
 	void setChatLayer(ChatLayer *p){
+		setTopTip(p ? true : false);
 		m_pChatLayer = p;
 	}
 	ChatLayer *getChatLayer(){
@@ -174,6 +189,7 @@ public:
 	}
 
 	void setMailTipLayer(MailTipLayer *p){
+		setTopTip(p ? true : false);
 		m_pMailTipLayer = p;
 	}
 	MailTipLayer *getMailTipLayer(){
@@ -181,6 +197,7 @@ public:
 	}
 
 	void setRewardTipLayer(RewardTipLayer *p){
+		setTopTip(p ? true : false);
 		m_pRewardTipLayer = p;
 	}
 	RewardTipLayer *getRewardTipLayer(){
@@ -195,6 +212,7 @@ public:
 	}
 
 	void setCreateRoomLayer(CreateRoomLayer *p){
+		setTopTip(p ? true : false);
 		m_pCreateRoomLayer = p;
 	}
 	CreateRoomLayer *getCreateRoomLayer(){
@@ -202,6 +220,7 @@ public:
 	}
 
 	void setJoinRoomLayer(JoinRoomLayer *p){
+		setTopTip(p ? true : false);
 		m_pJoinRoomLayer = p;
 	}
 	JoinRoomLayer *getJoinRoomLayer(){
@@ -251,6 +270,7 @@ public:
 	}
 
 	void ShowTopTip(string tip);
+	void setTopTip(bool istop);
 
 	void ShowLoading();
 	void HideLoading();

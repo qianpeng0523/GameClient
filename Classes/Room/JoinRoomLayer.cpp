@@ -5,7 +5,7 @@
 #include "LoginScene.h"
 #include "LoginInfo.h"
 #include "WebViewCommom.h"
-
+#include "RoomInfo.h"
 
 
 
@@ -71,6 +71,7 @@ void JoinRoomLayer::TouchEvent(CCObject *obj, TouchEventType type){
 				number.append(t);
 			}
 			log("number:%s",number.c_str());
+			RoomInfo::getIns()->SendCHMMJEnterRoom(1, number);
 		}
 		else if (name.compare("btn_del") == 0){
 			if (m_index > 0){
