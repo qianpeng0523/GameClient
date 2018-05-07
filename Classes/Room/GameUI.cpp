@@ -105,7 +105,7 @@ void GameUI::TouchEvent(CCObject *obj, TouchEventType type){
 			}
 		}
 		else if (name.compare("begin_btn") == 0){
-
+			RoomInfo::getIns()->SendCBegin(1);
 		}
 		else if (name.compare("ready_btn") == 0){
 			RoomInfo::getIns()->SendCReady(true);
