@@ -77,6 +77,14 @@ void LoginInfo::HandlerSLoginHand(ccEvent *event){
 	if (err==0){
 		m_myinfo = cl.info();
 		log("%s",XXIconv::GBK2UTF("登录成功!").c_str());
+
+		UserDefault *pUserDefault = UserDefault::sharedUserDefault();
+		string uid = pUserDefault->getStringForKey("abc1");
+		string pwd = pUserDefault->getStringForKey("ccc1");
+		if (uid.compare(LoginLayer::m_uid) != 0){
+			pUserDefault->setStringForKey("abc1", LoginLayer::m_uid);
+			pUserDefault->setStringForKey("ccc1", LoginLayer::m_pwd);
+		}
 		LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
 		if (p){
 			Scene *scene = LoadingLayer::createScene(2);
@@ -85,7 +93,8 @@ void LoginInfo::HandlerSLoginHand(ccEvent *event){
 	}
 	else{
 		log("%s", XXIconv::GBK2UTF("账号密码错误").c_str());
-		SendCRegister("100001","123456","qp0001");
+		ClientSocket::getIns()->close();
+		//SendCRegister("100001","123456","qp0001");
 	}
 }
 
@@ -109,6 +118,15 @@ void LoginInfo::HandlerSRegister(ccEvent *event){
 		m_myinfo = cl.info();
 		LoginLayer::m_uid = m_myinfo.userid();
 		LoginLayer::m_pwd = RegLayer::m_pwd;
+
+		UserDefault *pUserDefault = UserDefault::sharedUserDefault();
+		string uid = pUserDefault->getStringForKey("abc1");
+		string pwd = pUserDefault->getStringForKey("ccc1");
+		if (uid.compare(LoginLayer::m_uid) != 0){
+			pUserDefault->setStringForKey("abc1", LoginLayer::m_uid);
+			pUserDefault->setStringForKey("ccc1", LoginLayer::m_pwd);
+		}
+
 		log("%s", XXIconv::GBK2UTF("注册成功!").c_str());
 		setLoginType(LOGIN_YK);
 		LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
@@ -119,9 +137,11 @@ void LoginInfo::HandlerSRegister(ccEvent *event){
 	}
 	else if(err==1){
 		log("%s", XXIconv::GBK2UTF("注册失败!").c_str());
+		ClientSocket::getIns()->close();
 	}
 	else if(err==2){
 		log("%s", XXIconv::GBK2UTF("用户已存在!").c_str());
+		ClientSocket::getIns()->close();
 	}
 }
 
@@ -155,6 +175,7 @@ void LoginInfo::HandlerSWXLogin(ccEvent *event){
 	}
 	else{
 		log("%s", XXIconv::GBK2UTF("微信登录失败!").c_str());
+		ClientSocket::getIns()->close();
 		pUserDefault->setStringForKey("token", "");
 		YLJni::WeixinLogin();
 	}

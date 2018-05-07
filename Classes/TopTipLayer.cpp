@@ -108,7 +108,7 @@ void TopTipLayer::CallBack(){
 
 void TopTipLayer::CallBack(Node *node){
 	int tag = node->getTag();
-	log("tag:%d,empty:%s",tag,m_tips.empty()?"true":"false");
+	//log("tag:%d,empty:%s",tag,m_tips.empty()?"true":"false");
 	Size sz = m_bg->getSize();
 	if (m_tips.empty()){
 		m_lock = false;

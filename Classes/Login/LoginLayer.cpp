@@ -13,12 +13,18 @@ USING_NS_CC;
 
 string LoginLayer::m_uid = "";
 string LoginLayer::m_pwd = "";
-
+string LoginLayer::m_pwdmd5 = "";
 LoginLayer::LoginLayer(){
 	GameControl::getIns()->setLoginLayer(this);
 }
 
 LoginLayer::~LoginLayer(){
+	if (m_input1){
+		m_input1->removeFromParentAndCleanup(true);
+	}
+	if (m_input2){
+		m_input2->removeFromParentAndCleanup(true);
+	}
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this==GameControl::getIns()->getLoginLayer()){
 		GameControl::getIns()->setLoginLayer(NULL);
@@ -52,6 +58,15 @@ bool LoginLayer::init()
 	m_input2->setPlaceHolder(XXIconv::GBK2UTF("请输入6位以上密码").c_str());
 	m_input2->setFontColor(ccc3(0x38, 0x4E, 0x9C));
 	m_input2->setInputMode(ui::EditBox::InputMode::ANY);
+
+	UserDefault *pUserDefault = UserDefault::sharedUserDefault();
+	string uid = pUserDefault->getStringForKey("abc1","");
+	string pwd = pUserDefault->getStringForKey("ccc1","");
+	if (!uid.empty()){
+		m_input1->setText(uid.c_str());
+		m_input2->setText(pwd.c_str());
+	}
+
     return true;
 }
 
@@ -80,6 +95,9 @@ void LoginLayer::TouchEvent(Object *obj, TouchEventType type){
 				pLoginInfo->setLoginType(LOGIN_YK);
 				m_uid = uid;
 				m_pwd = pwd;
+				MD55 md5;
+				md5.update(pwd);
+				m_pwdmd5 = md5.toString();
 				HttpInfo *p = HttpInfo::getIns();
 				ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
 			}

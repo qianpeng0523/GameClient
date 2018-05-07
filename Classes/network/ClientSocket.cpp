@@ -23,7 +23,7 @@ ClientSocket::ClientSocket(){
 	m_recvstamp = 0;
 	m_isbegin = false;
 	m_tcpSocket = new TcpSocket();
-	createTcp();
+	
 	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(ClientSocket::update), this, 5.0, false);
 }
 
@@ -72,38 +72,40 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 	m_port = port;
 	m_isbegin = true;
 	GameControl::getIns()->ShowLoading();
+	createTcp();
 	int connectFlag = m_tcpSocket->Connect(ip, port);
 	GameControl::getIns()->HideLoading();
-    if (connectFlag != SOCKET_ERROR) {
-		log("Connect success:%s,%d",ip,port);
-		LoginInfo::getIns()->setTime();
+	if (connectFlag != SOCKET_ERROR) {
+		log("Connect success:%s,%d", ip, port);
 		std::thread t1(&ClientSocket::threadHandler, this);//创建一个分支线程，回调到myThread函数里
 		t1.detach();
-        m_isConnected = true;
+		m_isConnected = true;
 		LoginInfo *pLoginInfo = LoginInfo::getIns();
+		pLoginInfo->setTime();
 		LOGINTYPE type = pLoginInfo->getLoginType();
 		if (type == LOGIN_WX){
-			string token = UserDefault::sharedUserDefault()->getStringForKey("token","");
+			string token = UserDefault::sharedUserDefault()->getStringForKey("token", "");
 			if (token.empty()){
 				string code = pLoginInfo->getWXToken();
 				pLoginInfo->SendCWXLogin(code, "");
 			}
 			else{
-				pLoginInfo->SendCWXLogin("",token);
+				pLoginInfo->SendCWXLogin("", token);
 			}
-			
+
 		}
 		else if (type == LOGIN_YK){
-			pLoginInfo->SendCLogin(LoginLayer::m_uid,LoginLayer::m_pwd);
+			pLoginInfo->SendCLogin(LoginLayer::m_uid, LoginLayer::m_pwdmd5);
 		}
 		else if (type == LOGIN_REG){
-			pLoginInfo->SendCRegister("", RegLayer::m_pwd, RegLayer::m_uname);
+			pLoginInfo->SendCRegister("", RegLayer::m_pwdmd5, RegLayer::m_uname);
 		}
 	}
 	else{
 		LoginInfo::getIns()->setTime();
 		log("Connect faild:%s,%d", ip, port);
 	}
+	
     return connectFlag;
 }
 
@@ -235,7 +237,8 @@ void *ClientSocket::threadHandler(void *arg) {
 }
 
 int ClientSocket::reConnect(){
-	if (m_tcpSocket&&!m_isConnected){
+	LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
+	if (m_tcpSocket&&!m_isConnected&&!p){
 		createTcp();
 		return connect(m_ip.c_str(), m_port);
 	}
@@ -243,7 +246,8 @@ int ClientSocket::reConnect(){
 }
 
 void ClientSocket::update(float dt){
-	if (!m_isConnected&&m_isbegin){
+	LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
+	if (!m_isConnected&&m_isbegin&&!p){
 		reConnect();
 	}
 }

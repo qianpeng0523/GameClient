@@ -11,7 +11,7 @@ USING_NS_CC;
 
 string RegLayer::m_uname = "";
 string RegLayer::m_pwd = "";
-
+string RegLayer::m_pwdmd5 = "";
 RegLayer::RegLayer(){
 	GameControl::getIns()->setRegLayer(this);
 	
@@ -72,6 +72,9 @@ void RegLayer::TouchEvent(Object *obj, TouchEventType type){
 				pLoginInfo->setLoginType(LOGIN_REG);
 				m_uname = nickname;
 				m_pwd = pwd;
+				MD55 md5;
+				md5.update(pwd);
+				m_pwdmd5 = md5.toString();
 				HttpInfo *p = HttpInfo::getIns();
 				ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
 				

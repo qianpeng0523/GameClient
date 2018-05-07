@@ -46,7 +46,7 @@ bool RankItemLayer::init(Rank hall)
 	int picid = user.picid();
 	int number = type==1? user.gold():user.win();
 	int lv = m_hall.lv();
-	GameDataSet::setText(m_RootLayer, "name", uname);
+	GameDataSet::setText(m_RootLayer, "name", XXIconv::GBK2UTF(uname.c_str()));
 	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_fri", GameDataSet::getCNStringByInteger(number));
 	ImageView *lvimg = (ImageView *)GameDataSet::getLayout(m_RootLayer,"ph");
 	TextBMFont *lvtext = (TextBMFont *)GameDataSet::getLayout(m_RootLayer,"BitmapLabel_lv");

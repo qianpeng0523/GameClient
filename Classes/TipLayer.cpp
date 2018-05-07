@@ -5,7 +5,7 @@
 #include "LoginScene.h"
 #include "LoginInfo.h"
 #include "MainScene.h"
-
+#include "RoomInfo.h"
 
 
 
@@ -58,13 +58,14 @@ void TipLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			MainLayer *mainlayer = GameControl::getIns()->getMainLayer();
 			LoginMainLayer *loginscene = GameControl::getIns()->getLoginMainLayer();
 			if (p){
-				MainScene *main = MainScene::create();
-				GameControl::getIns()->replaceScene(main);
+				RoomInfo::getIns()->SendCLeave();
 			}
 			else if (mainlayer){
+				ClientSocket::getIns()->close();
 				Director::sharedDirector()->end();
 			}
 			else if (loginscene){
+				ClientSocket::getIns()->close();
 				Director::sharedDirector()->end();
 			}
 		}

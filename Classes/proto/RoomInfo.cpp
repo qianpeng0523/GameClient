@@ -179,10 +179,11 @@ void RoomInfo::HandSLeave(ccEvent *event){
 	cl.CopyFrom(*event->msg);
 	int err = cl.err();
 	if (err == 0){
-
+		MainScene *main = MainScene::create();
+		GameControl::getIns()->replaceScene(main);
 	}
 	else{
-
+		GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("离开房间出错"));
 	}
 }
 

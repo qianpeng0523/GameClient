@@ -9,6 +9,8 @@
 #include "LoginMainLayer.h"
 #include "GameControl.h"
 #include "RootRegister.h"
+#include "RoomInfo.h"
+
 USING_NS_CC;
 
 string ff[3] = {"LT_TB_liaotian.png","LT_TB_biaoqing.png","LT_TB_history.png"};
@@ -122,7 +124,13 @@ void GameChatLayer::TouchEvent(Object *obj, TouchEventType type){
 			ShowRecord();
 		}
 		else if (name.compare("send_btn") == 0){
-			
+			string content = m_pCursorTextField->getText();
+			if (content.empty()){
+				GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("发送的内容不能为空"));
+			}
+			else{
+				RoomInfo::getIns()->SendCRChat(content);
+			}
 		}
 		else if (name.compare("Panel_22") == 0){
 			Layout *bg = GameDataSet::getLayout(m_RootLayer,"bg");
@@ -132,8 +140,19 @@ void GameChatLayer::TouchEvent(Object *obj, TouchEventType type){
 				closeUI();
 			}
 		}
-		else{
-			
+		else if(name.compare("ScrollView1")==0){
+			Layout *ly = (Layout *)GameDataSet::isTouchInChild(m_ScrollView2,10.0,NULL);
+			if (ly){
+				ExpressItem *p = (ExpressItem *)ly->getUserObject();
+				RoomInfo::getIns()->SendCRChat("//"+p->name);
+			}
+		}
+		else if (name.compare("ScrollView") == 0){
+			GameChatItemLayer *ly = (GameChatItemLayer *)GameDataSet::isTouchInChild(m_ScrollView1, 10.0, NULL);
+			if (ly){
+				YuYinItem *p = ly->getYuYinItem();
+				RoomInfo::getIns()->SendCRChat("//" + p->name);
+			}
 		}
 		
 	}
@@ -174,9 +193,10 @@ void GameChatLayer::AddEmotion(){
 			ImageView *img = ImageView::create(p->file,Widget::TextureResType::PLIST);
 			ly->setUserObject(p);
 			img->setPosition(ly->getSize()/2.0);
+			img->setName("123");
 
 			ly->addChild(img);
-
+			
 			GameDataSet::PushScrollItem(m_sbg2, 4, 0, ly, index, m_ScrollView2);
 			index++;
 		}

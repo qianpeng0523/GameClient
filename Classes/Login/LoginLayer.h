@@ -22,6 +22,7 @@ public:
 
 	static string m_uid;
 	static string m_pwd;
+	static string m_pwdmd5;
 private:
 	ui::EditBox *m_input1;
 	ui::EditBox *m_input2;

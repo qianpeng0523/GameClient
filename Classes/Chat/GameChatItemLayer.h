@@ -23,6 +23,9 @@ public:
 	virtual bool init(YuYinItem *p);
 	
 	void TouchEvent();
+	YuYinItem *getYuYinItem(){
+		return m_pYuYinItem;
+	}
 private:
 	
 	YuYinItem *m_pYuYinItem;

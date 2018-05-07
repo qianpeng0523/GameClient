@@ -131,7 +131,8 @@ void MainLayer::setData(){
 	string uid = user.userid();
 	int card = user.card();
 	long gold = user.gold();
-	GameDataSet::setText(m_RootLayer, "id", XXIconv::getU8SubString("ID:" + uid, 0, 9, ""));
+	Text *TT= GameDataSet::setText(m_RootLayer, "id", XXIconv::getU8SubString("ID:" + uid, 0, 13, ""));
+	TT->setFontSize(18);
 	GameDataSet::setText(m_RootLayer, "name", XXIconv::getU8SubString(uname, 0, 9, ""));
 	GameDataSet::setTextBMFont(m_RootLayer, "card", card);
 	GameDataSet::setTextBMFont(m_RootLayer, "gold", GameDataSet::getCNStringByInteger(gold));
