@@ -76,9 +76,8 @@ void LoginInfo::HandlerSLoginHand(ccEvent *event){
 	int err = cl.err();
 	if (err==0){
 		m_myinfo = cl.info();
-		m_myinfo.set_picurl("http://www.lesharecs.com/1.jpg");
 		log("%s",XXIconv::GBK2UTF("登录成功!").c_str());
-		LoginLayer *p = GameControl::getIns()->getLoginLayer();
+		LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
 		if (p){
 			Scene *scene = LoadingLayer::createScene(2);
 			GameControl::getIns()->replaceScene(scene);
@@ -108,8 +107,11 @@ void LoginInfo::HandlerSRegister(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		m_myinfo = cl.info();
+		LoginLayer::m_uid = m_myinfo.userid();
+		LoginLayer::m_pwd = RegLayer::m_pwd;
 		log("%s", XXIconv::GBK2UTF("注册成功!").c_str());
-		LoginLayer *p = GameControl::getIns()->getLoginLayer();
+		setLoginType(LOGIN_YK);
+		LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
 		if (p){
 			Scene *scene = LoadingLayer::createScene(2);
 			GameControl::getIns()->replaceScene(scene);
@@ -145,7 +147,7 @@ void LoginInfo::HandlerSWXLogin(ccEvent *event){
 			pUserDefault->setStringForKey("token", token);
 		}
 		log("%s", XXIconv::GBK2UTF("微信登录成功!").c_str());
-		LoginLayer *p = GameControl::getIns()->getLoginLayer();
+		LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
 		if (p){
 			Scene *scene = LoadingLayer::createScene(2);
 			GameControl::getIns()->replaceScene(scene);

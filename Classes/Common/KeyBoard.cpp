@@ -1,7 +1,7 @@
 ﻿#include "KeyBoard.h"
 #include "TipLayer.h"
 #include "GameControl.h"
-#include "LoginLayer.h"
+#include "LoginMainLayer.h"
 
 
 KeyLayer::KeyLayer(){

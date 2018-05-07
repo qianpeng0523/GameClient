@@ -94,7 +94,10 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 			
 		}
 		else if (type == LOGIN_YK){
-			pLoginInfo->SendCLogin("100001", "123456");
+			pLoginInfo->SendCLogin(LoginLayer::m_uid,LoginLayer::m_pwd);
+		}
+		else if (type == LOGIN_REG){
+			pLoginInfo->SendCRegister("", RegLayer::m_pwd, RegLayer::m_uname);
 		}
 	}
 	else{

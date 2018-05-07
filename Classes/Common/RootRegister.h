@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "LoginLayer.h"
+#include "LoginMainLayer.h"
 
 using namespace cocos2d;
 using namespace ui;

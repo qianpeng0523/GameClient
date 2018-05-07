@@ -5,7 +5,7 @@
 USING_NS_CC;
 
 LoginScene::LoginScene(){
-	m_pLoginLayer = NULL;
+	m_pLoginMainLayer = NULL;
 }
 
 LoginScene::~LoginScene(){
@@ -19,9 +19,9 @@ bool LoginScene::init()
 		return false;
 	}
 	KeyBoard::getIns()->setKetPad(EXIT_KEYTYPE, this);
-	if (!m_pLoginLayer){
-		m_pLoginLayer = LoginLayer::create();
-		this->addChild(m_pLoginLayer);
+	if (!m_pLoginMainLayer){
+		m_pLoginMainLayer = LoginMainLayer::create();
+		this->addChild(m_pLoginMainLayer);
 	}
    
 	return true;

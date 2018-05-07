@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "LoginLayer.h"
+#include "LoginMainLayer.h"
 #include "MainLayer.h"
 #include "UserInfoLayer.h"
 #include "SetLayer.h"
@@ -33,6 +33,8 @@
 #include "TipLayer.h"
 #include "TopTipLayer.h"
 #include "GameChatLayer.h"
+#include "LoginLayer.h"
+#include "RegLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
@@ -54,11 +56,11 @@ public:
 	static GameControl* getIns();
 	
 public:
-	void setLoginLayer(LoginLayer *p){
-		m_pLoginLayer = p;
+	void setLoginMainLayer(LoginMainLayer *p){
+		m_pLoginMainLayer = p;
 	}
-	LoginLayer *getLoginLayer(){
-		return m_pLoginLayer;
+	LoginMainLayer *getLoginMainLayer(){
+		return m_pLoginMainLayer;
 	}
 
 	void setMainLayer(MainLayer *p){
@@ -269,6 +271,20 @@ public:
 		return m_pGameChatLayer;
 	}
 
+	void setLoginLayer(LoginLayer *p){
+		m_pLoginLayer = p;
+	}
+	LoginLayer *getLoginLayer(){
+		return m_pLoginLayer;
+	}
+
+	void setRegLayer(RegLayer *p){
+		m_RegLayer = p;
+	}
+	RegLayer *getRegLayer(){
+		return m_RegLayer;
+	}
+
 	void ShowTopTip(string tip);
 	void setTopTip(bool istop);
 
@@ -285,7 +301,7 @@ public:
 	void setTopTips(vector<string> vec);
 private:
 	static GameControl *m_ins;
-	LoginLayer *m_pLoginLayer;
+	LoginMainLayer *m_pLoginMainLayer;
 	MainLayer *m_pMainLayer;
 	UserInfoLayer *m_pUserInfoLayer;
 	SetLayer *m_pSetLayer;
@@ -313,6 +329,8 @@ private:
 	TipLayer *m_pTipLayer;
 	TopTipLayer *m_pTopTipLayer;
 	GameChatLayer *m_pGameChatLayer;
+	LoginLayer *m_pLoginLayer;
+	RegLayer *m_RegLayer;
 	vector<LaBaItem *> m_contents;
 	map<BaseLayer *, map<Layout *,LoadLayer *>>m_pLoadings;
 	vector<string> m_toptips;

@@ -1,4 +1,4 @@
-#include "LoginLayer.h"
+#include "RegLayer.h"
 #include "SimpleAudioEngine.h"
 #include "AppMacros.h"
 #include "GameDataSet.h"
@@ -7,43 +7,39 @@
 #include "ClientSocket.h"
 #include "YLJni.h"
 #include "LoginInfo.h"
-#include "RegLayer.h"
-
 USING_NS_CC;
 
-string LoginLayer::m_uid = "";
-string LoginLayer::m_pwd = "";
+string RegLayer::m_uname = "";
+string RegLayer::m_pwd = "";
 
-LoginLayer::LoginLayer(){
-	GameControl::getIns()->setLoginLayer(this);
+RegLayer::RegLayer(){
+	GameControl::getIns()->setRegLayer(this);
+	
 }
 
-LoginLayer::~LoginLayer(){
+RegLayer::~RegLayer(){
 	RootRegister::getIns()->resetWidget(m_RootLayer);
-	if (this==GameControl::getIns()->getLoginLayer()){
-		GameControl::getIns()->setLoginLayer(NULL);
+	if (this==GameControl::getIns()->getRegLayer()){
+		GameControl::getIns()->setRegLayer(NULL);
 	}
 }
 
-bool LoginLayer::init()
+bool RegLayer::init()
 {
 	if (!Layer::init())
     {
         return false;
     }
 
- 	m_RootLayer =RootRegister::getIns()->getWidget("Loginlayer.json");
+ 	m_RootLayer =RootRegister::getIns()->getWidget("reglayer.json");
  	this->addChild(m_RootLayer);
-	SEL_TouchEvent selector = toucheventselector(LoginLayer::TouchEvent);
-	
+	SEL_TouchEvent selector = toucheventselector(RegLayer::TouchEvent);
 	GameDataSet::getButton(m_RootLayer, "registr_btn", selector, this);
-	GameDataSet::getButton(m_RootLayer, "login_btn", selector, this);
 	GameDataSet::getButton(m_RootLayer, "close_btn", selector, this);
-
-
-	Layout *in = GameDataSet::getLayout(m_RootLayer, "name_edit_bg");
+	
+	Layout *in = GameDataSet::getLayout(m_RootLayer, "nickname_edit_bg");
 	m_input1 = LoginMainLayer::AddCursorTextField(in, 24);
-	m_input1->setPlaceHolder(XXIconv::GBK2UTF("请输入ID").c_str());
+	m_input1->setPlaceHolder(XXIconv::GBK2UTF("请输入昵称").c_str());
 	m_input1->setFontColor(ccc3(0x38, 0x4E, 0x9C));
 	m_input1->setInputMode(ui::EditBox::InputMode::ANY);
 
@@ -55,33 +51,31 @@ bool LoginLayer::init()
     return true;
 }
 
-void LoginLayer::TouchEvent(Object *obj, TouchEventType type){
+void RegLayer::TouchEvent(Object *obj, TouchEventType type){
 	if (type == TOUCH_EVENT_ENDED){
 		Button *btn = (Button *)obj;
 		string name = btn->getName();
 		LoginInfo *pLoginInfo = LoginInfo::getIns();
 		if (name.compare("registr_btn") == 0){
-			RegLayer *p = GameControl::getIns()->getRegLayer();
-			if (!p){
-				p = RegLayer::create();
-				this->addChild(p);
-			}
-		}
-		else if (name.compare("login_btn") == 0){
-			string uid = m_input1->getText();
+			string nickname = m_input1->getText();
 			string pwd = m_input2->getText();
-			if (uid.empty()){
-				GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("ID不能为空"));
+			if (nickname.empty()){
+				GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("昵称不能为空"));
 			}
 			else if (pwd.empty()){
 				GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("密码不能为空"));
 			}
+			else if (pwd.length() < 6 || pwd.length() > 16){
+				GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("密码长度须在6-16位"));
+			}
 			else{
-				pLoginInfo->setLoginType(LOGIN_YK);
-				m_uid = uid;
+				pLoginInfo->setLoginType(LOGIN_REG);
+				m_uname = nickname;
 				m_pwd = pwd;
 				HttpInfo *p = HttpInfo::getIns();
 				ClientSocket::getIns()->connect(p->m_ip.c_str(), p->m_port);
+				
+				//pLoginInfo->SendCRegister("", pwd, nickname);
 			}
 		}
 		else if (name.compare("close_btn") == 0){

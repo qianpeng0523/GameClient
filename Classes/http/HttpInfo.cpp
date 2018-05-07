@@ -2,7 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "AppMacros.h"
 #include "XXIconv.h"
-#include "LoginLayer.h"
+#include "LoginMainLayer.h"
 #include "aes.h"
 #include "crypto_wrapper.h"
 #include "YMSocketDataEvent.h"
@@ -121,7 +121,7 @@ void HttpInfo::GateIPAndPortCallBack(HttpClient* client, HttpResponse* response)
 		std::cout << "socket start:" << pHttpInfo->m_ip << pHttpInfo->m_port << std::endl;
 		printf("/************************************************/\n");
 		pHttpInfo->m_ip =GameDataSet::getHostNameIp(sd["ip"].asString());
-		LoginLayer *p = GameControl::getIns()->getLoginLayer();
+		LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
 		if (p){
 			p->ShowYKLoginBtn(true);
 		}

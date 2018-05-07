@@ -91,16 +91,16 @@ void MJGameScene::setMJWall(int dir, int index, bool isfront){
 }
 
 void MJGameScene::testCallBack(){
-	RoomControl *pRoomControl = RoomControl::shareRoomControl();
-	if (m_index >= MAXWALLCOUNT*4){
-
-	}
-	else{
-		pRoomControl->getWallData((m_index++)%24!=1);
-		this->runAction(Sequence::create(DelayTime::create(0.1),
-			CCCallFunc::create(this, callfunc_selector(MJGameScene::testCallBack))
-			, NULL));
-	}
+// 	RoomControl *pRoomControl = RoomControl::shareRoomControl();
+// 	if (m_index >= MAXWALLCOUNT*4){
+// 
+// 	}
+// 	else{
+// 		pRoomControl->getWallData((m_index++)%24!=1);
+// 		this->runAction(Sequence::create(DelayTime::create(0.1),
+// 			CCCallFunc::create(this, callfunc_selector(MJGameScene::testCallBack))
+// 			, NULL));
+// 	}
 }
 
 void MJGameScene::setMyPosition(int pos){

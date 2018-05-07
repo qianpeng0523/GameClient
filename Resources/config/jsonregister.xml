@@ -60,4 +60,6 @@
   <item json="mjwall2.json" count="1" type="3"/>
   <item json="mjwall1.json" count="1" type="3"/>
   <item json="mjdice.json" count="1" type="3"/>
+  <item json="Loginlayer.json" count="1" type="1"/>
+  <item json="reglayer.json" count="1" type="1"/>
 </root>

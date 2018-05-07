@@ -9,6 +9,7 @@ enum LOGINTYPE
 {
 	LOGIN_WX = 0,
 	LOGIN_YK   ,
+	LOGIN_REG  ,
 };
 
 class LoginInfo:public Ref

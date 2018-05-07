@@ -6,7 +6,7 @@
 #include "YuYinConfig.h"
 #include "GameChatItemLayer.h"
 #include "ExpressConfig.h"
-#include "LoginLayer.h"
+#include "LoginMainLayer.h"
 #include "GameControl.h"
 #include "RootRegister.h"
 USING_NS_CC;
@@ -70,7 +70,7 @@ bool GameChatLayer::init()
 	ShowEmotion();
 	
 	Layout *chat_bg = GameDataSet::getLayout(m_RootLayer,"input_bg");
-	m_pCursorTextField = LoginLayer::AddCursorTextField(chat_bg, 20);
+	m_pCursorTextField = LoginMainLayer::AddCursorTextField(chat_bg, 20);
 	m_pCursorTextField->setPlaceHolder(XXIconv::GBK2UTF("请输入聊天内容").c_str());
 	m_pCursorTextField->setFontColor(ccc3(120, 120, 120));
 	m_pCursorTextField->setMaxLength(20);

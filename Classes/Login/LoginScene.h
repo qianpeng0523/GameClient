@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "LoginLayer.h"
+#include "LoginMainLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
@@ -19,7 +19,7 @@ public:
 	CREATE_FUNC(LoginScene);
 	
 private:
-	LoginLayer *m_pLoginLayer;
+	LoginMainLayer *m_pLoginMainLayer;
 };
 
 #endif // __LoginScene_SCENE_H__

@@ -56,7 +56,7 @@ void TipLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			this->removeFromParentAndCleanup(true);
 			MJGameScene *p = GameControl::getIns()->getMJGameScene();
 			MainLayer *mainlayer = GameControl::getIns()->getMainLayer();
-			LoginLayer *loginscene = GameControl::getIns()->getLoginLayer();
+			LoginMainLayer *loginscene = GameControl::getIns()->getLoginMainLayer();
 			if (p){
 				MainScene *main = MainScene::create();
 				GameControl::getIns()->replaceScene(main);

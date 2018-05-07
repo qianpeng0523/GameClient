@@ -5,7 +5,7 @@
 GameControl *GameControl::m_ins=NULL;
 
 GameControl::GameControl(){
-	m_pLoginLayer = NULL;
+	m_pLoginMainLayer = NULL;
 	m_pMainLayer = NULL;
 	m_pUserInfoLayer = NULL;
 	m_pSetLayer = NULL;
@@ -33,6 +33,8 @@ GameControl::GameControl(){
 	m_pTipLayer = NULL;
 	m_pTopTipLayer = NULL;
 	m_pGameChatLayer = NULL;
+	m_pLoginLayer = NULL;
+	m_RegLayer = NULL;
 	m_topcopy = false;
 	m_index = 0;
 	CCDirector::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);

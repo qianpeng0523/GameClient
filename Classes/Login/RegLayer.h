@@ -1,26 +1,25 @@
-#ifndef __LoginLayer_SCENE_H__
-#define __LoginLayer_SCENE_H__
+#ifndef __RegLayer_SCENE_H__
+#define __RegLayer_SCENE_H__
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "Adaptation.h"
 #include "string.h"
 #include "BaseLayer.h"
-
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
 
-class LoginLayer : public BaseLayer
+class RegLayer : public BaseLayer
 {
 public:
-	LoginLayer();
-	~LoginLayer();
-	CREATE_FUNC(LoginLayer);
+	RegLayer();
+	~RegLayer();
+	CREATE_FUNC(RegLayer);
     virtual bool init();
 	void TouchEvent(Object *obj, TouchEventType type);
-
-	static string m_uid;
+	
+	static string m_uname;
 	static string m_pwd;
 private:
 	ui::EditBox *m_input1;
@@ -28,4 +27,4 @@ private:
 	
 };
 
-#endif // __LoginLayer_SCENE_H__
+#endif // __RegLayer_SCENE_H__
