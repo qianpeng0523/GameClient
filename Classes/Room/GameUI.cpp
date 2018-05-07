@@ -6,7 +6,7 @@
 #include "LoginInfo.h"
 #include "MainScene.h"
 #include "GameChatLayer.h"
-
+#include "RoomInfo.h"
 
 GameUI::GameUI(){
 	m_isopenmenu = false;
@@ -108,7 +108,7 @@ void GameUI::TouchEvent(CCObject *obj, TouchEventType type){
 
 		}
 		else if (name.compare("ready_btn") == 0){
-
+			RoomInfo::getIns()->SendCReady(true);
 		}
 	}
 }
