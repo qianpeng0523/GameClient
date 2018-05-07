@@ -270,9 +270,6 @@
     <ClCompile Include="..\Classes\Room\MJGameScene.cpp">
       <Filter>Classes\Room</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Login\LoginLayer.cpp">
-      <Filter>Classes\Login</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Login\LoginScene.cpp">
       <Filter>Classes\Login</Filter>
     </ClCompile>
@@ -341,6 +338,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\config\ActionConfig.cpp">
       <Filter>Classes\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Login\LoginMainLayer.cpp">
+      <Filter>Classes\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Login\LoginLayer.cpp">
+      <Filter>Classes\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Login\RegLayer.cpp">
+      <Filter>Classes\Login</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -617,9 +623,6 @@
     <ClInclude Include="..\Classes\Room\MJGameScene.h">
       <Filter>Classes\Room</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Login\LoginLayer.h">
-      <Filter>Classes\Login</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Login\LoginScene.h">
       <Filter>Classes\Login</Filter>
     </ClInclude>
@@ -688,6 +691,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\config\ActionConfig.h">
       <Filter>Classes\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Login\LoginMainLayer.h">
+      <Filter>Classes\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Login\LoginLayer.h">
+      <Filter>Classes\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Login\RegLayer.h">
+      <Filter>Classes\Login</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -193,7 +193,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\loading\LoadingLayer.cpp" />
     <ClCompile Include="..\Classes\loading\LoadLayer.cpp" />
     <ClCompile Include="..\Classes\Login\LoginLayer.cpp" />
+    <ClCompile Include="..\Classes\Login\LoginMainLayer.cpp" />
     <ClCompile Include="..\Classes\Login\LoginScene.cpp" />
+    <ClCompile Include="..\Classes\Login\RegLayer.cpp" />
     <ClCompile Include="..\Classes\Main\AboutLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ActiveLayer.cpp" />
     <ClCompile Include="..\Classes\Main\ChatLayer.cpp" />
@@ -302,7 +304,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\loading\LoadingLayer.h" />
     <ClInclude Include="..\Classes\loading\LoadLayer.h" />
     <ClInclude Include="..\Classes\Login\LoginLayer.h" />
+    <ClInclude Include="..\Classes\Login\LoginMainLayer.h" />
     <ClInclude Include="..\Classes\Login\LoginScene.h" />
+    <ClInclude Include="..\Classes\Login\RegLayer.h" />
     <ClInclude Include="..\Classes\Main\AboutLayer.h" />
     <ClInclude Include="..\Classes\Main\ActiveLayer.h" />
     <ClInclude Include="..\Classes\Main\ChatLayer.h" />
