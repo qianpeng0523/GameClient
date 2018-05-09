@@ -4,7 +4,7 @@
 #include "ClientSocket.h"
 #include "LoginScene.h"
 #include "LoginInfo.h"
-
+#include "RoomInfo.h"
 
 
 
@@ -49,7 +49,19 @@ bool MJGameLayer::init()
 		m_facounts[i] = (TextBMFont *)GameDataSet::getLayout((Layout *)m_faimgs[i], "BitmapLabel_num");
 	}
 	resetFa();
-
+	RoomData rd = RoomInfo::getIns()->getRoomData();
+	int ante = rd.ante();
+	string rid = rd.roomid();
+	TextBMFont *t0 = GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_title", XXIconv::GBK2UTF("黄梅麻将"));
+	t0->setScaleY(0.7);
+	t0->setOpacity(225);
+	sprintf(buff,"%d",ante);
+	TextBMFont *t1= GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_ante", XXIconv::GBK2UTF("底分:")+buff);
+	t1->setScaleY(0.7);
+	t1->setOpacity(225);
+	TextBMFont *t2 = GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_rid", XXIconv::GBK2UTF("房间号:") + rid);
+	t2->setScaleY(0.8);
+	t2->setOpacity(225);
     return true;
 }
 

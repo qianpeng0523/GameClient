@@ -13,6 +13,7 @@ GameHead::GameHead(){
 }
 
 GameHead::~GameHead(){
+	RoomInfo::getIns()->clearRoomUser();
 	for (int i = 0; i < 4; i++){
 		if (m_users[i]){
 			delete m_users[i];
