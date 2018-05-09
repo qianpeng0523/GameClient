@@ -48,6 +48,10 @@ public:
 	
 	void setTipVisible(int pos,bool isv);
 
+	void reset();
+
+	void ShowReady(int pos,bool isr);
+
 	static int changePos(int pos);
 	static void setGray(ImageView *img);
 	static void removeGray(ImageView *img);
@@ -61,6 +65,8 @@ private:
 	ImageView *m_zhuangs[4];
 	Text *m_names[4];
 	TextBMFont *m_scores[4];
+	RoomData m_pRoomData;
+	ImageView *m_readyimgs[4];
 public:
 	static int m_mimepos;
 };

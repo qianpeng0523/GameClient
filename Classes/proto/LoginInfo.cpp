@@ -200,16 +200,19 @@ void LoginInfo::setTime(){
 }
 
 void LoginInfo::update(float dt){
-	time_t t = GameDataSet::getTime();
-	if (m_lasttime!=0&&t - m_lasttime >= 13){
-		m_lasttime=t;
-		SendCPing();
-	}
-	if (m_pingcount >= 4 && m_lasttime!=0&& t - m_lasttime >= 0){
-		log("pingocunt[%d]--t[%ld]---lasttime[%ld]",m_pingcount,t,m_lasttime);
-		m_lasttime = t;
-		m_pingcount = 0;
-		//判定客户端已经与服务器端断开
-		ClientSocket::getIns()->close();
+	LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
+	if (!p){
+		time_t t = GameDataSet::getTime();
+		if (m_lasttime != 0 && t - m_lasttime >= 25){
+			m_lasttime = t;
+			SendCPing();
+		}
+		if (m_pingcount >= 4 && m_lasttime != 0 && t - m_lasttime >= 0){
+			log("pingocunt[%d]--t[%ld]---lasttime[%ld]", m_pingcount, t, m_lasttime);
+			m_lasttime = t;
+			m_pingcount = 0;
+			//判定客户端已经与服务器端断开
+			ClientSocket::getIns()->close();
+		}
 	}
 }

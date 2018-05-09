@@ -29,6 +29,11 @@ public:
 	MJDice *getMJDice(){
 		return m_pMJDice;
 	}
+
+	GameHead *getGameHead(){
+		return m_pGameHead;
+	}
+	MJHand *getMJHand(int pos);
 private:
 	MJGameLayer *m_pMJGameLayer;
 	GameUI *m_pGameUI;

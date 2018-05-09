@@ -8,6 +8,7 @@
 #include "YLJni.h"
 #include "GameDataSet.h"
 #include "LoginInfo.h"
+#include "RoomControl.h"
 
 RoomInfo *RoomInfo::m_shareRoomInfo=NULL;
 RoomInfo::RoomInfo()
@@ -86,8 +87,12 @@ void RoomInfo::HandlerSHMMJCreateRoom(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(RoomInfo::HandlerSHMMJCreateRoom));
 	int err = cl.err();
 	if (err==0){
-		 Scene *scene = LoadingLayer::createScene(3);
-		 GameControl::getIns()->replaceScene(scene);
+		m_pRoomData.CopyFrom(cl.roomdata());
+		RoomUser user = cl.roomuser();
+		RoomControl::shareRoomControl()->setMyPosition(user.position());
+		PushRoomUser(user);
+		Scene *scene = LoadingLayer::createScene(3);
+		GameControl::getIns()->replaceScene(scene);
 	}
 	else{
 		log("create room error:%d",err);
@@ -110,6 +115,23 @@ void RoomInfo::HandSHMMJEnterRoom(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(RoomInfo::HandSHMMJEnterRoom));
 	int err = cl.err();
 	if (err == 0){
+		m_pSHMMJEnterRoom = cl;
+		m_pRoomData.CopyFrom(cl.roomdata());
+		auto itr = cl.roomusers().begin();
+		string uid = LoginInfo::getIns()->getUID();
+		for (itr; itr != cl.roomusers().end(); itr++){
+			RoomUser user = *itr;
+			if (user.userid().compare(uid) == 0){
+				RoomControl::shareRoomControl()->setMyPosition(user.position());
+				break;
+			}
+		}
+		itr = cl.roomusers().begin();
+		for (itr; itr != cl.roomusers().end(); itr++){
+			RoomUser user = *itr;
+			PushRoomUser(user);
+		}
+		
 		Scene *scene = LoadingLayer::createScene(3);
 		GameControl::getIns()->replaceScene(scene);
 	}
@@ -122,12 +144,12 @@ void RoomInfo::HandSComein(ccEvent *event){
 	SComein cl;
 	cl.CopyFrom(*event->msg);
 	RoomUser user = cl.roomuser();
-
+	m_pRoomUsers.insert(make_pair(user.userid(), user));
 }
 
 void RoomInfo::SendCBegin(int rtype){
 	CBegin cr;
-	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	string uid = LoginInfo::getIns()->getUID();
 	cr.set_uid(uid);
 	cr.set_type(rtype);
 	XXEventDispatcher::getIns()->addListener(cr.cmd(), this, Event_Handler(RoomInfo::HandSBegin));
@@ -149,7 +171,7 @@ void RoomInfo::HandSBegin(ccEvent *event){
 
 void RoomInfo::SendCReady(bool isready){
 	CReady cr;
-	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	string uid = LoginInfo::getIns()->getUID();
 	cr.set_uid(uid);
 	cr.set_ready(isready);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
@@ -160,7 +182,22 @@ void RoomInfo::HandSReady(ccEvent *event){
 	cl.CopyFrom(*event->msg);
 	int err = cl.err();
 	if (err == 0){
-
+		MJGameScene *scene = GameControl::getIns()->getMJGameScene();
+		if (scene){
+			string uid = cl.uid();
+			int pos = cl.position();
+			string puid = LoginInfo::getIns()->getUID();
+			if (uid.compare(puid) == 0){
+				GameUI *pui = GameControl::getIns()->getGameUI();
+				if (pui){
+					pui->ShowReady(!cl.ready());
+				}
+			}
+			GameHead *phead = scene->getGameHead();
+			if (phead){
+				phead->ShowReady(pos, cl.ready());
+			}
+		}
 	}
 	else{
 
@@ -169,7 +206,7 @@ void RoomInfo::HandSReady(ccEvent *event){
 
 void RoomInfo::SendCLeave(){
 	CLeave cr;
-	string uid = LoginInfo::getIns()->getMyUserBase().userid();
+	string uid = LoginInfo::getIns()->getUID();
 	cr.set_uid(uid);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
 }
@@ -179,8 +216,13 @@ void RoomInfo::HandSLeave(ccEvent *event){
 	cl.CopyFrom(*event->msg);
 	int err = cl.err();
 	if (err == 0){
-		MainScene *main = MainScene::create();
-		GameControl::getIns()->replaceScene(main);
+		string uid = cl.uid();
+		eraseRoomUser(uid);
+		string muid = LoginInfo::getIns()->getUID();
+		if (uid.compare(muid) == 0){
+			MainScene *main = MainScene::create();
+			GameControl::getIns()->replaceScene(main);
+		}
 	}
 	else{
 		GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("离开房间出错"));
@@ -257,4 +299,47 @@ void RoomInfo::SendCRChat(string content){
 void RoomInfo::HandSRChat(ccEvent *event){
 	SRChat cl;
 	cl.CopyFrom(*event->msg);
+}
+
+void RoomInfo::eraseRoomUser(string uid){
+	auto itr = m_pRoomUsers.find(uid);
+	if (itr != m_pRoomUsers.end()){
+		m_pRoomUsers.erase(itr);
+		MJGameScene *p = GameControl::getIns()->getMJGameScene();
+		if (p){
+			GameHead *head = p->getGameHead();
+			head->PopRoomUser(uid);
+		}
+	}
+}
+
+void RoomInfo::clearRoomUser(){
+	m_pRoomUsers.clear();
+}
+
+void RoomInfo::PushRoomUser(RoomUser user){
+	string uid = user.userid();
+	if (m_pRoomUsers.find(uid) == m_pRoomUsers.end()){
+		m_pRoomUsers.insert(make_pair(uid, user));
+	}
+	MJGameScene *p = GameControl::getIns()->getMJGameScene();
+	if (p){
+		GameHead *head = p->getGameHead();
+		head->PushRoomUser(user);
+	}
+}
+
+void RoomInfo::PushAllRoomUser(){
+	auto itr = m_pRoomUsers.begin();
+	for (itr; itr != m_pRoomUsers.end();itr++){
+		PushRoomUser(itr->second);
+	}
+}
+
+RoomUser RoomInfo::getRoomInfo(string uid){
+	RoomUser ru;
+	if (m_pRoomUsers.find(uid) != m_pRoomUsers.end()){
+		ru = m_pRoomUsers.at(uid);
+	}
+	return ru;
 }

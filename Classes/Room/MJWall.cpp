@@ -32,7 +32,7 @@ bool MJWall::init(int pos)
 		m_imgwall[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
 	}
 	
-	//resetCard();
+	resetCard();
     return true;
 }
 

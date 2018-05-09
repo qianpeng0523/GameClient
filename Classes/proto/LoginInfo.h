@@ -37,7 +37,9 @@ public:
 	UserBase getMyUserBase(){
 		return m_myinfo;
 	}
-
+	string getUID(){
+		return m_myinfo.userid();
+	}
 	void setMyUserBase(UserBase ub);
 
 	void setWxToken(string token){

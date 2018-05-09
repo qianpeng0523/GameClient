@@ -43,9 +43,20 @@ public:
 
 	void SendCRChat(string content);
 	void HandSRChat(ccEvent *event);
+
+	void eraseRoomUser(string uid);
+	void clearRoomUser();
+	void PushRoomUser(RoomUser user);
+	RoomData getRoomData(){
+		return m_pRoomData;
+	}
+	void PushAllRoomUser();
+	RoomUser getRoomInfo(string uid);
 private:
 	static RoomInfo *m_shareRoomInfo;
-	
+	SHMMJEnterRoom m_pSHMMJEnterRoom;
+	RoomData m_pRoomData;
+	map<string, RoomUser>m_pRoomUsers;
 };
 
 #endif 

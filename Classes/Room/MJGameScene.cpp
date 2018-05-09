@@ -2,6 +2,8 @@
 #include "GameControl.h"
 #include "KeyBoard.h"
 #include "RoomControl.h"
+#include "RoomInfo.h"
+
 USING_NS_CC;
 
 MJGameScene::MJGameScene(){
@@ -34,9 +36,9 @@ bool MJGameScene::init()
 	if (!m_pGameHead){
 		m_pGameHead = GameHead::create();
 		this->addChild(m_pGameHead, 4);
+		RoomInfo::getIns()->PushAllRoomUser();
 	}
-	//test
-	RoomControl::shareRoomControl()->setMyPosition(1);
+	
 	if (!m_pMJGameLayer){
 		m_pMJGameLayer = MJGameLayer::create();
 		this->addChild(m_pMJGameLayer);
@@ -115,4 +117,9 @@ void MJGameScene::resetAllWall(){
 			m_pMJWall[i]->resetCard();
 		}
 	}
+}
+
+MJHand *MJGameScene::getMJHand(int pos){
+	int index = GameHead::changePos(pos);
+	return m_pMJHand[index];
 }

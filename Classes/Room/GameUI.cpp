@@ -46,8 +46,10 @@ bool GameUI::init()
 
 	m_menubg =(Layout *) GameDataSet::getButton(m_RootLayer, "menubg", selector, this);
 	update(0);
-	ShowReady(false);
 	ShowBegin(false);
+	RoomUser myuser = RoomInfo::getIns()->getRoomInfo(LoginInfo::getIns()->getUID());
+	ShowReady(!myuser.ready());
+	
     return true;
 }
 

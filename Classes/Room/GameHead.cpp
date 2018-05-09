@@ -5,7 +5,7 @@
 #include "LoginScene.h"
 #include "LoginInfo.h"
 #include "PhotoDown.h"
-
+#include "RoomInfo.h"
 
 int GameHead::m_mimepos = 1;
 RoomUser *GameHead::m_users[4] = {NULL};
@@ -36,7 +36,8 @@ bool GameHead::init()
 
 	SEL_TouchEvent selector = toucheventselector(GameHead::TouchEvent);
 
-	RoomUser ru;
+	m_pRoomData = RoomInfo::getIns()->getRoomData();
+
 	char buff[50];
 	for (int i = 0; i < 4; i++){
 		sprintf(buff, "btn%d", i + 1);
@@ -45,7 +46,7 @@ bool GameHead::init()
 		m_heads[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer,buff);
 		sprintf(buff, "headbg%d", i + 1);
 		m_headbgs[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
-		//m_headbgs[i]->setVisible(false);
+		m_headbgs[i]->setVisible(false);
 		sprintf(buff, "BitmapLabel_off%d", i + 1);
 		m_texts[i] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, buff);
 
@@ -59,28 +60,25 @@ bool GameHead::init()
 		sprintf(buff, "BitmapLabel_%d", i + 1);
 		m_scores[i] = (TextBMFont *)GameDataSet::getLayout(m_RootLayer, buff);
 
+		sprintf(buff, "ready%d", i + 1);
+		m_readyimgs[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
+
 		setWin(i + 1, false);
+		
 	}
-	offLine(0);
-	offLine(1);
-	offLine(2);
-	offLine(3);
-	onLine(3);
-	setZhuang(2,true);
-	setName(1, "name11111111111");
-	setName(2, XXIconv::GBK2UTF("名字五个字是吧"));
-	setName(3, XXIconv::GBK2UTF("名字五个字是吧"));
-	setName(4, "name22222222222");
-	setScore(1, 200);
-	setScore(2, 20000);
-	setScore(3, 20080);
-	setScore(4, 200880);
-	setTip(1,"10001",120);
-// 	setWin(1, -128);
-// 	setWin(2, 128);
-// 	setWin(3, 128);
-// 	setWin(4, -128);
+	reset();
+	
     return true;
+}
+
+void GameHead::reset(){
+	for (int i = 0; i < 4; i++){
+		setTipVisible(i + 1, false);
+		setZhuang(i + 1, false);
+		setWinVisible(i + 1, false);
+		onLine(i + 1);
+		ShowReady(i + 1, false);
+	}
 }
 
 void GameHead::TouchEvent(CCObject *obj, TouchEventType type){
@@ -126,10 +124,15 @@ void GameHead::setTip(string uid, int time){
 void GameHead::setTipVisible(int pos, bool isv){
 	int index = changePos(pos);
 	char buff[50];
-	for (int i = 0; i < 4; i++){
-		sprintf(buff, "tipbg%d", i + 1);
-		Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
-		ly->setVisible((i==index)?true:false);
+	sprintf(buff, "tipbg%d", index + 1);
+	Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
+	ly->setVisible(isv);
+}
+
+void GameHead::ShowReady(int pos, bool isr){
+	int index = changePos(pos);
+	if (m_readyimgs[index]){
+		m_readyimgs[index]->setVisible(isr);
 	}
 }
 
@@ -160,13 +163,13 @@ void GameHead::setZhuang(string uid, bool iszhuang){
 void GameHead::setName(int pos, string name){
 	int index = changePos(pos);
 	int num = index%2==0?10:8;
-	m_names[index]->setText(XXIconv::getU8SubString(name, 0, num, ""));
+	m_names[index]->setText(XXIconv::getU8SubString(XXIconv::GBK2UTF(name.c_str()), 0, num, ""));
 }
 
 void GameHead::setName(string uid, string name){
 	int index = getPos(uid);
 	int num = index % 2 == 0 ? 10 : 8;
-	m_names[index]->setText(XXIconv::getU8SubString(name, 0, num, ""));
+	m_names[index]->setText(XXIconv::getU8SubString(XXIconv::GBK2UTF(name.c_str()), 0, num, ""));
 }
 
 void GameHead::setScore(int pos, int score){
@@ -218,18 +221,29 @@ void GameHead::setWinVisible(int pos, bool isv){
 
 void GameHead::PushRoomUser(RoomUser ru){
 	int position = ru.position();
+	string uid = ru.userid();
 	int index = changePos(position);
 	if (!m_users[index]){
 		m_users[index] = (RoomUser *)ccEvent::create_message(ru.GetTypeName());
 	}
 	m_users[index]->CopyFrom(ru);
-	PhotoDown::getIns()->PushPhoto(this, ru.userid(), m_heads[index], ru.picurl(), ru.picid());
-	m_headbgs[index]->setVisible(false);
+	PhotoDown::getIns()->PushPhoto(this, uid, m_heads[index], ru.picurl(), ru.picid());
+	m_headbgs[index]->setVisible(true);
+	setName(position, ru.username());
+	if (m_pRoomData.type() == 1){
+		setScore(position, ru.score());
+	}
+	else{
+		setScore(position, ru.gold());
+	}
+	ShowReady(position,ru.ready());
+	ru.online() ? onLine(uid) : offLine(uid);
+	setZhuang(uid, ru.zhuang() == ru.position());
 }
 
 void GameHead::PopRoomUser(string uid){
 	for (int i = 0; i < 4; i++){
-		if (m_users[i]->userid().compare(uid) == 0){
+		if (m_users[i]&&m_users[i]->userid().compare(uid) == 0){
 			delete m_users[i];
 			m_users[i] = NULL;
 			m_headbgs[i]->setVisible(false);
