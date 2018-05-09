@@ -22,8 +22,7 @@ public:
 	CREATE_FUNC(MJGameScene);
 	
 	void setMJWall(int dir,int index,bool isfront);
-	void setMyPosition(int pos);
-
+	
 	void resetAllWall();
 	void testCallBack();
 	MJDice *getMJDice(){

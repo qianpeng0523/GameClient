@@ -108,28 +108,6 @@ void RoomControl::getWallData(bool isfront){
 	PopCard(isfront);
 }
 
-void RoomControl::PushRoomUser(RoomUser user){
-	string uid = user.userid();
-	if (m_roomusers.find(uid) != m_roomusers.end()){
-		m_roomusers.at(uid) = user;
-	}
-	else{
-		m_roomusers.insert(make_pair(uid, user));
-	}
-	UserBase ubase = LoginInfo::getIns()->getMyUserBase();
-	if (ubase.userid().compare(uid) == 0){
-		m_minepos = user.position();
-		MJGameScene *p = GameControl::getIns()->getMJGameScene();
-		if (p){
-			p->setMyPosition(m_minepos);
-		}
-	}
-}
-
 void RoomControl::setMyPosition(int pos){
 	m_minepos = pos;
-	MJGameScene *p = GameControl::getIns()->getMJGameScene();
-	if (p){
-		p->setMyPosition(m_minepos);
-	}
 }

@@ -144,7 +144,7 @@ void RoomInfo::HandSComein(ccEvent *event){
 	SComein cl;
 	cl.CopyFrom(*event->msg);
 	RoomUser user = cl.roomuser();
-	m_pRoomUsers.insert(make_pair(user.userid(), user));
+	PushRoomUser(user);
 }
 
 void RoomInfo::SendCBegin(int rtype){
@@ -208,6 +208,7 @@ void RoomInfo::SendCLeave(){
 	CLeave cr;
 	string uid = LoginInfo::getIns()->getUID();
 	cr.set_uid(uid);
+	cr.set_zhudong(true);
 	ClientSocket::getIns()->sendMsg(cr.cmd(), &cr);
 }
 

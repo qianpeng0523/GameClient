@@ -51,7 +51,7 @@ void Adaptation::ScreenAdaptationInit(){
 	auto glview = director->getOpenGLView();
 	if (!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-		glview = GLViewImpl::createWithRect(XXIconv::GBK2UTF("”¿¿÷¬ÈΩ´"), Rect(0, 0, 1280*0.8, 720*0.8));
+		glview = GLViewImpl::createWithRect(XXIconv::GBK2UTF("”¿¿÷¬ÈΩ´"), Rect(0, 0, 1280*0.6, 720*0.6));
 		//glview = GLViewImpl::createWithRect("gzmj", Rect(0, 0, 1136, 852));
 #else
 		glview = GLViewImpl::create(XXIconv::GBK2UTF("”¿¿÷¬ÈΩ´"));

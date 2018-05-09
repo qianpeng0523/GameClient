@@ -48,6 +48,7 @@ bool RegLayer::init()
 	m_input2->setPlaceHolder(XXIconv::GBK2UTF("请输入6位以上密码").c_str());
 	m_input2->setFontColor(ccc3(0x38, 0x4E, 0x9C));
 	m_input2->setInputMode(ui::EditBox::InputMode::ANY);
+	m_input2->setInputFlag(ui::EditBox::InputFlag::PASSWORD);
     return true;
 }
 

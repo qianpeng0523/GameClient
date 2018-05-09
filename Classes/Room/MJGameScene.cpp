@@ -105,12 +105,6 @@ void MJGameScene::testCallBack(){
 // 	}
 }
 
-void MJGameScene::setMyPosition(int pos){
-	if (m_pGameHead){
-		m_pGameHead->setMyPosition(pos);
-	}
-}
-
 void MJGameScene::resetAllWall(){
 	for (int i = 0; i < 4; i++){
 		if (m_pMJWall[i]){

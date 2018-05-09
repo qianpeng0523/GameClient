@@ -6,8 +6,7 @@
 #include "LoginInfo.h"
 #include "PhotoDown.h"
 #include "RoomInfo.h"
-
-int GameHead::m_mimepos = 1;
+#include "RoomControl.h"
 RoomUser *GameHead::m_users[4] = {NULL};
 GameHead::GameHead(){
 	memset(m_users, NULL, sizeof(RoomUser *)*4);
@@ -20,7 +19,7 @@ GameHead::~GameHead(){
 			m_users[i] = NULL;
 		}
 	}
-	m_mimepos = 1;
+	
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
@@ -253,10 +252,6 @@ void GameHead::PopRoomUser(string uid){
 
 }
 
-void GameHead::setMyPosition(int pos){
-	m_mimepos = pos;
-}
-
 void GameHead::PopRoomUser(int pos){
 	int i = changePos(pos);
 	delete m_users[i];
@@ -265,7 +260,8 @@ void GameHead::PopRoomUser(int pos){
 }
 
 int GameHead::changePos(int pos){
-	int pp = (4 - (pos - m_mimepos + 4) % 4) % 4;
+	int mypos = RoomControl::shareRoomControl()->getMyPosition();
+	int pp = (4 - (pos - mypos + 4) % 4) % 4;
 	return pp;
 }
 

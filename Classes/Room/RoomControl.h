@@ -34,8 +34,10 @@ public:
 	void setZhuang(int zhuang);
 	
 	void getWallData(bool isfront);
-	void PushRoomUser(RoomUser user);
 	void setMyPosition(int pos);
+	int getMyPosition(){
+		return m_minepos;
+	}
 
 	bool isEnd(){
 		return m_isend;
@@ -54,7 +56,7 @@ private:
 	int m_zhuangindex;
 	bool m_isend;
 	int m_minepos;
-	map<string, RoomUser>m_roomusers;
+	
 private:
 	void PopCard(bool isfront);
 };
