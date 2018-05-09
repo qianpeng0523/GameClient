@@ -242,10 +242,15 @@ void GameHead::PushRoomUser(RoomUser ru){
 
 void GameHead::PopRoomUser(string uid){
 	for (int i = 0; i < 4; i++){
-		if (m_users[i]&&m_users[i]->userid().compare(uid) == 0){
+		RoomUser *ru = m_users[i];
+		if (ru&&ru->userid().compare(uid) == 0){
+			int pos = ru->position();
+			ShowReady(pos, false);
+			offLine(uid);
 			delete m_users[i];
 			m_users[i] = NULL;
 			m_headbgs[i]->setVisible(false);
+			
 			break;
 		}
 	}
