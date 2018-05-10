@@ -348,6 +348,9 @@
     <ClCompile Include="..\Classes\Login\RegLayer.cpp">
       <Filter>Classes\Login</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Chat\ChatRecord.cpp">
+      <Filter>Classes\Chat</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -700,6 +703,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Login\RegLayer.h">
       <Filter>Classes\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Chat\ChatRecord.h">
+      <Filter>Classes\Chat</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

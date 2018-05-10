@@ -158,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\cc\Room.cpp" />
     <ClCompile Include="..\Classes\cc\RoomLogic.cpp" />
     <ClCompile Include="..\Classes\cc\Vo.cpp" />
+    <ClCompile Include="..\Classes\Chat\ChatRecord.cpp" />
     <ClCompile Include="..\Classes\Chat\GameChatItemLayer.cpp" />
     <ClCompile Include="..\Classes\Chat\GameChatLayer.cpp" />
     <ClCompile Include="..\Classes\Common\Adaptation.cpp" />
@@ -258,6 +259,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\cc\Room.h" />
     <ClInclude Include="..\Classes\cc\RoomLogic.h" />
     <ClInclude Include="..\Classes\cc\Vo.h" />
+    <ClInclude Include="..\Classes\Chat\ChatRecord.h" />
     <ClInclude Include="..\Classes\Chat\GameChatItemLayer.h" />
     <ClInclude Include="..\Classes\Chat\GameChatLayer.h" />
     <ClInclude Include="..\Classes\Common\Adaptation.h" />
