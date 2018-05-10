@@ -79,12 +79,17 @@ bool MJGameScene::init()
 	}
 
 	m_index = 0;
-	RoomControl *pRoomControl = RoomControl::shareRoomControl();
-	pRoomControl->setZhuang(4);
-	pRoomControl->cutCard(3, 4);
-	this->runAction(Sequence::create(DelayTime::create(0.5),
-		CCCallFunc::create(this, callfunc_selector(MJGameScene::testCallBack))
-		,NULL));
+// 	RoomControl *pRoomControl = RoomControl::shareRoomControl();
+// 	pRoomControl->setZhuang(4);
+// 	pRoomControl->cutCard(3, 4);
+// 	this->runAction(Sequence::create(DelayTime::create(0.5),
+// 		CCCallFunc::create(this, callfunc_selector(MJGameScene::testCallBack))
+// 		,NULL));
+	string uid = LoginInfo::getIns()->getUID();
+	RoomUser user = RoomInfo::getIns()->getRoomInfo(uid);
+	if (!user.ready()){
+		RoomInfo::getIns()->SendCReady(true);
+	}
 	return true;
 }
 

@@ -9,7 +9,7 @@
 #include "GameDataSet.h"
 #include "LoginInfo.h"
 #include "RoomControl.h"
-
+#include "ChatRecord.h"
 RoomInfo *RoomInfo::m_shareRoomInfo=NULL;
 RoomInfo::RoomInfo()
 {
@@ -300,6 +300,13 @@ void RoomInfo::SendCRChat(string content){
 void RoomInfo::HandSRChat(ccEvent *event){
 	SRChat cl;
 	cl.CopyFrom(*event->msg);
+	string uid=cl.uid();
+	string content = cl.content();
+	ChatRecord::getIns()->PushChat(uid, content);
+	GameChatLayer *p = GameControl::getIns()->getGameChatLayer();
+	if (p){
+		p->closeUI();
+	}
 }
 
 void RoomInfo::eraseRoomUser(string uid){

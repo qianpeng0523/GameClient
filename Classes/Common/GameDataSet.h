@@ -102,6 +102,7 @@ public:
 	static string getLocalTime();
 	static string getLocalTime1();
 	static string getLocalTimeDay();
+	static string getLocalTimeDay(time_t tt);
 	static time_t getTime();
 
 	static ScratchItem* ScratchCard(Layout *parent);//刮奖

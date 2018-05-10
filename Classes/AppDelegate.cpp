@@ -7,7 +7,7 @@
 #include "RootRegister.h"
 #include "LoadingLayer.h"
 #include "RoomControl.h"
-
+#include "ChatRecord.h"
 USING_NS_CC;
 
 
@@ -50,7 +50,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 // 	for (int i = 0; i < 130; i++){
 // 		pRoomControl->getWallData(i % 24 != 0);
 // 	}
-
+	
 	RootRegister::getIns()->loadJson(0);
 	auto director = Director::getInstance();
 	Scene *scene = LoadingLayer::createScene(1);
