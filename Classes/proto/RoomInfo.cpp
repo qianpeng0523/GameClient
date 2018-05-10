@@ -10,6 +10,7 @@
 #include "LoginInfo.h"
 #include "RoomControl.h"
 #include "ChatRecord.h"
+
 RoomInfo *RoomInfo::m_shareRoomInfo=NULL;
 RoomInfo::RoomInfo()
 {

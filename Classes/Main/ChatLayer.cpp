@@ -4,7 +4,7 @@
 #include "ClientSocket.h"
 #include "LoginScene.h"
 #include "LoginInfo.h"
-
+#include "PhotoDown.h"
 
 
 ChatItemLayer::ChatItemLayer(){
@@ -45,10 +45,12 @@ bool ChatItemLayer::init(string uid, string uname, string content, string time)
 
 	this->setContentSize(m_RootLayer->getSize());
 
+	ImageView *icon = (ImageView *)GameDataSet::getLayout(m_RootLayer, "icon");
+	PhotoDown::getIns()->PushPhoto(this, uid, icon, "", 1);
 	Text *namet= GameDataSet::setText(m_RootLayer, "name", uname);
 	Text *timet = GameDataSet::setText(m_RootLayer, "time", time);
 	if (type == 1){
-		timet->setPositionX(-namet->getSize().width  - 20);
+		timet->setPositionX(-namet->getSize().width);
 	}
 	else{
 		timet->setPositionX(namet->getSize().width  + 20);

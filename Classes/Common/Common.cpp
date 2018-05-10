@@ -1,6 +1,8 @@
 #include "Common.h"
+#include "XXIconv.h"
 
-	
+using namespace cocos2d_xx;
+
 Common::Common(){
 
 }
@@ -53,4 +55,65 @@ bool Common::isHave(std::vector<std::string> vecs, std::string value){
 		}
 	}
 	return false;
+}
+
+int Common::is_zh_ch(char p)
+{
+	/*汉字的两个字节的最高为都为1,这里采用判断最高位的方法
+	将p字节进行移位运算，右移8位，这样，如果移位后是0，
+	则说明原来的字节最高位为0，不是1那么也就不是汉字的一个字节
+	*/
+	if (~(p >> 8) == 0)
+	{
+		return 1;//代表不是汉字
+	}
+	return -1;
+}
+
+string Common::sub(string str, int count, string replace)
+{
+
+	if (typeid(str) == typeid(string) && str.length() > 0)
+	{
+		int len = str.length();
+		string one = XXIconv::GBK2UTF("中");
+		int ll = one.length();
+		string tmp = "";
+
+		//先把str里的汉字和英文分开
+		vector <string> dump;
+		int i = 0;
+		int ct = 0;
+		while (i < len)
+		{
+			if (is_zh_ch(str.at(i)) == 1)
+			{
+				dump.push_back(str.substr(i, ll));
+				i = i + ll;
+				ct++;
+			}
+			else
+			{
+				dump.push_back(str.substr(i, 1));
+				i = i + 1;
+				ct++;
+			}
+		}
+		//直接从dump里取即可
+		int co = count<ct?count:ct;
+		for (int j = 0; j < co; j++)
+		{
+			tmp += dump[j];
+		}
+		if (ct-count>=3){
+			tmp +=replace;
+		}
+		return tmp;
+	}
+	else
+	{
+		printf("str is not string\n");
+		return "";
+
+	}
 }

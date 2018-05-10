@@ -249,7 +249,7 @@ void HallInfo::SendCFriend(){
 
 	//test
 	SFriend sf;
-	for (int i = 0; i < 7;i++){
+	for (int i = 0; i < 4;i++){
 		Friend *fri=sf.add_list();
 		fri->set_acttype(i%3+1);
 		fri->set_time(GameDataSet::getTime());
@@ -282,6 +282,7 @@ void HallInfo::HandlerSFriend(ccEvent *event){
 	else{
 		log("%s",XXIconv::GBK2UTF("获取朋友列表失败").c_str());
 	}
+	GameControl::getIns()->HideLoading();
 }
 
 

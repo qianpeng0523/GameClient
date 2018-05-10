@@ -15,6 +15,7 @@ ChatRecord::ChatRecord(){
 	m_index = 0;
 	string tt = getFile();
 	m_pChatRD=Read(tt);
+	m_pChatRD1.clear();
 	m_lastfilename = tt;
 }
 
@@ -85,6 +86,7 @@ void ChatRecord::clearChatRD(vector<ChatRD *> &vec){
 		p = NULL;
 		itr = vec.erase(itr);
 	}
+	printf("111\n");
 }
 
 vector<ChatRD *> ChatRecord::Read(string file){

@@ -44,6 +44,7 @@ bool GameHead::init()
 		GameDataSet::getButton(m_RootLayer, buff, selector, this);
 		sprintf(buff, "head%d", i + 1);
 		m_heads[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer,buff);
+		
 		sprintf(buff, "headbg%d", i + 1);
 		m_headbgs[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
 		m_headbgs[i]->setVisible(false);

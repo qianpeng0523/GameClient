@@ -110,6 +110,7 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 }
 
 int ClientSocket::close() {
+	GameControl::getIns()->ShowLoading();
 	int state = 0;
 	m_isConnected = false;
 	

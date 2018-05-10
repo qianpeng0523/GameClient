@@ -10,6 +10,7 @@
 #include "GameControl.h"
 #include "RootRegister.h"
 #include "RoomInfo.h"
+#include "GameChatRecordLayer.h"
 
 USING_NS_CC;
 
@@ -21,6 +22,10 @@ GameChatLayer::GameChatLayer(){
 }
 
 GameChatLayer::~GameChatLayer(){
+	m_sbg1->removeAllChildrenWithCleanup(true);
+	m_sbg2->removeAllChildrenWithCleanup(true);
+	m_sbg3->removeAllChildrenWithCleanup(true);
+	m_pCursorTextField->removeFromParentAndCleanup(true);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getGameChatLayer()){
 		GameControl::getIns()->setGameChatLayer(NULL);
@@ -152,7 +157,7 @@ void GameChatLayer::TouchEvent(Object *obj, TouchEventType type){
 			GameChatItemLayer *ly = (GameChatItemLayer *)GameDataSet::isTouchInChild(m_ScrollView1, 10.0, NULL);
 			if (ly){
 				YuYinItem *p = ly->getYuYinItem();
-				RoomInfo::getIns()->SendCRChat("//" + p->name);
+				RoomInfo::getIns()->SendCRChat(p->content);
 			}
 		}
 		else if (name.compare("ScrollView2") == 0){
@@ -233,10 +238,8 @@ void GameChatLayer::AddRecord(){
 }
 
 void GameChatLayer::PushRecord(ChatRD *p){
-	int count = m_sbg3->getChildrenCount()+1;
-	ChatItemLayer *pc = ChatItemLayer::create(p->_uid, "", p->_content, p->_time);
-	Size sz = pc->getContentSize();
-	pc->setContentSize(Size(m_sbg3->getSize().width,sz.height));
+	int count = m_sbg3->getChildrenCount();
+	GameChatRecordLayer *pc = GameChatRecordLayer::create(p->_uid, "", p->_content, p->_time);
 	GameDataSet::PushScrollItem(m_sbg3, 1, 0, pc, count, m_ScrollView3);
 	m_ScrollView3->scrollToBottom(0.01, false);
 }

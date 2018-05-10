@@ -168,9 +168,11 @@ void PhotoDown::DownPicCallBack(HttpClient* client, HttpResponse* response){
 
 void PhotoDown::DownPic(PhotoItem *p){
 	string uid = p->_uid;
+	string path = CCFileUtils::sharedFileUtils()->getWritablePath() + uid + ".png";
+	bool ishave = FileUtils::sharedFileUtils()->isFileExist(path);
 	int picid = p->_picid;
 	string picurl = p->_picurl;
-	if (picurl.empty()){
+	if (picurl.empty()&&!ishave){
 		ImageView *img = p->_img;
 		if (img){
 			p->_islock = true;
@@ -182,8 +184,6 @@ void PhotoDown::DownPic(PhotoItem *p){
 		}
 	}
 	else{
-		string path = CCFileUtils::sharedFileUtils()->getWritablePath() + uid + ".png";
-		bool ishave = FileUtils::sharedFileUtils()->isFileExist(path);
 		if (!ishave){
 			p->_islock = true;
 			XXHttpRequest::getIns()->getServerDataFromUrl(picurl, httpresponse_selector(PhotoDown::DownPicCallBack), uid,p);

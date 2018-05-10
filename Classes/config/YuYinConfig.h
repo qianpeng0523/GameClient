@@ -30,7 +30,7 @@ public:
 		return m_dict;
 	}
 
-	YuYinItem *getYuYinItemByKey(int id);
+	YuYinItem *getYuYinItemByKey(string name);
 private:
 	static YuYinConfig *m_shareYuYinConfig;
 	Dictionary *m_dict;

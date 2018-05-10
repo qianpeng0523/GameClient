@@ -59,5 +59,13 @@ ExpressItem *ExpressConfig::getExpressItemById(int id){
 }
 
 ExpressItem *ExpressConfig::getExpressItemByName(string name){
+	Dictionary *dict = ExpressConfig::shareExpressConfig()->getDict();
+	DictElement *elt;
+	CCDICT_FOREACH(dict, elt){
+		ExpressItem *p = (ExpressItem *)elt->getObject();
+		if (p->name.compare(name) == 0){
+			return p;
+		}
+	}
 	return NULL;
 }

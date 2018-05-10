@@ -44,7 +44,7 @@ void YuYinConfig::readXML(){
 			pYuYinItem->name = currNode->Attribute("name");
 			pYuYinItem->content = currNode->Attribute("content");
 			
-			m_dict->setObject(pYuYinItem, pYuYinItem->id);
+			m_dict->setObject(pYuYinItem, pYuYinItem->name);
 			currNode = currNode->NextSiblingElement();
 		}
 	}
@@ -53,6 +53,6 @@ void YuYinConfig::readXML(){
 	delete[] xmlFileContent;
 }
 
-YuYinItem *YuYinConfig::getYuYinItemByKey(int id){
-	return (YuYinItem *)m_dict->objectForKey(id);
+YuYinItem *YuYinConfig::getYuYinItemByKey(string name){
+	return (YuYinItem *)m_dict->objectForKey(name);
 }
