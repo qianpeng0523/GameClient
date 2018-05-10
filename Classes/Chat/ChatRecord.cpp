@@ -42,6 +42,10 @@ void ChatRecord::PushChat(string uid, string content){
 	p->_uid = uid;
 	p->_time = time;
 	p->_content = content;
+	GameChatLayer *pc = GameControl::getIns()->getGameChatLayer();
+	if (pc){
+		pc->PushRecord(p);
+	}
 	PushChatRD(p);
 	Write(uid, content, time);
 }

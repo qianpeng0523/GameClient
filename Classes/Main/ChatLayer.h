@@ -15,8 +15,8 @@ class ChatItemLayer : public BaseLayer
 public:
 	ChatItemLayer();
 	~ChatItemLayer();
-	static ChatItemLayer *create(string uid, string uname, string content);
-	virtual bool init(string uid, string uname, string content);
+	static ChatItemLayer *create(string uid, string uname, string content,string time);
+	virtual bool init(string uid, string uname, string content, string time);
 
 	void TouchEvent(CCObject *obj, TouchEventType type);
 	

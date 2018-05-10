@@ -68,6 +68,7 @@ bool GameChatLayer::init()
 	m_imgicon[2] = (ImageView *)GameDataSet::getLayout(m_RootLayer, "ricon");
 	AddYuYin();
 	AddEmotion();
+	AddRecord();
 	ShowRecord();
 	ShowEmotion();
 	
@@ -154,6 +155,12 @@ void GameChatLayer::TouchEvent(Object *obj, TouchEventType type){
 				RoomInfo::getIns()->SendCRChat("//" + p->name);
 			}
 		}
+		else if (name.compare("ScrollView2") == 0){
+			ChatItemLayer *ly = (ChatItemLayer *)GameDataSet::isTouchInChild(m_ScrollView3, 10.0, NULL);
+			if (ly){
+				
+			}
+		}
 		
 	}
 }
@@ -205,6 +212,33 @@ void GameChatLayer::AddEmotion(){
 	Size isz = m_ScrollView2->getInnerContainerSize();
 	bg->setPositionY(isz.height - bg->getSize().height);
 
+}
+
+void GameChatLayer::AddRecord(){
+	ChatRecord *pChatRecord = ChatRecord::getIns();
+	int count = 0;
+	for (int i = 0;i<7; i++){
+		auto vec = pChatRecord->getChat(i);
+		for (int j = 0; j < vec.size(); j++){
+			ChatRD *p = vec.at(j);
+			PushRecord(p);
+			count++;
+			if (count>MAXCHATCOUNT){
+				m_ScrollView3->scrollToBottom(0.01, false);
+				return;
+			}
+		}
+	}
+	m_ScrollView3->scrollToBottom(0.01, false);
+}
+
+void GameChatLayer::PushRecord(ChatRD *p){
+	int count = m_sbg3->getChildrenCount()+1;
+	ChatItemLayer *pc = ChatItemLayer::create(p->_uid, "", p->_content, p->_time);
+	Size sz = pc->getContentSize();
+	pc->setContentSize(Size(m_sbg3->getSize().width,sz.height));
+	GameDataSet::PushScrollItem(m_sbg3, 1, 0, pc, count, m_ScrollView3);
+	m_ScrollView3->scrollToBottom(0.01, false);
 }
 
 void GameChatLayer::ShowYuYin(){

@@ -7,10 +7,12 @@
 #include "XXEventDispatcher.h"
 #include "XXHttpRequest.h"
 #include "BaseLayer.h"
+#include "ChatRecord.h"
+
 using namespace cocos2d;
 using namespace ui;
 using namespace std;
-
+#define MAXCHATCOUNT 50
 
 class GameChatLayer : public BaseLayer
 {
@@ -25,6 +27,8 @@ public:
 
 	void AddYuYin();
 	void AddEmotion();
+	void AddRecord();
+	void PushRecord(ChatRD *p);
 	void ShowYuYin();
 	void ShowEmotion();
 	void ShowRecord();

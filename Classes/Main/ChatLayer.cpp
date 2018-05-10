@@ -15,9 +15,9 @@ ChatItemLayer::~ChatItemLayer(){
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
-ChatItemLayer *ChatItemLayer::create(string uid, string uname, string content){
+ChatItemLayer *ChatItemLayer::create(string uid, string uname, string content, string time){
 	ChatItemLayer *p = new ChatItemLayer();
-	if (p&&p->init(uid, uname,content)){
+	if (p&&p->init(uid, uname,content,time)){
 		p->autorelease();
 	}
 	else{
@@ -26,7 +26,7 @@ ChatItemLayer *ChatItemLayer::create(string uid, string uname, string content){
 	return p;
 }
 
-bool ChatItemLayer::init(string uid, string uname,string content)
+bool ChatItemLayer::init(string uid, string uname, string content, string time)
 {
 	if (!Layer::init())
 	{
@@ -34,16 +34,25 @@ bool ChatItemLayer::init(string uid, string uname,string content)
 	}
 	m_uid = uid;
 	UserBase user = LoginInfo::getIns()->getMyUserBase();
+	int type = 0;
 	m_json = "dchatitem1.json";
 	if (uid.compare(user.userid()) == 0){
 		m_json = "dchatitem2.json";
+		type = 1;
 	}
 	m_RootLayer = RootRegister::getIns()->getWidget(m_json.c_str());
 	this->addChild(m_RootLayer);
 
 	this->setContentSize(m_RootLayer->getSize());
 
-	GameDataSet::setText(m_RootLayer, "name", uname);
+	Text *namet= GameDataSet::setText(m_RootLayer, "name", uname);
+	Text *timet = GameDataSet::setText(m_RootLayer, "time", time);
+	if (type == 1){
+		timet->setPositionX(-namet->getSize().width  - 20);
+	}
+	else{
+		timet->setPositionX(namet->getSize().width  + 20);
+	}
 	ImageView *img = (ImageView *)GameDataSet::getLayout(m_RootLayer,"conbg");
 	Size bgsz = img->getSize();
 	Text *tt =GameDataSet::setText(m_RootLayer, "content", content);
@@ -169,7 +178,7 @@ void ChatLayer::TouchEvent(CCObject *obj, TouchEventType type){
 
 void ChatLayer::AddChatItem(int index, string uid, string name, string content){
 	int count = m_sbg->getChildrenCount();
-	ChatItemLayer *p = ChatItemLayer::create(uid,name,content);
+	ChatItemLayer *p = ChatItemLayer::create(uid,name,content,GameDataSet::getLocalTime());
 	GameDataSet::PushScrollItem(m_sbg, 0, 0, p, count, m_ScrollView);
 	m_ScrollView->scrollToBottom(0.01, false);
 }
