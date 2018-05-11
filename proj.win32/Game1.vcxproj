@@ -161,6 +161,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Chat\ChatRecord.cpp" />
     <ClCompile Include="..\Classes\Chat\GameChatItemLayer.cpp" />
     <ClCompile Include="..\Classes\Chat\GameChatLayer.cpp" />
+    <ClCompile Include="..\Classes\Chat\GameChatRecordLayer.cpp" />
     <ClCompile Include="..\Classes\Common\Adaptation.cpp" />
     <ClCompile Include="..\Classes\Common\BaseLayer.cpp" />
     <ClCompile Include="..\Classes\Common\CDProgressTimer.cpp" />
@@ -235,6 +236,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\proto\RoomLogicInfo.cpp" />
     <ClCompile Include="..\Classes\Room\CreateRoomLayer.cpp" />
     <ClCompile Include="..\Classes\Room\GameHead.cpp" />
+    <ClCompile Include="..\Classes\Room\GameHelpLayer.cpp" />
     <ClCompile Include="..\Classes\Room\GameUI.cpp" />
     <ClCompile Include="..\Classes\Room\JoinRoomLayer.cpp" />
     <ClCompile Include="..\Classes\Room\MJChu.cpp" />
@@ -262,6 +264,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Chat\ChatRecord.h" />
     <ClInclude Include="..\Classes\Chat\GameChatItemLayer.h" />
     <ClInclude Include="..\Classes\Chat\GameChatLayer.h" />
+    <ClInclude Include="..\Classes\Chat\GameChatRecordLayer.h" />
     <ClInclude Include="..\Classes\Common\Adaptation.h" />
     <ClInclude Include="..\Classes\Common\BaseLayer.h" />
     <ClInclude Include="..\Classes\Common\CDProgressTimer.h" />
@@ -355,6 +358,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\proto\RoomLogicInfo.h" />
     <ClInclude Include="..\Classes\Room\CreateRoomLayer.h" />
     <ClInclude Include="..\Classes\Room\GameHead.h" />
+    <ClInclude Include="..\Classes\Room\GameHelpLayer.h" />
     <ClInclude Include="..\Classes\Room\GameUI.h" />
     <ClInclude Include="..\Classes\Room\JoinRoomLayer.h" />
     <ClInclude Include="..\Classes\Room\MJChu.h" />

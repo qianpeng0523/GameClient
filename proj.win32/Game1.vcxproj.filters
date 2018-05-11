@@ -351,6 +351,12 @@
     <ClCompile Include="..\Classes\Chat\ChatRecord.cpp">
       <Filter>Classes\Chat</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Chat\GameChatRecordLayer.cpp">
+      <Filter>Classes\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Room\GameHelpLayer.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -706,6 +712,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Chat\ChatRecord.h">
       <Filter>Classes\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Chat\GameChatRecordLayer.h">
+      <Filter>Classes\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\GameHelpLayer.h">
+      <Filter>Classes\Room</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
