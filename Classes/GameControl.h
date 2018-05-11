@@ -35,6 +35,8 @@
 #include "GameChatLayer.h"
 #include "LoginLayer.h"
 #include "RegLayer.h"
+#include "GameHelpLayer.h"
+
 
 using namespace cocos2d;
 using namespace ui;
@@ -285,6 +287,13 @@ public:
 		return m_RegLayer;
 	}
 
+	void setGameHelpLayer(GameHelpLayer *p){
+		m_pGameHelpLayer=p;
+	}
+	GameHelpLayer *getGameHelpLayer(){
+		return m_pGameHelpLayer;
+	}
+
 	void ShowTopTip(string tip);
 	void setTopTip(bool istop);
 
@@ -331,6 +340,8 @@ private:
 	GameChatLayer *m_pGameChatLayer;
 	LoginLayer *m_pLoginLayer;
 	RegLayer *m_RegLayer;
+	GameHelpLayer *m_pGameHelpLayer;
+
 	vector<LaBaItem *> m_contents;
 	map<BaseLayer *, map<Layout *,LoadLayer *>>m_pLoadings;
 	vector<string> m_toptips;

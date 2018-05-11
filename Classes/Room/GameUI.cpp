@@ -7,6 +7,7 @@
 #include "MainScene.h"
 #include "GameChatLayer.h"
 #include "RoomInfo.h"
+#include "GameHelpLayer.h"
 
 GameUI::GameUI(){
 	m_isopenmenu = false;
@@ -64,7 +65,7 @@ void GameUI::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("exit_btn") == 0){
 			TipLayer *tip = GameControl::getIns()->getTipLayer();
 			if (!tip){
-				tip = TipLayer::create();
+				tip = TipLayer::create(TIP_TYPE_LEAVE);
 				this->addChild(tip);
 				tip->setContent(XXIconv::GBK2UTF("是否退出游戏返回大厅?"));
 			}
@@ -98,13 +99,15 @@ void GameUI::TouchEvent(CCObject *obj, TouchEventType type){
 				p = SetLayer::create();
 				this->addChild(p);
 			}
+			closeMenu();
 		}
 		else if (name.compare("help_btn") == 0){
-			HelpLayer *p = GameControl::getIns()->getHelpLayer();
+			GameHelpLayer *p = GameControl::getIns()->getGameHelpLayer();
 			if (!p){
-				p = HelpLayer::create();
+				p = GameHelpLayer::create();
 				this->addChild(p);
 			}
+			closeMenu();
 		}
 		else if (name.compare("begin_btn") == 0){
 			RoomInfo::getIns()->SendCBegin(1);

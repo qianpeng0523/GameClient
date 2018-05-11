@@ -5,6 +5,7 @@
 #include "LoginScene.h"
 #include "LoginInfo.h"
 #include "PhotoDown.h"
+#include "RoomInfo.h"
 
 SetLayer::SetLayer(){
 	GameControl::getIns()->setSetLayer(this);
@@ -31,18 +32,21 @@ bool SetLayer::init()
 
 	SEL_TouchEvent selector = toucheventselector(SetLayer::TouchEvent);
 	
+	ImageView *bg = (ImageView *)GameDataSet::getLayout(m_RootLayer, "bg");
+
 	GameDataSet::getButton(m_RootLayer, "close_btn", selector, this);
-	GameDataSet::getButton(m_RootLayer, "exchange", selector, this);
-	GameDataSet::getButton(m_RootLayer, "help", selector, this);
-	GameDataSet::getButton(m_RootLayer, "fankui", selector, this);
-	GameDataSet::getButton(m_RootLayer, "guanyu", selector, this);
+	Button *btnex = GameDataSet::getButton(m_RootLayer, "exchange", selector, this);
+	Button *btnhelp= GameDataSet::getButton(m_RootLayer, "help", selector, this);
+	Button *btnfan = GameDataSet::getButton(m_RootLayer, "fankui", selector, this);
+	Button *btnguan = GameDataSet::getButton(m_RootLayer, "guanyu", selector, this);
+	Button *btnjiesan = GameDataSet::getButton(m_RootLayer, "jiesan", selector, this);
 	
 	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	string uname = user.username();
 	string picurl = user.picurl();
 	int picid = user.picid();
 	
-	GameDataSet::setText(m_RootLayer, "name", "ID:"+ uname);
+	Text *namet= GameDataSet::setText(m_RootLayer, "name", "ID:"+ uname);
 
 	UserDefault *p = UserDefault::sharedUserDefault();
 	char buff[100];
@@ -56,6 +60,29 @@ bool SetLayer::init()
 
 	ImageView *img = (ImageView *)GameDataSet::getLayout(m_RootLayer, "head");
 	PhotoDown::getIns()->PushPhoto(this, user.userid(), img, user.picurl(), user.picid());
+
+	Size sz = bg->getSize();
+	MJGameScene *scene = GameControl::getIns()->getMJGameScene();
+	if (scene){
+		btnhelp->setVisible(false);
+		btnfan->setVisible(false);
+		btnguan->setVisible(false);
+		btnex->setVisible(false);
+		btnjiesan->setVisible(true);
+		img->setPositionY(sz.height/2.0 + 23);
+		namet->setPositionY(sz.height / 2.0 + 143);
+
+	}
+	else{
+		btnhelp->setVisible(true);
+		btnfan->setVisible(true);
+		btnguan->setVisible(true);
+		btnex->setVisible(true);
+		btnjiesan->setVisible(false);
+		img->setPositionY(sz.height / 2.0 + 73);
+		namet->setPositionY(sz.height / 2.0 + 193);
+	}
+
     return true;
 }
 
@@ -103,6 +130,23 @@ void SetLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			if (!p){
 				p = AboutLayer::create();
 				Director::sharedDirector()->getRunningScene()->addChild(p);
+			}
+		}
+		else if (name.compare("jiesan") == 0){
+			TipLayer *p = GameControl::getIns()->getTipLayer();
+			if (!p){
+				p = TipLayer::create(TIP_TYPE_JIESAN);
+				RoomData rd = RoomInfo::getIns()->getRoomData();
+				int round = rd.round();
+				int left = rd.left();
+				bool isbein = RoomInfo::getIns()->isBegin();
+				string content = XXIconv::GBK2UTF("房间解散后，房卡不返回，是否确定解散房间？");
+				if (!(isbein || round > left)){
+					content = XXIconv::GBK2UTF("房间解散后，房卡返回，是否确定解散房间？");
+				}
+				p->setContent(content);
+				Director::sharedDirector()->getRunningScene()->addChild(p,10);
+				this->removeFromParentAndCleanup(true);
 			}
 		}
 		else if (name.compare("CheckBox_1") == 0){

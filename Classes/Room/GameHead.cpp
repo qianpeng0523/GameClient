@@ -7,6 +7,8 @@
 #include "PhotoDown.h"
 #include "RoomInfo.h"
 #include "RoomControl.h"
+#include "ExpressConfig.h"
+
 RoomUser *GameHead::m_users[4] = {NULL};
 GameHead::GameHead(){
 	memset(m_users, NULL, sizeof(RoomUser *)*4);
@@ -64,6 +66,20 @@ bool GameHead::init()
 		sprintf(buff, "ready%d", i + 1);
 		m_readyimgs[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
 
+		sprintf(buff, "exp%d", i + 1);
+		m_exps[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
+
+		sprintf(buff, "yuyin%d", i + 1);
+		m_yuyins[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
+
+		sprintf(buff, "con%d", i + 1);
+		m_contents[i] = (Text *)GameDataSet::getLayout(m_RootLayer, buff);
+
+		sprintf(buff, "chat%d", i + 1);
+		m_chatbgs[i] = (ImageView *)GameDataSet::getLayout(m_RootLayer, buff);
+
+		m_initsz[i] = m_chatbgs[i]->getSize();
+
 		setWin(i + 1, false);
 		
 	}
@@ -79,6 +95,10 @@ void GameHead::reset(){
 		setWinVisible(i + 1, false);
 		onLine(i + 1);
 		ShowReady(i + 1, false);
+		m_exps[i]->setVisible(false);
+		m_yuyins[i]->setVisible(false);
+		m_contents[i]->setVisible(false);
+		m_chatbgs[i]->setVisible(false);
 	}
 }
 
@@ -218,6 +238,50 @@ void GameHead::setWinVisible(int pos, bool isv){
 	sprintf(buff, "BitmapLabel_win%d", index + 1);
 	Layout *ly = GameDataSet::getLayout(m_RootLayer, buff);
 	ly->setVisible(isv);
+}
+
+void GameHead::ShowChat(string uid, string content){
+	int index = getPos(uid);
+	string tt = content.substr(2, content.length());
+	ExpressItem *p = ExpressConfig::shareExpressConfig()->getExpressItemByName(tt);
+	if (p){
+		m_chatbgs[index]->setVisible(false);
+		m_yuyins[index]->setVisible(false);
+		m_contents[index]->setVisible(false);
+		m_exps[index]->setVisible(true);
+		m_exps[index]->loadTexture(p->file, Widget::TextureResType::PLIST);
+		m_chatbgs[index]->setSize(m_initsz[index]);
+		m_exps[index]->runAction(Sequence::create(DelayTime::create(3.0),FadeOut::create(0.5),Hide::create(),FadeIn::create(0.01),NULL));
+	}
+	else if (content.compare("//record_") == 0){
+		m_chatbgs[index]->setVisible(true);
+		m_yuyins[index]->setVisible(true);
+		m_chatbgs[index]->runAction(Sequence::create(DelayTime::create(3.0), FadeOut::create(0.5), Hide::create(), FadeIn::create(0.01), NULL));
+		m_yuyins[index]->runAction(Sequence::create(DelayTime::create(3.0), FadeOut::create(0.5), Hide::create(), FadeIn::create(0.01), NULL));
+
+		m_contents[index]->setVisible(false);
+		m_exps[index]->setVisible(false);
+		m_chatbgs[index]->setSize(m_initsz[index]);
+	}
+	else{
+		m_chatbgs[index]->setVisible(true);
+		m_contents[index]->setVisible(true);
+		m_contents[index]->setText(content);
+		
+		m_chatbgs[index]->runAction(Sequence::create(DelayTime::create(3.0), FadeOut::create(0.5), Hide::create(), FadeIn::create(0.01), NULL));
+		m_contents[index]->runAction(Sequence::create(DelayTime::create(3.0), FadeOut::create(0.5), Hide::create(), FadeIn::create(0.01), NULL));
+
+		float w = m_contents[index]->getSize().width;
+		if (w + 30 > m_initsz[index].width){
+			m_chatbgs[index]->setSize(Size(w + 30, m_initsz[index].height));
+		}
+		else{
+			m_chatbgs[index]->setSize(m_initsz[index]);
+		}
+
+		m_yuyins[index]->setVisible(false);
+		m_exps[index]->setVisible(false);
+	}
 }
 
 void GameHead::PushRoomUser(RoomUser ru){

@@ -69,7 +69,7 @@ bool GameChatRecordLayer::init(string uid, string uname, string content, string 
 		m_content->setVisible(false);
 		m_yuyin->setVisible(false);
 	}
-	else if (tt.compare("//record_")==0){
+	else if (content.compare("//record_") == 0){
 		m_exp->setVisible(false);
 		m_conbg->setVisible(false);
 		m_content->setVisible(false);

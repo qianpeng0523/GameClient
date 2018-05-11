@@ -53,14 +53,20 @@ void KeyLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event){
 			tip->removeFromParentAndCleanup(true);
 		}
 		else{
-			tip = TipLayer::create();
-			this->addChild(tip);
+			string content;
+			TIP_ENUM_TYPE type;
 			if (m_type == EXIT_KEYTYPE){
-				tip->setContent(XXIconv::GBK2UTF("是否确定要退出游戏?"));
+				type = TIP_TYPE_END;
+				content = XXIconv::GBK2UTF("是否确定要退出游戏?");
+				
 			}
 			else if (m_type == BACK_KEYTYPE){
-				tip->setContent(XXIconv::GBK2UTF("是否确定返回?"));
+				type = TIP_TYPE_BACK;
+				content = XXIconv::GBK2UTF("是否确定返回?");
 			}
+			tip = TipLayer::create(type);
+			this->addChild(tip);
+			tip->setContent(content);
 		}
 	}
 }

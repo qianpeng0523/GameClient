@@ -13,10 +13,11 @@
 #include "ConfigInfo.h"
 #include "PhotoDown.h"
 #include "CreateRoomLayer.h"
-
+#include "RoomInfo.h"
 MainLayer::MainLayer(){
 	m_finish = true;
 	GameControl::getIns()->setMainLayer(this);
+	RoomInfo::getIns()->setBegin(false);
 	memset(m_index,0,sizeof(int)*2);
 }
 

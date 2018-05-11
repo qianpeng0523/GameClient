@@ -8,6 +8,9 @@
 #include "LoadingLayer.h"
 #include "RoomControl.h"
 #include "ChatRecord.h"
+#include "GameControl.h"
+#include "RoomInfo.h"
+
 USING_NS_CC;
 
 
@@ -69,7 +72,10 @@ void AppDelegate::applicationDidEnterBackground() {
 	//CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 	//CocosDenshion::SimpleAudioEngine::sharedEngine()->pauseAllEffects();
     log("dlegate :applicationDidEnterBackground");
-
+	MJGameScene *mjgame = GameControl::getIns()->getMJGameScene();
+	if (mjgame){
+		RoomInfo::getIns()->SendCLine(false);
+	}
 	//WebSocketControl::getIns()->onClose(false);
 
 
@@ -79,7 +85,10 @@ void AppDelegate::applicationDidEnterBackground() {
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
-
+	MJGameScene *mjgame = GameControl::getIns()->getMJGameScene();
+	if (mjgame){
+		RoomInfo::getIns()->SendCLine(true);
+	}
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	//SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 	//SimpleAudioEngine::sharedEngine()->stopAllEffects();

@@ -52,11 +52,19 @@ public:
 	}
 	void PushAllRoomUser();
 	RoomUser getRoomInfo(string uid);
+
+	bool isBegin(){
+		return m_isbegin;
+	}
+	void setBegin(bool isb){
+		m_isbegin = isb;
+	}
 private:
 	static RoomInfo *m_shareRoomInfo;
 	SHMMJEnterRoom m_pSHMMJEnterRoom;
 	RoomData m_pRoomData;
 	map<string, RoomUser>m_pRoomUsers;
+	bool m_isbegin;
 };
 
 #endif 

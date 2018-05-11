@@ -14,6 +14,7 @@
 RoomInfo *RoomInfo::m_shareRoomInfo=NULL;
 RoomInfo::RoomInfo()
 {
+	m_isbegin = false;
 	XXEventDispatcher *pe = XXEventDispatcher::getIns();
 	SHMMJCreateRoom sl;
 	pe->registerProto(sl.cmd(), sl.GetTypeName());
@@ -89,6 +90,7 @@ void RoomInfo::HandlerSHMMJCreateRoom(ccEvent *event){
 	int err = cl.err();
 	if (err==0){
 		m_pRoomData.CopyFrom(cl.roomdata());
+		m_isbegin=false;
 		RoomUser user = cl.roomuser();
 		RoomControl::shareRoomControl()->setMyPosition(user.position());
 		PushRoomUser(user);
@@ -118,6 +120,7 @@ void RoomInfo::HandSHMMJEnterRoom(ccEvent *event){
 	if (err == 0){
 		m_pSHMMJEnterRoom = cl;
 		m_pRoomData.CopyFrom(cl.roomdata());
+		m_isbegin = cl.begin();
 		auto itr = cl.roomusers().begin();
 		string uid = LoginInfo::getIns()->getUID();
 		for (itr; itr != cl.roomusers().end(); itr++){
@@ -163,7 +166,7 @@ void RoomInfo::HandSBegin(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(RoomInfo::HandSBegin));
 	int err = cl.err();
 	if (err == 0){
-
+		m_isbegin = true;
 	}
 	else{
 
@@ -264,7 +267,7 @@ void RoomInfo::HandSDissolveRoom(ccEvent *event){
 	cl.CopyFrom(*event->msg);
 	int err = cl.err();
 	if (err == 0){
-
+		
 	}
 	else{
 
@@ -288,6 +291,14 @@ void RoomInfo::HandSVote(ccEvent *event){
 void RoomInfo::HandSVoteResult(ccEvent *event){
 	SVoteResult cl;
 	cl.CopyFrom(*event->msg);
+	bool isdis = cl.dissolve();
+	if (isdis){
+		MainScene *scene = MainScene::create();
+		GameControl::getIns()->replaceScene(scene);
+	}
+	else{
+
+	}
 }
 
 void RoomInfo::SendCRChat(string content){
@@ -303,10 +314,18 @@ void RoomInfo::HandSRChat(ccEvent *event){
 	cl.CopyFrom(*event->msg);
 	string uid=cl.uid();
 	string content = cl.content();
+	
 	ChatRecord::getIns()->PushChat(uid, content);
 	GameChatLayer *p = GameControl::getIns()->getGameChatLayer();
 	if (p){
 		p->closeUI();
+	}
+	MJGameScene *scene = GameControl::getIns()->getMJGameScene();
+	if (scene){
+		GameHead *head = scene->getGameHead();
+		if (head){
+			head->ShowChat(uid, content);
+		}
 	}
 }
 

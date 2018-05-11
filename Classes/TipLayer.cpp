@@ -22,13 +22,24 @@ TipLayer::~TipLayer(){
 	}
 }
 
-bool TipLayer::init()
+TipLayer *TipLayer::create(TIP_ENUM_TYPE type){
+	TipLayer *p = new TipLayer();
+	if (p&&p->init(type)){
+		p->autorelease();
+	}
+	else{
+		CC_SAFE_DELETE(p);
+	}
+	return p;
+}
+
+bool TipLayer::init(TIP_ENUM_TYPE type)
 {             
 	if (!Layer::init())
     {
         return false;
     }
-	
+	m_type = type;
 	m_RootLayer =RootRegister::getIns()->getWidget("tiplayer.json");
 	this->addChild(m_RootLayer);
 
@@ -53,21 +64,28 @@ void TipLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			this->removeFromParentAndCleanup(true);
 		}
 		else if (name.compare("ok_btn") == 0){
-			this->removeFromParentAndCleanup(true);
-			MJGameScene *p = GameControl::getIns()->getMJGameScene();
-			MainLayer *mainlayer = GameControl::getIns()->getMainLayer();
-			LoginMainLayer *loginscene = GameControl::getIns()->getLoginMainLayer();
-			if (p){
+			string rid = RoomInfo::getIns()->getRoomData().roomid();
+			MainScene *main = NULL;
+			switch (m_type)
+			{
+			case TIP_TYPE_END:
+				ClientSocket::getIns()->close();
+				Director::sharedDirector()->end();
+				break;
+			case TIP_TYPE_BACK:
+				main = MainScene::create();
+				GameControl::getIns()->replaceScene(main);
+				break;
+			case TIP_TYPE_JIESAN:
+				RoomInfo::getIns()->SendCDissolveRoom(rid);
+				break;
+			case TIP_TYPE_LEAVE:
 				RoomInfo::getIns()->SendCLeave();
+				break;
+			default:
+				break;
 			}
-			else if (mainlayer){
-				ClientSocket::getIns()->close();
-				Director::sharedDirector()->end();
-			}
-			else if (loginscene){
-				ClientSocket::getIns()->close();
-				Director::sharedDirector()->end();
-			}
+			this->removeFromParentAndCleanup(true);
 		}
 	}
 }

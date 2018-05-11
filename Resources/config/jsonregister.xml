@@ -64,4 +64,5 @@
   <item json="reglayer.json" count="1" type="1"/>
   <item json="gchatitem1.json" count="30" type="3"/>
   <item json="gchatitem2.json" count="30" type="3"/>
+  <item json="gamehelp.json" count="1" type="3"/>
 </root>

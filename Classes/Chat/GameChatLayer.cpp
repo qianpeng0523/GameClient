@@ -18,6 +18,7 @@ string ff[3] = {"LT_TB_liaotian.png","LT_TB_biaoqing.png","LT_TB_history.png"};
 
 GameChatLayer::GameChatLayer(){
 	m_pCursorTextField = NULL;
+	m_lock = false;
 	GameControl::getIns()->setGameChatLayer(this);
 }
 
@@ -130,12 +131,19 @@ void GameChatLayer::TouchEvent(Object *obj, TouchEventType type){
 			ShowRecord();
 		}
 		else if (name.compare("send_btn") == 0){
-			string content = m_pCursorTextField->getText();
-			if (content.empty()){
-				GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("发送的内容不能为空"));
+			if (!m_lock){
+				string content = m_pCursorTextField->getText();
+				if (content.empty()){
+					GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("发送的内容不能为空"));
+				}
+				else{
+					m_lock = true;
+					RoomInfo::getIns()->SendCRChat(content);
+					this->runAction(Sequence::create(DelayTime::create(2.0), CCCallFunc::create(this, callfunc_selector(GameChatLayer::ChatCall)),NULL));
+				}
 			}
 			else{
-				RoomInfo::getIns()->SendCRChat(content);
+				GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("您发送的信息太频繁"));
 			}
 		}
 		else if (name.compare("Panel_22") == 0){
@@ -149,15 +157,29 @@ void GameChatLayer::TouchEvent(Object *obj, TouchEventType type){
 		else if(name.compare("ScrollView1")==0){
 			Layout *ly = (Layout *)GameDataSet::isTouchInChild(m_ScrollView2,10.0,NULL);
 			if (ly){
-				ExpressItem *p = (ExpressItem *)ly->getUserObject();
-				RoomInfo::getIns()->SendCRChat("//"+p->name);
+				if (!m_lock){
+					m_lock = true;
+					ExpressItem *p = (ExpressItem *)ly->getUserObject();
+					RoomInfo::getIns()->SendCRChat("//" + p->name);
+					this->runAction(Sequence::create(DelayTime::create(2.0), CCCallFunc::create(this, callfunc_selector(GameChatLayer::ChatCall)), NULL));
+				}
+				else{
+					GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("您发送的信息太频繁"));
+				}
 			}
 		}
 		else if (name.compare("ScrollView") == 0){
 			GameChatItemLayer *ly = (GameChatItemLayer *)GameDataSet::isTouchInChild(m_ScrollView1, 10.0, NULL);
 			if (ly){
-				YuYinItem *p = ly->getYuYinItem();
-				RoomInfo::getIns()->SendCRChat(p->content);
+				if (!m_lock){
+					m_lock = true;
+					YuYinItem *p = ly->getYuYinItem();
+					RoomInfo::getIns()->SendCRChat(p->content);
+					this->runAction(Sequence::create(DelayTime::create(2.0), CCCallFunc::create(this, callfunc_selector(GameChatLayer::ChatCall)), NULL));
+				}
+				else{
+					GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("您发送的信息太频繁"));
+				}
 			}
 		}
 		else if (name.compare("ScrollView2") == 0){
@@ -168,6 +190,10 @@ void GameChatLayer::TouchEvent(Object *obj, TouchEventType type){
 		}
 		
 	}
+}
+
+void GameChatLayer::ChatCall(){
+	m_lock = false;
 }
 
 void GameChatLayer::CallBack(CCNode *node){

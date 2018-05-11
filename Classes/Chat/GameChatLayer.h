@@ -38,6 +38,8 @@ public:
 	void CallBack(CCNode *node);
 	void openUI();
 	void closeUI();
+
+	void ChatCall();
 private:
 	
 	ui::ScrollView *m_ScrollView1;
@@ -51,6 +53,8 @@ private:
 	Button *m_btn3;
 	ImageView *m_imgicon[3];
 	ui::EditBox *m_pCursorTextField;
+
+	bool m_lock;
 private:
 	
 };

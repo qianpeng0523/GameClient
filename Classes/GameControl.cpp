@@ -35,6 +35,7 @@ GameControl::GameControl(){
 	m_pGameChatLayer = NULL;
 	m_pLoginLayer = NULL;
 	m_RegLayer = NULL;
+	m_pGameHelpLayer = NULL;
 	m_topcopy = false;
 	m_index = 0;
 	CCDirector::sharedDirector()->getScheduler()->scheduleUpdate(this, 1, false);

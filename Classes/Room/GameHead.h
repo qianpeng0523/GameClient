@@ -50,6 +50,8 @@ public:
 
 	void ShowReady(int pos,bool isr);
 
+	void ShowChat(string uid,string content);
+
 	static int changePos(int pos);
 	static void setGray(ImageView *img);
 	static void removeGray(ImageView *img);
@@ -65,6 +67,13 @@ private:
 	TextBMFont *m_scores[4];
 	RoomData m_pRoomData;
 	ImageView *m_readyimgs[4];
+
+	//chat
+	ImageView *m_exps[4];
+	ImageView *m_yuyins[4];
+	Text *m_contents[4];
+	ImageView *m_chatbgs[4];
+	Size m_initsz[4];
 public:
 	
 };
