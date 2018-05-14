@@ -18,6 +18,8 @@ RegLayer::RegLayer(){
 }
 
 RegLayer::~RegLayer(){
+	m_input1->removeFromParentAndCleanup(true);
+	m_input2->removeFromParentAndCleanup(true);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this==GameControl::getIns()->getRegLayer()){
 		GameControl::getIns()->setRegLayer(NULL);

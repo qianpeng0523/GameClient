@@ -96,7 +96,9 @@ void LoginInfo::HandlerSLoginHand(ccEvent *event){
 		}
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("账号密码错误").c_str());
+		char buff[100];
+		sprintf(buff,"%s", XXIconv::GBK2UTF("账号密码错误").c_str());
+		GameControl::getIns()->ShowTopTip(buff);
 		ClientSocket::getIns()->close();
 		//SendCRegister("100001","123456","qp0001");
 	}
@@ -140,11 +142,15 @@ void LoginInfo::HandlerSRegister(ccEvent *event){
 		}
 	}
 	else if(err==1){
-		log("%s", XXIconv::GBK2UTF("注册失败!").c_str());
+		char buff[100];
+		sprintf(buff, "%s", XXIconv::GBK2UTF("注册失败").c_str());
+		GameControl::getIns()->ShowTopTip(buff);
 		ClientSocket::getIns()->close();
 	}
 	else if(err==2){
-		log("%s", XXIconv::GBK2UTF("用户已存在!").c_str());
+		char buff[100];
+		sprintf(buff, "%s", XXIconv::GBK2UTF("用户已存在!").c_str());
+		GameControl::getIns()->ShowTopTip(buff);
 		ClientSocket::getIns()->close();
 	}
 }
@@ -178,7 +184,9 @@ void LoginInfo::HandlerSWXLogin(ccEvent *event){
 		}
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("微信登录失败!").c_str());
+		char buff[100];
+		sprintf(buff, "%s", XXIconv::GBK2UTF("微信登录失败!").c_str());
+		GameControl::getIns()->ShowTopTip(buff);
 		ClientSocket::getIns()->close();
 		pUserDefault->setStringForKey("token", "");
 		YLJni::WeixinLogin();

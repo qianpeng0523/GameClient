@@ -433,16 +433,13 @@ void MainLayer::setPointTipShow(){
 	}
 	ShowTip(POINT_SHOP,ist1);
 
-	ist1 = pUser->getIntegerForKey((tt + g_pointstr[POINT_DUIHUAN]).c_str(), -1);
-	if (ist1 == -1){
-		pUser->deleteValueForKey((ttlast + g_pointstr[POINT_DUIHUAN]).c_str());
-		ist1 = false;
-	}
+	ist1 = false;
+	
 	//计算有没有兑换
 	int gold = LoginInfo::getIns()->getMyUserBase().gold();
 	SExchangeReward ser = HallInfo::getIns()->getSExchangeReward();
 	for (int i = 0; i < ser.list_size(); i++){
-		Reward rd = ser.list(i).award();
+		Reward rd = ser.list(i).buy();
 		int number = rd.number();
 		if (gold >= number){
 			ist1 = true;

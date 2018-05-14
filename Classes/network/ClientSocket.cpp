@@ -110,7 +110,11 @@ int ClientSocket::connect(const char* ip, unsigned short port) {
 }
 
 int ClientSocket::close() {
-	GameControl::getIns()->ShowLoading();
+	MainLayer *pmain = GameControl::getIns()->getMainLayer();
+	MJGameScene *scene = GameControl::getIns()->getMJGameScene();
+	if (pmain || scene){
+		GameControl::getIns()->ShowLoading();
+	}
 	int state = 0;
 	m_isConnected = false;
 	
