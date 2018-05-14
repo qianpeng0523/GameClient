@@ -15,13 +15,13 @@ class RewardTipLayer : public BaseLayer
 public:
 	RewardTipLayer();
 	~RewardTipLayer();
-	static RewardTipLayer *create(RepeatedPtrField<SignAward> props);
-	virtual bool init(RepeatedPtrField<SignAward> props);
+	static RewardTipLayer *create(vector<Reward> props);
+	virtual bool init(vector<Reward> props);
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
-	
+	void setTip(string tip);
 private:
-	
+	float m_posx[2];
 private:
 	
 };

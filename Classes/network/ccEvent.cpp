@@ -8,14 +8,13 @@ msg(NULL){
 }
 
 void ccEvent::parse(const char* data, int size){
-
 	std::string type_name = XXEventDispatcher::getIns()->getProtoName(cmd);
 	if (!type_name.empty()){
 		msg = create_message(type_name);
 		msg->ParsePartialFromArray(data, size);
 
 		string ss = msg->DebugString();
-		log("ccEvent:%s",ss.c_str());
+		log("ccEvent[%s][%d]:%s",type_name.c_str(),cmd,ss.c_str());
 	}
 	delete data;
 }

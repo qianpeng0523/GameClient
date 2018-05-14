@@ -20,6 +20,8 @@ public:
 private:
 	Button *m_btn;
 	Mail m_mail;
+	float m_posx[2];
+	ImageView* m_icons[2];
 private:
 	
 };

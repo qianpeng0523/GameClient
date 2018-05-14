@@ -3,6 +3,8 @@
 #include "XXEventDispatcher.h"
 #include "ClientSocket.h"
 #include "LoginInfo.h"
+#include "GameControl.h"
+
 
 ConfigInfo *ConfigInfo::m_shareConfigInfo=NULL;
 ConfigInfo::ConfigInfo()
@@ -10,6 +12,8 @@ ConfigInfo::ConfigInfo()
 	XXEventDispatcher *pe = XXEventDispatcher::getIns();
 	SConfig sl;
 	pe->registerProto(sl.cmd(), sl.GetTypeName());
+	XXEventDispatcher::getIns()->addListener(sl.cmd(), this, Event_Handler(ConfigInfo::HandlerSConfig));
+
 	SPushCurrency sr;
 	pe->registerProto(sr.cmd(), sr.GetTypeName());
 	pe->addListener(sr.cmd(), this, Event_Handler(ConfigInfo::HandlerSPushCurrency));
@@ -36,15 +40,19 @@ bool ConfigInfo::init()
 void ConfigInfo::SendCConfig(){
 	CConfig cl;
 	cl.set_cmd(cl.cmd());
-	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(ConfigInfo::HandlerSConfig));
+	//XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(ConfigInfo::HandlerSConfig));
 	ClientSocket::getIns()->sendMsg(cl.cmd(),&cl);
 }
 
 void ConfigInfo::HandlerSConfig(ccEvent *event){
 	SConfig cl;
 	cl.CopyFrom(*event->msg);
-	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(ConfigInfo::HandlerSConfig));
+	//XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(ConfigInfo::HandlerSConfig));
 	m_pSConfig = cl;
+	MainLayer *p = GameControl::getIns()->getMainLayer();
+	if (p){
+		p->setPointTipShow();
+	}
 }
 
 void ConfigInfo::HandlerSPushCurrency(ccEvent *event){

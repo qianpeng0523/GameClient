@@ -16,8 +16,11 @@ public:
     virtual bool init();
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
+	void setData();
+	void setButton(int index,bool iss);
 private:
-	
+	int m_type;
+	ImageView *m_btnbgs[3];
 private:
 	
 };

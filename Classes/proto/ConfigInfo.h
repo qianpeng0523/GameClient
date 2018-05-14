@@ -17,6 +17,10 @@ public:
 	void HandlerSConfig(ccEvent *event);
 
 	void HandlerSPushCurrency(ccEvent *event);
+
+	SConfig getSConfig(){
+		return m_pSConfig;
+	}
 private:
 	static ConfigInfo *m_shareConfigInfo;
 	SConfig m_pSConfig;

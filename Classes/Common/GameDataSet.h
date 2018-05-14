@@ -108,6 +108,8 @@ public:
 	static ScratchItem* ScratchCard(Layout *parent);//刮奖
 	static bool ScratchEvent(ScratchItem* p, Button *btn);
 	static void DelScratch(ScratchItem *p,Button *btn);
+
+	static void setVirProp(ImageView *img,int propid);
 private:
 	static int m_zoder;
 };

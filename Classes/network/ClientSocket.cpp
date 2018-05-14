@@ -152,7 +152,7 @@ void ClientSocket::sendMsg(int cmd,const google::protobuf::Message *msg){
 	memset(buffer, 0, HEADLEN + len);
 
 	//服务器编号
-	memcpy(buffer, "", 3);
+	memcpy(buffer, "mj", 3);
 
 	//消息序列号
 	buffer[3] = m_sendstamp;
@@ -188,7 +188,7 @@ void ClientSocket::DataIn(char* data, int size,int cmd){
 	GameControl::getIns()->HideLoading();
 	//数据不能用string  只能用char*
 	
-	log("datain size:%d cmd:%d", size, cmd);
+	log("datain size:%d cmd:0x%04X", size, cmd);
 	ccEvent *sEvent = new ccEvent(cmd, data, size);
 	XXEventDispatcher::getIns()->disEventDispatcher(sEvent);
 }

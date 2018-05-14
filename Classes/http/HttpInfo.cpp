@@ -96,7 +96,7 @@ void HttpInfo::requestGateIPAndPort(){
 	string url = sqlhttp;
 	YMSocketData sd;
 	sd["cmd"] = 0x0B;
-	sd["type"] = 3;
+	sd["type"] = 1;
 	MD55 md5;
 	md5.update("123456");
 	string pwd = md5.toString();

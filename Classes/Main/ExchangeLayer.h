@@ -20,6 +20,7 @@ public:
 	void TouchEvent(CCObject *obj, TouchEventType type);
 private:
 	ExAward m_hall;
+	float m_posy;
 private:
 
 };
@@ -60,6 +61,7 @@ public:
 	void AddExchangeItems();
 	void SelectItem(int index);
 	void AddRecords();
+	void ShowTip(bool iss);
 private:
 	ui::ScrollView *m_ScrollView1;
 	Layout *m_sbg1;

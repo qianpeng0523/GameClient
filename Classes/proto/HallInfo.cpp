@@ -20,6 +20,7 @@ HallInfo::HallInfo()
 	pe->registerProto(sr2.cmd(), sr2.GetTypeName());
 	SMail sl3;
 	pe->registerProto(sl3.cmd(), sl3.GetTypeName());
+	pe->addListener(sl3.cmd(), this, Event_Handler(HallInfo::HandlerSMail));
 	SFriend sr4;
 	pe->registerProto(sr4.cmd(), sr4.GetTypeName());
 	SFindFriend sl5;
@@ -44,6 +45,7 @@ HallInfo::HallInfo()
 	pe->registerProto(sl14.cmd(), sl14.GetTypeName());
 	SExchangeRecord sl15;
 	pe->registerProto(sl15.cmd(), sl15.GetTypeName());
+	pe->addListener(sl15.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
 	SApplePay sl17;
 	pe->registerProto(sl17.cmd(), sl17.GetTypeName());
 	SWxpayOrder sl18;
@@ -63,6 +65,16 @@ HallInfo::HallInfo()
 
 	SAliPayResult sl25;
 	pe->registerProto(sl25.cmd(), sl25.GetTypeName());
+	SMailAward sl26;
+	pe->registerProto(sl26.cmd(), sl26.GetTypeName());
+
+	SFirsyBuyData sl27;
+	pe->registerProto(sl27.cmd(), sl27.GetTypeName());
+
+	SExchange sl28;
+	pe->registerProto(sl28.cmd(), sl28.GetTypeName());
+
+
 }
 
 HallInfo::~HallInfo(){
@@ -193,14 +205,14 @@ SShop HallInfo::getSShop(int type){
 void HallInfo::SendCMail(){
 	CMail cl;
 	cl.set_cmd(cl.cmd());
-	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMail));
+	//XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMail));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSMail(ccEvent *event){
 	SMail cl;
 	cl.CopyFrom(*event->msg);
-	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMail));
+	//XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMail));
 	int err = cl.err();
 	if (err == 0){
 		m_pSMail = cl;
@@ -229,11 +241,30 @@ void HallInfo::HandlerSMailAward(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSMailAward));
 	int err = cl.err();
 	if (err == 0){
+		MailTipLayer *p = GameControl::getIns()->getMailTipLayer();
+		if (p){
+			p->removeFromParentAndCleanup(true);
+		}
 		int id = cl.id();
-		for (int i = 0; i < m_pSMail.list_size();i++){
-			Mail p = m_pSMail.list(i);
+		auto vec = m_pSMail.mutable_list();
+		for (int i = 0; i < vec->size(); i++){
+			Mail p = vec->Get(i);
 			if (p.eid() == id){
+				vec->DeleteSubrange(i,1);
 				//查找到了  然后提示奖励界面
+				MailLayer *ml = GameControl::getIns()->getMailLayer();
+				if (ml){
+					ml->AddMailItems();
+				}
+				RewardTipLayer *pp = GameControl::getIns()->getRewardTipLayer();
+				if (!pp){
+					vector<Reward > vecs;
+					for (int j = 0; j < p.rewardlist_size(); j++){
+						vecs.push_back(p.rewardlist(j));
+					}
+					pp = RewardTipLayer::create(vecs);
+					Director::sharedDirector()->getRunningScene()->addChild(pp,10);
+				}
 
 				break;
 			}
@@ -556,32 +587,6 @@ void HallInfo::SendCExchangeReward(){
 	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeReward));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
-
-	//test
-	char buff[100];
-	int gold = LoginInfo::getIns()->getMyUserBase().gold();
-	SExchangeReward se;
-	for (int i = 0; i < 8; i++){
-		ExAward *ea = se.add_list();
-		ea->set_eid(i+1);
-		sprintf(buff, "%d%s", i * 5 + 5,XXIconv::GBK2UTF("元红包").c_str());
-		ea->set_title(buff);
-
-		Reward *rd = ea->mutable_award();
-		rd->set_rid(1);
-		int number = 28000*i;
-		rd->set_number(number);
-		
-		Prop *prop=rd->mutable_prop();
-		prop->set_id(1);
-		prop->set_name(XXIconv::GBK2UTF("金币"));
-		
-	}
-	int sz = se.ByteSize();
-	char *buffer = new char[sz];
-	se.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(se.cmd(), buffer, sz);
-	HandlerSExchangeReward(ev);
 }
 
 void HallInfo::HandlerSExchangeReward(ccEvent *event){
@@ -605,6 +610,8 @@ void HallInfo::HandlerSExchangeReward(ccEvent *event){
 void HallInfo::SendCExchangeCode(string excode, string yzcode){
 	CExchangeCode cl;
 	cl.set_cmd(cl.cmd());
+	cl.set_excode(excode);
+	cl.set_yzcode(yzcode);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeCode));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
@@ -615,6 +622,15 @@ void HallInfo::HandlerSExchangeCode(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeCode));
 	int err = cl.err();
 	if (err == 0){
+		vector<Reward >rds;
+		for (int i = 0; i < cl.rd_size(); i++){
+			rds.push_back(cl.rd(i));
+		}
+		RewardTipLayer *pp = GameControl::getIns()->getRewardTipLayer();
+		if (!pp){
+			pp = RewardTipLayer::create(rds);
+			Director::sharedDirector()->getRunningScene()->addChild(pp, 10);
+		}
 		log("%s", XXIconv::GBK2UTF("兑换码兑换成功").c_str());
 	}
 	else{
@@ -625,41 +641,25 @@ void HallInfo::HandlerSExchangeCode(ccEvent *event){
 void HallInfo::SendCExchangeRecord(){
 	CExchangeRecord cl;
 	cl.set_cmd(cl.cmd());
-	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
+	//XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
-
-	//test
-	char buff[100];
-	int gold = LoginInfo::getIns()->getMyUserBase().gold();
-	SExchangeRecord se;
-	for (int i = 0; i < 8; i++){
-		ExRecord *ea = se.add_list();
-		sprintf(buff, "%d%s", i * 5 + 5, XXIconv::GBK2UTF("元红包").c_str());
-		ea->set_title(buff);
-		ea->set_eid(i+1);
-		sprintf(buff,"201803201%04d",i);
-		ea->set_orderid(buff);
-		ea->set_status(i%3);
-		ea->set_time(GameDataSet::getLocalTime());
-	}
-	int sz = se.ByteSize();
-	char *buffer = new char[sz];
-	se.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(se.cmd(), buffer, sz);
-	HandlerSExchangeRecord(ev);
 }
 
 void HallInfo::HandlerSExchangeRecord(ccEvent *event){
 	SExchangeRecord cl;
 	cl.CopyFrom(*event->msg);
-	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
+	//XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchangeRecord));
 	int err = cl.err();
 	if (err == 0){
 		m_pSExchangeRecord = cl;
-		log("%s", XXIconv::GBK2UTF("获取兑换记录成功").c_str());
+		ExchangeLayer *p = GameControl::getIns()->getExchangeLayer();
+		if (p){
+			p->AddRecords();
+		}
+		GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("获取兑换记录成功").c_str());
 	}
 	else{
-		log("%s", XXIconv::GBK2UTF("获取兑换记录失败").c_str());
+		GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("获取兑换记录失败").c_str());
 	}
 }
 
@@ -677,7 +677,15 @@ void HallInfo::HandlerSExchange(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSExchange));
 	int err = cl.err();
 	if (err == 0){
-		
+		int id = cl.id();
+		string code = cl.code();
+		GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("兑换奖品成功，奖品将在0-7个工作内发放"));
+
+		SendCExchangeRecord();
+		ExchangeLayer *p = GameControl::getIns()->getExchangeLayer();
+		if (p){
+			p->AddExchangeItems();
+		}
 	}
 }
 
@@ -757,8 +765,20 @@ void HallInfo::HandlerSFirstBuy(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFirstBuy));
 	int err = cl.err();
 	if (err == 0){
-		int id = cl.id();
-		string transid = cl.transid();
+		int type = cl.type();
+		string prepayid = cl.payreq();
+		string noncestr = cl.noncestr();
+		string timestamp = cl.timestamp();
+		string sign = cl.sign();
+		if (type == 2){
+			YLJni::WeixinPay(prepayid.c_str(), noncestr.c_str(), timestamp.c_str(), sign.c_str());
+		}
+		else if (type == 3){
+			YLJni::AliPay(prepayid.c_str(), timestamp.c_str(), noncestr.c_str(), sign.c_str());
+		}
+		else if (type == 1){
+			
+		}
 		
 	}
 }
@@ -813,14 +833,6 @@ void HallInfo::SendCFeedBack(string uid, string uname, string content){
 	cl.set_content(content);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFeedBack));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
-
-	//test
-	SFeedBack ss;
-	int sz = ss.ByteSize();
-	char *buffer = new char[sz];
-	ss.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(ss.cmd(), buffer, sz);
-	HandlerSFeedBack(ev);
 }
 
 void HallInfo::HandlerSFeedBack(ccEvent *event){
@@ -844,16 +856,6 @@ void HallInfo::SendCSign(){
 	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSSign));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
-
-	//test
-	SSign ss;
-	ss.set_index(rand()%12);
-	ss.set_count(4);
-	int sz = ss.ByteSize();
-	char *buffer = new char[sz];
-	ss.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(ss.cmd(), buffer, sz);
-	HandlerSSign(ev);
 }
 
 void HallInfo::HandlerSSign(ccEvent *event){
@@ -863,12 +865,16 @@ void HallInfo::HandlerSSign(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		m_pSSign = cl;
+		m_pSSignList.set_sign(true);
 		SignLayer *p = GameControl::getIns()->getSignLayer();
 		if (p){
+			p->setSignData();
 			p->Run();
 		}
-		m_pSSignList.set_count(cl.count());
-		m_pSSignList.set_sign(1);
+		MainLayer *pp = GameControl::getIns()->getMainLayer();
+		if (pp){
+			pp->ShowTip(POINT_SIGN, false);
+		}
 	}
 }
 
@@ -879,29 +885,6 @@ void HallInfo::SendCSignList(){
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSSignList));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
-	//test
-	SSignList sl;
-	sl.set_count(3);
-	sl.set_sign(0);
-	int dd[8] = { 3, 5, 7, 10, 14, 18, 22, 30 };
-	for (int i = 0; i < 8;i++){
-		SignAward *sa = sl.add_reward();
-		sa->set_id(i+1);
-		sa->set_day(dd[i]);
-
-		int pid = i % 2 + 1;
-		Reward *rd = sa->mutable_reward();
-		rd->set_number(pid == 1 ? 500 * dd[i] : i / 2);
-
-		Prop *p = rd->mutable_prop();
-		p->set_id(pid);
-		
-	}
-	int sz = sl.ByteSize();
-	char *buffer = new char[sz];
-	sl.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(sl.cmd(), buffer, sz);
-	HandlerSSignList(ev);
 }
 
 void HallInfo::HandlerSSignList(ccEvent *event){
@@ -915,6 +898,28 @@ void HallInfo::HandlerSSignList(ccEvent *event){
 		SignLayer *p = GameControl::getIns()->getSignLayer();
 		if (p){
 			p->setSignData();
+		}
+	}
+}
+
+void HallInfo::SendCFirsyBuyData(){
+	CFirsyBuyData cl;
+	cl.set_cmd(cl.cmd());
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandSFirsyBuyData));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandSFirsyBuyData(ccEvent *event){
+	SFirsyBuyData cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandSFirsyBuyData));
+	int err = cl.err();
+	if (err == 0){
+		m_pSFirsyBuyData = cl;
+
+		FirstChargeLayer *p = GameControl::getIns()->getFirstChargeLayer();
+		if (p){
+			p->setData();
 		}
 	}
 }

@@ -130,6 +130,7 @@ bool MailLayer::init()
 	m_ScrollView = (ui::ScrollView *)GameDataSet::getButton(m_RootLayer, "ScrollView", selector, this);
 	m_sbg = GameDataSet::getLayout(m_RootLayer, "sbg");
 
+	AddMailItems();
 	HallInfo::getIns()->SendCMail();
     return true;
 }
@@ -149,6 +150,7 @@ void MailLayer::TouchEvent(CCObject *obj, TouchEventType type){
 }
 
 void MailLayer::AddMailItems(){
+	m_sbg->removeAllChildrenWithCleanup(true);
 	SMail mail = HallInfo::getIns()->getSMail();
 	int sz = mail.list_size();
 	for (int i = 0; i < sz;i++){

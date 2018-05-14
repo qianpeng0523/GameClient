@@ -13,6 +13,8 @@ ExchangeItemLayer::ExchangeItemLayer(){
 }
 
 ExchangeItemLayer::~ExchangeItemLayer(){
+	Text *tt1 = (Text *)GameDataSet::getLayout(m_RootLayer, "num");
+	tt1->setPositionY(m_posy);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 }
 
@@ -44,23 +46,48 @@ bool ExchangeItemLayer::init(ExAward hall)
 	int pid = hall.eid();
 	int gold = LoginInfo::getIns()->getMyUserBase().gold();
 	Reward rd = hall.award();
+	Reward rd1 = hall.buy();
 	int number = rd.number();
+
 	char buff[50];
-	sprintf(buff, "%d/%d", gold, number);
+	Prop p = rd.prop();
+	int id = p.id();
+
+	ImageView *img = (ImageView *)GameDataSet::getLayout(m_RootLayer, "icon");
+	GameDataSet::setVirProp(img, id);
+
+	Text *tt1 = (Text *)GameDataSet::getLayout(m_RootLayer, "num");
+	m_posy = tt1->getPositionY();
+	if (id == 4){
+		sprintf(buff, XXIconv::GBK2UTF("%d元").c_str(), number);
+	}
+	else if (id == 5){
+		sprintf(buff, XXIconv::GBK2UTF("%d个").c_str(), number);
+	}
+	else if (id == 3){
+		sprintf(buff, XXIconv::GBK2UTF("%d张").c_str(), number);
+	}
+	if (tt1){
+		tt1->setText(buff);
+	}
+
+	int number1 = rd1.number();
+	
+	sprintf(buff, "%d/%d", gold, number1);
 	GameDataSet::setText(m_RootLayer, "pro", buff);
 
-	bool can = gold>=number;
+	bool can = gold >= number1;
 	Layout *ly = GameDataSet::getLayout(m_RootLayer, "hot");
 	ly->setVisible(can);
 
-	GameDataSet::setTextBMFont(m_RootLayer, "title", title);
+	GameDataSet::setText(m_RootLayer, "title", title);
 
 	LoadingBar *bar = (LoadingBar *)GameDataSet::getLayout(m_RootLayer, "ProgressBar");
-	bar->setPercent(gold*1.0/number * 100);
+	bar->setPercent(gold*1.0 / number1 * 100);
 	
 	SEL_TouchEvent selector = toucheventselector(ExchangeItemLayer::TouchEvent);
-	GameDataSet::getButton(m_RootLayer, "btn", selector, this);
-
+	Button *btn = GameDataSet::getButton(m_RootLayer, "btn", selector, this);
+	btn->setBright(can);
 	return true;
 }
 
@@ -159,6 +186,7 @@ ExchangeLayer::ExchangeLayer(){
 }
 
 ExchangeLayer::~ExchangeLayer(){
+	m_input->removeFromParentAndCleanup(true);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getExchangeLayer()){
 		GameControl::getIns()->setExchangeLayer(NULL);
@@ -202,8 +230,16 @@ bool ExchangeLayer::init()
 	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	int gold = user.gold();
 	GameDataSet::setTextBMFont(m_RootLayer, "goldnum", GameDataSet::getCNStringByInteger(gold));
-	HallInfo::getIns()->SendCExchangeReward();
-	HallInfo::getIns()->SendCExchangeRecord();
+	ShowTip(false);
+	SExchangeReward ser = HallInfo::getIns()->getSExchangeReward();
+	if (ser.list_size() == 0){
+		HallInfo::getIns()->SendCExchangeReward();
+	}
+	else{
+		AddExchangeItems();
+		SelectItem(0);
+	}
+	
 	//SelectItem(0);
     return true;
 }
@@ -225,6 +261,10 @@ void ExchangeLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			SelectItem(1);
 		}
 		else if (name.compare("records") == 0){
+			SExchangeRecord se = HallInfo::getIns()->getSExchangeRecord();
+			if (se.list_size() == 0){
+				HallInfo::getIns()->SendCExchangeRecord();
+			}
 			SelectItem(2);
 		}
 		else if (name.compare("btn") == 0){
@@ -240,6 +280,7 @@ void ExchangeLayer::TouchEvent(CCObject *obj, TouchEventType type){
 }
 
 void ExchangeLayer::AddExchangeItems(){
+	m_sbg1->removeAllChildrenWithCleanup(true);
 	if (m_sbg1->getChildrenCount() == 0){
 		SExchangeReward ser = HallInfo::getIns()->getSExchangeReward();
 		int sz = ser.list_size();
@@ -252,6 +293,7 @@ void ExchangeLayer::AddExchangeItems(){
 }
 
 void ExchangeLayer::AddRecords(){
+	m_sbg3->removeAllChildrenWithCleanup(true);
 	if (m_sbg3->getChildrenCount() == 0){
 		SExchangeRecord ser = HallInfo::getIns()->getSExchangeRecord();
 		int sz = ser.list_size();
@@ -259,6 +301,12 @@ void ExchangeLayer::AddRecords(){
 			ExRecord rk=ser.list(i);
 			ExchangeRecordItemLayer *p = ExchangeRecordItemLayer::create(rk);
 			GameDataSet::PushScrollItem(m_sbg3, 0, 0, p, i, m_ScrollView3);
+		}
+		if (sz == 0){
+			ShowTip(true);
+		}
+		else{
+			ShowTip(false);
 		}
 	}
 }
@@ -278,7 +326,9 @@ void ExchangeLayer::SelectItem(int index){
 	if (m_btntext[index]){
 		m_btntext[index]->setFntFile("fonts/xiaodan10.fnt");
 	}
-	
+	if (index != 2){
+		ShowTip(false);
+	}
 	m_ScrollView1->setVisible(false);
 	m_ScrollView3->setVisible(false);
 	m_sbg2->setVisible(false);
@@ -286,14 +336,21 @@ void ExchangeLayer::SelectItem(int index){
 		m_ScrollView1->setVisible(true);
 		m_top->setVisible(false);
 		AddExchangeItems();
+		ShowTip(false);
 	}
 	else if (index == 1){
 		m_sbg2->setVisible(true);
 		m_top->setVisible(false);
+		ShowTip(false);
 	}
 	else if (index == 2){
 		m_ScrollView3->setVisible(true);
 		AddRecords();
 		m_top->setVisible(true);
 	}
+}
+
+void ExchangeLayer::ShowTip(bool iss){
+	ImageView *img = (ImageView *)GameDataSet::getLayout(m_RootLayer,"tip2");
+	img->setVisible(iss);
 }

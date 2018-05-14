@@ -57,6 +57,10 @@ void LoginInfo::setMyUserBase(UserBase ub){
 	if (pshop){
 		pshop->setData();
 	}
+	ExchangeLayer *exchange = pGameControl->getExchangeLayer();
+	if (exchange){
+		exchange->AddExchangeItems();
+	}
 }
 
 void LoginInfo::SendCLogin(string uid,string pwd){

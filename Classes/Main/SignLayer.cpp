@@ -117,9 +117,8 @@ void SignLayer::setSignData(){
 			GameDataSet::setTextBMFont(img, "BitmapLabel_w1", buff);
 			sprintf(buff, "x%d", number);
 			GameDataSet::setTextBMFont(img, "BitmapLabel_w1_num", buff);
-			if (id == 2){
-				GameDataSet::setImageView(img, "icon1", "card1.png");
-			}
+			ImageView *img1 = (ImageView *)GameDataSet::getLayout(img,"icon1");
+			GameDataSet::setVirProp(img1, id);
 		}
 		else{
 			img->setVisible(false);
@@ -127,6 +126,24 @@ void SignLayer::setSignData(){
 	}
 	if (sign){
 		GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_shengyu",0);
+	}
+	auto vec = sl.zhuan();
+	int sz1 = vec.size();
+	for (int i = 0; i < sz1; i++){
+		SignZhuan awrad = sl.zhuan(i);
+		Reward rd = awrad.reward();
+		Prop prop = rd.prop();
+		int id = prop.id();
+		int number = rd.number();
+
+		sprintf(buff, "l%d", i + 1);
+		ImageView *img =(ImageView *) GameDataSet::getLayout(m_RootLayer,buff);
+		GameDataSet::setVirProp(img, id);
+		
+		
+		sprintf(buff, "n%d", i + 1);
+		GameDataSet::setTextBMFont(m_RootLayer, buff, number);
+		
 	}
 }
 
@@ -294,19 +311,12 @@ void SignLayer::RunEndCall(){
 
 	RewardTipLayer *p = GameControl::getIns()->getRewardTipLayer();
 	if (!p){
-		RepeatedPtrField<SignAward > vecs;
-		for (int i = 0; i < 2; i++){
-			SignAward *sa = vecs.Add();
-			sa->set_day(3);
-			sa->set_id(i + 1);
-			Reward *rd =sa->mutable_reward();
-			rd->set_rid(i+1);
-			Prop *pp=rd->mutable_prop();
-			pp->set_id(i + 1);
-			rd->set_number(i == 0 ? 2000 : 2);
-			
-		}
+		int index = ss.index();
+		SignZhuan sa = ssl.zhuan(index);
+		vector<Reward > vecs;
+		vecs.push_back(sa.reward());
 		p = RewardTipLayer::create(vecs);
+		p->setTip(XXIconv::GBK2UTF("奖励已发送到邮箱，请查收"));
 		this->addChild(p);
 	}
 }

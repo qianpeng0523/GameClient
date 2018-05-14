@@ -67,7 +67,20 @@ typedef void (Ref::*EventHandler)(ccEvent*);
 #define MAXSTAMP 128
 
 
+enum POINTTIP
+{
+	POINT_MAIL=0,
+	POINT_SHOUCHONG,
+	POINT_ACTIVE,
+	POINT_SHOP,
+	POINT_MAINFEI,
+	POINT_HAOYOU,
+	POINT_DUIHUAN,
+	POINT_RENWU,
+	POINT_SIGN
+};
 
+static string g_pointstr[] = { "mailpoint", "mailshouchong", "mailactive", "mailshop", "mailmianfei", "mailhaoyou", "mailduhuan", "mailrenwu","mailsign" };
 
 
 #endif /* __APPMACROS_H__ */

@@ -26,7 +26,8 @@ public:
 	}
 
 	void setData();
-
+	void ShowTip(POINTTIP type,bool isshow);
+	void setPointTipShow();
 	//test
 	void test();
 private:
@@ -43,6 +44,16 @@ private:
 	Text *m_laba;
 	bool m_finish;
 	CCParticleSystemQuad *m_pParticleSystem[6];
+
+	ImageView *m_pointmail;
+	ImageView *m_pointshouchong;
+	ImageView *m_pointactive;
+	ImageView *m_pointshop;
+	ImageView *m_pointmianfei;
+	ImageView *m_pointhaoyou;
+	ImageView *m_pointduihuan;
+	ImageView *m_pointreuwu;
+	ImageView *m_pointsign;
 };
 
 #endif 

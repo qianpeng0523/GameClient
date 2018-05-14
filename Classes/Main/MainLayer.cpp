@@ -110,7 +110,19 @@ bool MainLayer::init()
 		CCCallFunc::create(this, callfunc_selector(MainLayer::test))
 		,NULL));
 
+	m_pointmail = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointmail");
+	m_pointshouchong = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointshouchong");
+	m_pointactive = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointactive");
+	m_pointshop = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointshop");
+	m_pointmianfei = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointmianfei");
+	m_pointhaoyou = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointhaoyou");
+	m_pointduihuan = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointduihuan");
+	m_pointreuwu = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointrenwu");
+	m_pointsign = (ImageView *)GameDataSet::getLayout(m_RootLayer, "pointsign");
+	setPointTipShow();
 	ConfigInfo::getIns()->SendCConfig();
+	HallInfo::getIns()->SendCExchangeReward();
+	HallInfo::getIns()->SendCFirsyBuyData();
     return true;
 }
 
@@ -241,6 +253,7 @@ void MainLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			if (!p){
 				p = ShopLayer::create();
 				this->addChild(p);
+				ShowTip(POINT_SHOP, false);
 			}
 		}
 		else if (name.compare("cardadd") == 0){
@@ -277,6 +290,7 @@ void MainLayer::TouchEvent(CCObject *obj, TouchEventType type){
 				p = FriendLayer::create();
 				this->addChild(p);
 			}
+			ShowTip(POINT_ACTIVE, false);
 		}
 		else if (name.compare("fankui_btn") == 0){
 			FankuiLayer *p = GameControl::getIns()->getFankuiLayer();
@@ -319,6 +333,7 @@ void MainLayer::TouchEvent(CCObject *obj, TouchEventType type){
 				p = ActiveLayer::create();
 				this->addChild(p);
 			}
+			ShowTip(POINT_ACTIVE, false);
 		}
 		else if (name.compare("shouchong_btn") == 0){
 			FirstChargeLayer *p = GameControl::getIns()->getFirstChargeLayer();
@@ -361,4 +376,96 @@ void MainLayer::SelectItem(int index){
 		m_friendbtns[index]->setBright(false);
 	}
 	ShowFriends(index+1);
+}
+
+void MainLayer::ShowTip(POINTTIP type, bool isshow){
+	UserDefault *puser = UserDefault::sharedUserDefault();
+	string tt = GameDataSet::getLocalTimeDay();
+	string ttlast = GameDataSet::getLocalTimeDay(GameDataSet::getTime() - 24 * 60 * 60);
+	int ist = puser->getIntegerForKey((tt+g_pointstr[type]).c_str(),-1);
+	if (ist == -1){
+		puser->deleteValueForKey((ttlast + g_pointstr[type]).c_str());
+	}
+	if (ist!=isshow){
+		puser->setIntegerForKey((tt + g_pointstr[type]).c_str(), isshow);
+	}
+	switch (type)
+	{
+	case POINT_MAIL:
+		m_pointmail->setVisible(isshow);
+		break;
+	case POINT_SHOUCHONG:
+		m_pointshouchong->setVisible(isshow);
+		break;
+	case POINT_ACTIVE:
+		m_pointactive->setVisible(isshow);
+		break;
+	case POINT_SHOP:
+		m_pointshop->setVisible(isshow);
+		break;
+	case POINT_MAINFEI:
+		m_pointmianfei->setVisible(isshow);
+		break;
+	case POINT_HAOYOU:
+		m_pointhaoyou->setVisible(isshow);
+		break;
+	case POINT_DUIHUAN:
+		m_pointduihuan->setVisible(isshow);
+		break;
+	case POINT_RENWU:
+		m_pointreuwu->setVisible(isshow);
+		break;
+	case POINT_SIGN:
+		m_pointsign->setVisible(isshow);
+		break;
+	default:
+		break;
+	}
+}
+
+void MainLayer::setPointTipShow(){
+	UserDefault *pUser = UserDefault::sharedUserDefault();
+	string tt = GameDataSet::getLocalTimeDay();
+	string ttlast = GameDataSet::getLocalTimeDay(GameDataSet::getTime()-24*60*60);
+	int ist1 = pUser->getIntegerForKey((tt + g_pointstr[POINT_SHOP]).c_str(), -1);
+	if (ist1 == -1){
+		pUser->deleteValueForKey((ttlast+g_pointstr[POINT_SHOP]).c_str());
+	}
+	ShowTip(POINT_SHOP,ist1);
+
+	ist1 = pUser->getIntegerForKey((tt + g_pointstr[POINT_DUIHUAN]).c_str(), -1);
+	if (ist1 == -1){
+		pUser->deleteValueForKey((ttlast + g_pointstr[POINT_DUIHUAN]).c_str());
+		ist1 = false;
+	}
+	//计算有没有兑换
+	int gold = LoginInfo::getIns()->getMyUserBase().gold();
+	SExchangeReward ser = HallInfo::getIns()->getSExchangeReward();
+	for (int i = 0; i < ser.list_size(); i++){
+		Reward rd = ser.list(i).award();
+		int number = rd.number();
+		if (gold >= number){
+			ist1 = true;
+			break;
+		}
+	}
+	ShowTip(POINT_DUIHUAN, ist1);
+
+	SConfig sc=ConfigInfo::getIns()->getSConfig();
+	if (sc.active()){
+		int ist2 = pUser->getIntegerForKey((tt + g_pointstr[POINT_ACTIVE]).c_str(), -1);
+		if (ist2 == -1){
+			pUser->deleteValueForKey((ttlast + g_pointstr[POINT_ACTIVE]).c_str());
+		}
+		ShowTip(POINT_ACTIVE, ist2);
+	}
+	else{
+		ShowTip(POINT_ACTIVE, sc.active());
+	}
+	ShowTip(POINT_MAIL, sc.mail());
+	ShowTip(POINT_SHOUCHONG, sc.firstbuy());
+	ShowTip(POINT_RENWU, sc.task());
+	ShowTip(POINT_MAINFEI, sc.free());
+	ShowTip(POINT_HAOYOU, sc.fri());
+	ShowTip(POINT_SIGN, sc.yqs());
 }

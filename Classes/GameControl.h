@@ -36,7 +36,7 @@
 #include "LoginLayer.h"
 #include "RegLayer.h"
 #include "GameHelpLayer.h"
-
+#include "VoteLayer.h"
 
 using namespace cocos2d;
 using namespace ui;
@@ -294,6 +294,13 @@ public:
 		return m_pGameHelpLayer;
 	}
 
+	void setVoteLayer(VoteLayer *p){
+		m_pVoteLayer = p;
+	}
+	VoteLayer *getVoteLayer(){
+		return m_pVoteLayer;
+	}
+
 	void ShowTopTip(string tip);
 	void setTopTip(bool istop);
 
@@ -341,6 +348,7 @@ private:
 	LoginLayer *m_pLoginLayer;
 	RegLayer *m_RegLayer;
 	GameHelpLayer *m_pGameHelpLayer;
+	VoteLayer *m_pVoteLayer;
 
 	vector<LaBaItem *> m_contents;
 	map<BaseLayer *, map<Layout *,LoadLayer *>>m_pLoadings;

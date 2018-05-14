@@ -14,6 +14,8 @@
 RoomInfo *RoomInfo::m_shareRoomInfo=NULL;
 RoomInfo::RoomInfo()
 {
+	m_time = -1;
+	m_disopen = false;
 	m_isbegin = false;
 	XXEventDispatcher *pe = XXEventDispatcher::getIns();
 	SHMMJCreateRoom sl;
@@ -135,7 +137,15 @@ void RoomInfo::HandSHMMJEnterRoom(ccEvent *event){
 			RoomUser user = *itr;
 			PushRoomUser(user);
 		}
-		
+		m_pvotes.clear();
+		auto vec = cl.sv();
+		for (int i = 0; i < vec.size();i++){
+			SVote sv = vec.Get(i);
+			string uuid = sv.uid();
+			if (m_pvotes.find(uid) == m_pvotes.end()){
+				m_pvotes.insert(make_pair(uuid, vec.Get(i)));
+			}
+		}
 		Scene *scene = LoadingLayer::createScene(3);
 		GameControl::getIns()->replaceScene(scene);
 	}
@@ -267,10 +277,42 @@ void RoomInfo::HandSDissolveRoom(ccEvent *event){
 	cl.CopyFrom(*event->msg);
 	int err = cl.err();
 	if (err == 0){
-		
+		m_time = 60*10;
+		openDiaTime(true);
+		m_pvotes.clear();
+		m_pSDissolveRoom = cl;
+		VoteLayer *p = GameControl::getIns()->getVoteLayer();
+		if (!p){
+			p = VoteLayer::create();
+			Director::sharedDirector()->getRunningScene()->addChild(p,10);
+		}
 	}
 	else{
 
+	}
+}
+
+void RoomInfo::disTime(float dt){
+	if (m_time > 0){
+		m_time -= 1;
+		VoteLayer *p = GameControl::getIns()->getVoteLayer();
+		if (p){
+			p->setTime(m_time);
+		}
+		if (m_time == 0){
+			openDiaTime(false);
+		}
+	}
+}
+
+void RoomInfo::openDiaTime(bool isopen){
+	if (!m_disopen&&isopen){
+		m_disopen = isopen;
+		CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(RoomInfo::disTime), this, 1.0, false);
+	}
+	else if (m_disopen&&!isopen){
+		m_disopen = isopen;
+		CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(RoomInfo::disTime), this);
 	}
 }
 
@@ -285,19 +327,31 @@ void RoomInfo::SendCVote(bool agree){
 void RoomInfo::HandSVote(ccEvent *event){
 	SVote cl;
 	cl.CopyFrom(*event->msg);
+	string uid = cl.uid();
 	
+	if (m_pvotes.find(uid) == m_pvotes.end()){
+		m_pvotes.insert(make_pair(uid, cl));
+	}
+	VoteLayer *p = GameControl::getIns()->getVoteLayer();
+	if (p){
+		p->setVote(uid, cl.agree());
+	}
 }
 
 void RoomInfo::HandSVoteResult(ccEvent *event){
 	SVoteResult cl;
 	cl.CopyFrom(*event->msg);
+	openDiaTime(false);
 	bool isdis = cl.dissolve();
 	if (isdis){
 		MainScene *scene = MainScene::create();
 		GameControl::getIns()->replaceScene(scene);
 	}
 	else{
-
+		VoteLayer *p = GameControl::getIns()->getVoteLayer();
+		if (p){
+			p->removeFromParentAndCleanup(true);
+		}
 	}
 }
 

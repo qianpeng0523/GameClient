@@ -22,6 +22,10 @@ public:
 	void SendCShop(int type);
 	void HandlerSShop(ccEvent *event);
 
+	//firstbuy
+	void SendCFirsyBuyData();
+	void HandSFirsyBuyData(ccEvent *event);
+
 	//mail
 	void SendCMail();
 	void HandlerSMail(ccEvent *event);
@@ -133,6 +137,9 @@ public:
 	SSign getSSign(){
 		return m_pSSign;
 	}
+	SFirsyBuyData getSFirsyBuyData(){
+		return m_pSFirsyBuyData;
+	}
 private:
 	static HallInfo *m_shareHallInfo;
 	map<int, map<int,Rank>> m_pSRanks;
@@ -147,6 +154,7 @@ private:
 	SExchangeRecord m_pSExchangeRecord;
 	SSignList m_pSSignList;
 	SSign m_pSSign;
+	SFirsyBuyData m_pSFirsyBuyData;
 };
 
 #endif 

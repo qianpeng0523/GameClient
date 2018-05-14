@@ -48,6 +48,7 @@ public:
 private:
 	ui::ScrollView *m_ScrollView;
 	Layout *m_sbg;
+
 private:
 	
 };

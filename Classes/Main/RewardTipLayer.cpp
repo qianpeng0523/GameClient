@@ -15,6 +15,10 @@ RewardTipLayer::RewardTipLayer(){
 }
 
 RewardTipLayer::~RewardTipLayer(){
+	Layout *ly1 = GameDataSet::getLayout(m_RootLayer, "iconbg1");
+	Layout *ly2 = GameDataSet::getLayout(m_RootLayer, "iconbg2");
+	ly1->setPositionX(m_posx[0]);
+	ly2->setPositionX(m_posx[1]);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getRewardTipLayer()){
 		GameControl::getIns()->setRewardTipLayer(NULL);
@@ -22,7 +26,7 @@ RewardTipLayer::~RewardTipLayer(){
 	}
 }
 
-RewardTipLayer *RewardTipLayer::create(RepeatedPtrField<SignAward> props){
+RewardTipLayer *RewardTipLayer::create(vector<Reward> props){
 	RewardTipLayer *p = new RewardTipLayer();
 	if (p&&p->init(props)){
 		p->autorelease();
@@ -33,7 +37,7 @@ RewardTipLayer *RewardTipLayer::create(RepeatedPtrField<SignAward> props){
 	return p;
 }
 
-bool RewardTipLayer::init(RepeatedPtrField<SignAward> props)
+bool RewardTipLayer::init(vector<Reward> props)
 {             
 	if (!Layer::init())
     {
@@ -53,8 +57,7 @@ bool RewardTipLayer::init(RepeatedPtrField<SignAward> props)
 		sprintf(buff,"iconbg%d",i+1);
 		Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
 		if (i < sz){
-			SignAward p = props.Get(i);
-			Reward reward = p.reward();
+			Reward reward = props.at(i);
 			Prop prop = reward.prop();
 			int id = prop.id();
 			int number = reward.number();
@@ -67,14 +70,14 @@ bool RewardTipLayer::init(RepeatedPtrField<SignAward> props)
 		else{
 			ly->setVisible(false);
 		}
-		
+		m_posx[i] = ly->getPositionX();
 	}
 	if (sz == 1){
 		Layout *ly1 = GameDataSet::getLayout(m_RootLayer, "iconbg1");
 		Layout *ly2 = GameDataSet::getLayout(m_RootLayer, "iconbg2");
 		ly1->setPositionX((ly1->getPositionX()+ly2->getPositionX())/2.0);
 	}
-
+	setTip("");
 	Layout *bg = GameDataSet::getLayout(m_RootLayer,"bg");
 	bg->runAction(RepeatForever::create(Sequence::create(RotateBy::create(7.0,360),NULL)));
 
@@ -93,4 +96,12 @@ void RewardTipLayer::TouchEvent(CCObject *obj, TouchEventType type){
 			this->removeFromParentAndCleanup(true);
 		}
 	}
+}
+
+void RewardTipLayer::setTip(string tip){
+	if (tip.empty()){
+		GameDataSet::setText(m_RootLayer, "tip", " ");
+	}
+	GameDataSet::setText(m_RootLayer, "tip", tip);
+	
 }

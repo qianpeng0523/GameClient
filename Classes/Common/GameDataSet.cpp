@@ -1129,3 +1129,17 @@ void GameDataSet::PushLayerToScene(Layer *layer){
 		scene->addChild(layer,zoder);
 	}
 }
+
+void GameDataSet::setVirProp(ImageView *img, int propid){
+	string file[] = { "xydzp/xydzp_TB_jinb1.png", "GYZY_TB_zuanshi.png", "card1.png" ,"","GYZY_TB_laba.png","","","","","GYZY_TB_rmb.png"};
+	if (img){
+		if (!file[propid - 1].empty()){
+			if (propid == 3){
+				img->loadTexture(file[propid - 1], cocos2d::ui::Widget::TextureResType::LOCAL);
+			}
+			else{
+				img->loadTexture(file[propid - 1], cocos2d::ui::Widget::TextureResType::PLIST);
+			}
+		}
+	}
+}
