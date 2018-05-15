@@ -29,6 +29,7 @@ HallInfo::HallInfo()
 	pe->registerProto(sr6.cmd(), sr6.GetTypeName());
 	SAddFriend sl7;
 	pe->registerProto(sl7.cmd(), sl7.GetTypeName());
+	pe->addListener(sl7.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriend));
 	SAddFriendList sr8;
 	pe->registerProto(sr8.cmd(), sr8.GetTypeName());
 	SActive sl9;
@@ -393,16 +394,17 @@ void HallInfo::SendCAddFriend(string uid){
 	CAddFriend cl;
 	cl.set_cmd(cl.cmd());
 	cl.set_uid(uid);
-	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriend));
+	//XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }
 
 void HallInfo::HandlerSAddFriend(ccEvent *event){
 	SAddFriend cl;
 	cl.CopyFrom(*event->msg);
-	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriend));
+	//XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriend));
 	int err = cl.err();
 	if (err == 0){
+		SendCAddFriendList();
 		log("%s", XXIconv::GBK2UTF("发送好友请求成功").c_str());
 	}
 	else{
@@ -416,26 +418,6 @@ void HallInfo::SendCAddFriendList(){
 	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriendList));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
-
-	//test
-	char buff[100];
-	char buff1[100];
-	SAddFriendList fris;
-	for (int i = 0; i < 5; i++){
-		FriendNotice *fri = fris.add_list();
-		fri->set_status(i%2);
-		sprintf(buff, "1000%02d", i);
-		fri->set_uid(buff);
-		fri->set_nid(i + 1);
-		sprintf(buff1,"%s%s", XXIconv::GBK2UTF("添加您为好友").c_str(), buff);
-		fri->set_content(buff1);
-		fri->set_time(GameDataSet::getLocalTime().c_str());
-	}
-	int sz = fris.ByteSize();
-	char *buffer = new char[sz+1];
-	fris.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(fris.cmd(), buffer, sz);
-	HandlerSAddFriendList(ev);
 }
 
 void HallInfo::HandlerSAddFriendList(ccEvent *event){
@@ -444,7 +426,7 @@ void HallInfo::HandlerSAddFriendList(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAddFriendList));
 	int err = cl.err();
 	if (err == 0){
-		m_pSAddFriendList.CopyFrom(cl);
+		m_pSAddFriendList = cl;
 		FriendLayer *p = GameControl::getIns()->getFriendLayer();
 		if (p){
 			p->ShowFriendEvent(2);
