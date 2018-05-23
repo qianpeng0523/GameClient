@@ -152,10 +152,10 @@ void FriendNoticeLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		string uid = m_hall.uid();
 		if (name.compare("btn1") == 0){
 			log("%s",XXIconv::GBK2UTF("拒绝").c_str());
-			HallInfo::getIns()->SendCAgreeFriend(uid,false);
+			HallInfo::getIns()->SendCAgreeFriend(uid, m_hall.nid(), false);
 		}else if (name.compare("btn2") == 0){
 			log("%s", XXIconv::GBK2UTF("同意").c_str());
-			HallInfo::getIns()->SendCAgreeFriend(uid, true);
+			HallInfo::getIns()->SendCAgreeFriend(uid,m_hall.nid(), true);
 		}
 	}
 }

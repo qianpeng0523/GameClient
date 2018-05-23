@@ -542,11 +542,12 @@ void HallInfo::HandlerSReward(ccEvent *event){
 	}
 }
 
-void HallInfo::SendCAgreeFriend(string uid, bool agree){
+void HallInfo::SendCAgreeFriend(string uid, int nid, bool agree){
 	CAgreeFriend cl;
 	cl.set_cmd(cl.cmd());
 	cl.set_userid(uid);
 	cl.set_agree(agree);
+	cl.set_nid(nid);
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAgreeFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 }

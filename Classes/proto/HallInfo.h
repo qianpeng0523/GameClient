@@ -49,7 +49,7 @@ public:
 	void SendCAddFriendList();
 	void HandlerSAddFriendList(ccEvent *event);
 
-	void SendCAgreeFriend(string uid, bool agree);
+	void SendCAgreeFriend(string uid,int nid, bool agree);
 	void HandlerSAgreeFriend(ccEvent *event);
 
 	//active
