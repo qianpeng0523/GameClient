@@ -96,7 +96,7 @@ void HttpInfo::requestGateIPAndPort(){
 	string url = sqlhttp;
 	YMSocketData sd;
 	sd["cmd"] = 0x0B;
-	sd["type"] = 2;
+	sd["type"] = 1;
 
 	MD55 md5;
 	md5.update("123456");
@@ -120,7 +120,7 @@ void HttpInfo::GateIPAndPortCallBack(HttpClient* client, HttpResponse* response)
 		printf("\n/************************************************/\n");
 		std::cout << "socket start:" << pHttpInfo->m_ip << pHttpInfo->m_port << std::endl;
 		printf("/************************************************/\n");
-		pHttpInfo->m_ip =/*GameDataSet::getHostNameIp(sd["ip"].asString())*/"10.100.253.213";
+		pHttpInfo->m_ip =GameDataSet::getHostNameIp(sd["ip"].asString());
 		LoginMainLayer *p = GameControl::getIns()->getLoginMainLayer();
 		if (p){
 			p->ShowYKLoginBtn(true);

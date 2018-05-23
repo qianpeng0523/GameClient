@@ -312,9 +312,9 @@ void SignLayer::RunEndCall(){
 	RewardTipLayer *p = GameControl::getIns()->getRewardTipLayer();
 	if (!p){
 		int index = ss.index();
-		SignZhuan sa = ssl.zhuan(index);
+		SignAward *sa = HallInfo::getIns()->getSignAward(index);
 		vector<Reward > vecs;
-		vecs.push_back(sa.reward());
+		vecs.push_back(sa->reward());
 		p = RewardTipLayer::create(vecs);
 		p->setTip(XXIconv::GBK2UTF("奖励已发送到邮箱，请查收"));
 		this->addChild(p);

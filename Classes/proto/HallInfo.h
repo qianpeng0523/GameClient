@@ -105,6 +105,7 @@ public:
 
 	void SendCSignList();
 	void HandlerSSignList(ccEvent *event);
+	SignAward *getSignAward(int rid);
 
 	map<int, Rank> getSRank(int type);
 	void eraseRank(int type,int lv);
@@ -155,6 +156,7 @@ private:
 	SSignList m_pSSignList;
 	SSign m_pSSign;
 	SFirsyBuyData m_pSFirsyBuyData;
+	map<int, SignAward *>m_pSignZhuan;
 };
 
 #endif 

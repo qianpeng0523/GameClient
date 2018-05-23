@@ -877,12 +877,24 @@ void HallInfo::HandlerSSignList(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		m_pSSignList = cl;
-		
+		for (int i = 0; i < cl.reward_size();i++){
+			SignAward rd = cl.reward(i);
+			SignAward *rd1 = (SignAward *)ccEvent::create_message(rd.GetTypeName());
+			rd1->CopyFrom(rd);
+			m_pSignZhuan.insert(make_pair(rd.id(),rd1));
+		}
 		SignLayer *p = GameControl::getIns()->getSignLayer();
 		if (p){
 			p->setSignData();
 		}
 	}
+}
+
+SignAward *HallInfo::getSignAward(int rid){
+	if (m_pSignZhuan.find(rid) != m_pSignZhuan.end()){
+		return m_pSignZhuan.at(rid);
+	}
+	return NULL;
 }
 
 void HallInfo::SendCFirsyBuyData(){
