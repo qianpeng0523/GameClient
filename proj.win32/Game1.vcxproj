@@ -248,6 +248,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Room\MJHu.cpp" />
     <ClCompile Include="..\Classes\Room\MJWall.cpp" />
     <ClCompile Include="..\Classes\Room\RoomControl.cpp" />
+    <ClCompile Include="..\Classes\Room\VoteLayer.cpp" />
     <ClCompile Include="..\Classes\TipLayer.cpp" />
     <ClCompile Include="..\Classes\TopTipLayer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -370,6 +371,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Room\MJHu.h" />
     <ClInclude Include="..\Classes\Room\MJWall.h" />
     <ClInclude Include="..\Classes\Room\RoomControl.h" />
+    <ClInclude Include="..\Classes\Room\VoteLayer.h" />
     <ClInclude Include="..\Classes\TipLayer.h" />
     <ClInclude Include="..\Classes\TopTipLayer.h" />
     <ClInclude Include="main.h" />

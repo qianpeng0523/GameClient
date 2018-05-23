@@ -357,6 +357,9 @@
     <ClCompile Include="..\Classes\Room\GameHelpLayer.cpp">
       <Filter>Classes\Room</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Room\VoteLayer.cpp">
+      <Filter>Classes\Room</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -717,6 +720,9 @@
       <Filter>Classes\Chat</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Room\GameHelpLayer.h">
+      <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Room\VoteLayer.h">
       <Filter>Classes\Room</Filter>
     </ClInclude>
   </ItemGroup>
