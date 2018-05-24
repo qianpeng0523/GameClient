@@ -89,6 +89,7 @@ void XXEventDispatcher::EventPathch(std::vector<ccEvent *> &ep){
 		vector<ccEvent *>::iterator itr = ep.begin();
 		if (itr != ep.end()){
 			ccEvent *event = *itr;
+			ep.erase(itr);
 			int cmd = event->cmd;
 			CallList_Vec vec;
 			if (m_eventLists.find(cmd) != m_eventLists.end()){
@@ -108,7 +109,7 @@ void XXEventDispatcher::EventPathch(std::vector<ccEvent *> &ep){
 			}
 
 			delete event;
-			ep.erase(itr);
+			
 		}
 	}
 }

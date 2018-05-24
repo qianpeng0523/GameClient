@@ -172,18 +172,26 @@ void MainLayer::LaBaCall(){
 
 void MainLayer::ScrollViewEvent(Ref* obj, ScrollviewEventType type){
 	if (type == SCROLLVIEW_EVENT_BOUNCE_BOTTOM){
-		map<int, Rank> sr = HallInfo::getIns()->getSRank(1);
-		if (sr.empty()){
-			HallInfo::getIns()->SendCRank(1, m_index[0]++);
+		int tag = ((ui::ScrollView *)obj)->getTag();
+		if (tag == 1){
+			map<int, Rank> sr = HallInfo::getIns()->getSRank(1);
+			if (sr.empty()){
+				HallInfo::getIns()->SendCRank(1, m_index[0]++);
+			}
+			((ui::ScrollView *)obj)->setTag(0);
 		}
 	}
 }
 
 void MainLayer::ScrollViewEvent1(Ref* obj, ScrollviewEventType type){
 	if (type == SCROLLVIEW_EVENT_BOUNCE_BOTTOM){
-		map<int, Rank> sr = HallInfo::getIns()->getSRank(2);
-		if (sr.empty()){
-			HallInfo::getIns()->SendCRank(2, m_index[1]++);
+		int tag = ((ui::ScrollView *)obj)->getTag();
+		if (tag == 1){
+			map<int, Rank> sr = HallInfo::getIns()->getSRank(2);
+			if (sr.empty()){
+				HallInfo::getIns()->SendCRank(2, m_index[1]++);
+			}
+			((ui::ScrollView *)obj)->setTag(0);
 		}
 	}
 }
@@ -361,6 +369,15 @@ void MainLayer::TouchEvent(CCObject *obj, TouchEventType type){
 				p = JoinRoomLayer::create();
 				this->addChild(p);
 			}
+		}
+		
+	}
+	else if (type == TOUCH_EVENT_BEGAN){
+		if (name.compare("ScrollView") == 0){
+			btn->setTag(1);
+		}
+		else if (name.compare("ScrollView_1") == 0){
+			btn->setTag(1);
 		}
 	}
 }
