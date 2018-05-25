@@ -185,7 +185,7 @@ FriendLayer::FriendLayer(){
 
 FriendLayer::~FriendLayer(){
 	PhotoDown::getIns()->erasePhoto(this);
-	m_input->setText("");
+	m_input->removeFromParentAndCleanup(true);
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getFriendLayer()){
 		GameControl::getIns()->setFriendLayer(NULL);
@@ -282,10 +282,16 @@ void FriendLayer::TouchEvent(CCObject *obj, TouchEventType type){
 		else if (name.compare("search") == 0){
 			string id = m_input->getText();
 			if (!id.empty()){
-				HallInfo::getIns()->SendCFindFriend(id, 0);
+				string myuid = LoginInfo::getIns()->getUID();
+				if (myuid.compare(id)==0){
+					GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("不能搜索自己的id"));
+				}
+				else{
+					HallInfo::getIns()->SendCFindFriend(id, 1);
+				}
 			}
 			else{
-				log("%s",XXIconv::GBK2UTF("您输入的id空").c_str());
+				GameControl::getIns()->ShowTopTip(XXIconv::GBK2UTF("您输入的id空"));
 			}
 		}
 		else if (name.compare("huan") == 0){
@@ -368,6 +374,13 @@ void FriendLayer::ShowFriendEvent(int index){
 					FriendChatItemLayer *p = FriendChatItemLayer::create(hall);
 					GameDataSet::PushScrollItem(sbg, 1, 0, p, i, scroll);
 				}
+				Layout *tip = GameDataSet::getLayout(m_RootLayer,"haoyoutip");
+				if (sz == 0){
+					tip->setVisible(true);
+				}
+				else{
+					tip->setVisible(false);
+				}
 			}
 			else{
 				SAddFriendList sff = HallInfo::getIns()->getSAddFriendList();
@@ -376,6 +389,13 @@ void FriendLayer::ShowFriendEvent(int index){
 					FriendNotice hall=sff.list(i);
 					FriendNoticeLayer *p = FriendNoticeLayer::create(hall);
 					GameDataSet::PushScrollItem(sbg, 0, 0, p, i, scroll);
+				}
+				Layout *tip = GameDataSet::getLayout(m_RootLayer, "tongzhitip");
+				if (sz == 0){
+					tip->setVisible(true);
+				}
+				else{
+					tip->setVisible(false);
 				}
 			}
 		}
@@ -401,6 +421,13 @@ void FriendLayer::ShowFriendEvent(int index){
 			else{
 				ly->setVisible(false);
 			}
+		}
+		Layout *tip = GameDataSet::getLayout(m_RootLayer, "findtip");
+		if (sz == 0){
+			tip->setVisible(true);
+		}
+		else{
+			tip->setVisible(false);
 		}
 	}
 }

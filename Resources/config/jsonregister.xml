@@ -66,4 +66,5 @@
   <item json="gchatitem2.json" count="30" type="3"/>
   <item json="gamehelp.json" count="1" type="3"/>
   <item json="vote.json" count="1" type="3"/>
+  <item json="toptiplayer.json" count="1" type="1"/>
 </root>

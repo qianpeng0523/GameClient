@@ -326,25 +326,6 @@ void HallInfo::SendCFindFriend(string uid, int type){
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFindFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
 
-	//test
-	char buff[100];
-	SFindFriend fris;
-	for (int i = 0; i < 2; i++){
-		Friend *fri = fris.add_list();
-		fri->set_acttype(i % 3 + 1);
-		fri->set_online(i % 2);
-		fri->set_time(GameDataSet::getTime());
-		UserBase *user= fri->mutable_info();
-		sprintf(buff, "10000%d", i);
-		user->set_username(buff);
-		user->set_userid(buff);
-		user->set_picurl("http://www.lesharecs.com/1.jpg");
-	}
-	int sz = fris.ByteSize();
-	char *buffer = new char[sz];
-	fris.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(fris.cmd(), buffer, sz);
-	HandlerSFindFriend(ev);
 }
 
 void HallInfo::HandlerSFindFriend(ccEvent *event){

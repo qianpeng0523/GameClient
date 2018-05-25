@@ -74,6 +74,7 @@ void LoginInfo::SendCLogin(string uid,string pwd){
 }
 
 void LoginInfo::HandlerSLoginHand(ccEvent *event){
+	log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
 	SLogin cl;
 	cl.CopyFrom(*event->msg);
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(LoginInfo::HandlerSLoginHand));

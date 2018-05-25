@@ -127,15 +127,16 @@ bool MainLayer::init()
 }
 
 void MainLayer::test(){
-	char buff[50];
-	GameControl *pGameControl = GameControl::getIns();
-	for (int i = 0; i < 4; i++){
-		sprintf(buff, "%s%d", XXIconv::GBK2UTF("测试消息").c_str(), rand() % 100000 + 1);
-		pGameControl->ShowTopTip(buff);
-	}
-	this->runAction(Sequence::create(DelayTime::create(4),
-		CCCallFunc::create(this, callfunc_selector(MainLayer::test))
-		, NULL));
+// 	char buff[50];
+// 	GameControl *pGameControl = GameControl::getIns();
+// 	for (int i = 0; i < 4; i++){
+// 		sprintf(buff, "%s%d", XXIconv::GBK2UTF("测试消息").c_str(), rand() % 100000 + 1);
+// 		pGameControl->ShowTopTip(buff);
+// 	}
+// 	this->runAction(Sequence::create(DelayTime::create(4),
+// 		CCCallFunc::create(this, callfunc_selector(MainLayer::test))
+// 		, NULL));
+	GameControl::getIns()->ShowTopTip(" ");
 }
 
 void MainLayer::setData(){

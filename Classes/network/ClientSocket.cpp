@@ -193,6 +193,7 @@ void ClientSocket::DataIn(char* data, int size,int cmd){
 	//数据不能用string  只能用char*
 	
 	log("datain size:%d cmd:0x%04X", size, cmd);
+
 	ccEvent *sEvent = new ccEvent(cmd, data, size);
 	XXEventDispatcher::getIns()->disEventDispatcher(sEvent);
 }
