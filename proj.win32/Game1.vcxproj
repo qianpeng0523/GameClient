@@ -209,6 +209,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Main\HelpLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MailLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MailTipLayer.cpp" />
+    <ClCompile Include="..\Classes\Main\MainChatRecord.cpp" />
     <ClCompile Include="..\Classes\Main\MainLayer.cpp" />
     <ClCompile Include="..\Classes\Main\MainScene.cpp" />
     <ClCompile Include="..\Classes\Main\RankItemLayer.cpp" />
@@ -324,6 +325,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Main\HelpLayer.h" />
     <ClInclude Include="..\Classes\Main\MailLayer.h" />
     <ClInclude Include="..\Classes\Main\MailTipLayer.h" />
+    <ClInclude Include="..\Classes\Main\MainChatRecord.h" />
     <ClInclude Include="..\Classes\Main\MainLayer.h" />
     <ClInclude Include="..\Classes\Main\MainScene.h" />
     <ClInclude Include="..\Classes\Main\RankItemLayer.h" />

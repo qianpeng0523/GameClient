@@ -360,6 +360,9 @@
     <ClCompile Include="..\Classes\Room\VoteLayer.cpp">
       <Filter>Classes\Room</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Main\MainChatRecord.cpp">
+      <Filter>Classes\Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -724,6 +727,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Room\VoteLayer.h">
       <Filter>Classes\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Main\MainChatRecord.h">
+      <Filter>Classes\Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
