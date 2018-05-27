@@ -18,6 +18,9 @@ public:
 	virtual bool init(Friend hall);
 
 	void TouchEvent(CCObject *obj, TouchEventType type);
+
+	void RemoveGive( bool isre);
+	void RemoveChat(bool isre);
 private:
 	Friend m_hall;
 private:
@@ -35,6 +38,8 @@ public:
 	virtual bool init(FriendNotice hall);
 
 	void TouchEvent(CCObject *obj, TouchEventType type);
+
+	
 private:
 	FriendNotice m_hall;
 private:
@@ -58,6 +63,8 @@ public:
 	void SelectItem(int index);
 
 	void ShowFriendEvent(int index);
+	void RemoveGive(string uid,bool isre);
+	void RemoveChat(string uid,bool isre);
 private:
 	Button *m_btns[3];
 	TextBMFont *m_btntext[3];
@@ -65,6 +72,7 @@ private:
 	ui::ScrollView *m_ScrollView[2];
 	Layout *m_sbg[2];
 	ui::EditBox *m_input;
+	map<string, FriendChatItemLayer *> m_pFriendChatItemLayers;
 private:
 	
 };

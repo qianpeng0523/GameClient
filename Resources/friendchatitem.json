@@ -11,12 +11,14 @@
   "designWidth": 800,
   "textures": [
     "panel/friend/friend.plist",
-    "share/newcommon.plist"
+    "share/newcommon.plist",
+    "panel/speakFace/speakFace.plist"
   ],
   "texturesPng": [
     "panel/friend/friend.plist",
     "head00.png",
-    "share/newcommon.plist"
+    "share/newcommon.plist",
+    "panel/speakFace/speakFace.plist"
   ],
   "version": "1.6.0.0",
   "widgetTree": {
@@ -406,6 +408,60 @@
                   },
                   "text": "聊天"
                 }
+              },
+              {
+                "classname": "ImageView",
+                "name": null,
+                "children": [],
+                "options": {
+                  "__type": "ImageViewSurrogate:#EditorCommon.JsonModel.Component.GUI",
+                  "classname": "ImageView",
+                  "name": "chatip",
+                  "ZOrder": 0,
+                  "actiontag": 12517506,
+                  "anchorPointX": 0.5,
+                  "anchorPointY": 0.5,
+                  "classType": "CocoStudio.EngineAdapterWrap.CSImageView",
+                  "colorB": 255,
+                  "colorG": 255,
+                  "colorR": 255,
+                  "customProperty": "",
+                  "flipX": false,
+                  "flipY": false,
+                  "height": 50,
+                  "ignoreSize": true,
+                  "layoutParameter": null,
+                  "opacity": 255,
+                  "positionPercentX": 0.3359563,
+                  "positionPercentY": 0.150207132,
+                  "positionType": 0,
+                  "rotation": 0,
+                  "scaleX": 1,
+                  "scaleY": 1,
+                  "sizePercentX": 0.338983059,
+                  "sizePercentY": 0.8695652,
+                  "sizeType": 0,
+                  "tag": 193497,
+                  "touchAble": false,
+                  "useMergedTexture": false,
+                  "visible": true,
+                  "width": 52,
+                  "x": 79,
+                  "y": 13,
+                  "capInsetsHeight": 1,
+                  "capInsetsWidth": 1,
+                  "capInsetsX": 0,
+                  "capInsetsY": 0,
+                  "fileName": null,
+                  "fileNameData": {
+                    "path": "speakFace/LT_TB_liaotian2.png",
+                    "plistFile": "panel/speakFace/speakFace.plist",
+                    "resourceType": 1
+                  },
+                  "scale9Enable": false,
+                  "scale9Height": 50,
+                  "scale9Width": 52
+                }
               }
             ],
             "options": {
@@ -427,7 +483,7 @@
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
-              "positionPercentX": 0.11,
+              "positionPercentX": 0.3425,
               "positionPercentY": 0.0117647061,
               "positionType": 0,
               "rotation": 0,
@@ -441,7 +497,7 @@
               "useMergedTexture": false,
               "visible": true,
               "width": 236,
-              "x": 88,
+              "x": 274,
               "y": 2,
               "capInsetsHeight": 1,
               "capInsetsWidth": 1,
@@ -548,7 +604,7 @@
               "ignoreSize": true,
               "layoutParameter": null,
               "opacity": 255,
-              "positionPercentX": 0.3425,
+              "positionPercentX": 0.115,
               "positionPercentY": 0.0117647061,
               "positionType": 0,
               "rotation": 0,
@@ -562,7 +618,7 @@
               "useMergedTexture": false,
               "visible": true,
               "width": 236,
-              "x": 274,
+              "x": 92,
               "y": 2,
               "capInsetsHeight": 1,
               "capInsetsWidth": 1,

@@ -15,13 +15,13 @@ class ChatItemLayer : public BaseLayer
 public:
 	ChatItemLayer();
 	~ChatItemLayer();
-	static ChatItemLayer *create(string uid, string uname, string content,string time);
-	virtual bool init(string uid, string uname, string content, string time);
+	static ChatItemLayer *create(FriendChat *fc);
+	virtual bool init(FriendChat *fc);
 
 	void TouchEvent(CCObject *obj, TouchEventType type);
 	
 private:
-	string m_uid;
+	FriendChat *m_fc;
 	string m_json;
 private:
 
@@ -49,11 +49,20 @@ public:
 	virtual bool init(string uid, string uname);
 	
 	void TouchEvent(CCObject *obj, TouchEventType type);
-	void AddChatItem(int index, string uid,string name, string content);//0表示自己 1表示别人
+	void AddChatItem(FriendChat *fc);//0表示自己 1表示别人
+	void AddAllChat();
+
+	void openExp();
+	void closeExp();
+	void AddEmotion();
+	string getUID(){
+		return m_uid;
+	}
 private:
 	string m_uid;
 	string m_uname;
 	ui::ScrollView *m_ScrollView;
+	ui::ScrollView *m_ScrollView1;
 	Layout *m_sbg;
 	ui::EditBox *m_input;
 private:

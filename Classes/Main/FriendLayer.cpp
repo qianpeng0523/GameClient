@@ -42,8 +42,11 @@ bool FriendChatItemLayer::init(Friend hall)
 
 	SEL_TouchEvent selector = toucheventselector(FriendChatItemLayer::TouchEvent);
 	GameDataSet::getButton(m_RootLayer, "chat", selector, this);
-	GameDataSet::getButton(m_RootLayer, "zeng", selector, this);
-
+	Layout *chattip = GameDataSet::getLayout(m_RootLayer,"chatip");
+	auto vec = HallInfo::getIns()->getFriendChat(hall.info().userid());
+	chattip->setVisible(!vec.empty());
+	Button *btn= GameDataSet::getButton(m_RootLayer, "zeng", selector, this);
+	btn->setVisible(!hall.give());
 	bool online = hall.online();
 	UserBase user = hall.info();
 	string username = user.username();
@@ -82,12 +85,24 @@ void FriendChatItemLayer::TouchEvent(CCObject *obj, TouchEventType type){
 				p = ChatLayer::create(m_hall.info().userid(),m_hall.info().username());
 				Director::sharedDirector()->getRunningScene()->addChild(p);
 			}
+			RemoveChat(true);
 		}
 		else if (name.compare("zeng") == 0){
 			log("zeng");
-			HallInfo::getIns()->SendCGiveFriend(m_hall.info().username());
+			HallInfo::getIns()->SendCGiveFriend(m_hall.info().userid());
 		}
 	}
+}
+
+
+void FriendChatItemLayer::RemoveGive(bool isre){
+	Layout *btn = GameDataSet::getLayout(m_RootLayer, "zeng");
+	btn->setVisible(!isre);
+}
+
+void FriendChatItemLayer::RemoveChat( bool isre){
+	Layout *chattip = GameDataSet::getLayout(m_RootLayer, "chatip");
+	chattip->setVisible(!isre);
 }
 
 
@@ -141,7 +156,15 @@ bool FriendNoticeLayer::init(FriendNotice hall)
 	if (bg){
 		bg->setVisible(status==1);
 	}
-
+	string tipfile[2] = {"friend/HYJM_biaoqian_yitianjia.png","yijujue.png"};
+	ImageView *tipimg = (ImageView *)GameDataSet::getLayout(m_RootLayer,"tip");
+	if (status < 2){
+		tipimg->setVisible(false);
+	}
+	else{
+		tipimg->setVisible(true);
+		tipimg->loadTexture(tipfile[status - 2], cocos2d::ui::Widget::TextureResType::PLIST);
+	}
 	return true;
 }
 
@@ -178,6 +201,8 @@ void FriendNoticeLayer::TouchEvent(CCObject *obj, TouchEventType type){
 
 
 
+
+
 FriendLayer::FriendLayer(){
 	memset(m_sbg,NULL,sizeof(Layout *));
 	GameControl::getIns()->setFriendLayer(this);
@@ -186,6 +211,11 @@ FriendLayer::FriendLayer(){
 FriendLayer::~FriendLayer(){
 	PhotoDown::getIns()->erasePhoto(this);
 	m_input->removeFromParentAndCleanup(true);
+	for (int i = 0; i < 2; i++){
+		if (m_sbg[i]){
+			m_sbg[i]->removeAllChildrenWithCleanup(true);
+		}
+	}
 	RootRegister::getIns()->resetWidget(m_RootLayer);
 	if (this == GameControl::getIns()->getFriendLayer()){
 		GameControl::getIns()->setFriendLayer(NULL);
@@ -234,8 +264,8 @@ bool FriendLayer::init()
 
 	UserBase user = LoginInfo::getIns()->getMyUserBase();
 	string uid = user.userid();
-	GameDataSet::setTextBMFont(m_RootLayer, "BitmapLabel_id", uid);
-
+	GameDataSet::setText(m_RootLayer, "id", uid);
+	
 	char buff[30];
 	for (int i = 0; i < 2; i++){
 		sprintf(buff,"ScrollView%d",i+1);
@@ -251,14 +281,16 @@ bool FriendLayer::init()
 		ImageView *img = (ImageView *)GameDataSet::getLayout(ly, "icon");
 		PhotoDown::getIns()->PushPhoto(this, user.userid(), img, user.picurl(), user.picid());
 	}
+	
 	SelectItem(0);
 	Layout *in = GameDataSet::getLayout(m_RootLayer,"in");
 	m_input = LoginMainLayer::AddCursorTextField(in,20);
 	m_input->setPlaceHolder(XXIconv::GBK2UTF("请输入对方id号").c_str());
 	m_input->setFontColor(ccc3(0x38,0x4E,0x9C));
 	m_input->setInputMode(ui::EditBox::InputMode::PHONE_NUMBER);
+	
 	HallInfo::getIns()->SendCFindFriend("",2);
-
+	
 	
     return true;
 }
@@ -355,24 +387,40 @@ void FriendLayer::SelectItem(int index){
 	else{
 		ShowFriendEvent(index);
 	}
-	if (m_sbg[index - 1]){
-		log("sbgname:%s",m_sbg[index-1]->getName().c_str());
+	
+}
+
+void FriendLayer::RemoveGive(string uid, bool isre){
+	if (m_pFriendChatItemLayers.find(uid) != m_pFriendChatItemLayers.end()){
+		FriendChatItemLayer *p = m_pFriendChatItemLayers.at(uid);
+		p->RemoveGive(isre);
 	}
-	//ShowFriendEvent(index);
+}
+
+void FriendLayer::RemoveChat(string uid, bool isre){
+	if (m_pFriendChatItemLayers.find(uid) != m_pFriendChatItemLayers.end()){
+		FriendChatItemLayer *p = m_pFriendChatItemLayers.at(uid);
+		p->RemoveChat(isre);
+	}
 }
 
 void FriendLayer::ShowFriendEvent(int index){
 	if (index > 0){
+		
 		ui::ScrollView *scroll = m_ScrollView[index-1];
 		Layout *sbg = m_sbg[index-1];
+		sbg->removeAllChildrenWithCleanup(true);
+		
 		if (sbg->getChildrenCount() == 0){
 			if (index == 1){
 				SFriend sf = HallInfo::getIns()->getSFriend();
 				int sz = sf.list_size();
+				m_pFriendChatItemLayers.clear();
 				for (int i = 0; i < sz; i++){
 					Friend hall=sf.list(i);
 					FriendChatItemLayer *p = FriendChatItemLayer::create(hall);
 					GameDataSet::PushScrollItem(sbg, 1, 0, p, i, scroll);
+					m_pFriendChatItemLayers.insert(make_pair(hall.info().userid(), p));
 				}
 				Layout *tip = GameDataSet::getLayout(m_RootLayer,"haoyoutip");
 				if (sz == 0){
@@ -407,9 +455,19 @@ void FriendLayer::ShowFriendEvent(int index){
 		for (int i = 0; i < 4;i++){
 			sprintf(buff,"smallbg%d",i+1);
 			Layout *ly = GameDataSet::getLayout(m_RootLayer,buff);
+			Layout *bb = GameDataSet::getLayout(ly, "btn");
 			if (i < sz){
 				Friend fri=fris.list(i);
 				UserBase user = fri.info();
+				string fuid = user.userid();
+				Friend fri1 = HallInfo::getIns()->getFriend(fuid);
+				string fuid1 = fri1.info().userid();
+				if (!fuid1.empty()){
+					bb->setVisible(false);
+				}
+				else{
+					bb->setVisible(true);
+				}
 				string name = user.username();
 				bool online = fri.online();
 				int act = fri.acttype();

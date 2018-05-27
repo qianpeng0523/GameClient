@@ -52,6 +52,15 @@ public:
 	void SendCAgreeFriend(string uid,int nid, bool agree);
 	void HandlerSAgreeFriend(ccEvent *event);
 
+	void SendCFriendChat(string uid, string content);
+	void HandlerSFriendChat(ccEvent *event);
+
+	void SendCFriendChatList();
+	void HandSFriendChatList(ccEvent *event);
+
+	void SendCFriendChatRead(FriendChat fc);
+	void HandSFriendChatRead(ccEvent *event);
+
 	//active
 	void SendCActive(int type);
 	void HandlerSActive(ccEvent *event);
@@ -141,6 +150,11 @@ public:
 	SFirsyBuyData getSFirsyBuyData(){
 		return m_pSFirsyBuyData;
 	}
+
+	Friend getFriend(string fruid);
+	vector<FriendChat *> getFriendChat(string uid);
+	void setFriendChat(FriendChat *p);
+	void eraseFriendChat(FriendChat *p);
 private:
 	static HallInfo *m_shareHallInfo;
 	map<int, map<int,Rank>> m_pSRanks;
@@ -157,6 +171,10 @@ private:
 	SSign m_pSSign;
 	SFirsyBuyData m_pSFirsyBuyData;
 	map<int, SignAward *>m_pSignZhuan;
+	map<string, Friend >m_pfriends;
+	SAgreeFriend m_pSAgreeFriend;
+	SFriendChat m_pSFriendChat;
+	map<string,vector<FriendChat *>> m_pFriendChat;
 };
 
 #endif 

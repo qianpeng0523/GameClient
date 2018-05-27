@@ -9,6 +9,7 @@
 #include "YMSocketData.h"
 #include "XXHttpRequest.h"
 #include "YLJni.h"
+#include "MainChatRecord.h"
 
 HallInfo *HallInfo::m_shareHallInfo=NULL;
 HallInfo::HallInfo()
@@ -75,7 +76,15 @@ HallInfo::HallInfo()
 	SExchange sl28;
 	pe->registerProto(sl28.cmd(), sl28.GetTypeName());
 
+	SFriendChat sl29;
+	pe->registerProto(sl29.cmd(), sl29.GetTypeName());
+	pe->addListener(sl29.cmd(), this, Event_Handler(HallInfo::HandlerSFriendChat));
 
+	SFriendChatList sl30;
+	pe->registerProto(sl30.cmd(), sl30.GetTypeName());
+
+	SFriendChatRead sl31;
+	pe->registerProto(sl31.cmd(), sl31.GetTypeName());
 }
 
 HallInfo::~HallInfo(){
@@ -273,30 +282,19 @@ void HallInfo::HandlerSMailAward(ccEvent *event){
 	}
 }
 
+Friend HallInfo::getFriend(string fruid){
+	if (m_pfriends.find(fruid) != m_pfriends.end()){
+		return m_pfriends.at(fruid);
+	}
+	Friend fr;
+	return fr;
+}
+
 void HallInfo::SendCFriend(){
 	CFriend cl;
 	cl.set_cmd(cl.cmd());
 	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSFriend));
 	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
-
-	//test
-	SFriend sf;
-	for (int i = 0; i < 4;i++){
-		Friend *fri=sf.add_list();
-		fri->set_acttype(i%3+1);
-		fri->set_time(GameDataSet::getTime());
-		char buff[100];
-		UserBase *user = fri->mutable_info();
-		sprintf(buff, "10000%d", i);
-		user->set_userid(buff);
-		user->set_picurl("http://www.lesharecs.com/1.jpg");
-		user->set_username(buff);
-	}
-	int sz = sf.ByteSize();
-	char *buffer = new char[sz];
-	sf.SerializePartialToArray(buffer, sz);
-	ccEvent *ev = new ccEvent(sf.cmd(),buffer,sz);
-	HandlerSFriend(ev);
 }
 
 void HallInfo::HandlerSFriend(ccEvent *event){
@@ -306,6 +304,11 @@ void HallInfo::HandlerSFriend(ccEvent *event){
 	int err = cl.err();
 	if (err == 0){
 		m_pSFriend = cl;
+		m_pfriends.clear();
+		for (int i = 0; i < cl.list_size();i++){
+			Friend fri = cl.list(i);
+			m_pfriends.insert(make_pair(fri.info().userid(), fri));
+		}
 		FriendLayer *p = GameControl::getIns()->getFriendLayer();
 		if (p){
 			p->ShowFriendEvent(1);
@@ -338,9 +341,7 @@ void HallInfo::HandlerSFindFriend(ccEvent *event){
 		m_pSFindFriend = cl;
 		FriendLayer *p = GameControl::getIns()->getFriendLayer();
 		if (p){
-			if (cl.list_size() > 0){
-				p->ShowFriendEvent(0);
-			}
+			p->ShowFriendEvent(0);
 		}
 	}
 	else{
@@ -358,11 +359,16 @@ void HallInfo::SendCGiveFriend(string uid){
 }
 
 void HallInfo::HandlerSGiveFriend(ccEvent *event){
-	SFindFriend cl;
+	SGiveFriend cl;
 	cl.CopyFrom(*event->msg);
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSGiveFriend));
 	int err = cl.err();
 	if (err == 0){
+		string uid = cl.uid();
+		FriendLayer *p = GameControl::getIns()->getFriendLayer();
+		if (p){
+			p->RemoveGive(uid,true);
+		}
 		log("%s", XXIconv::GBK2UTF("赠送好友金币成功").c_str());
 	}
 	else{
@@ -419,6 +425,145 @@ void HallInfo::HandlerSAddFriendList(ccEvent *event){
 	}
 }
 
+void HallInfo::SendCFriendChat(string uid,string content){
+	CFriendChat cl;
+	cl.set_cmd(cl.cmd());
+	cl.set_content(content);
+	cl.set_uid(uid);
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandlerSFriendChat(ccEvent *event){
+	SFriendChat cl;
+	cl.CopyFrom(*event->msg);
+	m_pSFriendChat = cl;
+	FriendChat p1=cl.chat();
+	FriendChat *fc = (FriendChat *)ccEvent::create_message(p1.GetTypeName());
+	fc->CopyFrom(p1);
+	
+	string uname = p1.uname();
+	string myuname = LoginInfo::getIns()->getMyUserBase().username();
+	if (uname.compare(myuname) != 0){
+		setFriendChat(fc);
+	}
+	else{
+		MainChatRecord::getIns()->PushChat(p1);
+	}
+	FriendLayer *pp = GameControl::getIns()->getFriendLayer();
+	if (pp){
+		pp->RemoveChat(p1.uid(),false);
+	}
+	ChatLayer *p = GameControl::getIns()->getChatLayer();
+	if (p){
+		string uid = p->getUID();
+		if (uid.compare(p1.uid()) == 0){
+			p->AddChatItem(fc);
+			if (uname.compare(myuname) != 0){
+				MainChatRecord::getIns()->PushChat(p1);
+				SendCFriendChatRead(*fc);
+				FriendLayer *pp = GameControl::getIns()->getFriendLayer();
+				if (pp){
+					pp->RemoveChat(p1.uid(), true);
+				}
+			}
+		}
+	}
+}
+
+void HallInfo::SendCFriendChatList(){
+	CFriendChatList cl;
+	cl.set_cmd(cl.cmd());
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandSFriendChatList));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandSFriendChatList(ccEvent *event){
+	SFriendChatList cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandSFriendChatList));
+	for (int i = 0; i < cl.list_size(); i++){
+		FriendChat fc = cl.list(i);
+		FriendChat *p = (FriendChat *)ccEvent::create_message(fc.GetTypeName());
+		p->CopyFrom(fc);
+		string uid = fc.uid();
+		vector<FriendChat *>vec;
+		if (m_pFriendChat.find(uid) == m_pFriendChat.end()){
+			vec.push_back(p);
+			m_pFriendChat.insert(make_pair(uid, vec));
+		}
+		else{
+			vec = m_pFriendChat.at(uid);
+			vec.push_back(p);
+			m_pFriendChat.at(uid) = vec;
+		}
+	}
+	ChatLayer *p = GameControl::getIns()->getChatLayer();
+	if (p){
+		p->AddAllChat();
+	}
+}
+
+void HallInfo::SendCFriendChatRead(FriendChat fc){
+	CFriendChatRead cl;
+	cl.set_cmd(cl.cmd());
+	FriendChat *fc1 = cl.mutable_chat();
+	fc1->CopyFrom(fc);
+	XXEventDispatcher::getIns()->addListener(cl.cmd(), this, Event_Handler(HallInfo::HandSFriendChatRead));
+	ClientSocket::getIns()->sendMsg(cl.cmd(), &cl);
+}
+
+void HallInfo::HandSFriendChatRead(ccEvent *event){
+	SFriendChatRead cl;
+	cl.CopyFrom(*event->msg);
+	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandSFriendChatRead));
+	int err = cl.err();
+	if (err == 0){
+		FriendChat fc = cl.chat();
+		eraseFriendChat(&fc);
+	}
+}
+
+void HallInfo::setFriendChat(FriendChat *p){
+	string uid = p->uid();
+	if (m_pFriendChat.find(uid) != m_pFriendChat.end()){
+		auto vec = m_pFriendChat.at(uid);
+		vec.push_back(p);
+		m_pFriendChat.at(uid)=vec;
+	}
+	else{
+		vector<FriendChat *> vec;
+		vec.push_back(p);
+		m_pFriendChat.insert(make_pair(uid, vec));
+	}
+}
+
+void HallInfo::eraseFriendChat(FriendChat *p){
+	string key1 = p->uid()+p->uname()+p->time()+p->content();
+	string uid = p->uid();
+	if (m_pFriendChat.find(uid) != m_pFriendChat.end()){
+		auto vec = m_pFriendChat.at(uid);
+		auto itr = vec.begin();
+		for (itr; itr != vec.end();itr++){
+			FriendChat *p1 = *itr;
+			string key2 = p1->uid() + p1->uname() + p1->time() + p1->content();
+			if (key1.compare(key2)==0){
+				vec.erase(itr);
+				delete p1;
+				p1 = NULL;
+				m_pFriendChat.at(uid) = vec;
+				break;
+			}
+		}
+	}
+}
+
+vector<FriendChat *> HallInfo::getFriendChat(string uid){
+	if (m_pFriendChat.find(uid) != m_pFriendChat.end()){
+		return m_pFriendChat.at(uid);
+	}
+	vector<FriendChat *> vec;
+	return vec;
+}
 
 void HallInfo::SendCActive(int type){
 	CActive cl;
@@ -539,6 +684,8 @@ void HallInfo::HandlerSAgreeFriend(ccEvent *event){
 	XXEventDispatcher::getIns()->removeListener(cl.cmd(), this, Event_Handler(HallInfo::HandlerSAgreeFriend));
 	int err = cl.err();
 	if (err == 0){
+		m_pSAgreeFriend = cl;
+		SendCAddFriendList();
 		log("%s", XXIconv::GBK2UTF("同意拒绝成功").c_str());
 	}
 	else{

@@ -123,6 +123,8 @@ bool MainLayer::init()
 	ConfigInfo::getIns()->SendCConfig();
 	HallInfo::getIns()->SendCExchangeReward();
 	HallInfo::getIns()->SendCFirsyBuyData();
+	HallInfo::getIns()->SendCFriend();
+	HallInfo::getIns()->SendCFriendChatList();
     return true;
 }
 
