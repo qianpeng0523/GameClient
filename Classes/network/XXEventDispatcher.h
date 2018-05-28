@@ -12,6 +12,7 @@ public:
 	int cmd;
 	Object *obj;
 	EventHandler handler;
+	int m_count;
 };
 
 //typedef std::vector<CallList *> CallList_Vec;

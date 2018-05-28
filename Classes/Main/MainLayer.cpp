@@ -125,6 +125,7 @@ bool MainLayer::init()
 	HallInfo::getIns()->SendCFirsyBuyData();
 	HallInfo::getIns()->SendCFriend();
 	HallInfo::getIns()->SendCFriendChatList();
+	
     return true;
 }
 
